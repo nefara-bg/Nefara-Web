@@ -5,9 +5,7 @@ import styled from "@emotion/styled"
 
 const Hero = () => {
     const HeroSection = styled(HomeContainer)(({ theme }) => ({
-        backgroundColor: theme.palette.background.secondary,
-        paddingTop: theme.spacing(8),
-        paddingBottom: theme.spacing(8)
+        backgroundColor: theme.palette.background.secondary
     }))
 
 

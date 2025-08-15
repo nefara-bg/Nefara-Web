@@ -24,15 +24,8 @@ const About = () => {
         }
     ]
 
-
-    const AboutSection = styled(HomeContainer)(({ theme }) => ({
-        paddingTop: theme.spacing(8),
-        paddingBottom: theme.spacing(8)
-    }))
-
-
     return (
-        <AboutSection>
+        <HomeContainer>
             <Typography variant="h3" textAlign={"center"} color="neutral.main" mb={4}>Why Choose Us</Typography>
             <Grid container spacing={3}> 
                 {
@@ -42,7 +35,7 @@ const About = () => {
                     ))
                 }
             </Grid>
-        </AboutSection>
+        </HomeContainer>
     )
 }
 

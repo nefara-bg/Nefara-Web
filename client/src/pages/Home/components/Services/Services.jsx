@@ -33,15 +33,8 @@ const Services = () => {
 
 
 
-    const ServicesSection = styled(HomeContainer)(({ theme }) => ({
-        paddingTop: theme.spacing(8),
-        paddingBottom: theme.spacing(8)
-    }))
-
-
-
     return (
-        <ServicesSection>
+        <HomeContainer>
             <Typography variant="h3" textAlign={"center"} mb={4} color="neutral.main">Our Services</Typography>
 
             <Grid container spacing={8}>
@@ -51,7 +44,7 @@ const Services = () => {
                     ))
                 }
             </Grid>
-        </ServicesSection>
+        </HomeContainer>
     )
 }
 
