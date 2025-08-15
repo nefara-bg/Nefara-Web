@@ -42,7 +42,7 @@ const Services = () => {
 
     return (
         <ServicesSection>
-            <Typography variant="h3" textAlign={"center"} mb={3} color="neutral.main">Our Services</Typography>
+            <Typography variant="h3" textAlign={"center"} mb={4} color="neutral.main">Our Services</Typography>
 
             <Grid container spacing={8}>
                 {
