@@ -1,0 +1,6 @@
+target/*.jar.original
+target/classes/
+*.log
+*.tmp
+*.idea/
+.vscode/
