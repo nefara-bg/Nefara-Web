@@ -1,10 +1,18 @@
 import { Box, Button, Grid, Typography } from "@mui/material"
 import hero from "../../../../../img/hero.webp"
 import { HomeContainer } from "../../Home"
+import styled from "@emotion/styled"
 
 const Hero = () => {
+    const HeroSection = styled(HomeContainer)(({ theme }) => ({
+        backgroundColor: theme.palette.background.secondary,
+        paddingTop: theme.spacing(8),
+        paddingBottom: theme.spacing(8)
+    }))
+
+
     return (
-        <HomeContainer >
+        <HeroSection>
             <Grid container alignItems={"center"} spacing={16}>
                 <Grid size={6}>
                     <Box>
@@ -19,7 +27,7 @@ const Hero = () => {
                     </Box>
                 </Grid>
             </Grid>
-        </HomeContainer>
+        </HeroSection>
     )
 }
 
