@@ -7,7 +7,10 @@ import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
 const Footer = () => {
     const FooterContainer = styled(Stack)(({ theme }) => ({
         background: theme.palette.primary.darker,
-        padding: `${theme.spacing(9)} ${theme.spacing(12)}`
+        padding: `${theme.spacing(9)} ${theme.spacing(12)}`,
+        [theme.breakpoints.down("sm")]: {
+            padding: `${theme.spacing(6)} ${theme.spacing(12)}`
+        }
     }))
 
 
@@ -23,12 +26,12 @@ const Footer = () => {
 
 
     return (
-        <FooterContainer gap={6}>
-            <Stack direction={"row"} alignItems={"center"} justifyContent={"center"} gap={6}>
+        <FooterContainer gap={{ xs: 3, md: 6 }}>
+            <Stack direction={{ xs: "row" }} alignItems={"center"} justifyContent={"center"} gap={{ xs: 3, md: 6 }}>
                 <HashLink to="/#hero"><FooterLink variant="body1">Home</FooterLink></HashLink>
                 <HashLink to="/#services"><FooterLink variant="body1">Services</FooterLink></HashLink>
 
-                <Box sx={{ width: "100px" }}>
+                <Box sx={{ width: "100px", display: { xs: "none", sm: "block" } }}>
                     <img src={logo} alt="Our logo" className="image" />
                 </Box>
 
