@@ -37,7 +37,7 @@ const Services = () => {
         <HomeContainer id="services">
             <Typography variant="h3" textAlign={"center"} mb={4} color="neutral.main">Our Services</Typography>
 
-            <Grid container spacing={8}>
+            <Grid container spacing={{ xs: 4, sm: 8, md: 4, lg: 8 }}>
                 {
                     services.map((service, i) => (
                         <ServiceCard serviceObject={service} key={i} />
