@@ -50,8 +50,8 @@ const Contact = () => {
 
     return (
         <ContactSection id="contact">
-            <Grid container spacing={8} alignItems={"center"} justifyContent={"center"}>
-                <Grid size={6}>
+            <Grid container spacing={{ xs: 4, lg: 8 }} alignItems={"center"} justifyContent={"center"} sx={{ textAlign: { xs: "center", lg: "start" } }}>
+                <Grid size={{ xs: 12, lg: 6 }}>
                     <Typography variant="h3" color="neutral.main" mb={1}>Get in Touch</Typography>
                     <Typography variant="body2" mb={5}>Ready to start your project? Contact us now. We will review your request and get back to you as soon as possible to hopefully start working together.</Typography>
 
@@ -87,23 +87,25 @@ const Contact = () => {
                         </Button>
                     </Stack>
                 </Grid>
-                <Grid size={6} sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-                    <Box sx={{ width: "75%" }} mb={4}>
+                <Grid size={"grow"} sx={{ display: "flex", flexDirection: "column", alignItems: "center", flexDirection: { xs: "column-reverse", lg: "column", }, gap: { xs: "48px", lg: "32px" } }}>
+                    <Box sx={{ width: "75%", px: { md: "128px", lg: 0 } }}>
                         <img src={contact} alt="Envelope illustration" className="image" />
                     </Box>
 
-                    <Divider sx={{ width: "100%" }}>
-                        <Typography variant="body2">You can also reach us at</Typography>
-                    </Divider>
+                    <Stack>
+                        <Divider sx={{ width: "100%" }}>
+                            <Typography variant="body2">You can also reach us at</Typography>
+                        </Divider>
 
-                    <Stack direction={"row"} gap={4} mt={3} alignItems={"center"}>
-                        <Stack direction={"row"} alignItems={"center"} gap={1}>
-                            <EmailOutlinedIcon color="primary" fontSize="large" />
-                            <Typography variant="body1">johndoe@gmail.com</Typography>
-                        </Stack>
-                        <Stack direction={"row"} alignItems={"center"} gap={1}>
-                            <LocalPhoneOutlinedIcon color="primary" fontSize="large" />
-                            <Typography variant="body1">0888 888 888</Typography>
+                        <Stack direction={"row"} gap={4} mt={3} alignItems={"center"}>
+                            <Stack direction={"row"} alignItems={"center"} gap={1}>
+                                <EmailOutlinedIcon color="primary" fontSize="large" />
+                                <Typography variant="body1">johndoe@gmail.com</Typography>
+                            </Stack>
+                            <Stack direction={"row"} alignItems={"center"} gap={1}>
+                                <LocalPhoneOutlinedIcon color="primary" fontSize="large" />
+                                <Typography variant="body1">0888 888 888</Typography>
+                            </Stack>
                         </Stack>
                     </Stack>
                 </Grid>
