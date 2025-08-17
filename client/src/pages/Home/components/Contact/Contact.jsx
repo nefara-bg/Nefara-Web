@@ -97,7 +97,7 @@ const Contact = () => {
                             <Typography variant="body2">You can also reach us at</Typography>
                         </Divider>
 
-                        <Stack direction={"row"} gap={4} mt={3} alignItems={"center"}>
+                        <Stack direction={{ sm: "row" }} gap={{ xs: 0, sm: 4 }} mt={3} alignItems={"center"}>
                             <Stack direction={"row"} alignItems={"center"} gap={1}>
                                 <EmailOutlinedIcon color="primary" fontSize="large" />
                                 <Typography variant="body1">johndoe@gmail.com</Typography>
