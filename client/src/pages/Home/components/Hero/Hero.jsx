@@ -1,4 +1,4 @@
-import { Box, Button, Grid, Typography } from "@mui/material"
+import { Box, Button, Grid, Stack, Typography } from "@mui/material"
 import hero from "../../../../../img/hero.webp"
 import { HomeContainer } from "../../Home"
 import styled from "@emotion/styled"
@@ -9,20 +9,39 @@ const Hero = () => {
     }))
 
 
+
+    const TextBox = styled(Stack)(({ theme }) => ({
+        alignItems: "start",
+
+        [theme.breakpoints.down("md")]: {
+            alignItems: "center",
+            textAlign: "center"
+        }
+    }))
+
+
+
+    const ImageContainer = styled(Box)(({ theme }) => ({
+        [theme.breakpoints.down("md")]: { padding: `0 ${theme.spacing(12)}` },
+        [theme.breakpoints.down("sm")]: { padding: 0 }
+    }))
+
+
+
     return (
         <HeroSection id="hero">
-            <Grid container alignItems={"center"} spacing={16}>
-                <Grid size={6}>
-                    <Box>
+            <Grid container alignItems={"center"} spacing={{ xs: 6, md: 8, lg: 16 }}>
+                <Grid size={{ xs: 12, md: 7, lg: 6 }}>
+                    <TextBox>
                         <Typography variant="h1" mb={1} color={"neutral.main"}>Building software solutions</Typography>
                         <Typography variant="body1" mb={3}>We build web, mobile and desktop applications that help your business grow.</Typography>
                         <Button variant="contained" size="large" color="primary">Get Started</Button>
-                    </Box>
+                    </TextBox>
                 </Grid>
                 <Grid size="grow">
-                    <Box>
+                    <ImageContainer>
                         <img src={hero} className="hero-img" alt="Desktop and Mobile device screens" />
-                    </Box>
+                    </ImageContainer>
                 </Grid>
             </Grid>
         </HeroSection>

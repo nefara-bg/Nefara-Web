@@ -64,3 +64,14 @@ theme.typography.body2 = {
     ...theme.typography.body2,
     color: theme.palette.neutral.light
 }
+
+theme.typography.h1 = {
+    ...theme.typography.h1,
+    [theme.breakpoints.down("md")]: { fontSize: "56px" },
+    [theme.breakpoints.down("md")]: { fontSize: "48px" }
+}
+
+theme.typography.h3 = {
+    ...theme.typography.h3,
+    [theme.breakpoints.down("md")]: { fontSize: "40px" }
+}
