@@ -26,9 +26,7 @@ export const theme = createTheme({
         borderRadius: "20px"
     },
     typography: {
-        fontFamily: {
-            fontFamily: ["Inter", 'sans-serif'].join(",")
-        },
+        fontFamily: ["Inter", 'sans-serif'].join(","),
         h1: { 
             ...headingStyles,
             fontSize: "64px"
@@ -48,8 +46,7 @@ export const theme = createTheme({
         MuiButton: {
             styleOverrides: {
                 root: {
-                    textTransform: "none",
-                    fontFamily: ["Inter", 'sans-serif'].join(",")
+                    textTransform: "none"
                 }
             }
         }

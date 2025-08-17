@@ -6,7 +6,7 @@ import Services from "./components/Services/Services"
 import styled from "@emotion/styled"
 
 export const HomeContainer = styled(Box)(({ theme }) => ({
-    padding: `${theme.spacing(8)} ${theme.spacing(12)}`
+    padding: `${theme.spacing(9)} ${theme.spacing(12)}`
 }))
 
 const Home = () => {

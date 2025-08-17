@@ -49,7 +49,7 @@ const Contact = () => {
     };
 
     return (
-        <ContactSection>
+        <ContactSection id="contact">
             <Grid container spacing={8} alignItems={"center"} justifyContent={"center"}>
                 <Grid size={6}>
                     <Typography variant="h3" color="neutral.main" mb={1}>Get in Touch</Typography>

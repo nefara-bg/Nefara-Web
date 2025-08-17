@@ -25,7 +25,7 @@ const About = () => {
     ]
 
     return (
-        <HomeContainer>
+        <HomeContainer id="about">
             <Typography variant="h3" textAlign={"center"} color="neutral.main" mb={4}>Why Choose Us</Typography>
             <Grid container spacing={3}> 
                 {

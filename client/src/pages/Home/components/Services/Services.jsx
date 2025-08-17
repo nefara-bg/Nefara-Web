@@ -34,7 +34,7 @@ const Services = () => {
 
 
     return (
-        <HomeContainer>
+        <HomeContainer id="services">
             <Typography variant="h3" textAlign={"center"} mb={4} color="neutral.main">Our Services</Typography>
 
             <Grid container spacing={8}>

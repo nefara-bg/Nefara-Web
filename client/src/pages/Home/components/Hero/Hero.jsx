@@ -10,7 +10,7 @@ const Hero = () => {
 
 
     return (
-        <HeroSection>
+        <HeroSection id="hero">
             <Grid container alignItems={"center"} spacing={16}>
                 <Grid size={6}>
                     <Box>
