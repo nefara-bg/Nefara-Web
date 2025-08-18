@@ -2,6 +2,7 @@ import { Box, Button, Grid, Stack, Typography } from "@mui/material"
 import hero from "../../../../../img/hero.webp"
 import { HomeContainer } from "../../Home"
 import styled from "@emotion/styled"
+import { useTranslation } from "react-i18next"
 
 const Hero = () => {
     const HeroSection = styled(HomeContainer)(({ theme }) => ({
@@ -28,14 +29,18 @@ const Hero = () => {
 
 
 
+    const { t } = useTranslation()
+
+
+
     return (
         <HeroSection id="hero">
             <Grid container alignItems={"center"} spacing={{ xs: 6, md: 8, lg: 16 }}>
                 <Grid size={{ xs: 12, md: 7, lg: 6 }}>
                     <TextBox>
-                        <Typography variant="h1" mb={1} color={"neutral.main"}>Building software solutions</Typography>
-                        <Typography variant="body1" mb={3}>We build web, mobile and desktop applications that help your business grow.</Typography>
-                        <Button variant="contained" size="large" color="primary">Get Started</Button>
+                        <Typography variant="h1" mb={1} color={"neutral.main"}>{t("hero.title")}</Typography>
+                        <Typography variant="body1" mb={3}>{t("hero.content")}</Typography>
+                        <Button variant="contained" size="large" color="primary">{t("hero.button")}</Button>
                     </TextBox>
                 </Grid>
                 <Grid size="grow">

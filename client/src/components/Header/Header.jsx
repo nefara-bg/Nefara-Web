@@ -3,6 +3,7 @@ import { HashLink } from "react-router-hash-link"
 import logo from "../../../img/logo.webp"
 import MenuIcon from '@mui/icons-material/Menu';
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const Header = () => {
     const NavigationBar = styled(AppBar)(({ theme }) => ({
@@ -27,6 +28,10 @@ const Header = () => {
 
 
 
+    const { t } = useTranslation()
+
+
+
     return (
         <NavigationBar elevation={0} position="sticky">
             <Toolbar>
@@ -35,12 +40,12 @@ const Header = () => {
                 </Box>
                 <Stack flex={1} direction={"row"} alignItems={"center"} justifyContent={"end"} gap={{ xs: 3, md: 5 }} sx={{ display: { xs: "none", sm: "flex" } }}>
                     <Stack direction={"row"} gap={{ xs: 2, md: 4 }}>
-                        <HashLink to="/#hero"><Typography variant="body2">Home</Typography></HashLink>
-                        <HashLink to="/#services"><Typography variant="body2">Services</Typography></HashLink>
-                        <HashLink to="/#about"><Typography variant="body2">About</Typography></HashLink>
-                        <HashLink to="/#contact"><Typography variant="body2">Contact</Typography></HashLink>
+                        <HashLink to="/#hero"><Typography variant="body2">{t("header.home")}</Typography></HashLink>
+                        <HashLink to="/#services"><Typography variant="body2">{t("header.services")}</Typography></HashLink>
+                        <HashLink to="/#about"><Typography variant="body2">{t("header.about")}</Typography></HashLink>
+                        <HashLink to="/#contact"><Typography variant="body2">{t("header.contact")}</Typography></HashLink>
                     </Stack>
-                    <HashLink to="/#contact"><Button variant="contained" size="small" color="primary">Get Started</Button></HashLink>
+                    <HashLink to="/#contact"><Button variant="contained" size="small" color="primary">{t("header.button")}</Button></HashLink>
                 </Stack>
 
                 <Stack justifyContent={"end"} alignItems={"end"} flex={1} display={{ xs: "flex", sm: "none" }}>
@@ -54,10 +59,10 @@ const Header = () => {
                         </Box>
 
                         <Stack gap={{ xs: 2, md: 4 }}>
-                            <HashLink to="/#hero"><Typography variant="body2">Home</Typography></HashLink>
-                            <HashLink to="/#services"><Typography variant="body2">Services</Typography></HashLink>
-                            <HashLink to="/#about"><Typography variant="body2">About</Typography></HashLink>
-                            <HashLink to="/#contact"><Typography variant="body2">Contact</Typography></HashLink>
+                            <HashLink to="/#hero"><Typography variant="body2">{t("header.home")}</Typography></HashLink>
+                            <HashLink to="/#services"><Typography variant="body2">{t("header.services")}</Typography></HashLink>
+                            <HashLink to="/#about"><Typography variant="body2">{t("header.about")}</Typography></HashLink>
+                            <HashLink to="/#contact"><Typography variant="body2">{t("header.contact")}</Typography></HashLink>
                         </Stack>
                     </MobileMenu>
                 </SwipeableDrawer>

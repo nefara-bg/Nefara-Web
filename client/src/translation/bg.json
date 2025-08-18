@@ -1,0 +1,62 @@
+{
+    "header": {
+        "home": "Начало",
+        "services": "Услуги",
+        "about": "За нас",
+        "contact": "Свържете се",
+        "button": "Започнете сега"
+    },
+    "hero": {
+        "title": "Разработка на софтуерни решения",
+        "content": "Изграждаме уеб, мобилни и десктоп приложения, подпомагайки развитието на бизнеса Ви.",
+        "button": "Започнете Сега"
+    },
+    "services": {
+        "title": "Нашите Услуги",
+        "web": {
+            "title": "Уеб Разработка",
+            "content": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore, vel suscipit, aliquid sequi facilis maxime dolorum atque consequuntur quibusdam deleniti voluptate natus itaque cum? Doloremque qui nobis accusamus rem numquam, fuga quidem ipsum veniam sapiente officiis vero, cupiditate provident quae nisi voluptatibus. Qui, odit libero quia maiores ipsum facere magnam!"
+        },
+        "mobile": {
+            "title": "Мобилни Приложения",
+            "content": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore, vel suscipit, aliquid sequi facilis maxime dolorum atque consequuntur quibusdam deleniti voluptate natus itaque cum? Doloremque qui nobis accusamus rem numquam, fuga quidem ipsum veniam sapiente officiis vero, cupiditate provident quae nisi voluptatibus. Qui, odit libero quia maiores ipsum facere magnam!"
+        },
+        "desktop": {
+            "title": "Десктоп Приложения",
+            "content": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore, vel suscipit, aliquid sequi facilis maxime dolorum atque consequuntur quibusdam deleniti voluptate natus itaque cum? Doloremque qui nobis accusamus rem numquam, fuga quidem ipsum veniam sapiente officiis vero, cupiditate provident quae nisi voluptatibus. Qui, odit libero quia maiores ipsum facere magnam!"
+        },
+        "software": {
+            "title": "Софутерни Решения",
+            "content": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore, vel suscipit, aliquid sequi facilis maxime dolorum atque consequuntur quibusdam deleniti voluptate natus itaque cum? Doloremque qui nobis accusamus rem numquam, fuga quidem ipsum veniam sapiente officiis vero, cupiditate provident quae nisi voluptatibus. Qui, odit libero quia maiores ipsum facere magnam!"
+        }
+    },
+    "about": {
+        "title": "Защо Да Изберете Нас",
+        "devs": {
+            "title": "Опитен екип от разработчици",
+            "content": "Нашите разработчици имат дългогодишен практически опит в областта на уеб, мобилните и десктоп платформите. Работили сме по проекти от всякакъв мащаб, от уебсайтове за малки фирми до софтуерни системи на корпоративно ниво, което ни дава увереност, че можем с увереност да се справим с вашите уникални предизвикателства."
+        },
+        "code": {
+            "title": "Висококачествени код и дизайн",
+            "content": "Ние следваме най-добрите практики в бранша и строги проверки за качество, за да предоставим чист, ефективен и лесен за поддръжка код. В комбинация с интуитивен, ориентиран към потребителя дизайн, нашите решения са създадени, за да изглеждат страхотно, да работят безупречно и да издържат изпитанието на времето."
+        },
+        "solutions": {
+            "title": "Индивидуални решения, съобразени с вашите нужди",
+            "content": "Всеки бизнес е различен – и нашите решения също. Ние отделяме време, за да разберем вашите цели, предизвикателства и аудитория, преди да изработим индивидуален подход, който да съответства напълно на вашата визия и да доведе до измерими резултати."
+        }
+    },
+    "contact": {
+        "title": "Свържете се с нас",
+        "content": "Готови сте да започнете проекта си? Свържете се с нас сега. Ще разгледаме заявката Ви и ще Ви отговорим възможно най-скоро, за да започнем да работим заедно.",
+        "email": "Вашият имейл",
+        "subject": "Тема",
+        "message": "Съобщение",
+        "button": "Изпрати",
+        "loading": "Изпращане...",
+        "divider": "Можете да се свържете с нас и на"
+    },
+    "footer": {
+        "text": "Уеб, мобилни и десктоп приложения за Вашия бизнес.",
+        "copyright": "Software Solutions - Всички права запазени."
+    }
+}

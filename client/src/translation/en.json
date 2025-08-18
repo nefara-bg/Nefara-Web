@@ -1,0 +1,62 @@
+{
+    "header": {
+        "home": "Home",
+        "services": "Services",
+        "about": "About",
+        "contact": "Contact",
+        "button": "Get Started"
+    },
+    "hero": {
+        "title": "Building software solutions",
+        "content": "We build web, mobile and desktop applications that help your business grow.",
+        "button": "Get Started"
+    },
+    "services": {
+        "title": "Our Services",
+        "web": {
+            "title": "Web Development",
+            "content": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore, vel suscipit, aliquid sequi facilis maxime dolorum atque consequuntur quibusdam deleniti voluptate natus itaque cum? Doloremque qui nobis accusamus rem numquam, fuga quidem ipsum veniam sapiente officiis vero, cupiditate provident quae nisi voluptatibus. Qui, odit libero quia maiores ipsum facere magnam!"
+        },
+        "mobile": {
+            "title": "Mobile Apps",
+            "content": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore, vel suscipit, aliquid sequi facilis maxime dolorum atque consequuntur quibusdam deleniti voluptate natus itaque cum? Doloremque qui nobis accusamus rem numquam, fuga quidem ipsum veniam sapiente officiis vero, cupiditate provident quae nisi voluptatibus. Qui, odit libero quia maiores ipsum facere magnam!"
+        },
+        "desktop": {
+            "title": "Desktop Apps",
+            "content": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore, vel suscipit, aliquid sequi facilis maxime dolorum atque consequuntur quibusdam deleniti voluptate natus itaque cum? Doloremque qui nobis accusamus rem numquam, fuga quidem ipsum veniam sapiente officiis vero, cupiditate provident quae nisi voluptatibus. Qui, odit libero quia maiores ipsum facere magnam!"
+        },
+        "software": {
+            "title": "Software Solutions",
+            "content": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore, vel suscipit, aliquid sequi facilis maxime dolorum atque consequuntur quibusdam deleniti voluptate natus itaque cum? Doloremque qui nobis accusamus rem numquam, fuga quidem ipsum veniam sapiente officiis vero, cupiditate provident quae nisi voluptatibus. Qui, odit libero quia maiores ipsum facere magnam!"
+        }
+    },
+    "about": {
+        "title": "Why Choose Us",
+        "devs": {
+            "title": "Experienced team of developers",
+            "content": "Our developers bring years of hands-on experience across web, mobile, and desktop platforms. We’ve tackled projects of every scale, from small business websites to enterprise-level software systems, ensuring we can handle your unique challenges with skill and confidence."
+        },
+        "code": {
+            "title": "High-quality code and design",
+            "content": "We follow industry best practices and rigorous quality checks to deliver clean, efficient, and maintainable code. Combined with intuitive, user-focused design, our solutions are built to look great, perform flawlessly, and stand the test of time."
+        },
+        "solutions": {
+            "title": "Tailored solutions to meet your needs",
+            "content": "Every business is different — and so are our solutions. We take the time to understand your goals, challenges, and audience before crafting a custom approach that aligns perfectly with your vision and delivers measurable results."
+        }
+    },
+    "contact": {
+        "title": "Get in Touch",
+        "content": "Ready to start your project? Contact us now. We will review your request and get back to you as soon as possible to hopefully start working together.",
+        "email": "Your email",
+        "subject": "Subject",
+        "message": "Your message",
+        "button": "Contact Us",
+        "loading": "Sending...",
+        "divider": "You can also reach us at"
+    },
+    "footer": {
+        "text": "Web, mobile and desktop applications for your business.",
+        "copyright": "Software Solutions - All rights reserved."
+    }
+}

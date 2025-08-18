@@ -3,6 +3,7 @@ import logo from "../../../img/footer-logo.webp"
 import { HashLink } from "react-router-hash-link"
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
     const FooterContainer = styled(Stack)(({ theme }) => ({
@@ -25,23 +26,27 @@ const Footer = () => {
 
 
 
+    const { t } = useTranslation()
+
+
+
     return (
         <FooterContainer gap={{ xs: 3, md: 6 }}>
             <Stack direction={{ xs: "row" }} alignItems={"center"} justifyContent={"center"} gap={{ xs: 3, md: 6 }}>
-                <HashLink to="/#hero"><FooterLink variant="body1">Home</FooterLink></HashLink>
-                <HashLink to="/#services"><FooterLink variant="body1">Services</FooterLink></HashLink>
+                <HashLink to="/#hero"><FooterLink variant="body1">{t("header.home")}</FooterLink></HashLink>
+                <HashLink to="/#services"><FooterLink variant="body1">{t("header.services")}</FooterLink></HashLink>
 
                 <Box sx={{ width: "100px", display: { xs: "none", sm: "block" } }}>
                     <img src={logo} alt="Our logo" className="image" />
                 </Box>
 
-                <HashLink to="/#about"><FooterLink variant="body1">About</FooterLink></HashLink>
-                <HashLink to="/#contact"><FooterLink variant="body1">Contact</FooterLink></HashLink>
+                <HashLink to="/#about"><FooterLink variant="body1">{t("header.about")}</FooterLink></HashLink>
+                <HashLink to="/#contact"><FooterLink variant="body1">{t("header.contact")}</FooterLink></HashLink>
             </Stack>
 
             <Stack gap={1} textAlign={"center"}>
-                <Typography variant="body2" color="primary.lighter">Web, mobile and desktop applications for your business.</Typography>
-                <Typography variant="body2" color="primary.lighter">&copy; {new Date().getFullYear()} Software Solutions - All rights reserved.</Typography>
+                <Typography variant="body2" color="primary.lighter">{t("footer.text")}</Typography>
+                <Typography variant="body2" color="primary.lighter">&copy; {new Date().getFullYear()} {t("footer.copyright")}</Typography>
             </Stack>
 
             {/* <Stack direction={"row"} color="primary.lighter" justifyContent={"space-between"}>

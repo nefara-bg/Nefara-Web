@@ -5,6 +5,7 @@ import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
 import { useRef, useState } from "react";
 import axios from "axios";
+import { useTranslation } from "react-i18next";
 
 const Contact = () => {
     const ContactSection = styled(HomeContainer)(({ theme }) => ({
@@ -48,29 +49,35 @@ const Contact = () => {
         }
     };
 
+
+
+    const { t } = useTranslation()
+
+
+
     return (
         <ContactSection id="contact">
             <Grid container spacing={{ xs: 4, lg: 8 }} alignItems={"center"} justifyContent={"center"} sx={{ textAlign: { xs: "center", lg: "start" } }}>
                 <Grid size={{ xs: 12, lg: 6 }}>
-                    <Typography variant="h3" color="neutral.main" mb={1}>Get in Touch</Typography>
-                    <Typography variant="body2" mb={5}>Ready to start your project? Contact us now. We will review your request and get back to you as soon as possible to hopefully start working together.</Typography>
+                    <Typography variant="h3" color="neutral.main" mb={1}>{t("contact.title")}</Typography>
+                    <Typography variant="body2" mb={5}>{t("contact.content")}</Typography>
 
                     <Stack gap={3}>
                         <TextField
                             variant="outlined"
-                            label="Your email"
+                            label={t("contact.email")}
                             inputRef={emailRef}
                             inputProps={inputProps}
                         />
                         <TextField
                             variant="outlined"
-                            label="Subject"
+                            label={t("contact.subject")}
                             inputRef={subjectRef}
                             inputProps={inputProps}
                         />
                         <TextField
                             variant="outlined"
-                            label="Your message"
+                            label={t("contact.message")}
                             multiline
                             rows={6}
                             inputRef={messageRef}
@@ -83,7 +90,7 @@ const Contact = () => {
                             onClick={handleSubmit}
                             disabled={loading}
                         >
-                            {loading ? "Sending..." : "Contact Us"}
+                            {loading ? t("contact.loading") : t("contact.button")}
                         </Button>
                     </Stack>
                 </Grid>
@@ -94,7 +101,7 @@ const Contact = () => {
 
                     <Stack>
                         <Divider sx={{ width: "100%" }}>
-                            <Typography variant="body2">You can also reach us at</Typography>
+                            <Typography variant="body2">{t("contact.divider")}</Typography>
                         </Divider>
 
                         <Stack direction={{ sm: "row" }} gap={{ xs: 0, sm: 4 }} mt={3} alignItems={"center"}>

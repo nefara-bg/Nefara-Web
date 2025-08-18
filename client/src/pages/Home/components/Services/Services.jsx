@@ -6,27 +6,32 @@ import web from "../../../../../img/web.webp"
 import mobile from "../../../../../img/mobile.webp"
 import desktop from "../../../../../img/desktop.webp"
 import software from "../../../../../img/software.webp"
+import { useTranslation } from "react-i18next"
 
 const Services = () => {
+    const { t } = useTranslation()
+
+
+
     const services = [
         {
-            title: "Web Development",
-            content: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore, vel suscipit, aliquid sequi facilis maxime dolorum atque consequuntur quibusdam deleniti voluptate natus itaque cum? Doloremque qui nobis accusamus rem numquam, fuga quidem ipsum veniam sapiente officiis vero, cupiditate provident quae nisi voluptatibus. Qui, odit libero quia maiores ipsum facere magnam!",
+            title: t("services.web.title"),
+            content: t("services.web.content"),
             icon: web
         },
         {
-            title: "Mobile Apps",
-            content: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore, vel suscipit, aliquid sequi facilis maxime dolorum atque consequuntur quibusdam deleniti voluptate natus itaque cum? Doloremque qui nobis accusamus rem numquam, fuga quidem ipsum veniam sapiente officiis vero, cupiditate provident quae nisi voluptatibus. Qui, odit libero quia maiores ipsum facere magnam!",
+            title: t("services.mobile.title"),
+            content: t("services.mobile.content"),
             icon: mobile
         },
         {
-            title: "Desktop Apps",
-            content: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore, vel suscipit, aliquid sequi facilis maxime dolorum atque consequuntur quibusdam deleniti voluptate natus itaque cum? Doloremque qui nobis accusamus rem numquam, fuga quidem ipsum veniam sapiente officiis vero, cupiditate provident quae nisi voluptatibus. Qui, odit libero quia maiores ipsum facere magnam!",
+            title: t("services.desktop.title"),
+            content: t("services.desktop.content"),
             icon: desktop
         },
         {
-            title: "Software Solutions",
-            content: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore, vel suscipit, aliquid sequi facilis maxime dolorum atque consequuntur quibusdam deleniti voluptate natus itaque cum? Doloremque qui nobis accusamus rem numquam, fuga quidem ipsum veniam sapiente officiis vero, cupiditate provident quae nisi voluptatibus. Qui, odit libero quia maiores ipsum facere magnam!",
+            title: t("services.software.title"),
+            content: t("services.software.content"),
             icon: software
         }
     ]
@@ -35,7 +40,7 @@ const Services = () => {
 
     return (
         <HomeContainer id="services">
-            <Typography variant="h3" textAlign={"center"} mb={4} color="neutral.main">Our Services</Typography>
+            <Typography variant="h3" textAlign={"center"} mb={4} color="neutral.main">{t("services.title")}</Typography>
 
             <Grid container spacing={{ xs: 4, sm: 8, md: 4, lg: 8 }}>
                 {
