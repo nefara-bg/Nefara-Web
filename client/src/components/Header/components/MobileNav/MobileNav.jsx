@@ -18,7 +18,7 @@ const MobileNav = () => {
 
     return (
         <>
-            <Stack justifyContent={"end"} alignItems={"end"} flex={1} display={{ xs: "flex", sm: "none" }}>
+            <Stack justifyContent={"end"} alignItems={"end"} flex={1} display={{ xs: "flex", md: "none" }}>
                 <MenuIcon onClick={() => setMobileMenu(true)} color="neutral" display="block" sx={{ cursor: "pointer" }} />
             </Stack>
 
