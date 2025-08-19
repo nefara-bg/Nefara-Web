@@ -3,6 +3,7 @@ import hero from "../../../../../img/hero.webp"
 import { HomeContainer } from "../../Home"
 import styled from "@emotion/styled"
 import { useTranslation } from "react-i18next"
+import { HashLink } from "react-router-hash-link"
 
 const Hero = () => {
     const HeroSection = styled(HomeContainer)(({ theme }) => ({
@@ -44,7 +45,7 @@ const Hero = () => {
                     <TextBox>
                         <Typography variant="h1" mb={1} color={"neutral.main"}>{t("hero.title")}</Typography>
                         <Typography variant="body1" mb={3}>{t("hero.content")}</Typography>
-                        <Button variant="contained" size="large" color="primary">{t("hero.button")}</Button>
+                        <HashLink to="/#contact"><Button variant="contained" size="large" color="primary">{t("hero.button")}</Button></HashLink>
                     </TextBox>
                 </Grid>
                 <Grid size="grow">
