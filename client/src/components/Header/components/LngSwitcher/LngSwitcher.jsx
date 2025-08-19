@@ -50,6 +50,14 @@ const LngSwitcher = () => {
 
 
 
+    const LngOption = styled(Stack)(({ theme }) => ({
+        flexDirection: "row",
+        gap: theme.spacing(1),
+        alignItems: "center"
+    }))
+
+
+
     const [dropdown, setDropdown] = useState(false)
 
 
@@ -69,12 +77,12 @@ const LngSwitcher = () => {
                 <Dropdown>
                     {
                         Object.keys(languages).map((language, i) => (
-                            <Stack key={i} onClick={() => handleChangeLng(language)} direction={"row"} gap={1} alignItems={"center"}>
+                            <LngOption key={i} onClick={() => handleChangeLng(language)}>
                                 <Box sx={{ width: "24px" }}>
                                     <img src={languages[language].flag} alt={languages[language].label} className="image" />
                                 </Box>
                                 <Typography variant="body2">{languages[language].label}</Typography>
-                            </Stack>
+                            </LngOption>
                         ))
                     }
                 </Dropdown>
