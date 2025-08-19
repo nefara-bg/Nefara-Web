@@ -1,10 +1,10 @@
-import { Grid, styled, Typography } from "@mui/material"
-import AboutCard from "./AboutCard/AboutCard"
-import { HomeContainer } from "../../Home"
+import { Grid, Typography } from "@mui/material"
+import AboutCard from "./components/AboutCard/AboutCard"
 import solutions from "../../../../img/solutions.webp"
 import code from "../../../../img/code.webp"
 import developers from "../../../../img/developers.webp"
 import { useTranslation } from "react-i18next"
+import { HomeContainer } from "../../styles"
 
 const About = () => {
     const { t } = useTranslation()

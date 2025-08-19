@@ -1,39 +1,13 @@
-import { AppBar, Box, Button, Drawer, Select, Stack, styled, SwipeableDrawer, Toolbar, Typography } from "@mui/material"
+import { Box, Button, Stack, SwipeableDrawer, Toolbar } from "@mui/material"
 import { HashLink } from "react-router-hash-link"
 import logo from "../../img/logo.webp"
 import MenuIcon from '@mui/icons-material/Menu';
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import LngSwitcher from "./components/LngSwitcher/LngSwitcher";
+import { MobileMenu, NavigationBar, NavLink } from "./styles";
 
 const Header = () => {
-    const NavigationBar = styled(AppBar)(({ theme }) => ({
-        backgroundColor: theme.palette.background.secondary,
-        padding: `${theme.spacing(1)} ${theme.spacing(9)}`,
-        [theme.breakpoints.down("lg")]: { padding: `${theme.spacing(1)} ${theme.spacing(5)}` },
-        [theme.breakpoints.down("md")]: { padding: `${theme.spacing(1)} ${theme.spacing(3)}` },
-        [theme.breakpoints.down("sm")]: { padding: `${theme.spacing(1)} ${theme.spacing(1)}` }
-    }))
-
-
-
-    const MobileMenu = styled(Stack)(({ theme }) => ({
-        height: "100%",
-        padding: `${theme.spacing(4)} ${theme.spacing(8)}`,
-        paddingLeft: theme.spacing(4)
-    }))
-
-
-
-    const NavLink = styled(Typography)(({ theme }) => ({
-        transition: ".2s",
-        "&:hover": {
-            color: theme.palette.primary.main
-        }
-    }))
-
-
-
     const [mobileMenu, setMobileMenu] = useState(false)
 
 

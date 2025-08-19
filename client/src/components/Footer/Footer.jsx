@@ -1,31 +1,10 @@
-import { Box, Stack, styled, Typography } from "@mui/material"
+import { Box, Stack, Typography } from "@mui/material"
 import logo from "../../img/footer-logo.webp"
 import { HashLink } from "react-router-hash-link"
-import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
-import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
 import { useTranslation } from "react-i18next";
+import { FooterContainer, FooterLink } from "./styles";
 
 const Footer = () => {
-    const FooterContainer = styled(Stack)(({ theme }) => ({
-        background: theme.palette.primary.darker,
-        padding: `${theme.spacing(9)} ${theme.spacing(12)}`,
-        [theme.breakpoints.down("sm")]: {
-            padding: `${theme.spacing(6)} ${theme.spacing(12)}`
-        }
-    }))
-
-
-    const FooterLink = styled(Typography)(({ theme }) => ({
-        color: theme.palette.primary.lighter,
-        transition: ".2s",
-
-        "&:hover": {
-            color: theme.palette.primary.light
-        }
-    }))
-
-
-
     const { t } = useTranslation()
 
 

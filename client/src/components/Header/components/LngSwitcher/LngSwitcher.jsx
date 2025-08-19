@@ -4,6 +4,7 @@ import uk from "../../../../img/uk.webp"
 import bg from "../../../../img/bg.webp"
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
+import { Dropdown, LngOption } from "../../styles";
 
 const LngSwitcher = () => {
     const { t, i18n } = useTranslation()
@@ -30,31 +31,6 @@ const LngSwitcher = () => {
             label: t("header.languages.bg")
         }
     }
-
-
-
-    const Dropdown = styled(Card)(({ theme }) => ({
-        position: "absolute",
-        bottom: theme.spacing(0),
-        left: 0,
-        transform: "translateY(100%)",
-        zIndex: 1,
-
-        padding: `${theme.spacing(2)} ${theme.spacing(3)}`,
-        textAlign: "left",
-
-        display: "flex",
-        flexDirection: "column",
-        gap: theme.spacing(1)
-    }))
-
-
-
-    const LngOption = styled(Stack)(({ theme }) => ({
-        flexDirection: "row",
-        gap: theme.spacing(1),
-        alignItems: "center"
-    }))
 
 
 

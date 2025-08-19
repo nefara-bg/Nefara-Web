@@ -1,39 +1,10 @@
-import { Box, Button, Grid, Stack, Typography } from "@mui/material"
+import { Box, Button, Grid, Typography } from "@mui/material"
 import hero from "../../../../img/hero.webp"
-import { HomeContainer } from "../../Home"
-import styled from "@emotion/styled"
 import { useTranslation } from "react-i18next"
 import { HashLink } from "react-router-hash-link"
+import { HeroSection, ImageContainer, TextBox } from "../../styles"
 
 const Hero = () => {
-    const HeroSection = styled(HomeContainer)(({ theme }) => ({
-        backgroundColor: theme.palette.background.secondary,
-        minHeight: "100vh",
-    
-        display: "flex",
-        alignItems: "center"
-    }))
-
-
-
-    const TextBox = styled(Stack)(({ theme }) => ({
-        alignItems: "start",
-
-        [theme.breakpoints.down("md")]: {
-            alignItems: "center",
-            textAlign: "center"
-        }
-    }))
-
-
-
-    const ImageContainer = styled(Box)(({ theme }) => ({
-        [theme.breakpoints.down("md")]: { padding: `0 ${theme.spacing(12)}` },
-        [theme.breakpoints.down("sm")]: { padding: 0 }
-    }))
-
-
-
     const { t } = useTranslation()
 
 

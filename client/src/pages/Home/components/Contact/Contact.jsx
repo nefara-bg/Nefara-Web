@@ -1,18 +1,13 @@
 import { Box, Button, Divider, Grid, Stack, styled, TextField, Typography } from "@mui/material"
-import { HomeContainer } from "../../Home"
 import contact from "../../../../img/contact.webp"
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
 import { useRef, useState } from "react";
 import axios from "axios";
 import { useTranslation } from "react-i18next";
+import { ContactSection } from "../../styles";
 
 const Contact = () => {
-    const ContactSection = styled(HomeContainer)(({ theme }) => ({
-        background: theme.palette.background.secondary,
-    }))
-
-
     const inputProps = {
         style: {
             fontSize: "16px"
