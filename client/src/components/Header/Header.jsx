@@ -25,6 +25,15 @@ const Header = () => {
 
 
 
+    const NavLink = styled(Typography)(({ theme }) => ({
+        transition: ".2s",
+        "&:hover": {
+            color: theme.palette.primary.main
+        }
+    }))
+
+
+
     const [mobileMenu, setMobileMenu] = useState(false)
 
 
@@ -41,10 +50,10 @@ const Header = () => {
                 </Box>
                 <Stack flex={1} direction={"row"} alignItems={"center"} justifyContent={"end"} gap={{ xs: 3, md: 5 }} sx={{ display: { xs: "none", sm: "flex" } }}>
                     <Stack direction={"row"} gap={{ xs: 2, md: 4 }}>
-                        <HashLink to="/#hero"><Typography variant="body2">{t("header.home")}</Typography></HashLink>
-                        <HashLink to="/#services"><Typography variant="body2">{t("header.services")}</Typography></HashLink>
-                        <HashLink to="/#about"><Typography variant="body2">{t("header.about")}</Typography></HashLink>
-                        <HashLink to="/#contact"><Typography variant="body2">{t("header.contact")}</Typography></HashLink>
+                        <HashLink to="/#hero"><NavLink variant="body2">{t("header.home")}</NavLink></HashLink>
+                        <HashLink to="/#services"><NavLink variant="body2">{t("header.services")}</NavLink></HashLink>
+                        <HashLink to="/#about"><NavLink variant="body2">{t("header.about")}</NavLink></HashLink>
+                        <HashLink to="/#contact"><NavLink variant="body2">{t("header.contact")}</NavLink></HashLink>
                     </Stack>
                     
                     <Stack direction={"row"} gap={{ xs: 1, md: 2 }}>
@@ -65,10 +74,10 @@ const Header = () => {
                         </Box>
 
                         <Stack gap={{ xs: 2, md: 4 }}>
-                            <HashLink to="/#hero"><Typography variant="body2">{t("header.home")}</Typography></HashLink>
-                            <HashLink to="/#services"><Typography variant="body2">{t("header.services")}</Typography></HashLink>
-                            <HashLink to="/#about"><Typography variant="body2">{t("header.about")}</Typography></HashLink>
-                            <HashLink to="/#contact"><Typography variant="body2">{t("header.contact")}</Typography></HashLink>
+                            <HashLink to="/#hero"><NavLink variant="body2">{t("header.home")}</NavLink></HashLink>
+                            <HashLink to="/#services"><NavLink variant="body2">{t("header.services")}</NavLink></HashLink>
+                            <HashLink to="/#about"><NavLink variant="body2">{t("header.about")}</NavLink></HashLink>
+                            <HashLink to="/#contact"><NavLink variant="body2">{t("header.contact")}</NavLink></HashLink>
                         </Stack>
                     </MobileMenu>
                 </SwipeableDrawer>
