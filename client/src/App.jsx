@@ -8,7 +8,14 @@ import { useEffect } from 'react'
 
 function App() {
   useEffect(() => {
-    i18n.changeLanguage(navigator.language)
+    const language = localStorage.getItem("lng")
+    if(language) {
+      i18n.changeLanguage(language)
+    }
+    else {
+      i18n.changeLanguage(navigator.language)
+      localStorage.setItem("lng", navigator.language)
+    }
   }, [])
 
 

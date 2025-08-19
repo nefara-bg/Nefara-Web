@@ -1,9 +1,10 @@
-import { AppBar, Box, Button, Drawer, Stack, styled, SwipeableDrawer, Toolbar, Typography } from "@mui/material"
+import { AppBar, Box, Button, Drawer, Select, Stack, styled, SwipeableDrawer, Toolbar, Typography } from "@mui/material"
 import { HashLink } from "react-router-hash-link"
 import logo from "../../../img/logo.webp"
 import MenuIcon from '@mui/icons-material/Menu';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import LngSwitcher from "./components/LngSwitcher/LngSwitcher";
 
 const Header = () => {
     const NavigationBar = styled(AppBar)(({ theme }) => ({
@@ -45,7 +46,12 @@ const Header = () => {
                         <HashLink to="/#about"><Typography variant="body2">{t("header.about")}</Typography></HashLink>
                         <HashLink to="/#contact"><Typography variant="body2">{t("header.contact")}</Typography></HashLink>
                     </Stack>
-                    <HashLink to="/#contact"><Button variant="contained" size="small" color="primary">{t("header.button")}</Button></HashLink>
+                    
+                    <Stack direction={"row"} gap={{ xs: 1, md: 2 }}>
+                        <LngSwitcher />
+
+                        <HashLink to="/#contact"><Button variant="contained" size="small" color="primary">{t("header.button")}</Button></HashLink>
+                    </Stack>
                 </Stack>
 
                 <Stack justifyContent={"end"} alignItems={"end"} flex={1} display={{ xs: "flex", sm: "none" }}>

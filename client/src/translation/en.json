@@ -4,7 +4,11 @@
         "services": "Services",
         "about": "About",
         "contact": "Contact",
-        "button": "Get Started"
+        "button": "Get Started",
+        "languages": {
+            "en": "English",
+            "bg": "Bulgarian"
+        }
     },
     "hero": {
         "title": "Building software solutions",
