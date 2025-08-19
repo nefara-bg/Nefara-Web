@@ -22,7 +22,7 @@ const MobileNav = () => {
                 <MenuIcon onClick={() => setMobileMenu(true)} color="neutral" display="block" sx={{ cursor: "pointer" }} />
             </Stack>
 
-            <SwipeableDrawer open={mobileMenu} onClose={() => setMobileMenu(false)}>
+            <SwipeableDrawer open={mobileMenu} onOpen={() => setMobileMenu(true)} onClose={() => setMobileMenu(false)}>
                 <MobileMenu>
                     <Box sx={{ width: "120px" }} mb={3}>
                         <img src={logo} alt="Our logo" className="image" />
