@@ -15,5 +15,8 @@ export const FooterLink = styled(Typography)(({ theme }) => ({
 
     "&:hover": {
         color: theme.palette.primary.light
-    }
+    },
+
+    flexWrap: "nowrap",
+    whiteSpace: "nowrap"
 }))
