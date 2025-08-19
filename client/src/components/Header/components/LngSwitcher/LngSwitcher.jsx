@@ -11,7 +11,7 @@ const LngSwitcher = () => {
 
 
 
-    const [currLng, setCurrLng] = useState(i18n.language)
+    const [currLng, setCurrLng] = useState(localStorage.getItem("lng") || navigator.language)
 
     const handleChangeLng = (lng) => {
         i18n.changeLanguage(lng)

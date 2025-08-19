@@ -47,12 +47,14 @@ const Header = () => {
                             <img src={logo} alt="Our logo" className="image" />
                         </Box>
 
-                        <Stack gap={{ xs: 2, md: 4 }}>
+                        <Stack gap={{ xs: 2, md: 4 }} mb={3}>
                             <HashLink to="/#hero"><NavLink variant="body2">{t("header.home")}</NavLink></HashLink>
                             <HashLink to="/#services"><NavLink variant="body2">{t("header.services")}</NavLink></HashLink>
                             <HashLink to="/#about"><NavLink variant="body2">{t("header.about")}</NavLink></HashLink>
                             <HashLink to="/#contact"><NavLink variant="body2">{t("header.contact")}</NavLink></HashLink>
                         </Stack>
+
+                        <LngSwitcher />
                     </MobileMenu>
                 </SwipeableDrawer>
 
