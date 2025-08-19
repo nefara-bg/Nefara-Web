@@ -4,7 +4,7 @@ export const HomeContainer = styled(Box)(({ theme }) => ({
     padding: `${theme.spacing(9)} ${theme.spacing(12)}`,
     [theme.breakpoints.down("lg")]: { padding: `${theme.spacing(9)} ${theme.spacing(8)}` },
     [theme.breakpoints.down("md")]: { padding: `${theme.spacing(9)} ${theme.spacing(6)}` },
-    [theme.breakpoints.down("sm")]: { padding: `${theme.spacing(9)} ${theme.spacing(4)}` }
+    [theme.breakpoints.down("sm")]: { padding: `${theme.spacing(9)} ${theme.spacing(2)}` }
 }))
 
 

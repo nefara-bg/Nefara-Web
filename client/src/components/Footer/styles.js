@@ -3,9 +3,10 @@ import { Stack, styled, Typography } from "@mui/material"
 export const FooterContainer = styled(Stack)(({ theme }) => ({
     background: theme.palette.primary.darker,
     padding: `${theme.spacing(9)} ${theme.spacing(12)}`,
-    [theme.breakpoints.down("sm")]: {
-        padding: `${theme.spacing(6)} ${theme.spacing(12)}`
-    }
+    [theme.breakpoints.down("sm")]: { padding: `${theme.spacing(6)} ${theme.spacing(2)}` },
+
+    gap: theme.spacing(4),
+    [theme.breakpoints.down("md")]: { gap: theme.spacing(3) }
 }))
 
 
