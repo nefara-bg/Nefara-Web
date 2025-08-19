@@ -50,7 +50,7 @@ const Hero = () => {
                 </Grid>
                 <Grid size="grow">
                     <ImageContainer>
-                        <img src={hero} className="hero-img" alt="Desktop and Mobile device screens" />
+                        <img src={hero} className="image" alt="Desktop and Mobile device screens" />
                     </ImageContainer>
                 </Grid>
             </Grid>
