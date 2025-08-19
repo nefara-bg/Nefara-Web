@@ -1,11 +1,10 @@
 import { Grid, Typography } from "@mui/material"
 import ServiceCard from "./components/ServiceCard"
 import { HomeContainer } from "../../Home"
-import styled from "@emotion/styled"
-import web from "../../../../../img/web.webp"
-import mobile from "../../../../../img/mobile.webp"
-import desktop from "../../../../../img/desktop.webp"
-import software from "../../../../../img/software.webp"
+import web from "../../../../img/web.webp"
+import mobile from "../../../../img/mobile.webp"
+import desktop from "../../../../img/desktop.webp"
+import software from "../../../../img/software.webp"
 import { useTranslation } from "react-i18next"
 
 const Services = () => {

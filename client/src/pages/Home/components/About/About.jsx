@@ -1,9 +1,9 @@
 import { Grid, styled, Typography } from "@mui/material"
 import AboutCard from "./AboutCard/AboutCard"
 import { HomeContainer } from "../../Home"
-import solutions from "../../../../../img/solutions.webp"
-import code from "../../../../../img/code.webp"
-import developers from "../../../../../img/developers.webp"
+import solutions from "../../../../img/solutions.webp"
+import code from "../../../../img/code.webp"
+import developers from "../../../../img/developers.webp"
 import { useTranslation } from "react-i18next"
 
 const About = () => {

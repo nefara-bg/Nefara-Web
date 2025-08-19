@@ -1,6 +1,6 @@
 import { Box, Button, Divider, Grid, Stack, styled, TextField, Typography } from "@mui/material"
 import { HomeContainer } from "../../Home"
-import contact from "../../../../../img/contact.webp"
+import contact from "../../../../img/contact.webp"
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
 import { useRef, useState } from "react";

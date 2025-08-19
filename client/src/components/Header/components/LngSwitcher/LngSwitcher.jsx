@@ -1,7 +1,7 @@
 import { Box, Button, Card, Stack, styled, Typography } from "@mui/material"
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import uk from "../../../../../img/uk.webp"
-import bg from "../../../../../img/bg.webp"
+import uk from "../../../../img/uk.webp"
+import bg from "../../../../img/bg.webp"
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 

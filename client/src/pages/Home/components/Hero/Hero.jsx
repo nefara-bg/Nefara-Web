@@ -1,5 +1,5 @@
 import { Box, Button, Grid, Stack, Typography } from "@mui/material"
-import hero from "../../../../../img/hero.webp"
+import hero from "../../../../img/hero.webp"
 import { HomeContainer } from "../../Home"
 import styled from "@emotion/styled"
 import { useTranslation } from "react-i18next"

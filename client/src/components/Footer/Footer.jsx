@@ -1,5 +1,5 @@
 import { Box, Stack, styled, Typography } from "@mui/material"
-import logo from "../../../img/footer-logo.webp"
+import logo from "../../img/footer-logo.webp"
 import { HashLink } from "react-router-hash-link"
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';

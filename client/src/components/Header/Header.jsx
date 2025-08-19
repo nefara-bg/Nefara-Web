@@ -1,6 +1,6 @@
 import { AppBar, Box, Button, Drawer, Select, Stack, styled, SwipeableDrawer, Toolbar, Typography } from "@mui/material"
 import { HashLink } from "react-router-hash-link"
-import logo from "../../../img/logo.webp"
+import logo from "../../img/logo.webp"
 import MenuIcon from '@mui/icons-material/Menu';
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
