@@ -89,7 +89,7 @@ const Contact = () => {
                         </Button>
                     </Stack>
                 </Grid>
-                <Grid size={"grow"} sx={{ display: "flex", flexDirection: "column", alignItems: "center", flexDirection: { xs: "column-reverse", lg: "column", }, gap: { xs: "48px", lg: "32px" } }}>
+                <Grid size={"grow"} sx={{ display: "flex", alignItems: "center", flexDirection: { xs: "column-reverse", lg: "column", }, gap: { xs: "48px", lg: "32px" } }}>
                     <Box sx={{ width: "75%", px: { md: "128px", lg: 0 } }}>
                         <img src={contact} alt="Envelope illustration" className="image" />
                     </Box>
