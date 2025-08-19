@@ -34,7 +34,7 @@ const Header = () => {
 
 
     return (
-        <NavigationBar elevation={0} position="sticky">
+        <NavigationBar elevation={0} position="fixed">
             <Toolbar>
                 <Box sx={{ width: { xs: "100px", md: "156px" } }}>
                     <img src={logo} alt="Our logo" className="image" />

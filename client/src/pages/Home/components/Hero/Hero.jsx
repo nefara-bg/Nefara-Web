@@ -6,7 +6,11 @@ import { useTranslation } from "react-i18next"
 
 const Hero = () => {
     const HeroSection = styled(HomeContainer)(({ theme }) => ({
-        backgroundColor: theme.palette.background.secondary
+        backgroundColor: theme.palette.background.secondary,
+        minHeight: "100vh",
+    
+        display: "flex",
+        alignItems: "center"
     }))
 
 
