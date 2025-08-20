@@ -1,9 +1,9 @@
 import { Box } from "@mui/material"
 
-const ImageContainer = ({ props, src = null, alt = "Image" }) => {
+const ImageContainer = ({ props, imgClass = "", src = null, alt = "Image" }) => {
     return (
-        <Box {...props}>
-            <img src={src} alt={alt} className="image" />
+        <Box {...props} className="scale-in">
+            <img src={src} alt={alt} className={`image ${imgClass}`} />
         </Box>
     )
 }
