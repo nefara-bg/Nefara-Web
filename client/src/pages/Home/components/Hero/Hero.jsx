@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next"
 import { HashLink } from "react-router-hash-link"
 import { HeroSection, TextBox } from "../../styles"
 import ImageContainer from "../../../../components/ImageContainer/ImageContainer"
+import ImageComposition from "./components/ImageComposition/ImageComposition"
 
 const Hero = () => {
     const { t } = useTranslation()
@@ -21,8 +22,8 @@ const Hero = () => {
                     </TextBox>
                 </Grid>
                 <Grid size="grow">
-                    <ImageContainer src={hero} alt="Desktop and Mobile device screens" props={{ px: { xs: 0, sm: 12, md: 0 } }}   
-                    />
+                    {/* <ImageContainer src={hero} alt="Desktop and Mobile device screens" props={{ px: { xs: 0, sm: 12, md: 0 } }} /> */}
+                    <ImageComposition />
                 </Grid>
             </Grid>
         </HeroSection>
