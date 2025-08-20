@@ -2,7 +2,7 @@ import { Box } from "@mui/material"
 import desktop from "../../../../../../img/hero-desktop.webp"
 import phone from "../../../../../../img/hero-phone.webp"
 import tablet from "../../../../../../img/hero-tablet.webp"
-import charm from "../../../../../../img/gpt-charm.webp"
+import charm from "../../../../../../img/hero-charm.webp"
 import ImageContainer from "../../../../../../components/ImageContainer/ImageContainer"
 
 const ImageComposition = () => {
