@@ -35,7 +35,6 @@ const Header = () => {
                     <Stack direction={"row"} gap={{ xs: 1, md: 2 }}>
                         <LngSwitcher />
 
-                        <HashLink to="/#contact"><Button variant="contained" size="small" color="primary">{t("header.button")}</Button></HashLink>
                     </Stack>
                 </Stack>
 
