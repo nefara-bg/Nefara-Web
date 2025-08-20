@@ -2,7 +2,8 @@ import { Box, Button, Grid, Typography } from "@mui/material"
 import hero from "../../../../img/hero.webp"
 import { useTranslation } from "react-i18next"
 import { HashLink } from "react-router-hash-link"
-import { HeroSection, ImageContainer, TextBox } from "../../styles"
+import { HeroSection, TextBox } from "../../styles"
+import ImageContainer from "../../../../components/ImageContainer/ImageContainer"
 
 const Hero = () => {
     const { t } = useTranslation()
@@ -20,9 +21,8 @@ const Hero = () => {
                     </TextBox>
                 </Grid>
                 <Grid size="grow">
-                    <ImageContainer>
-                        <img src={hero} className="image" alt="Desktop and Mobile device screens" />
-                    </ImageContainer>
+                    <ImageContainer src={hero} alt="Desktop and Mobile device screens" props={{ px: { xs: 0, sm: 12, md: 0 } }}   
+                    />
                 </Grid>
             </Grid>
         </HeroSection>

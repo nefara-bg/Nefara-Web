@@ -56,27 +56,11 @@ export const TextBox = styled(Stack)(({ theme }) => ({
 
 
 
-export const ImageContainer = styled(Box)(({ theme }) => ({
-    [theme.breakpoints.down("md")]: { padding: `0 ${theme.spacing(12)}` },
-    [theme.breakpoints.down("sm")]: { padding: 0 }
-}))
-
-
-
 export const ServiceContainer = styled(Grid)(({ theme }) => ({
     [theme.breakpoints.down("sm")]: {
         textAlign: "center",
         backgroundColor: theme.palette.background.secondary,
         borderRadius: theme.shape.borderRadius,
         padding: `${theme.spacing(6)} ${theme.spacing(4)}`
-    }
-}))
-
-
-
-export const ServiceImageContainer = styled(Box)(({ theme }) => ({
-    [theme.breakpoints.down("sm")]: {
-        width: "20%",
-        margin: '0 auto',
     }
 }))

@@ -1,5 +1,6 @@
 import { Grid, Typography } from "@mui/material"
-import { ServiceContainer, ServiceImageContainer } from "../../../styles"
+import { ServiceContainer } from "../../../styles"
+import ImageContainer from "../../../../../components/ImageContainer/ImageContainer"
 
 const ServiceCard = ({ serviceObject }) => {
     return (
@@ -8,7 +9,16 @@ const ServiceCard = ({ serviceObject }) => {
                 <Grid size={{ xs: 12, sm: 1.5, md: 2 }}>
                     {
                         serviceObject.icon &&
-                        <ServiceImageContainer><img className="image" src={serviceObject.icon} alt="icon" /></ServiceImageContainer>
+                        <ImageContainer
+                            src={serviceObject.icon}
+                            alt="icon" 
+                            props={{ 
+                                sx: { 
+                                    width: { xs: "20%", sm: "100%" },
+                                    margin: { xs: "0 auto", sm: "0" } 
+                                } 
+                            }} 
+                        />
                     }
                 </Grid>
                 <Grid size="grow">

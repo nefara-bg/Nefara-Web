@@ -3,6 +3,7 @@ import logo from "../../img/footer-logo.webp"
 import { HashLink } from "react-router-hash-link"
 import { useTranslation } from "react-i18next";
 import { FooterContainer, FooterLink } from "./styles";
+import ImageContainer from "../ImageContainer/ImageContainer";
 
 const Footer = () => {
     const { t } = useTranslation()
@@ -19,7 +20,7 @@ const Footer = () => {
                     </Stack>
                 </Grid>
                 <Grid size={{ xs: 3, sm: 2, lg: 1.5 }}>
-                    <img src={logo} alt="Our logo" className="image" />
+                    <ImageContainer src={logo} alt="Our logo" />
                 </Grid>
                 <Grid size={"grow"}>
                     <Stack direction={{ sm: "row" }} gap={{ xs: 1, sm: 3, md: 6 }} alignItems={"start"}>

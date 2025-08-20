@@ -6,6 +6,7 @@ import { useRef, useState } from "react";
 import axios from "axios";
 import { useTranslation } from "react-i18next";
 import { ContactSection } from "../../styles";
+import ImageContainer from "../../../../components/ImageContainer/ImageContainer";
 
 const Contact = () => {
     const inputProps = {
@@ -90,9 +91,16 @@ const Contact = () => {
                     </Stack>
                 </Grid>
                 <Grid size={"grow"} sx={{ display: "flex", alignItems: "center", flexDirection: { xs: "column-reverse", lg: "column", }, gap: { xs: "48px", lg: "32px" } }}>
-                    <Box sx={{ width: "75%", px: { md: "128px", lg: 0 } }}>
-                        <img src={contact} alt="Envelope illustration" className="image" />
-                    </Box>
+                    <ImageContainer
+                        src={contact}
+                        alt="Envelope illustration"
+                        props={{
+                            sx: { 
+                                width: "75%",
+                                px: { md: "128px", lg: 0 } 
+                            }
+                        }}
+                    />
 
                     <Stack>
                         <Divider sx={{ width: "100%" }}>
