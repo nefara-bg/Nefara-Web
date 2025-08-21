@@ -63,5 +63,10 @@
     "footer": {
         "text": "Web, mobile and desktop applications for your business.",
         "copyright": "Software Solutions - All rights reserved."
+    },
+    "notFound": {
+        "title": "Not found!",
+        "content": "The page you're looking for was not found.",
+        "button": "Back to Home"
     }
 }

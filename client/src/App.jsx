@@ -5,6 +5,7 @@ import { ThemeProvider } from '@emotion/react'
 import { theme } from './theme/theme'
 import i18n from "./translation/i18n"
 import { useEffect } from 'react'
+import NotFound from './pages/NotFound/NotFound'
 
 function App() {
   useEffect(() => {
@@ -27,6 +28,7 @@ function App() {
           <Routes>
             <Route path='/' element={<RouteWrapper />}>
               <Route index element={<Home />} />
+              <Route path='*' element={<NotFound />} />
             </Route>
           </Routes>
         </ThemeProvider>
