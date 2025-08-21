@@ -57,7 +57,8 @@
         "message": "Your message",
         "button": "Contact Us",
         "loading": "Sending...",
-        "divider": "You can also reach us at"
+        "divider": "You can also reach us at",
+        "alert": "Your message was successfully sent."
     },
     "footer": {
         "text": "Web, mobile and desktop applications for your business.",

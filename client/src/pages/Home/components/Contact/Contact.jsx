@@ -1,4 +1,4 @@
-import { Box, Button, Divider, Grid, Stack, styled, TextField, Typography } from "@mui/material"
+import { Box, Button, Divider, Grid, Snackbar, Stack, styled, TextField, Typography } from "@mui/material"
 import contact from "../../../../img/contact.webp"
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
@@ -20,11 +20,12 @@ const Contact = () => {
     const messageRef = useRef();
 
     const [loading, setLoading] = useState(false);
-    const [responseMsg, setResponseMsg] = useState("");
+    const [error, setError] = useState(null)
+    const [toast, setToast] = useState(false)
 
     const handleSubmit = async () => {
         setLoading(true);
-        setResponseMsg("");
+        setError(null)
 
         try {
             const res = await axios.post("https://software-solutions-server.onrender.com/api/contact", {
@@ -32,14 +33,15 @@ const Contact = () => {
                 subject: subjectRef.current.value,
                 message: messageRef.current.value,
             });
-            setResponseMsg(res.data);
 
             emailRef.current.value = "";
             subjectRef.current.value = "";
             messageRef.current.value = "";
+
+            if(res.status == 200) setToast(true)
         } catch (err) {
             console.error(err);
-            setResponseMsg("Something went wrong. Please try again.");
+            setError("Something went wrong. Please try again.");
         } finally {
             setLoading(false);
         }
@@ -53,10 +55,23 @@ const Contact = () => {
 
     return (
         <ContactSection id="contact">
+            <Snackbar
+                open={toast}
+                onClose={() => setToast(false)}
+                message={t("contact.alert")}
+                autoHideDuration={5000}
+                anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+            />
+
             <Grid container spacing={{ xs: 4, lg: 8 }} alignItems={"center"} justifyContent={"center"} sx={{ textAlign: { xs: "center", lg: "start" } }}>
                 <Grid size={{ xs: 12, lg: 6 }}>
-                    <Typography variant="h3" color="neutral.main" mb={1}>{t("contact.title")}</Typography>
-                    <Typography variant="body2" mb={5}>{t("contact.content")}</Typography>
+                    
+                    <Stack mb={5}>
+                        <Typography variant="h3" color="neutral.main" mb={1}>{t("contact.title")}</Typography>
+                        <Typography variant="body2" mb={1}>{t("contact.content")}</Typography>
+
+                        {error && <Typography variant="body2" color="error" fontStyle={"italic"}>{error}</Typography>}
+                    </Stack>
 
                     <Stack gap={3}>
                         <TextField
