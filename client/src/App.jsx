@@ -1,11 +1,12 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import RouteWrapper from './components/RouteWrapper/RouteWrapper'
-import Home from './pages/Home/Home'
 import { ThemeProvider } from '@emotion/react'
 import { theme } from './theme/theme'
 import i18n from "./translation/i18n"
-import { useEffect } from 'react'
-import NotFound from './pages/NotFound/NotFound'
+import { lazy, useEffect } from 'react'
+
+const Home = lazy(() => import("./pages/Home/Home"))
+const NotFound = lazy(() => import("./pages/NotFound/NotFound"))
 
 function App() {
   useEffect(() => {
