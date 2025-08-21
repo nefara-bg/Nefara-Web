@@ -5,7 +5,7 @@ import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
 import { useRef, useState } from "react";
 import axios from "axios";
 import { useTranslation } from "react-i18next";
-import { ContactSection } from "../../styles";
+import { ContactSection } from "../../styling";
 import ImageContainer from "../../../../components/ImageContainer/ImageContainer";
 
 const Contact = () => {

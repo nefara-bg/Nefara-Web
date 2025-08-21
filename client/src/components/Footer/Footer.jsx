@@ -2,7 +2,7 @@ import { Box, Grid, Stack, Typography } from "@mui/material"
 import logo from "../../img/footer-logo.webp"
 import { HashLink } from "react-router-hash-link"
 import { useTranslation } from "react-i18next";
-import { FooterContainer, FooterLink } from "./styles";
+import { FooterContainer, FooterLink } from "./styling";
 import ImageContainer from "../ImageContainer/ImageContainer";
 
 const Footer = () => {

@@ -1,5 +1,5 @@
 import { Grid, Typography } from "@mui/material"
-import { ServiceContainer } from "../../../styles"
+import { ServiceContainer } from "../../../styling"
 import ImageContainer from "../../../../../components/ImageContainer/ImageContainer"
 
 const ServiceCard = ({ serviceObject }) => {

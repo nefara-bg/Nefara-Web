@@ -3,7 +3,7 @@ import { HashLink } from "react-router-hash-link"
 import logo from "../../img/logo.webp"
 import { useTranslation } from "react-i18next";
 import LngSwitcher from "./components/LngSwitcher/LngSwitcher";
-import { NavigationBar, NavLink } from "./styles";
+import { NavigationBar, NavLink } from "./styling";
 import MobileNav from "./components/MobileNav/MobileNav";
 import ImageContainer from "../ImageContainer/ImageContainer";
 

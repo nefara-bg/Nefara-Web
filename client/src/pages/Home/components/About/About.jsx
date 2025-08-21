@@ -4,7 +4,7 @@ import solutions from "../../../../img/solutions.webp"
 import code from "../../../../img/code.webp"
 import developers from "../../../../img/developers.webp"
 import { useTranslation } from "react-i18next"
-import { HomeContainer } from "../../styles"
+import { HomeContainer } from "../../styling"
 
 const About = () => {
     const { t } = useTranslation()

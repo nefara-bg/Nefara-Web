@@ -1,5 +1,5 @@
 import { Grid, Typography } from "@mui/material"
-import { StyledCard } from "../../../../styles"
+import { StyledCard } from "../../../../styling"
 import ImageContainer from "../../../../../../components/ImageContainer/ImageContainer"
 
 const AboutCard = ({ cardContent }) => {

@@ -1,7 +1,7 @@
 import { Button, Grid, Typography } from "@mui/material"
 import { useTranslation } from "react-i18next"
 import { HashLink } from "react-router-hash-link"
-import { HeroSection, TextBox } from "../../styles"
+import { HeroSection, TextBox } from "../../styling"
 import ImageComposition from "./components/ImageComposition/ImageComposition"
 
 const Hero = () => {

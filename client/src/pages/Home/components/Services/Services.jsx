@@ -5,7 +5,7 @@ import mobile from "../../../../img/mobile.webp"
 import desktop from "../../../../img/desktop.webp"
 import software from "../../../../img/software.webp"
 import { useTranslation } from "react-i18next"
-import { HomeContainer } from "../../styles"
+import { HomeContainer } from "../../styling"
 
 const Services = () => {
     const { t } = useTranslation()
