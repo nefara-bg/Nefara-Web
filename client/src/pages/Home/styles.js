@@ -31,6 +31,9 @@ export const StyledCard = styled(Card)(({ theme }) => ({
 
 export const ContactSection = styled(HomeContainer)(({ theme }) => ({
     background: theme.palette.background.secondary,
+    minHeight: "100vh",
+
+    display: "flex"
 }))
 
 
