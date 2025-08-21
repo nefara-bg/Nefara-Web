@@ -7,76 +7,81 @@ import ImageContainer from "../../../../../../components/ImageContainer/ImageCon
 
 const ImageComposition = () => {
     return (
-        <Box sx={{ position: "relative" }} px={{ xs: 12, sm: 24, md: 12 }}>
+        <Box sx={{ position: "relative" }} px={{ xs: 12, sm: 16, md: 4, lg: 12 }}>
 
             <ImageContainer
                 src={desktop}
                 alt="Desktop"
-            />
-
-            <ImageContainer
-                src={phone}
-                alt="Phone"
                 props={{
                     sx: {
-                        position: "absolute",
-                        zIndex: 1,
-                        width: "120px",
-                        bottom: 0,
-                        left: "24px",
-                        background: "white",
-                        borderRadius: "20px",
+                        position: "relative"
                     }
                 }}
-            />
+            >
+                <ImageContainer
+                    src={phone}
+                    alt="Phone"
+                    props={{
+                        sx: {
+                            position: "absolute",
+                            zIndex: 1,
+                            width: "25%",
+                            bottom: 0,
+                            left: "-15%",
+                            background: "white",
+                            borderRadius: "20px",
+                        }
+                    }}
+                />
 
-            <ImageContainer
-                src={tablet}
-                alt="Tablet"
-                props={{
-                    sx: {
-                        position: "absolute",
-                        zIndex: 1,
-                        width: "180px",
-                        bottom: "-30px",
-                        right: "-20px",
-                        background: "white",
-                        borderRadius: "20px",
-                    }
-                }}
-            />
+                <ImageContainer
+                    src={tablet}
+                    alt="Tablet"
+                    props={{
+                        sx: {
+                            position: "absolute",
+                            zIndex: 1,
+                            width: "40%",
+                            bottom: 0,
+                            right: "-25%",
+                            background: "white",
+                            borderRadius: "20px",
+                        }
+                    }}
+                />
 
-            <ImageContainer 
-                src={charm}
-                alt="Charm"
-                props={{
-                    sx: {
-                        position: "absolute",
-                        zIndex: 1,
-                        width: "100px",
-                        top: "-52px",
-                        right: "72px",
-                        borderRadius: "20px"
-                    }
-                }}
-                imgClass="charm"
-            />
+                <ImageContainer 
+                    src={charm}
+                    alt="Charm"
+                    props={{
+                        sx: {
+                            position: "absolute",
+                            zIndex: 1,
+                            width: "25%",
+                            top: "-12%",
+                            right: 0,
+                            borderRadius: "20px"
+                        }
+                    }}
+                    imgClass="charm"
+                />
 
-            <ImageContainer 
-                src={charm}
-                alt="Charm"
-                props={{
-                    sx: {
-                        position: "absolute",
-                        zIndex: 1,
-                        width: "80px",
-                        top: "48px",
-                        right: 0,
-                        borderRadius: "20px"
-                    }
-                }}
-                imgClass="charm reverse"
-            />
+                <ImageContainer 
+                    src={charm}
+                    alt="Charm"
+                    props={{
+                        sx: {
+                            position: "absolute",
+                            zIndex: 1,
+                            width: "20%",
+                            top: "10%",
+                            right: "-20%",
+                            borderRadius: "20px"
+                        }
+                    }}
+                    imgClass="charm reverse"
+                />
+            </ImageContainer>
 
         </Box>
     )
