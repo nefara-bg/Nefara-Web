@@ -1,44 +1,44 @@
 {
+    "seo": {
+        "title": "Software Solutions - Уеб, мобилни и десктоп приложения, които да подпомогнат развитието на бизнеса Ви.",
+        "description": "Създаваме уеб, мобилни и десктоп приложения, както и AI решения, съобразени с нуждите на бизнеса. От модерни приложения до индивидуална AI разработка – помагаме на компаниите да растат, да иновират и да бъдат конкурентни."
+    },
     "header": {
         "home": "Начало",
         "services": "Услуги",
         "about": "За нас",
         "contact": "Свържете се",
-        "button": "Започнете сега",
-        "languages": {
-            "en": "English",
-            "bg": "Bulgarian"
-        }
+        "button": "Започнете сега"
     },
     "hero": {
         "title": "Разработка на софтуерни решения",
-        "content": "Изграждаме уеб, мобилни и десктоп приложения, подпомагайки развитието на бизнеса Ви.",
+        "content": "Ние създаваме уеб, мобилни и десктоп приложения, които помагат на вашия бизнес да расте. Освен основната ни експертиза в разработката, ние разработваме и AI решения, които повишават ефективността и отварят нови възможности.",
         "button": "Започнете Сега"
     },
     "services": {
         "title": "Нашите Услуги",
         "web": {
             "title": "Уеб Разработка",
-            "content": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore, vel suscipit, aliquid sequi facilis maxime dolorum atque consequuntur quibusdam deleniti voluptate natus itaque cum? Doloremque qui nobis accusamus rem numquam, fuga quidem ipsum veniam sapiente officiis vero, cupiditate provident quae nisi voluptatibus. Qui, odit libero quia maiores ipsum facere magnam!"
+            "content": "Създаваме бързи и сигурни уеб приложения, съобразени с нуждите на Вашия бизнес. От малки сайтове до сложни платформи – нашите решения са проектирани за растеж и висока производителност. Предлагаме и AI интеграция с персонализирани AI модели за интелигентност, автоматизация и персонализация във вашите уеб проекти."
         },
         "mobile": {
             "title": "Мобилни Приложения",
-            "content": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore, vel suscipit, aliquid sequi facilis maxime dolorum atque consequuntur quibusdam deleniti voluptate natus itaque cum? Doloremque qui nobis accusamus rem numquam, fuga quidem ipsum veniam sapiente officiis vero, cupiditate provident quae nisi voluptatibus. Qui, odit libero quia maiores ipsum facere magnam!"
+            "content": "Разработваме мобилни приложения с отлично потребителско изживяване. Независимо дали за iOS или Android, ние създаваме решения, които съчетават функционалност и модерен дизайн. За иновативните бизнеси предлагаме интеграция на AI функционалности или разработка на индивидуални AI модели, които повишават възможностите и ангажираността на потребителите."
         },
         "desktop": {
             "title": "Десктоп Приложения",
-            "content": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore, vel suscipit, aliquid sequi facilis maxime dolorum atque consequuntur quibusdam deleniti voluptate natus itaque cum? Doloremque qui nobis accusamus rem numquam, fuga quidem ipsum veniam sapiente officiis vero, cupiditate provident quae nisi voluptatibus. Qui, odit libero quia maiores ipsum facere magnam!"
+            "content": "Проектираме надеждни и високопроизводителни десктоп приложения за Windows, macOS и Linux. От инструменти за продуктивност до корпоративни решения – нашите приложения са ефективни и лесни за работа. Осигуряваме и AI интеграция, включително персонализирани AI модели за интелигентна автоматизация директно във вашия софтуер."
         },
         "software": {
             "title": "Софутерни Решения",
-            "content": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore, vel suscipit, aliquid sequi facilis maxime dolorum atque consequuntur quibusdam deleniti voluptate natus itaque cum? Doloremque qui nobis accusamus rem numquam, fuga quidem ipsum veniam sapiente officiis vero, cupiditate provident quae nisi voluptatibus. Qui, odit libero quia maiores ipsum facere magnam!"
+            "content": "Предоставяме цялостни софтуерни решения, които решават реални предизвикателства в бизнеса. В процеса включваме дизайн, разработка, тестване и дългосрочна поддръжка за устойчиви резултати, а с нашата експертиза в AI разработката можем да интегрираме интелигентни функционалности или да изградим персонализирани AI модели, които превръщат вашия софтуер в решение за бъдещето."
         }
     },
     "about": {
         "title": "Защо Да Изберете Нас",
         "devs": {
             "title": "Опитен екип от разработчици",
-            "content": "Нашите разработчици имат дългогодишен практически опит в областта на уеб, мобилните и десктоп платформите. Работили сме по проекти от всякакъв мащаб, от уебсайтове за малки фирми до софтуерни системи на корпоративно ниво, което ни дава увереност, че можем с увереност да се справим с вашите уникални предизвикателства."
+            "content": "Нашите разработчици имат дългогодишен практически опит в областта на уеб, мобилните и десктоп платформите. Работили сме по проекти от всякакъв мащаб, от уебсайтове за малки фирми до софтуерни системи на корпоративно ниво, което ни дава увереност, че можем ефективно да се справим с вашите уникални предизвикателства."
         },
         "code": {
             "title": "Висококачествени код и дизайн",
@@ -46,7 +46,7 @@
         },
         "solutions": {
             "title": "Индивидуални решения, съобразени с вашите нужди",
-            "content": "Всеки бизнес е различен – и нашите решения също. Ние отделяме време, за да разберем вашите цели, предизвикателства и аудитория, преди да изработим индивидуален подход, който да съответства напълно на вашата визия и да доведе до измерими резултати."
+            "content": "Всеки бизнес е различен – и нашите решения също. Ние отделяме време, за да разберем Вашите цели, предизвикателства и аудитория, преди да изработим индивидуален подход, който да съответства напълно на визия Ви и да доведе до измерими резултати."
         }
     },
     "contact": {

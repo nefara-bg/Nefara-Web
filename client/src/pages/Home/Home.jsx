@@ -1,3 +1,4 @@
+import SeoTags from "../../components/SeoTags/SeoTags"
 import About from "./components/About/About"
 import Contact from "./components/Contact/Contact"
 import Hero from "./components/Hero/Hero"
@@ -7,6 +8,7 @@ const Home = () => {
 
     return (
         <>
+            <SeoTags />
             <Hero />
             <Services />
             <About />

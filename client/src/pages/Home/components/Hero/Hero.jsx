@@ -3,8 +3,10 @@ import { useTranslation } from "react-i18next"
 import { HashLink } from "react-router-hash-link"
 import { HeroSection, TextBox } from "../../styling"
 import ImageComposition from "./components/ImageComposition/ImageComposition"
+import { useParams } from "react-router-dom"
 
 const Hero = () => {
+    const { lng } = useParams()
     const { t } = useTranslation()
 
 
@@ -16,7 +18,7 @@ const Hero = () => {
                     <TextBox>
                         <Typography variant="h1" mb={1} color={"neutral.main"}>{t("hero.title")}</Typography>
                         <Typography variant="body1" mb={3}>{t("hero.content")}</Typography>
-                        <HashLink to="/#contact"><Button variant="contained" size="large" color="primary">{t("hero.button")}</Button></HashLink>
+                        <HashLink to={`/${lng}/#contact`}><Button variant="contained" size="large" color="primary">{t("hero.button")}</Button></HashLink>
                     </TextBox>
                 </Grid>
                 <Grid size="grow">

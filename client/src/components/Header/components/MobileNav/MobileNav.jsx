@@ -7,8 +7,13 @@ import { useState } from "react";
 import logo from "../../../../img/logo.webp"
 import { useTranslation } from "react-i18next";
 import ImageContainer from "../../../ImageContainer/ImageContainer";
+import { useParams } from "react-router-dom";
 
 const MobileNav = () => {
+    const { lng } = useParams()
+
+
+
     const [mobileMenu, setMobileMenu] = useState(false)
 
 
@@ -37,10 +42,10 @@ const MobileNav = () => {
                     />
 
                     <Stack gap={{ xs: 2, md: 4 }} mb={3}>
-                        <HashLink to="/#hero"><NavLink variant="body2">{t("header.home")}</NavLink></HashLink>
-                        <HashLink to="/#services"><NavLink variant="body2">{t("header.services")}</NavLink></HashLink>
-                        <HashLink to="/#about"><NavLink variant="body2">{t("header.about")}</NavLink></HashLink>
-                        <HashLink to="/#contact"><NavLink variant="body2">{t("header.contact")}</NavLink></HashLink>
+                        <HashLink to={`/${lng}/#hero`}><NavLink variant="body2">{t("header.home")}</NavLink></HashLink>
+                        <HashLink to={`/${lng}/#services`}><NavLink variant="body2">{t("header.services")}</NavLink></HashLink>
+                        <HashLink to={`/${lng}/#about`}><NavLink variant="body2">{t("header.about")}</NavLink></HashLink>
+                        <HashLink to={`/${lng}/#contact`}><NavLink variant="body2">{t("header.contact")}</NavLink></HashLink>
                     </Stack>
 
                     <LngSwitcher />

@@ -1,37 +1,37 @@
 {
+    "seo": {
+        "title": "Software Solutions - Web, mobile and desktop applications to help your business grow.",
+        "description": "We build web, mobile, and desktop applications, as well as AI solutions tailored to your business. From modern apps to custom AI development, we help companies grow, innovate, and stay competitive."
+    },
     "header": {
         "home": "Home",
         "services": "Services",
         "about": "About",
         "contact": "Contact",
-        "button": "Get Started",
-        "languages": {
-            "en": "Английски",
-            "bg": "Български"
-        }
+        "button": "Get Started"
     },
     "hero": {
         "title": "Building software solutions",
-        "content": "We build web, mobile and desktop applications that help your business grow.",
+        "content": "We build web, mobile, and desktop applications that help your business grow. Alongside our core development expertise, we also develop AI solutions that improve efficiency and open new opportunities.",
         "button": "Get Started"
     },
     "services": {
         "title": "Our Services",
         "web": {
             "title": "Web Development",
-            "content": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore, vel suscipit, aliquid sequi facilis maxime dolorum atque consequuntur quibusdam deleniti voluptate natus itaque cum? Doloremque qui nobis accusamus rem numquam, fuga quidem ipsum veniam sapiente officiis vero, cupiditate provident quae nisi voluptatibus. Qui, odit libero quia maiores ipsum facere magnam!"
+            "content": "We create fast, secure, and scalable web applications tailored to your business needs. From intuitive websites to complex platforms, our web solutions are designed for growth and performance. We also offer AI integration and custom AI models to add intelligence, automation, and personalization to your web projects."
         },
         "mobile": {
             "title": "Mobile Apps",
-            "content": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore, vel suscipit, aliquid sequi facilis maxime dolorum atque consequuntur quibusdam deleniti voluptate natus itaque cum? Doloremque qui nobis accusamus rem numquam, fuga quidem ipsum veniam sapiente officiis vero, cupiditate provident quae nisi voluptatibus. Qui, odit libero quia maiores ipsum facere magnam!"
+            "content": "Our team develops cross-platform and native mobile apps that deliver seamless user experiences. Whether for iOS or Android, we build solutions that combine functionality with engaging design. For forward-looking businesses, we can integrate AI features or even custom-built AI models to enhance app capabilities and user engagement."
         },
         "desktop": {
             "title": "Desktop Apps",
-            "content": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore, vel suscipit, aliquid sequi facilis maxime dolorum atque consequuntur quibusdam deleniti voluptate natus itaque cum? Doloremque qui nobis accusamus rem numquam, fuga quidem ipsum veniam sapiente officiis vero, cupiditate provident quae nisi voluptatibus. Qui, odit libero quia maiores ipsum facere magnam!"
+            "content": "We design reliable and high-performance desktop software for Windows, macOS, and Linux. From productivity tools to enterprise solutions, our desktop apps are built to be efficient and user-friendly. We also provide AI integration, enabling you to take advantage of intelligent automation or tailor-made AI models directly in your software."
         },
         "software": {
             "title": "Software Solutions",
-            "content": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore, vel suscipit, aliquid sequi facilis maxime dolorum atque consequuntur quibusdam deleniti voluptate natus itaque cum? Doloremque qui nobis accusamus rem numquam, fuga quidem ipsum veniam sapiente officiis vero, cupiditate provident quae nisi voluptatibus. Qui, odit libero quia maiores ipsum facere magnam!"
+            "content": "We deliver end-to-end software solutions that solve real business challenges. Our process includes design, development, testing, and long-term support to ensure sustainable results. With expertise in AI development, we can integrate smart features or build entirely custom AI models that transform your software into a future-ready solution."
         }
     },
     "about": {
