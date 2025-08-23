@@ -1,4 +1,5 @@
-import { Grid, Typography } from "@mui/material"
+import { Grid, Stack, Typography } from "@mui/material"
+import { CheckCircle } from "@mui/icons-material";
 import { ServiceContainer } from "../../../styling"
 import ImageContainer from "../../../../../components/ImageContainer/ImageContainer"
 
@@ -23,7 +24,20 @@ const ServiceCard = ({ serviceObject }) => {
                 </Grid>
                 <Grid size="grow">
                     <Typography variant="h5" color="neutral.main" mb={1}>{serviceObject?.title}</Typography>
-                    <Typography variant="body2">{serviceObject?.content}</Typography>
+                    
+                    {serviceObject.content?.map((point, index) => (
+                        <Stack
+                            key={index}
+                            direction="row"
+                            alignItems="center"
+                            spacing={1}
+                            mb={0.5}
+                            pl={2}
+                        >
+                            <CheckCircle sx={{ color: "primary.main" }} />
+                            <Typography variant="body2">{point}</Typography>
+                        </Stack>
+                    ))}
                 </Grid>
             </ServiceContainer>
         </Grid>

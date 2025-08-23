@@ -19,19 +19,35 @@
         "title": "Our Services",
         "web": {
             "title": "Web Development",
-            "content": "We create fast, secure, and scalable web applications tailored to your business needs. From intuitive websites to complex platforms, our web solutions are designed for growth and performance. We also offer AI integration and custom AI models to add intelligence, automation, and personalization to your web projects."
+            "content": {
+                "content1": "We build it personalized for you",
+                "content2": "Pure code written by us",
+                "content3": "Responsive design"
+            }
         },
         "mobile": {
             "title": "Mobile Apps",
-            "content": "Our team develops cross-platform and native mobile apps that deliver seamless user experiences. Whether for iOS or Android, we build solutions that combine functionality with engaging design. For forward-looking businesses, we can integrate AI features or even custom-built AI models to enhance app capabilities and user engagement."
+            "content": {
+                "content1": "Cross platforn Android and Ios",
+                "content2": "AI integrated",
+                "content3": ""
+            }
         },
         "desktop": {
             "title": "Desktop Apps",
-            "content": "We design reliable and high-performance desktop software for Windows, macOS, and Linux. From productivity tools to enterprise solutions, our desktop apps are built to be efficient and user-friendly. We also provide AI integration, enabling you to take advantage of intelligent automation or tailor-made AI models directly in your software."
+            "content": {
+                "content1": "",
+                "content2": "",
+                "content3": ""
+            }
         },
         "software": {
             "title": "Software Solutions",
-            "content": "We deliver end-to-end software solutions that solve real business challenges. Our process includes design, development, testing, and long-term support to ensure sustainable results. With expertise in AI development, we can integrate smart features or build entirely custom AI models that transform your software into a future-ready solution."
+            "content": {
+                "content1": "",
+                "content2": "",
+                "content3": ""
+            }
         }
     },
     "about": {

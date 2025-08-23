@@ -15,22 +15,38 @@ const Services = () => {
     const services = [
         {
             title: t("services.web.title"),
-            content: t("services.web.content"),
+            content: [
+                t("services.web.content.content1"),
+                t("services.web.content.content2"),
+                t("services.web.content.content3")
+            ],
             icon: web
         },
         {
             title: t("services.mobile.title"),
-            content: t("services.mobile.content"),
+            content: [
+                t("services.mobile.content.content1"),
+                t("services.mobile.content.content1"),
+                t("services.mobile.content.content1"),
+            ],
             icon: mobile
         },
         {
             title: t("services.desktop.title"),
-            content: t("services.desktop.content"),
+            content: [
+                t("services.desktop.content.content1"),
+                t("services.desktop.content.content1"),
+                t("services.desktop.content.content1"),
+            ],
             icon: desktop
         },
         {
             title: t("services.software.title"),
-            content: t("services.software.content"),
+            content: [
+                t("services.software.content.content1"),
+                t("services.software.content.content1"),
+                t("services.software.content.content1"),
+            ],
             icon: software
         }
     ]
