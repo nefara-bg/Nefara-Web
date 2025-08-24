@@ -6,6 +6,7 @@ import developers from "../../../../img/developers.webp"
 import { useTranslation } from "react-i18next"
 import { HomeContainer } from "../../styling"
 import FadeInSection from "../../../../components/FadeInSection/FadeInSection"
+import { motion } from "motion/react"
 
 const About = () => {
     const { t } = useTranslation()
@@ -30,11 +31,34 @@ const About = () => {
         }
     ]
 
+
+
+    const gridVariants = {
+        initial: {},
+        animate: {
+            transition: {
+                transition: 0.1,
+                staggerChildren: 0.2,
+                when: "beforeChildren"
+            }
+        }
+    }
+
+
+
     return (
         <FadeInSection>
             <HomeContainer id="about">
                 <Typography variant="h3" textAlign={"center"} color="neutral.main" mb={4}>{t("about.title")}</Typography>
-                <Grid container spacing={3}> 
+                <Grid
+                    component={motion.div}
+                    container
+                    spacing={3}
+                    variants={gridVariants}
+                    initial="initial"
+                    whileInView="animate"
+                    viewport={{ once: true }}
+                > 
                     {
                         reasons.map((reason, i) => (
                             <AboutCard cardContent={reason} key={i} />

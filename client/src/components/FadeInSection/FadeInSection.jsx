@@ -1,13 +1,9 @@
-import { motion, useAnimate, useInView } from "motion/react"
-import { useEffect } from "react"
+import { duration } from "@mui/material"
+import { motion } from "motion/react"
 
 
 
 const FadeInSection = ({ children }) => {
-    const [scope, animate] = useAnimate()
-    const isInView = useInView(scope, { once: true })
-
-
     const sectionVariants = {
         initial: {
             y: 75,
@@ -15,32 +11,22 @@ const FadeInSection = ({ children }) => {
         },
         animate: {
             y: 0,
-            opacity: 1
+            opacity: 1,
+            transition: {
+                duration: 1,
+                ease: "easeInOut"
+            }
         }
     }
-
-
-    useEffect(() => {
-        if(isInView) {
-            animate(
-                scope.current,
-                sectionVariants.animate,
-                {
-                    duration: 1.2,
-                    type: "spring",
-                    bounce: 0.5
-                }
-            )
-        }
-    }, [isInView])
 
 
 
     return (
         <motion.div
-            ref={scope}
             variants={sectionVariants}
             initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
         >
             {children}
         </motion.div>

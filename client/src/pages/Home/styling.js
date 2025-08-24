@@ -12,15 +12,10 @@ export const HomeContainer = styled(Box)(({ theme }) => ({
 export const StyledCard = styled(Card)(({ theme }) => ({
     textAlign: "center",
     height: "100%",
-    transition: ".2s",
     background: theme.palette.background.secondary,
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    
-    "&:hover": {
-        transform: "scale(1.05)"
-    },
 
     padding: `${theme.spacing(4)}`,
     [theme.breakpoints.down("md")]: { padding: `${theme.spacing(2)}` },
