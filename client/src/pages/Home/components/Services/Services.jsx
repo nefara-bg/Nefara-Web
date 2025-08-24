@@ -6,6 +6,7 @@ import desktop from "../../../../img/desktop.webp"
 import software from "../../../../img/software.webp"
 import { useTranslation } from "react-i18next"
 import { HomeContainer } from "../../styling"
+import FadeInSection from "../../../../components/FadeInSection/FadeInSection"
 
 const Services = () => {
     const { t } = useTranslation()
@@ -54,17 +55,19 @@ const Services = () => {
 
 
     return (
-        <HomeContainer id="services">
-            <Typography variant="h3" textAlign={"center"} mb={4} color="neutral.main">{t("services.title")}</Typography>
+        <FadeInSection>
+            <HomeContainer id="services">
+                <Typography variant="h3" textAlign={"center"} mb={4} color="neutral.main">{t("services.title")}</Typography>
 
-            <Grid container spacing={{ xs: 4, sm: 8, md: 4, lg: 8 }}>
-                {
-                    services.map((service, i) => (
-                        <ServiceCard serviceObject={service} key={i} />
-                    ))
-                }
-            </Grid>
-        </HomeContainer>
+                <Grid container spacing={{ xs: 4, sm: 8, md: 4, lg: 8 }}>
+                    {
+                        services.map((service, i) => (
+                            <ServiceCard serviceObject={service} key={i} />
+                        ))
+                    }
+                </Grid>
+            </HomeContainer>
+        </FadeInSection>
     )
 }
 

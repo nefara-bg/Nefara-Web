@@ -5,6 +5,7 @@ import code from "../../../../img/code.webp"
 import developers from "../../../../img/developers.webp"
 import { useTranslation } from "react-i18next"
 import { HomeContainer } from "../../styling"
+import FadeInSection from "../../../../components/FadeInSection/FadeInSection"
 
 const About = () => {
     const { t } = useTranslation()
@@ -30,16 +31,18 @@ const About = () => {
     ]
 
     return (
-        <HomeContainer id="about">
-            <Typography variant="h3" textAlign={"center"} color="neutral.main" mb={4}>{t("about.title")}</Typography>
-            <Grid container spacing={3}> 
-                {
-                    reasons.map((reason, i) => (
-                        <AboutCard cardContent={reason} key={i} />
-                    ))
-                }
-            </Grid>
-        </HomeContainer>
+        <FadeInSection>
+            <HomeContainer id="about">
+                <Typography variant="h3" textAlign={"center"} color="neutral.main" mb={4}>{t("about.title")}</Typography>
+                <Grid container spacing={3}> 
+                    {
+                        reasons.map((reason, i) => (
+                            <AboutCard cardContent={reason} key={i} />
+                        ))
+                    }
+                </Grid>
+            </HomeContainer>
+        </FadeInSection>
     )
 }
 

@@ -4,6 +4,7 @@ import { HashLink } from "react-router-hash-link"
 import { HeroSection, TextBox } from "../../styling"
 import ImageComposition from "./components/ImageComposition/ImageComposition"
 import { useParams } from "react-router-dom"
+import FadeInSection from "../../../../components/FadeInSection/FadeInSection"
 
 const Hero = () => {
     const { lng } = useParams()
@@ -12,20 +13,25 @@ const Hero = () => {
 
 
     return (
-        <HeroSection id="hero">
-            <Grid container alignItems={"center"} spacing={{ xs: 6, md: 8, lg: 16 }}>
-                <Grid size={{ xs: 12, md: 7, lg: 6 }}>
-                    <TextBox>
-                        <Typography variant="h1" mb={1} color={"neutral.main"}>{t("hero.title")}</Typography>
-                        <Typography variant="body1" mb={3}>{t("hero.content")}</Typography>
-                        <HashLink to={`/${lng}/#contact`}><Button variant="contained" size="large" color="primary">{t("hero.button")}</Button></HashLink>
-                    </TextBox>
+        <FadeInSection>
+            <HeroSection
+                id="hero"
+                // component={motion.div}
+            >
+                <Grid container alignItems={"center"} spacing={{ xs: 6, md: 8, lg: 16 }}>
+                    <Grid size={{ xs: 12, md: 7, lg: 6 }}>
+                        <TextBox>
+                            <Typography variant="h1" mb={1} color={"neutral.main"}>{t("hero.title")}</Typography>
+                            <Typography variant="body1" mb={3}>{t("hero.content")}</Typography>
+                            <HashLink to={`/${lng}/#contact`}><Button variant="contained" size="large" color="primary">{t("hero.button")}</Button></HashLink>
+                        </TextBox>
+                    </Grid>
+                    <Grid size="grow">
+                        <ImageComposition />
+                    </Grid>
                 </Grid>
-                <Grid size="grow">
-                    <ImageComposition />
-                </Grid>
-            </Grid>
-        </HeroSection>
+            </HeroSection>
+        </FadeInSection>
     )
 }
 
