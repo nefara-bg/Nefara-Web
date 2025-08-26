@@ -30,23 +30,23 @@
             "content": {
                 "content1": "Cross platforn Android and Ios",
                 "content2": "AI integrated",
-                "content3": ""
+                "content3": "Mobile App content"
             }
         },
         "desktop": {
             "title": "Desktop Apps",
             "content": {
-                "content1": "",
-                "content2": "",
-                "content3": ""
+                "content1": "Desktop App content",
+                "content2": "Desktop App content",
+                "content3": "Desktop App content"
             }
         },
         "software": {
             "title": "Software Solutions",
             "content": {
-                "content1": "",
-                "content2": "",
-                "content3": ""
+                "content1": "Software Solutions content",
+                "content2": "Software Solutions content",
+                "content3": "Software Solutions content"
             }
         }
     },

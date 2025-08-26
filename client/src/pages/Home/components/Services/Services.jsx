@@ -27,8 +27,8 @@ const Services = () => {
             title: t("services.mobile.title"),
             content: [
                 t("services.mobile.content.content1"),
-                t("services.mobile.content.content1"),
-                t("services.mobile.content.content1"),
+                t("services.mobile.content.content2"),
+                t("services.mobile.content.content3"),
             ],
             icon: mobile
         },
@@ -36,8 +36,8 @@ const Services = () => {
             title: t("services.desktop.title"),
             content: [
                 t("services.desktop.content.content1"),
-                t("services.desktop.content.content1"),
-                t("services.desktop.content.content1"),
+                t("services.desktop.content.content2"),
+                t("services.desktop.content.content3"),
             ],
             icon: desktop
         },
@@ -45,8 +45,8 @@ const Services = () => {
             title: t("services.software.title"),
             content: [
                 t("services.software.content.content1"),
-                t("services.software.content.content1"),
-                t("services.software.content.content1"),
+                t("services.software.content.content2"),
+                t("services.software.content.content3"),
             ],
             icon: software
         }
