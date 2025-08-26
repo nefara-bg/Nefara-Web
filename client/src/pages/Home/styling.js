@@ -57,6 +57,7 @@ export const TextBox = styled(Stack)(({ theme }) => ({
 export const ServiceContainer = styled(Grid)(({ theme }) => ({
     [theme.breakpoints.down("sm")]: {
         textAlign: "center",
+        alignItems: "center",
         backgroundColor: theme.palette.background.secondary,
         borderRadius: theme.shape.borderRadius,
         padding: `${theme.spacing(6)} ${theme.spacing(4)}`

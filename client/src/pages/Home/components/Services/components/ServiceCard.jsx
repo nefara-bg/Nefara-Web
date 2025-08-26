@@ -1,5 +1,4 @@
-import { duration, Grid, Stack, Typography } from "@mui/material"
-import { CheckCircle } from "@mui/icons-material";
+import { Grid, Stack, Typography } from "@mui/material"
 import { ServiceContainer } from "../../../styling"
 import ImageContainer from "../../../../../components/ImageContainer/ImageContainer"
 import { motion } from "motion/react";
@@ -92,6 +91,9 @@ const ServiceCard = ({ serviceObject }) => {
                 </Grid>
                 <Grid
                     size="grow"
+                    display={"flex"}
+                    flexDirection={"column"}
+                    alignItems={{ xs: "center", sm: "start" }}
                     component={motion.div}
                     variants={textColVariants}
                     initial="initial"

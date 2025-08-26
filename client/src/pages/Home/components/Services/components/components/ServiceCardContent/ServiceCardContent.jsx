@@ -55,6 +55,7 @@ const ServiceCardContent = ({ content = "" }) => {
         <Stack
             direction="row"
             alignItems="start"
+            // justifyContent={"center"}
             spacing={1}
             // pl={2}
             component={motion.div}
@@ -67,6 +68,7 @@ const ServiceCardContent = ({ content = "" }) => {
             />
             <Typography
                 variant="body2"
+                textAlign={"start"}
                 component={motion.p}
                 variants={textVariants}
             >
