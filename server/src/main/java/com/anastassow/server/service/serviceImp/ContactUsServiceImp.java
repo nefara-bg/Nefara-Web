@@ -22,7 +22,7 @@ public class ContactUsServiceImp implements ContactUsService{
         
         SimpleMailMessage mailMessage = new SimpleMailMessage();
 
-        mailMessage.setFrom("Contact Us from SoftwareSolutions! <themastarayt@gmail.com>");
+        mailMessage.setFrom("Contact Us from Nefara! <contacts@nefara.org>");
         mailMessage.setTo(myEmail);
         mailMessage.setText(contactUsDto.getMessage());
         mailMessage.setSubject(contactUsDto.getSubject());
