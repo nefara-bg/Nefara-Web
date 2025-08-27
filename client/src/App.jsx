@@ -4,8 +4,6 @@ import { ThemeProvider } from '@emotion/react'
 import { theme } from './theme/theme'
 import i18n from "./translation/i18n"
 import { lazy } from 'react'
-import { dark } from './theme/dark'
-import { neutral } from './theme/neutral'
 
 const Home = lazy(() => import("./pages/Home/Home"))
 const NotFound = lazy(() => import("./pages/NotFound/NotFound"))
