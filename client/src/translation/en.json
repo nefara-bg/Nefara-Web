@@ -20,33 +20,33 @@
         "web": {
             "title": "Web Development",
             "content": {
-                "content1": "We build it personalized for you",
-                "content2": "Pure code written by us",
-                "content3": "Responsive design"
+                "content1": "Personalized for you",
+                "content2": "Responsive design",
+                "content3": "Pure code"
             }
         },
         "mobile": {
             "title": "Mobile Apps",
             "content": {
-                "content1": "Cross platforn Android and Ios",
-                "content2": "AI integrated",
-                "content3": "Mobile App content"
+                "content1": "Cross platform for all operating systems",
+                "content2": "Secure applications",
+                "content3": "AI integrated"
             }
         },
         "desktop": {
             "title": "Desktop Apps",
             "content": {
-                "content1": "Desktop App content",
-                "content2": "Desktop App content",
-                "content3": "Desktop App content"
+                "content1": "Cross platform for all operating systems",
+                "content2": "High performance",
+                "content3": "AI integrated"
             }
         },
         "software": {
             "title": "Software Solutions",
             "content": {
-                "content1": "Software Solutions content",
-                "content2": "Software Solutions content",
-                "content3": "Software Solutions content"
+                "content1": "End-to-End Services",
+                "content2": "Future-Ready Tech",
+                "content3": "Problem-Solving Focus"
             }
         }
     },

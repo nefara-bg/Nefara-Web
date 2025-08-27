@@ -1,6 +1,6 @@
-import { Button, Stack, Toolbar } from "@mui/material"
+import { Button, Stack, Toolbar, Typography } from "@mui/material"
 import { HashLink } from "react-router-hash-link"
-import logo from "../../img/logo.webp"
+import logo from "../../img/logo.svg"
 import { useTranslation } from "react-i18next";
 import LngSwitcher from "./components/LngSwitcher/LngSwitcher";
 import { NavigationBar, NavLink } from "./styling";
@@ -17,15 +17,19 @@ const Header = () => {
     return (
         <NavigationBar elevation={0} position="fixed">
             <Toolbar>
-                <ImageContainer
-                    src={logo}
-                    alt="Our logo"
-                    props={{
-                        sx: {
-                            width: { xs: "100px", lg: "156px" }
-                        }
-                    }}
-                />
+                <Stack direction={"row"} alignItems={"center"} gap={1}>
+                    <ImageContainer
+                        src={logo}
+                        alt="Our logo"
+                        props={{
+                            sx: {
+                                width: "32px"
+                            }
+                        }}
+                    />
+                    <Typography variant="h5" color="#0d3163">Nefara</Typography>
+                </Stack>
+                
                 <Stack flex={1} direction={"row"} alignItems={"center"} justifyContent={"end"} gap={{ xs: 3, lg: 5 }} sx={{ display: { xs: "none", md: "flex" } }}>
                     <Stack direction={"row"} gap={{ xs: 2, lg: 4 }}>
                         <HashLink to={`/${lng}/#hero`}><NavLink variant="body2">{t("header.home")}</NavLink></HashLink>

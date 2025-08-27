@@ -4,7 +4,7 @@ import { MobileMenu, NavLink } from "../../styling";
 import { HashLink } from "react-router-hash-link";
 import LngSwitcher from "../LngSwitcher/LngSwitcher";
 import { useState } from "react";
-import logo from "../../../../img/logo.webp"
+import logo from "../../../../img/logo.svg"
 import { useTranslation } from "react-i18next";
 import ImageContainer from "../../../ImageContainer/ImageContainer";
 import { useParams } from "react-router-dom";
@@ -35,7 +35,7 @@ const MobileNav = () => {
                         alt="Our logo"
                         props={{
                             sx: { 
-                                width: "120px"
+                                width: "48px"
                             },
                             mb: 3
                         }}

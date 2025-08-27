@@ -1,5 +1,5 @@
 import { Box, Grid, Stack, Typography } from "@mui/material"
-import logo from "../../img/footer-logo.webp"
+import logo from "../../img/footer-logo.svg"
 import { HashLink } from "react-router-hash-link"
 import { useTranslation } from "react-i18next";
 import { FooterContainer, FooterLink } from "./styling";
