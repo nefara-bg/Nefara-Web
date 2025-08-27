@@ -1,4 +1,4 @@
-import { Grid, Typography } from "@mui/material"
+import { Divider, Grid, Typography } from "@mui/material"
 import ServiceCard from "./components/ServiceCard"
 import web from "../../../../img/web.webp"
 import mobile from "../../../../img/mobile.webp"
@@ -57,7 +57,7 @@ const Services = () => {
     return (
         <FadeInSection>
             <HomeContainer id="services">
-                <Typography variant="h3" textAlign={"center"} mb={4} color="neutral.main">{t("services.title")}</Typography>
+                <Typography variant="h3" textAlign={"center"} mb={6} color="neutral.main">{t("services.title")}</Typography>
 
                 <Grid container spacing={{ xs: 4, sm: 8, md: 4, lg: 8 }}>
                     {
