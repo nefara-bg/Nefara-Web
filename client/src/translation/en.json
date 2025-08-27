@@ -20,9 +20,9 @@
         "web": {
             "title": "Web Development",
             "content": {
-                "content1": "Personalized for you",
-                "content2": "Responsive design",
-                "content3": "Pure code"
+                "content1": "Responsive design",
+                "content2": "Pure code",
+                "content3": "AI integrated"
             }
         },
         "mobile": {
@@ -53,8 +53,8 @@
     "about": {
         "title": "Why Choose Us",
         "devs": {
-            "title": "Experienced team of developers",
-            "content": "Our developers bring years of hands-on experience across web, mobile, and desktop platforms. We’ve tackled projects of every scale, from small business websites to enterprise-level software systems, ensuring we can handle your unique challenges with skill and confidence."
+            "title": "Developers",
+            "content": ""
         },
         "code": {
             "title": "High-quality code and design",
