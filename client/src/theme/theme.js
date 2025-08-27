@@ -51,6 +51,16 @@ export const theme = createTheme({
                     textTransform: "none"
                 }
             }
+        },
+        MuiInputLabel: {
+            styleOverrides: {
+                root: {
+                    fontSize: "16px"
+                },
+                shrink: {
+                    fontSize: "20px"
+                }
+            }
         }
     }
 })

@@ -54,6 +54,12 @@ const Contact = () => {
 
 
 
+    const phone = "+359887383000"
+    const phoneLabel = "+359 88 738 3000"
+    const email = "contacts@nefara.org"
+
+
+
     return (
         <FadeInSection>
             <ContactSection id="contact">
@@ -127,11 +133,23 @@ const Contact = () => {
                             <Stack direction={{ sm: "row" }} gap={{ xs: 0, sm: 4 }} mt={3} alignItems={"center"}>
                                 <Stack direction={"row"} alignItems={"center"} gap={1}>
                                     <EmailOutlinedIcon color="primary" fontSize="large" />
-                                    <Typography variant="body1">johndoe@gmail.com</Typography>
+                                    <Typography
+                                        variant="body1"
+                                        component={"a"}
+                                        href={`mailto:${email}`}
+                                    >
+                                        {email}
+                                    </Typography>
                                 </Stack>
                                 <Stack direction={"row"} alignItems={"center"} gap={1}>
                                     <LocalPhoneOutlinedIcon color="primary" fontSize="large" />
-                                    <Typography variant="body1">0888 888 888</Typography>
+                                    <Typography
+                                        variant="body1"
+                                        component={"a"}
+                                        href={`tel:${phone}`}
+                                    >
+                                        {phoneLabel}
+                                    </Typography>
                                 </Stack>
                             </Stack>
                         </Stack>
