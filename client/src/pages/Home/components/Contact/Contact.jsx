@@ -29,7 +29,7 @@ const Contact = () => {
         setError(null)
 
         try {
-            const res = await axios.post("https://software-solutions-server.onrender.com/api/contact", {
+            const res = await axios.post("https://nefara-server-xz6h.onrender.com/api/contact", {   
                 email: emailRef.current.value,
                 subject: subjectRef.current.value,
                 message: messageRef.current.value,
@@ -41,7 +41,6 @@ const Contact = () => {
 
             if(res.status == 200) setToast(true)
         } catch (err) {
-            console.error(err);
             setError("Something went wrong. Please try again.");
         } finally {
             setLoading(false);
