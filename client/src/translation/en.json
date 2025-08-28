@@ -54,15 +54,15 @@
         "title": "Why Choose Us",
         "devs": {
             "title": "Developers",
-            "content": ""
+            "content": "We are a team of young people with numerous achievements in competitions, including the largest international student hackathon in the world. We are graduates of TUES at TU Sofia - the best IT high school on the Balkan Peninsula. From an early age, we have been working on software projects and integrating artificial intelligence, and one of our members already has several published scientific papers."
         },
         "code": {
-            "title": "High-quality code and design",
-            "content": "We follow industry best practices and rigorous quality checks to deliver clean, efficient, and maintainable code. Combined with intuitive, user-focused design, our solutions are built to look great, perform flawlessly, and stand the test of time."
+            "title": "Efficiency",
+            "content": "Our experience in hackathons and competitions has made us efficient and fast at writing code. We guarantee fast and personalized services at a high professional level, as well as support if the client wants it."
         },
         "solutions": {
-            "title": "Tailored solutions to meet your needs",
-            "content": "Every business is different — and so are our solutions. We take the time to understand your goals, challenges, and audience before crafting a custom approach that aligns perfectly with your vision and delivers measurable results."
+            "title": "Code",
+            "content": "Our code is entirely written by us without any third-party services that would incur additional costs for you. We strive to keep up with trends and use the latest technologies such as ReactJS, React Native, ThreeJS, Motion, ElectronJS, Java Spring Boot, Django Rest Framework, FastAPI, NodeJS, PyTorch, Pandas, TensorFlow, Cloud Services, and Docker."
         }
     },
     "contact": {

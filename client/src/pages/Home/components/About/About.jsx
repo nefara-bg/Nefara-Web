@@ -22,12 +22,12 @@ const About = () => {
         {
             title: t("about.code.title"),
             content: t("about.code.content"),
-            icon: code
+            icon: solutions
         },
         {
             title: t("about.solutions.title"),
             content: t("about.solutions.content"),
-            icon: solutions
+            icon: code
         }
     ]
 
