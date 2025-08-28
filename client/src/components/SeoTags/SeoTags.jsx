@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom"
 const SeoTags = () => {
     const { t } = useTranslation()
     const { lng } = useParams()
-    const baseUrl = "http://localhost:5173"
+    const baseUrl = "https://nefara.org"
 
 
 
