@@ -29,7 +29,7 @@ const Contact = () => {
         setError(null)
 
         try {
-            const res = await axios.post("https://nefara-server-xz6h.onrender.com/api/contact", {   
+            const res = await axios.post("https://nefara.org/api/contact", {
                 email: emailRef.current.value,
                 subject: subjectRef.current.value,
                 message: messageRef.current.value,
