@@ -16,9 +16,8 @@ const Hero = () => {
         <FadeInSection>
             <HeroSection
                 id="hero"
-                // component={motion.div}
             >
-                <Grid container alignItems={"center"} spacing={{ xs: 6, md: 8, lg: 16 }}>
+                <Grid container width={"min(100%, 128rem)"} alignItems={"center"} spacing={{ xs: 6, md: 8, lg: 16 }}>
                     <Grid size={{ xs: 12, md: 7, lg: 6 }}>
                         <TextBox>
                             <Typography variant="h1" mb={1} color={"neutral.main"}>{t("hero.title")}</Typography>
@@ -26,7 +25,7 @@ const Hero = () => {
                             <HashLink to={`/${lng}/#contact`}><Button variant="contained" size="large" color="primary">{t("hero.button")}</Button></HashLink>
                         </TextBox>
                     </Grid>
-                    <Grid size="grow">
+                    <Grid size="grow" justifyContent={"center"}>
                         <ImageComposition />
                     </Grid>
                 </Grid>

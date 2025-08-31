@@ -1,10 +1,11 @@
-import { Box, duration } from "@mui/material"
+import { Box, duration, Stack } from "@mui/material"
 import desktop from "../../../../../../img/hero-desktop.webp"
 import phone from "../../../../../../img/hero-phone.webp"
 import tablet from "../../../../../../img/hero-tablet.webp"
 import charm from "../../../../../../img/hero-charm.webp"
 import ImageContainer from "../../../../../../components/ImageContainer/ImageContainer"
 import { motion } from "motion/react"
+import { theme } from "../../../../../../theme/theme"
 
 const ImageComposition = () => {
     const containerVariants = {
@@ -37,9 +38,13 @@ const ImageComposition = () => {
 
 
     return (
-        <Box
-            sx={{ position: "relative" }}
+        <Stack
+            sx={{ 
+                position: "relative" ,
+                // paddingX: { xs: 12, sm: 16, md: 4, lg: `max(${theme.spacing(12)}, 200px)` }
+            }}
             px={{ xs: 12, sm: 16, md: 4, lg: 12 }}
+            alignItems={"center"}
         >
 
             <ImageContainer
@@ -47,7 +52,8 @@ const ImageComposition = () => {
                 alt="Desktop"
                 props={{
                     sx: {
-                        position: "relative"
+                        position: "relative",
+                        width: `min(100%, 30rem)`
                     },
                     component: motion.div,
                     variants: containerVariants,
@@ -129,7 +135,7 @@ const ImageComposition = () => {
                 />
             </ImageContainer>
 
-        </Box>
+        </Stack>
     )
 }
 

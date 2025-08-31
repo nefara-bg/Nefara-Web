@@ -58,6 +58,8 @@ const About = () => {
                     initial="initial"
                     whileInView="animate"
                     viewport={{ once: true }}
+                    width={"min(100%, 128rem)"}
+                    mx={"auto"}
                 > 
                     {
                         reasons.map((reason, i) => (

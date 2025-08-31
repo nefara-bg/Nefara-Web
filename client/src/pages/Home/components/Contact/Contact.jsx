@@ -70,7 +70,7 @@ const Contact = () => {
                     anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
                 />
 
-                <Grid container spacing={{ xs: 4, lg: 8 }} alignItems={"center"} justifyContent={"center"} sx={{ textAlign: { xs: "center", lg: "start" } }}>
+                <Grid width={"min(100%, 128rem)"} mx={"auto"} container spacing={{ xs: 4, lg: 8 }} alignItems={"center"} justifyContent={"center"} sx={{ textAlign: { xs: "center", lg: "start" } }}>
                     <Grid size={{ xs: 12, lg: 6 }}>
                         
                         <Stack mb={5}>

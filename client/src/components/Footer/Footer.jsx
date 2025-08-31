@@ -14,7 +14,7 @@ const Footer = () => {
 
     return (
         <FooterContainer>
-            <Grid container spacing={{ xs: 3, md: 6 }} alignItems={"center"} justifyContent={"center"}>
+            <Grid width={"min(100%, 128rem)"} mx={"auto"} container spacing={{ xs: 3, md: 6 }} alignItems={"center"} justifyContent={"center"}>
                 <Grid size={"grow"}>
                     <Stack direction={{ sm: "row" }} gap={{ xs: 1, sm: 3, md: 6 }} justifyContent={"end"} alignItems={"end"}>
                         <HashLink to={`/${lng}/#hero`}><FooterLink variant="body1">{t("header.home")}</FooterLink></HashLink>

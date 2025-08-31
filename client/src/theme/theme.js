@@ -5,6 +5,7 @@ const headingStyles = {
 }
 
 export const theme = createTheme({
+    spacing: `0.5rem`,
     palette: {
         background: {
             main: "#fff",
@@ -25,23 +26,23 @@ export const theme = createTheme({
         }
     },
     shape: {
-        borderRadius: "20px"
+        borderRadius: "1.25rem"
     },
     typography: {
         fontFamily: ["Inter", 'sans-serif'].join(","),
         h1: { 
             ...headingStyles,
-            fontSize: "64px"
+            fontSize: "4rem"
         },
         h2: { ...headingStyles },
         h3: { ...headingStyles },
         h4: { ...headingStyles },
         h5: { ...headingStyles },
         body1: {
-            fontSize: "20px"
+            fontSize: "1.25rem"
         },
         body2: {
-            fontSize: "16px"
+            fontSize: "1rem"
         }
     },
     components: {
@@ -55,10 +56,10 @@ export const theme = createTheme({
         MuiInputLabel: {
             styleOverrides: {
                 root: {
-                    fontSize: "16px"
+                    fontSize: "1rem"
                 },
                 shrink: {
-                    fontSize: "20px"
+                    fontSize: "1.25rem"
                 }
             }
         }
@@ -77,11 +78,11 @@ theme.typography.body2 = {
 
 theme.typography.h1 = {
     ...theme.typography.h1,
-    [theme.breakpoints.down("md")]: { fontSize: "56px" },
-    [theme.breakpoints.down("md")]: { fontSize: "48px" }
+    [theme.breakpoints.down("md")]: { fontSize: "3.5rem" },
+    [theme.breakpoints.down("md")]: { fontSize: "3rem" }
 }
 
 theme.typography.h3 = {
     ...theme.typography.h3,
-    [theme.breakpoints.down("md")]: { fontSize: "40px" }
+    [theme.breakpoints.down("md")]: { fontSize: "2.5rem" }
 }

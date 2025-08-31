@@ -2,6 +2,7 @@ import { Box, Card, Grid, Stack, styled } from "@mui/material";
 
 export const HomeContainer = styled(Box)(({ theme }) => ({
     padding: `${theme.spacing(9)} ${theme.spacing(12)}`,
+    // paddingLeft: `max(${theme.spacing(12)}, 2vw)`,
     [theme.breakpoints.down("lg")]: { padding: `${theme.spacing(9)} ${theme.spacing(8)}` },
     [theme.breakpoints.down("md")]: { padding: `${theme.spacing(9)} ${theme.spacing(6)}` },
     [theme.breakpoints.down("sm")]: { padding: `${theme.spacing(9)} ${theme.spacing(2)}` }
@@ -26,7 +27,7 @@ export const StyledCard = styled(Card)(({ theme }) => ({
 
 export const ContactSection = styled(HomeContainer)(({ theme }) => ({
     background: theme.palette.background.secondary,
-    minHeight: "100vh",
+    minHeight: "min(100vh, 60rem)",
 
     display: "flex"
 }))
@@ -35,10 +36,12 @@ export const ContactSection = styled(HomeContainer)(({ theme }) => ({
 
 export const HeroSection = styled(HomeContainer)(({ theme }) => ({
     backgroundColor: theme.palette.background.secondary,
-    minHeight: "100vh",
+    minHeight: "min(100vh, 60rem)",
 
     display: "flex",
-    alignItems: "center"
+    alignItems: "center",
+    justifyContent: "center",
+    paddingTop: theme.spacing(24)
 }))
 
 

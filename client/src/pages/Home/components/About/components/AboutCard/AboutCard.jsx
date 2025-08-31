@@ -14,14 +14,7 @@ const AboutCard = ({ cardContent }) => {
                 type: "spring",
                 duration: 1.2
             }
-        },
-        // hover: {
-        //     scale: 1.03,
-        //     transition: {
-        //         type: "spring",
-        //         duration: 0.5
-        //     }
-        // }
+        }
     }
 
 
@@ -53,7 +46,7 @@ const AboutCard = ({ cardContent }) => {
                         props={{
                             sx: { 
                                 display: "flex",
-                                width: { xs: "30%", sm: "40%", md: "30%" } 
+                                width: { xs: "30%", sm: "40%", md: "min(30%, 8rem)" } 
                             },
                             mb: 3
                         }}
