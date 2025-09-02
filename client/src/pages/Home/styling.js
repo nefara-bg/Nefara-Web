@@ -1,4 +1,4 @@
-import { Box, Card, Grid, Stack, styled } from "@mui/material";
+import { Box, Card, Grid, Stack, styled, Typography } from "@mui/material";
 
 export const HomeContainer = styled(Box)(({ theme }) => ({
     padding: `${theme.spacing(9)} ${theme.spacing(12)}`,
@@ -35,24 +35,48 @@ export const ContactSection = styled(HomeContainer)(({ theme }) => ({
 
 
 export const HeroSection = styled(HomeContainer)(({ theme }) => ({
-    backgroundColor: theme.palette.background.secondary,
+    // backgroundColor: theme.palette.background.secondary,
+    background: `linear-gradient(135deg, ${theme.palette.background.main} 0%, ${theme.palette.neutral["50"]} 50%, ${theme.palette.neutral["100"]} 100%)`,
     minHeight: "min(100vh, 60rem)",
 
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    paddingTop: theme.spacing(24)
+    paddingTop: theme.spacing(12)
 }))
 
 
 
 export const TextBox = styled(Stack)(({ theme }) => ({
-    alignItems: "start",
+    alignItems: "center",
+    textAlign: "center",
+    maxWidth: "60rem",
 
     [theme.breakpoints.down("md")]: {
         alignItems: "center",
         textAlign: "center"
     }
+}))
+
+
+
+export const Excellence = styled(Box)(({ theme }) => ({
+    background: theme.palette.neutral["100"],
+    borderRadius: theme.shape.roundedBorderRadius,
+    padding: `${theme.spacing(1)} ${theme.spacing(2)}`,
+    transition: "0.2s",
+
+    "&:hover": {
+        boxShadow: "0 1px 3px 0 hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1)"
+    }
+}))
+
+
+
+export const TitleGradient = styled(Typography)(({ theme }) => ({
+    background: "-webkit-linear-gradient(135deg, hsl(0 0% 38%) 0%, hsl(0 0% 0%) 100%)",
+    WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent"
 }))
 
 

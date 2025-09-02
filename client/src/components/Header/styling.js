@@ -1,7 +1,7 @@
 import { AppBar, Card, Stack, styled, Typography } from "@mui/material"
 
 export const NavigationBar = styled(AppBar)(({ theme }) => ({
-    backgroundColor: theme.palette.background.secondary,
+    backgroundColor: theme.palette.background.main,
     padding: `${theme.spacing(1)} ${theme.spacing(9)}`,
     [theme.breakpoints.down("lg")]: { padding: `${theme.spacing(1)} ${theme.spacing(5)}` },
     [theme.breakpoints.down("md")]: { padding: `${theme.spacing(1)} ${theme.spacing(3)}` },

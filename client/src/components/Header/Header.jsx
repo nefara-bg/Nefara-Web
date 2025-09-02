@@ -15,7 +15,7 @@ const Header = () => {
 
 
     return (
-        <NavigationBar elevation={0} position="fixed">
+        <NavigationBar elevation={2} position="fixed">
             <Toolbar>
                 <Stack direction={"row"} alignItems={"center"} gap={1}>
                     <ImageContainer

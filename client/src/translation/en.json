@@ -11,9 +11,11 @@
         "button": "Get Started"
     },
     "hero": {
-        "title": "Building software solutions",
+        "title": "Building Software",
+        "title2": "Solutions",
         "content": "At Nefara we build web, mobile, and desktop applications that help your business grow. Alongside our core development expertise, we also develop AI solutions that improve efficiency and open new opportunities.",
-        "button": "Get Started"
+        "button": "Get Started",
+        "secondaryButton": "View Our Services"
     },
     "services": {
         "title": "Our Services",
