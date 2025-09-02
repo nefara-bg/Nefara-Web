@@ -1,5 +1,5 @@
 import { Grid, Stack, Typography } from "@mui/material"
-import { ServiceContainer } from "../../../styling"
+import { ServiceContainer, StyledServiceCard } from "../../../styling"
 import ImageContainer from "../../../../../components/ImageContainer/ImageContainer"
 import { motion } from "motion/react";
 import ServiceCardContent from "./components/ServiceCardContent/ServiceCardContent";
@@ -67,67 +67,84 @@ const ServiceCard = ({ serviceObject }) => {
 
 
     return (
-        <Grid size={{ xs: 12, md: 6 }}>
-            <ServiceContainer container spacing={{ xs: 3, sm: 2, lg: 4 }}>
-                <Grid size={{ xs: 12, sm: 1.5, md: 2 }}>
-                    {
-                        serviceObject.icon &&
-                        <ImageContainer
-                            src={serviceObject.icon}
-                            alt="icon" 
-                            props={{ 
-                                sx: { 
-                                    width: { xs: "20%", sm: "100%" },
-                                    margin: { xs: "0 auto", sm: "0" }
-                                },
-                                component: motion.div,
-                                variants: iconVariants,
-                                initial: "initial",
-                                whileInView: "animate",
-                                viewport: { once: true }
-                            }} 
-                        />
-                    }
-                </Grid>
-                <Grid
-                    size="grow"
-                    display={"flex"}
-                    flexDirection={"column"}
-                    alignItems={{ xs: "center", sm: "start" }}
-                    component={motion.div}
-                    variants={textColVariants}
-                    initial="initial"
-                    whileInView="animate"
-                    viewport={{ once: true }}
+        <Grid size={{ xs: 12, md: 3 }}>
+            <StyledServiceCard>
+                <Typography
+                    variant="h5"
+                    color="neutral.main" 
+                    mb={1}
+                    width={0} 
+                    overflow={"hidden"} 
+                    whiteSpace={"nowrap"}
+                    component={motion.h5}
+                    variants={titleVariants}
                 >
-                    <Typography
-                        variant="h5"
-                        color="neutral.main" 
-                        mb={1}
-                        width={0} 
-                        overflow={"hidden"} 
-                        whiteSpace={"nowrap"}
-                        component={motion.h5}
-                        variants={titleVariants}
-                    >
-                        {serviceObject?.title}
-                    </Typography>
-                    
-                    <Stack
-                        gap={0.5}
-                        component={motion.div}
-                        variants={listVariants}
-                    >
-                        {serviceObject.content?.map((point, index) => (
-                            <ServiceCardContent
-                                key={index}
-                                content={point}
-                            />
-                        ))}
-                    </Stack>
-                </Grid>
-            </ServiceContainer>
+                    {serviceObject?.title}
+                </Typography>
+                <Typography variant="body2">{serviceObject?.text}</Typography>
+            </StyledServiceCard>
         </Grid>
+        // <Grid size={{ xs: 12, md: 6 }}>
+        //     <ServiceContainer container spacing={{ xs: 3, sm: 2, lg: 4 }}>
+        //         <Grid size={{ xs: 12, sm: 1.5, md: 2 }}>
+        //             {
+        //                 serviceObject.icon &&
+        //                 <ImageContainer
+        //                     src={serviceObject.icon}
+        //                     alt="icon" 
+        //                     props={{ 
+        //                         sx: { 
+        //                             width: { xs: "20%", sm: "100%" },
+        //                             margin: { xs: "0 auto", sm: "0" }
+        //                         },
+        //                         component: motion.div,
+        //                         variants: iconVariants,
+        //                         initial: "initial",
+        //                         whileInView: "animate",
+        //                         viewport: { once: true }
+        //                     }} 
+        //                 />
+        //             }
+        //         </Grid>
+        //         <Grid
+        //             size="grow"
+        //             display={"flex"}
+        //             flexDirection={"column"}
+        //             alignItems={{ xs: "center", sm: "start" }}
+        //             component={motion.div}
+        //             variants={textColVariants}
+        //             initial="initial"
+        //             whileInView="animate"
+        //             viewport={{ once: true }}
+        //         >
+                    // <Typography
+                    //     variant="h5"
+                    //     color="neutral.main" 
+                    //     mb={1}
+                    //     width={0} 
+                    //     overflow={"hidden"} 
+                    //     whiteSpace={"nowrap"}
+                    //     component={motion.h5}
+                    //     variants={titleVariants}
+                    // >
+                    //     {serviceObject?.title}
+                    // </Typography>
+                    
+        //             <Stack
+        //                 gap={0.5}
+        //                 component={motion.div}
+        //                 variants={listVariants}
+        //             >
+        //                 {serviceObject.content?.map((point, index) => (
+        //                     <ServiceCardContent
+        //                         key={index}
+        //                         content={point}
+        //                     />
+        //                 ))}
+        //             </Stack>
+        //         </Grid>
+        //     </ServiceContainer>
+        // </Grid>
     )
 }
 

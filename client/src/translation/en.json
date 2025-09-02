@@ -11,6 +11,7 @@
         "button": "Get Started"
     },
     "hero": {
+        "tag": "✨ Building Digital Excellence Since 2024",
         "title": "Building Software",
         "title2": "Solutions",
         "content": "At Nefara we build web, mobile, and desktop applications that help your business grow. Alongside our core development expertise, we also develop AI solutions that improve efficiency and open new opportunities.",
@@ -18,10 +19,13 @@
         "secondaryButton": "View Our Services"
     },
     "services": {
+        "tag": "🚀 What We Build",
         "title": "Our Services",
+        "content": "Comprehensive software development services designed to transform your ideas into powerful digital solutions that scale with your business.",
         "web": {
             "title": "Web Development",
             "content": {
+                "text": "Modern, responsive websites and web applications built with cutting-edge technologies that deliver exceptional user experiences.",
                 "content1": "Responsive design",
                 "content2": "Pure code",
                 "content3": "AI integrated"
@@ -30,6 +34,7 @@
         "mobile": {
             "title": "Mobile Apps",
             "content": {
+                "text": "Powerful desktop software solutions for Windows, macOS, and Linux with native performance and intuitive interfaces.",
                 "content1": "Cross platform for all operating systems",
                 "content2": "Secure applications",
                 "content3": "AI integrated"

@@ -1,10 +1,12 @@
 import { Box, Button, Grid, Stack, Typography } from "@mui/material"
 import { useTranslation } from "react-i18next"
 import { HashLink } from "react-router-hash-link"
-import { Excellence, HeroSection, TextBox, TitleGradient } from "../../styling"
+import { HeroSection, TextBox } from "../../styling"
 import ImageComposition from "./components/ImageComposition/ImageComposition"
 import { useParams } from "react-router-dom"
 import FadeInSection from "../../../../components/FadeInSection/FadeInSection"
+import SectionTag from "../../../../components/SectionTag/SectionTag"
+import TextGradient from "../../../../components/TextGradient/TextGradient"
 
 const Hero = () => {
     const { lng } = useParams()
@@ -20,13 +22,19 @@ const Hero = () => {
                 {/* <Grid container width={"min(100%, 128rem)"} alignItems={"center"} spacing={{ xs: 6, md: 8, lg: 16 }}> */}
                     {/* <Grid size={{ xs: 12, md: 7, lg: 6 }}> */}
                         <TextBox>
-                            <Excellence mb={6}>
-                                <Typography variant="body2">✨ Building Digital Excellence Since 2021</Typography>
-                            </Excellence>
+                            <SectionTag props={{ mb: 6 }} content={t("hero.tag")} />
 
                             <Typography mb={1.5} variant="h1" color={"neutral.main"}>
                                 {t("hero.title")}
-                                <TitleGradient variant="span" display={"block"}>{t("hero.title2")}</TitleGradient>
+                                {/* <TitleGradient variant="span" display={"block"}>{t("hero.title2")}</TitleGradient> */}
+                                <TextGradient
+                                    props={{
+                                        variant: "span",
+                                        display: "block"
+                                    }}
+                                >
+                                    {t("hero.title2")}
+                                </TextGradient>
                             </Typography>
                             <Typography variant="body1" fontSize={"1.8rem"} mb={6}>{t("hero.content")}</Typography>
                             <Stack direction={"row"} gap={2}>
