@@ -1,5 +1,5 @@
-import { CheckCircle } from "@mui/icons-material"
-import { Stack, Typography } from "@mui/material"
+import CircleIcon from '@mui/icons-material/Circle';
+import { ListItem, Stack, Typography } from "@mui/material"
 import { motion } from "motion/react"
 
 const ServiceCardContent = ({ content = "" }) => {
@@ -54,23 +54,22 @@ const ServiceCardContent = ({ content = "" }) => {
     return (
         <Stack
             direction="row"
-            alignItems="start"
+            alignItems="center"
             // justifyContent={"center"}
-            spacing={1}
+            spacing={1.5}
             // pl={2}
             component={motion.div}
             variants={containerVariants}
         >
-            <CheckCircle
-                sx={{ color: "primary.main" }}
-                component={motion.svg}
-                variants={iconVariants}
+            <CircleIcon
+                sx={{ width: "0.5rem", height: "0.5rem" }}
             />
             <Typography
                 variant="body2"
                 textAlign={"start"}
                 component={motion.p}
                 variants={textVariants}
+                fontWeight={"500"}
             >
                 {content}
             </Typography>

@@ -12,9 +12,9 @@
     },
     "hero": {
         "tag": "✨ Building Digital Excellence Since 2024",
-        "title": "Building Software",
+        "title": "Custom Software",
         "title2": "Solutions",
-        "content": "At Nefara we build web, mobile, and desktop applications that help your business grow. Alongside our core development expertise, we also develop AI solutions that improve efficiency and open new opportunities.",
+        "content": "Transform your ideas into powerful digital experiences. We craft exceptional websites, desktop applications, and mobile appsthat drive real business results.",
         "button": "Get Started",
         "secondaryButton": "View Our Services"
     },
@@ -43,17 +43,10 @@
         "desktop": {
             "title": "Desktop Apps",
             "content": {
+                "text": "Powerful desktop software solutions for Windows, macOS, and Linux with native performance and intuitive interfaces.",
                 "content1": "Cross platform for all operating systems",
                 "content2": "High performance",
                 "content3": "AI integrated"
-            }
-        },
-        "software": {
-            "title": "Software Solutions",
-            "content": {
-                "content1": "End-to-End Services",
-                "content2": "Future-Ready Tech",
-                "content3": "Problem-Solving Focus"
             }
         }
     },

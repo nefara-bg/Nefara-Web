@@ -61,9 +61,15 @@ export const TextBox = styled(Stack)(({ theme }) => ({
 
 
 export const StyledServiceCard = styled(Card)(({ theme }) => ({
-    padding: `${theme.spacing(3)} ${theme.spacing(2)}`,
+    padding: theme.spacing(3),
+    paddingBottom: theme.spacing(5),
     backgroundColor: "linear-gradient(145deg, hsl(0 0 100%) 0%, hsl(0 0 98%) 100%)",
-    textAlign: "center"
+    textAlign: "center",
+    height: "100%",
+    transition: "0.5s",
+    "&:hover": {
+        transform: "scale(1.05)"
+    }
 }))
 
 

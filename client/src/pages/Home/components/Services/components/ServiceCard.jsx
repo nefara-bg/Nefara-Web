@@ -1,38 +1,41 @@
-import { Grid, Stack, Typography } from "@mui/material"
+import { Grid, List, Stack, Typography } from "@mui/material"
 import { ServiceContainer, StyledServiceCard } from "../../../styling"
 import ImageContainer from "../../../../../components/ImageContainer/ImageContainer"
-import { motion } from "motion/react";
+import { motion, useAnimate } from "motion/react";
 import ServiceCardContent from "./components/ServiceCardContent/ServiceCardContent";
+import CircleIcon from '@mui/icons-material/Circle';
+import { useEffect, useRef, useState } from "react";
+import { theme } from "../../../../../theme/theme";
 
 const ServiceCard = ({ serviceObject }) => {
-    const iconVariants = {
-        initial: {
-            scale: 0
-        },
-        animate: {
-            scale: 1,
-            transition: {
-                duration: 1.2,
-                type: "spring"
-            }
-        }
-    }
+    // const iconVariants = {
+    //     initial: {
+    //         scale: 0
+    //     },
+    //     animate: {
+    //         scale: 1,
+    //         transition: {
+    //             duration: 1.2,
+    //             type: "spring"
+    //         }
+    //     }
+    // }
 
 
 
-    const textColVariants = {
-        initial: {
-            opacity: 0
-        },
-        animate: {
-            opacity: 1,
-            transition: {
-                duration: 0.2,
-                staggerChildren: 0.3,
-                when: "beforeChildren"
-            }
-        }
-    }
+    // const textColVariants = {
+    //     initial: {
+    //         opacity: 0
+    //     },
+    //     animate: {
+    //         opacity: 1,
+    //         transition: {
+    //             duration: 0.2,
+    //             staggerChildren: 0.3,
+    //             when: "beforeChildren"
+    //         }
+    //     }
+    // }
 
 
 
@@ -45,6 +48,12 @@ const ServiceCard = ({ serviceObject }) => {
             transition: {
                 duration: 3
             }
+        },
+        hover: {
+            color: theme.palette.neutral["600"]
+        },
+        unhover: {
+            color: theme.palette.neutral.main
         }
     }
 
@@ -65,10 +74,31 @@ const ServiceCard = ({ serviceObject }) => {
     }
 
 
+    const [scope, animate] = useAnimate()
+    const titleRef = useRef(null)
+
+    const [hovered, setHovered] = useState(false)
+
+    useEffect(() => {
+        if(hovered) animate(titleRef.current, titleVariants.hover, { duration: 0.5 })
+        else animate(titleRef.current, titleVariants.unhover, { duration: 0.5 })
+    }, [hovered])
+
+
 
     return (
-        <Grid size={{ xs: 12, md: 3 }}>
-            <StyledServiceCard>
+        <Grid size={{ xs: 12, md: 4 }}>
+            <StyledServiceCard component={motion.div} ref={scope} variant="outlined" onMouseEnter={() => setHovered(true)} onMouseOut={() => setHovered(false)}>
+                <ImageContainer
+                    src={serviceObject?.image}
+                    imgClass="service-img"
+                    props={{
+                        borderRadius: "1rem",
+                        overflow: "hidden",
+                        marginBottom: "1.5rem"
+                    }}
+                />
+
                 <Typography
                     variant="h5"
                     color="neutral.main" 
@@ -78,10 +108,24 @@ const ServiceCard = ({ serviceObject }) => {
                     whiteSpace={"nowrap"}
                     component={motion.h5}
                     variants={titleVariants}
+                    ref={titleRef}
                 >
                     {serviceObject?.title}
                 </Typography>
-                <Typography variant="body2">{serviceObject?.text}</Typography>
+                <Typography variant="body2" mb={3}>{serviceObject?.text}</Typography>
+
+                <Stack
+                    gap={1}
+                    component={motion.div}
+                    variants={listVariants}
+                >
+                    {serviceObject.content?.map((point, index) => (
+                        <ServiceCardContent
+                            key={index}
+                            content={point}
+                        />
+                    ))}
+                </Stack>
             </StyledServiceCard>
         </Grid>
         // <Grid size={{ xs: 12, md: 6 }}>
@@ -130,18 +174,18 @@ const ServiceCard = ({ serviceObject }) => {
                     //     {serviceObject?.title}
                     // </Typography>
                     
-        //             <Stack
-        //                 gap={0.5}
-        //                 component={motion.div}
-        //                 variants={listVariants}
-        //             >
-        //                 {serviceObject.content?.map((point, index) => (
-        //                     <ServiceCardContent
-        //                         key={index}
-        //                         content={point}
-        //                     />
-        //                 ))}
-        //             </Stack>
+                    // <Stack
+                    //     gap={0.5}
+                    //     component={motion.div}
+                    //     variants={listVariants}
+                    // >
+                    //     {serviceObject.content?.map((point, index) => (
+                    //         <ServiceCardContent
+                    //             key={index}
+                    //             content={point}
+                    //         />
+                    //     ))}
+                    // </Stack>
         //         </Grid>
         //     </ServiceContainer>
         // </Grid>

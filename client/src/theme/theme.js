@@ -49,7 +49,7 @@ export const theme = createTheme({
         fontFamily: ["Inter", 'sans-serif'].join(","),
         h1: { 
             ...headingStyles,
-            fontSize: "6.4rem"
+            fontSize: "6rem"
         },
         h2: { ...headingStyles },
         h3: { ...headingStyles },
@@ -110,6 +110,14 @@ theme.typography.h3 = {
 }
 
 theme.components.MuiButton.styleOverrides.outlinedPrimary = {
-        backgroundColor: theme.palette.background.main,
-        border: `solid 2px ${theme.palette.border.main}`
+    backgroundColor: theme.palette.background.main,
+    border: `solid 2px ${theme.palette.border.main}`
+}
+
+theme.components.MuiPaper = {
+    styleOverrides: {
+        outlined: {
+            border: `solid 2px ${theme.palette.border.main}`
+        }
     }
+}

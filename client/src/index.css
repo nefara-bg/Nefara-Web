@@ -24,6 +24,11 @@ a {
     animation: charm-spin 10s linear reverse infinite;
 }
 
+.service-img {
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
 .scale-in {
     /* animation: scale-in 0.5s ease-in-out; */
 }
