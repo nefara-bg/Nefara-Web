@@ -117,7 +117,22 @@ theme.components.MuiButton.styleOverrides.outlinedPrimary = {
 theme.components.MuiPaper = {
     styleOverrides: {
         outlined: {
-            border: `solid 2px ${theme.palette.border.main}`
+            border: `solid 2px ${theme.palette.border.main}`,
+            transition: ".2s",
+            "&:hover": {
+                boxShadow: `0 0 24px ${theme.palette.neutral["200"]}`
+            }
+        },
+        elevation2: {
+            boxShadow: `0 0 16px ${theme.palette.neutral["400"]}`
+        }
+    }
+}
+
+theme.components.MuiCard = {
+    styleOverrides: {
+        outlined: {
+            
         }
     }
 }

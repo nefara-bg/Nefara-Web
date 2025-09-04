@@ -27,7 +27,7 @@ const Header = () => {
                             }
                         }}
                     />
-                    <Typography variant="h5" sx={{ userSelect: "none" }} color="#0d3163">Nefara</Typography>
+                    <Typography variant="h5" sx={{ userSelect: "none" }} color="primary">Nefara</Typography>
                 </Stack>
                 
                 <Stack flex={1} direction={"row"} alignItems={"center"} justifyContent={"end"} gap={{ xs: 3, lg: 5 }} sx={{ display: { xs: "none", md: "flex" } }}>
