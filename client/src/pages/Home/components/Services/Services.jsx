@@ -1,4 +1,4 @@
-import { Box, Divider, duration, Grid, Typography } from "@mui/material"
+import { Box, Button, Divider, duration, Grid, Stack, Typography } from "@mui/material"
 import ServiceCard from "./components/ServiceCard"
 import web from "../../../../img/web.webp"
 import webDev from "../../../../img/webDev.webp"
@@ -12,8 +12,14 @@ import FadeInSection from "../../../../components/FadeInSection/FadeInSection"
 import SectionTag from "../../../../components/SectionTag/SectionTag"
 import TextGradient from "../../../../components/TextGradient/TextGradient"
 import { motion } from "motion/react"
+import { HashLink } from "react-router-hash-link"
+import { useParams } from "react-router-dom"
 
 const Services = () => {
+    const { lng } = useParams()
+
+
+
     const { t } = useTranslation()
 
 
@@ -102,6 +108,7 @@ const Services = () => {
                     variants={gridVariants}
                     initial="initial"
                     whileInView="animate"
+                    mb={8}
                 >
                     {
                         services.map((service, i) => (
@@ -109,6 +116,12 @@ const Services = () => {
                         ))
                     }
                 </Grid>
+
+                <Stack gap={3} alignItems={"center"}>
+                    <Typography variant="body2">{t("services.subtext")}</Typography>
+
+                    <HashLink to={`/${lng}/#contact`}><Button size="large" variant="contained" color="primary">{t("services.button")} 💬</Button></HashLink>
+                </Stack>
             </HomeContainer>
         </FadeInSection>
     )
