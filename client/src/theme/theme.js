@@ -10,7 +10,7 @@ export const theme = createTheme({
     palette: {
         background: {
             main: "hsl(0, 0%, 100%)",
-            secondary: "#f4f8ffff",
+            secondary: "#f0f0f0ff",
             // secondary: "linear-gradient(135deg, hsl(0, 0%, 100%) 0%, hsl(0, 0%, 98%) 50%, hsl(0, 0%, 96%) 100%)"
         },
         primary: {

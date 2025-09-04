@@ -1,4 +1,4 @@
-import { Grid, Typography } from "@mui/material"
+import { Grid, Stack, Typography } from "@mui/material"
 import AboutCard from "./components/AboutCard/AboutCard"
 import solutions from "../../../../img/solutions.webp"
 import code from "../../../../img/code.webp"
@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next"
 import { HomeContainer } from "../../styling"
 import FadeInSection from "../../../../components/FadeInSection/FadeInSection"
 import { motion } from "motion/react"
+import TextGradient from "../../../../components/TextGradient/TextGradient"
 
 const About = () => {
     const { t } = useTranslation()
@@ -33,6 +34,14 @@ const About = () => {
 
 
 
+    const stats = [
+        { number: "3+", label: "Years Experience", icon: "📅" },
+        { number: "24/7", label: "Support Available", icon: "💬" },
+        { number: "100%", label: "Client Satisfaction", icon: "⭐" }
+    ]
+
+
+
     const gridVariants = {
         initial: {},
         animate: {
@@ -49,7 +58,10 @@ const About = () => {
     return (
         <FadeInSection>
             <HomeContainer id="about">
-                <Typography variant="h3" textAlign={"center"} color="neutral.main" mb={4}>{t("about.title")}</Typography>
+                <Stack maxWidth={"60rem"} mb={10} textAlign={"center"}>
+                    <Typography mb={3} variant="h3" color="neutral.main">{t("about.title")} <TextGradient props={{ variant: "span" }}>Nefara</TextGradient></Typography>
+                    <Typography variant="body1">{t("about.content")}</Typography>
+                </Stack>
                 <Grid
                     component={motion.div}
                     container
@@ -62,8 +74,8 @@ const About = () => {
                     mx={"auto"}
                 > 
                     {
-                        reasons.map((reason, i) => (
-                            <AboutCard cardContent={reason} key={i} />
+                        stats.map((stat, i) => (
+                            <AboutCard cardContent={stat} key={i} />
                         ))
                     }
                 </Grid>

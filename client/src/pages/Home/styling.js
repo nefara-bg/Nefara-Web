@@ -13,7 +13,6 @@ export const HomeContainer = styled(Stack)(({ theme }) => ({
 export const StyledCard = styled(Card)(({ theme }) => ({
     textAlign: "center",
     height: "100%",
-    background: theme.palette.background.secondary,
     display: "flex",
     flexDirection: "column",
     alignItems: "center",

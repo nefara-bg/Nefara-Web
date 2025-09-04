@@ -26,7 +26,7 @@ const AboutCard = ({ cardContent }) => {
             variants={cardVariants}
         >
             <StyledCard
-                variant="outlined"    
+                variant="outlined"  
                 component={motion.div}
                 initial={{ scale: 1 }}
                 whileHover={{
@@ -40,20 +40,10 @@ const AboutCard = ({ cardContent }) => {
             >
                 {
                     cardContent.icon &&
-                    <ImageContainer
-                        src={cardContent?.icon}
-                        alt={cardContent?.title}
-                        props={{
-                            sx: { 
-                                display: "flex",
-                                width: { xs: "30%", sm: "40%", md: "min(30%, 8rem)" } 
-                            },
-                            mb: 3
-                        }}
-                    />
+                    <Typography variant="h3" mb={2}>{cardContent?.icon}</Typography>
                 }
-                <Typography variant="h5" color="neutral.main" mb={1}>{cardContent?.title}</Typography>
-                <Typography variant="body2">{cardContent?.content}</Typography>
+                <Typography variant="h4" color="neutral.main" mb={0.5}>{cardContent?.number}</Typography>
+                <Typography variant="body2" fontWeight={"bold"}>{cardContent?.label}</Typography>
             </StyledCard>
         </Grid>
     )

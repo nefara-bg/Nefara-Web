@@ -90,7 +90,7 @@ const Services = () => {
                             variant: "h3",
                             textAlign: "center",
                             color: "neutral.main",
-                            mb: 1
+                            mb: 3
                         }}
                     >
                         {t("services.title")}

@@ -53,7 +53,8 @@
         "button": "Discuss Your Project"
     },
     "about": {
-        "title": "Why Choose Us",
+        "title": "Why Choose",
+        "content": "We're not just developers — we're your digital transformation partners, committed to turning your vision into reality with precision and creativity.",
         "devs": {
             "title": "Developers",
             "content": "We are a team of young people with numerous achievements in competitions, including the largest international student hackathon in the world. We are graduates of TUES at TU Sofia - the best IT high school on the Balkan Peninsula. From an early age, we have been working on software projects and integrating artificial intelligence, and one of our members already has several published scientific papers."
