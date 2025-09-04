@@ -49,7 +49,7 @@ export const theme = createTheme({
         fontFamily: ["Inter", 'sans-serif'].join(","),
         h1: { 
             ...headingStyles,
-            fontSize: "6rem"
+            fontSize: "5.4rem"
         },
         h2: { ...headingStyles },
         h3: { ...headingStyles },

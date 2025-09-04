@@ -16,7 +16,7 @@ const Header = () => {
 
     return (
         <NavigationBar elevation={2} position="fixed">
-            <Toolbar>
+            <Toolbar maxWidth="96rem" sx={{ width: "min(100%, 96rem)", mx: "auto" }} mx={"auto"}>
                 <Stack direction={"row"} alignItems={"center"} gap={1}>
                     <ImageContainer
                         src={logo}

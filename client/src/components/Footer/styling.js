@@ -1,7 +1,9 @@
-import { Stack, styled, Typography } from "@mui/material"
+import { Box, Stack, styled, Typography } from "@mui/material"
 
 export const FooterContainer = styled(Stack)(({ theme }) => ({
-    background: theme.palette.primary.darker,
+    background: `linear-gradient(135deg, ${theme.palette.primary.main} 0%, ${theme.palette.neutral["700"]} 50%, ${theme.palette.neutral["900"]} 100%)`,
+    position: "relative",
+    zIndex: 10,
     padding: `${theme.spacing(9)} ${theme.spacing(12)}`,
     [theme.breakpoints.down("sm")]: { padding: `${theme.spacing(6)} ${theme.spacing(2)}` },
 
@@ -11,11 +13,11 @@ export const FooterContainer = styled(Stack)(({ theme }) => ({
 
 
 export const FooterLink = styled(Typography)(({ theme }) => ({
-    color: theme.palette.primary.lighter,
+    color: theme.palette.neutral["400"],
     transition: ".2s",
 
     "&:hover": {
-        color: theme.palette.primary.light
+        color: theme.palette.neutral["100"]
     },
 
     flexWrap: "nowrap",

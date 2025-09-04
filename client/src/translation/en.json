@@ -102,8 +102,21 @@
         "call": "Prefer to call?"
     },
     "footer": {
-        "text": "Web, mobile and desktop applications for your business.",
-        "copyright": "Nefara - All rights reserved."
+        "text": "Transforming ideas into exceptional software solutions. Building the future, one application at a time. Your success is our mission.",
+        "services": {
+            "title": "Our Services",
+            "web": "Web Development",
+            "desktop": "Desktop Applications",
+            "mobile": "Mobile Apps",
+            "consulting": "Consulting"
+        },
+        "contact": {
+            "title": "Get in Touch",
+            "email": "Email",
+            "phone": "Phone"
+        },
+        "copyright": "Nefara - All rights reserved.",
+        "back": "Back to Top"
     },
     "notFound": {
         "title": "Not found!",

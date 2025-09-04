@@ -108,6 +108,7 @@ const Services = () => {
                     variants={gridVariants}
                     initial="initial"
                     whileInView="animate"
+                    viewport={{ once: true }}
                     mb={8}
                 >
                     {

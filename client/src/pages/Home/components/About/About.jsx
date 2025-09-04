@@ -64,7 +64,7 @@ const About = () => {
 
     return (
         <FadeInSection>
-            <AboutSection id="about">
+            <AboutSection id="about" width={"min(100%, 96rem)"} mx={"auto"}>
                 <Stack mb={10}>
                     <Stack maxWidth={"60rem"} mb={10} textAlign={"center"}>
                         <Typography mb={3} variant="h3" color="neutral.main">{t("about.title")} <TextGradient props={{ variant: "span" }}>Nefara</TextGradient></Typography>
