@@ -65,15 +65,41 @@
         "paragraph2": "Whether you're a startup disrupting an industry or an enterprise optimizing operations, we scale our approach to match your ambitions and timeline."
     },
     "contact": {
-        "title": "Get in Touch",
-        "content": "Ready to start your project? Contact us now. We will review your request and get back to you as soon as possible to hopefully start working together.",
-        "email": "Your email",
+        "tag": "Ready to Start?",
+        "title": "Let's Build Something",
+        "subtitle": "Amazing Together",
+        "content": "Turn your vision into reality. Share your project details and we'll craft a custom solution that exceeds your expectations.",
+        "emailTitle": "Email Us",
+        "emailContent": "Get in touch via email",
+        "phoneTitle": "Call Us",
+        "phoneContent": "Speak directly with our team",
+        "formTitle": "Send us a message",
+        "formText": "Fill out the form below and we'll get back to you as soon as possible.",
+        "email": "Email",
+        "emailPlaceholder": "your@email.com",
         "subject": "Subject",
+        "subjectPlaceholder": "Company website",
         "message": "Your message",
-        "button": "Contact Us",
+        "messagePlaceholder": "Tell us about your project goals, timeline and any specific requirements...",
+        "button": "Send Message 🚀",
         "loading": "Sending...",
         "divider": "You can also reach us at",
-        "alert": "Your message was successfully sent."
+        "alert": "Your message was successfully sent.",
+        "error": "Something went wrong. Please try again.",
+        "infoTitle": "Why Work With Us?",
+        "time": {
+            "title": "Fast Response Time",
+            "content": "We respond to all inquiries as soon as possible."
+        },
+        "consultation": {
+            "title": "Free Consultation",
+            "content": "Discovery calls to discuss your needs."
+        },
+        "proposals": {
+            "title": "Custom Proposals",
+            "content": "Tailored solutions and transparent pricing."
+        },
+        "call": "Prefer to call?"
     },
     "footer": {
         "text": "Web, mobile and desktop applications for your business.",

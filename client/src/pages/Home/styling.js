@@ -25,7 +25,7 @@ export const StyledCard = styled(Card)(({ theme }) => ({
 
 
 export const ContactSection = styled(HomeContainer)(({ theme }) => ({
-    background: theme.palette.background.secondary,
+    background: theme.palette.background.main,
     minHeight: "min(100vh, 60rem)",
 
     display: "flex"
@@ -108,4 +108,33 @@ export const AboutSection = styled(HomeContainer)(({ theme }) => ({
 
 export const StyledFeatureCard = styled(Card)(({ theme }) => ({
     padding: theme.spacing(3)
+}))
+
+
+
+export const StyledContactCard = styled(Card)(({ theme }) => ({
+    padding: theme.spacing(4),
+    transition: "0.2s",
+    height: "100%",
+    "&:hover": {
+        scale: 1.05
+    }
+}))
+
+
+
+export const ContactInfoBox = styled(Grid)(({ theme }) => ({
+    background: `linear-gradient(135deg, ${theme.palette.primary.main} 0%, ${theme.palette.neutral["700"]} 50%, ${theme.palette.neutral["900"]} 100%)`
+}))
+
+
+
+export const CheckBox = styled(Stack)(({ theme }) => ({
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: "100%",
+    background: theme.palette.neutral["600"],
+    width: theme.spacing(3),
+    height: theme.spacing(3),
+    aspectRatio: "1 / 1"
 }))

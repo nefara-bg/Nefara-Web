@@ -39,7 +39,7 @@ const Hero = () => {
                             <Typography variant="body1" fontSize={"1.5rem"} mb={6}>{t("hero.content")}</Typography>
                             <Stack direction={"row"} gap={2}>
                                 <HashLink to={`/${lng}/#contact`}><Button variant="contained" size="large" color="primary">{t("hero.button")}</Button></HashLink>
-                                <HashLink to={`/${lng}/#contact`}><Button variant="outlined" size="large" color="primary">{t("hero.secondaryButton")}</Button></HashLink>
+                                <HashLink to={`/${lng}/#services`}><Button variant="outlined" size="large" color="primary">{t("hero.secondaryButton")}</Button></HashLink>
                             </Stack>
                         </TextBox>
                     {/* </Grid> */}
