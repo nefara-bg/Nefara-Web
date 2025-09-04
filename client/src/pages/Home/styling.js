@@ -1,4 +1,4 @@
-import { Card, Grid, Stack, styled, Typography } from "@mui/material";
+import { Box, Card, Grid, Stack, styled, Typography } from "@mui/material";
 
 export const HomeContainer = styled(Stack)(({ theme }) => ({
     padding: `${theme.spacing(9)} ${theme.spacing(12)}`,
@@ -69,8 +69,23 @@ export const StyledServiceCard = styled(Card)(({ theme }) => ({
     transition: "0.5s",
     "&:hover": {
         transform: "scale(1.05)"
-    }
+    },
+    overflow: "hidden",
+    position: "relative",
+    display: "flex",
+    flexDirection: "column"
 }))
+
+
+
+export const ServiceOverlay = styled(Box)({
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    opacity: 0
+})
 
 
 
