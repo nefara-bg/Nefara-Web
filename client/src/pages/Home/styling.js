@@ -97,3 +97,15 @@ export const ServiceContainer = styled(Grid)(({ theme }) => ({
         padding: `${theme.spacing(6)} ${theme.spacing(4)}`
     }
 }))
+
+
+
+export const AboutSection = styled(HomeContainer)(({ theme }) => ({
+    background: `linear-gradient(145deg, ${theme.palette.background.main} 0%, ${theme.palette.neutral["50"]} 100%)`
+}))
+
+
+
+export const StyledFeatureCard = styled(Card)(({ theme }) => ({
+    padding: theme.spacing(3)
+}))

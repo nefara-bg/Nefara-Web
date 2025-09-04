@@ -55,18 +55,14 @@
     "about": {
         "title": "Why Choose",
         "content": "We're not just developers — we're your digital transformation partners, committed to turning your vision into reality with precision and creativity.",
-        "devs": {
-            "title": "Developers",
-            "content": "We are a team of young people with numerous achievements in competitions, including the largest international student hackathon in the world. We are graduates of TUES at TU Sofia - the best IT high school on the Balkan Peninsula. From an early age, we have been working on software projects and integrating artificial intelligence, and one of our members already has several published scientific papers."
-        },
-        "code": {
-            "title": "Efficiency",
-            "content": "Our experience in hackathons and competitions has made us efficient and fast at writing code. We guarantee fast and personalized services at a high professional level, as well as support if the client wants it."
-        },
-        "solutions": {
-            "title": "Code",
-            "content": "Our code is entirely written by us without any third-party services that would incur additional costs for you. We strive to keep up with trends and use the latest technologies such as ReactJS, React Native, ThreeJS, Motion, ElectronJS, Java Spring Boot, Django Rest Framework, FastAPI, NodeJS, PyTorch, Pandas, TensorFlow, Cloud Services, and Docker."
-        }
+        "experience": "Years Experience",
+        "support": "Support Available",
+        "client": "Client Satisfaction",
+        "tag": "Our Mission",
+        "subtitle": "Transforming Your Ideas Into",
+        "subtitle2": "Digital Excellence",
+        "paragraph1": "From concept to deployment, we handle every aspect of your software development journey. Our team combines technical expertise with creative problem-solving to deliver solutions that exceed expectations.",
+        "paragraph2": "Whether you're a startup disrupting an industry or an enterprise optimizing operations, we scale our approach to match your ambitions and timeline."
     },
     "contact": {
         "title": "Get in Touch",
