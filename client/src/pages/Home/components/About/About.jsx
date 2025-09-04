@@ -10,6 +10,7 @@ import { motion } from "motion/react"
 import TextGradient from "../../../../components/TextGradient/TextGradient"
 import SectionTag from "../../../../components/SectionTag/SectionTag"
 import FeatureCard from "./components/FeatureCard/FeatureCard"
+import SectionContainer from "../SectionContainer/SectionContainer"
 
 const About = () => {
     const { t } = useTranslation()
@@ -64,62 +65,62 @@ const About = () => {
 
     return (
         <FadeInSection>
-            <AboutSection id="about" width={"min(100%, 96rem)"} mx={"auto"}>
-                <Stack mb={10}>
-                    <Stack maxWidth={"60rem"} mb={10} textAlign={"center"}>
-                        <Typography mb={3} variant="h3" color="neutral.main">{t("about.title")} <TextGradient props={{ variant: "span" }}>Nefara</TextGradient></Typography>
-                        <Typography variant="body1">{t("about.content")}</Typography>
-                    </Stack>
-                    <Grid
-                        component={motion.div}
-                        container
-                        spacing={3}
-                        variants={gridVariants}
-                        initial="initial"
-                        whileInView="animate"
-                        viewport={{ once: true }}
-                        width={"min(100%, 128rem)"}
-                        mx={"auto"}
-                    > 
-                        {
-                            stats.map((stat, i) => (
-                                <AboutCard cardContent={stat} key={i} />
-                            ))
-                        }
-                    </Grid>
-                </Stack>
-
-
-                <Grid container width={"100%"} spacing={10}>
-                    <Grid size={6}>
-                        <SectionTag
-                            content={`🎯 ${t("about.tag")}`}
-                            props={{ mb: 4 }}
-                        />
-
-                        <Stack gap={4}>
-                            <Typography variant="h4">
-                                {t("about.subtitle")} <Typography variant="span" sx={{ color: "neutral.600" }}>{t("about.subtitle2")}</Typography>
-                            </Typography>
-
-                            <Typography variant="body1">{t("about.paragraph1")}</Typography>
-                            <Typography variant="body1">{t("about.paragraph2")}</Typography>
+            <AboutSection id="about">
+                <SectionContainer props={{ component: Stack, alignItems: "center" }}>
+                    <Stack mb={10}>
+                        <Stack maxWidth={"60rem"} mb={10} textAlign={"center"}>
+                            <Typography mb={3} variant="h3" color="neutral.main">{t("about.title")} <TextGradient props={{ variant: "span" }}>Nefara</TextGradient></Typography>
+                            <Typography variant="body1">{t("about.content")}</Typography>
                         </Stack>
-                    </Grid>
-
-                    <Grid size="grow">
-                        <Stack gap={3}>
+                        <Grid
+                            component={motion.div}
+                            container
+                            spacing={3}
+                            variants={gridVariants}
+                            initial="initial"
+                            whileInView="animate"
+                            viewport={{ once: true }}
+                        > 
                             {
-                                features.map((feature, i) => (
-                                    <FeatureCard
-                                        key={i}
-                                        feature={feature}
-                                    />
+                                stats.map((stat, i) => (
+                                    <AboutCard cardContent={stat} key={i} />
                                 ))
                             }
-                        </Stack>
+                        </Grid>
+                    </Stack>
+
+
+                    <Grid container width={"100%"} spacing={10}>
+                        <Grid size={6}>
+                            <SectionTag
+                                content={`🎯 ${t("about.tag")}`}
+                                props={{ mb: 4 }}
+                            />
+
+                            <Stack gap={4}>
+                                <Typography variant="h4">
+                                    {t("about.subtitle")} <Typography variant="span" sx={{ color: "neutral.600" }}>{t("about.subtitle2")}</Typography>
+                                </Typography>
+
+                                <Typography variant="body1">{t("about.paragraph1")}</Typography>
+                                <Typography variant="body1">{t("about.paragraph2")}</Typography>
+                            </Stack>
+                        </Grid>
+
+                        <Grid size="grow">
+                            <Stack gap={3}>
+                                {
+                                    features.map((feature, i) => (
+                                        <FeatureCard
+                                            key={i}
+                                            feature={feature}
+                                        />
+                                    ))
+                                }
+                            </Stack>
+                        </Grid>
                     </Grid>
-                </Grid>
+                </SectionContainer>
             </AboutSection>
         </FadeInSection>
     )

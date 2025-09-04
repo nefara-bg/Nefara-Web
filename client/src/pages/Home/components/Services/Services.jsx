@@ -14,6 +14,7 @@ import TextGradient from "../../../../components/TextGradient/TextGradient"
 import { motion } from "motion/react"
 import { HashLink } from "react-router-hash-link"
 import { useParams } from "react-router-dom"
+import SectionContainer from "../SectionContainer/SectionContainer"
 
 const Services = () => {
     const { lng } = useParams()
@@ -82,47 +83,47 @@ const Services = () => {
     return (
         <FadeInSection>
             <HomeContainer id="services">
-                <SectionTag props={{ mb: 4 }} content={t("services.tag")} />
+                <SectionContainer props={{ component: Stack, alignItems: "center" }}>
+                    <SectionTag props={{ mb: 4 }} content={t("services.tag")} />
 
-                <Box maxWidth={"60rem"}>
-                    <TextGradient 
-                        props={{
-                            variant: "h3",
-                            textAlign: "center",
-                            color: "neutral.main",
-                            mb: 3
-                        }}
+                    <Box maxWidth={"60rem"}>
+                        <TextGradient 
+                            props={{
+                                variant: "h3",
+                                textAlign: "center",
+                                color: "neutral.main",
+                                mb: 3
+                            }}
+                        >
+                            {t("services.title")}
+                        </TextGradient>
+
+                        <Typography textAlign={"center"} mb={6} variant="body1">{t("services.content")}</Typography>
+                    </Box>
+
+                    <Grid
+                        container
+                        spacing={{ xs: 4, sm: 8, md: 4, lg: 4 }}
+                        component={motion.div}
+                        variants={gridVariants}
+                        initial="initial"
+                        whileInView="animate"
+                        viewport={{ once: true }}
+                        mb={8}
                     >
-                        {t("services.title")}
-                    </TextGradient>
+                        {
+                            services.map((service, i) => (
+                                <ServiceCard serviceObject={service} key={i} />
+                            ))
+                        }
+                    </Grid>
 
-                    <Typography textAlign={"center"} mb={6} variant="body1">{t("services.content")}</Typography>
-                </Box>
+                    <Stack gap={3} alignItems={"center"}>
+                        <Typography variant="body2">{t("services.subtext")}</Typography>
 
-                <Grid 
-                    width={"min(100%, 96rem)"}
-                    mx={"auto"}
-                    container
-                    spacing={{ xs: 4, sm: 8, md: 4, lg: 4 }}
-                    component={motion.div}
-                    variants={gridVariants}
-                    initial="initial"
-                    whileInView="animate"
-                    viewport={{ once: true }}
-                    mb={8}
-                >
-                    {
-                        services.map((service, i) => (
-                            <ServiceCard serviceObject={service} key={i} />
-                        ))
-                    }
-                </Grid>
-
-                <Stack gap={3} alignItems={"center"}>
-                    <Typography variant="body2">{t("services.subtext")}</Typography>
-
-                    <HashLink to={`/${lng}/#contact`}><Button size="large" variant="contained" color="primary">{t("services.button")} 💬</Button></HashLink>
-                </Stack>
+                        <HashLink to={`/${lng}/#contact`}><Button size="large" variant="contained" color="primary">{t("services.button")} 💬</Button></HashLink>
+                    </Stack>
+                </SectionContainer>
             </HomeContainer>
         </FadeInSection>
     )
