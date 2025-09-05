@@ -24,23 +24,23 @@ const About = () => {
 
      const features = [
         {
-            title: "Agile Development",
-            description: "Fast, iterative development cycles that adapt to your changing needs",
+            title: t("about.agile.title"),
+            description: t("about.agile.content"),
             icon: "⚡"
         },
         {
-            title: "Modern Tech Stack", 
-            description: "Latest technologies and best practices for optimal performance",
+            title: t("about.tech.title"),
+            description: t("about.tech.content"),
             icon: "💻"
         },
         {
-            title: "24/7 Support",
-            description: "Round-the-clock assistance to keep your applications running smoothly", 
+            title: t("about.featureSupport.title"),
+            description: t("about.featureSupport.content"),
             icon: "🛟"
         },
         {
-            title: "Quality Assurance",
-            description: "Rigorous testing processes to ensure bug-free, reliable software",
+            title: t("about.quality.title"),
+            description: t("about.quality.content"),
             icon: "🔍"
         }
     ];

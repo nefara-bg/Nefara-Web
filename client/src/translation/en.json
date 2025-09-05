@@ -62,7 +62,23 @@
         "subtitle": "Transforming Your Ideas Into",
         "subtitle2": "Digital Excellence",
         "paragraph1": "From concept to deployment, we handle every aspect of your software development journey. Our team combines technical expertise with creative problem-solving to deliver solutions that exceed expectations.",
-        "paragraph2": "Whether you're a startup disrupting an industry or an enterprise optimizing operations, we scale our approach to match your ambitions and timeline."
+        "paragraph2": "Whether you're a startup disrupting an industry or an enterprise optimizing operations, we scale our approach to match your ambitions and timeline.",
+        "agile": {
+            "title": "Agile Development",
+            "content": "Fast, iterative development cycles that adapt to your changing needs"
+        },
+        "tech": {
+            "title": "Modern Tech Stack",
+            "content": "Latest technologies and best practices for optimal performance"
+        },
+        "featureSupport": {
+            "title": "24/7 Support",
+            "content": "Round-the-clock assistance to keep your applications running smoothly"
+        },
+        "quality": {
+            "title": "Quality Assurance",
+            "content": "Rigorous testing processes to ensure bug-free, reliable software"
+        }
     },
     "contact": {
         "tag": "Ready to Start?",
