@@ -21,7 +21,10 @@ const Contact = () => {
                         phoneLabel={phoneLabel}
                     />
 
-                    <ContactForm phoneLabel={phoneLabel} />
+                    <ContactForm
+                        phone={phone}
+                        phoneLabel={phoneLabel}
+                    />
                 </Stack>
             </ContactSection>
         </FadeInSection>

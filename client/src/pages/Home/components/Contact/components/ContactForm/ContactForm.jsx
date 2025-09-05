@@ -7,7 +7,7 @@ import axios from "axios"
 import InfoFeature from "../InfoFeature/InfoFeature"
 import { motion } from "motion/react"
 
-const ContactForm = ({ phoneLabel = "" }) => {
+const ContactForm = ({ phone = "", phoneLabel = "" }) => {
     const { t } = useTranslation()
 
 
@@ -156,7 +156,7 @@ const ContactForm = ({ phoneLabel = "" }) => {
 
                         <Stack mt={4} gap={2}>
                             <Typography variant="body2" color="background" fontWeight={600}>{t("contact.call")}</Typography>
-                            <Typography variant="body2" color="background">📞 {phoneLabel}</Typography>
+                            <Typography component={"a"} href={`tel:${phone}`} variant="body2" color="background">📞 {phoneLabel}</Typography>
                         </Stack>
                     </form>
                 </ContactInfoBox>
