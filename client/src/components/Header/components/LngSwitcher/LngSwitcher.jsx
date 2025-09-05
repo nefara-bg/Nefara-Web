@@ -1,13 +1,12 @@
-import { Box, Button, Stack, Typography } from "@mui/material";
-import uk from "../../../../img/uk.webp";
-import bg from "../../../../img/bg.webp";
+import { Button, Stack, Typography } from "@mui/material";
 import { useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
+import LanguageIcon from '@mui/icons-material/Language';
 
 const LngSwitcher = () => {
   const languages = {
-    en: { flag: uk, label: "English" },
-    bg: { flag: bg, label: "Български" },
+    en: "EN",
+    bg: "БГ",
   };
 
   const { lng } = useParams()
@@ -31,13 +30,10 @@ const LngSwitcher = () => {
       variant="outlined"
       color="primary"
       size="small"
-      sx={{ pr: 1 }}
     >
       <Stack direction="row" gap={1} alignItems="center">
-        <Box sx={{ width: "24px" }}>
-          <img src={displayLng.flag} alt={displayLng.label} className="image" />
-        </Box>
-        <Typography variant="body2">{displayLng.label}</Typography>
+        <LanguageIcon sx={{ width: "1.2rem", height: "1.2rem" }} />
+        <Typography variant="body2" fontSize={"0.9rem"} fontWeight={500} color="primary">{displayLng}</Typography>
       </Stack>
     </Button>
   );

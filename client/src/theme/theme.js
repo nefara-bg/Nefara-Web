@@ -124,7 +124,7 @@ theme.components.MuiPaper = {
             }
         },
         elevation2: {
-            boxShadow: `0 0 16px ${theme.palette.neutral["400"]}`
+            boxShadow: `0 0 4px ${theme.palette.neutral["400"]}`
         }
     }
 }

@@ -1,4 +1,4 @@
-import { Button, Stack, Toolbar, Typography } from "@mui/material"
+import { Stack, Toolbar, Typography } from "@mui/material"
 import { HashLink } from "react-router-hash-link"
 import logo from "../../img/logo.svg"
 import { useTranslation } from "react-i18next";
@@ -16,7 +16,7 @@ const Header = () => {
 
     return (
         <NavigationBar elevation={2} position="fixed">
-            <Toolbar maxWidth="96rem" sx={{ width: "min(100%, 96rem)", mx: "auto" }} mx={"auto"}>
+            <Toolbar sx={{ maxWidth: "96rem", width: "100%", mx: "auto" }}>
                 <Stack direction={"row"} alignItems={"center"} gap={1}>
                     <ImageContainer
                         src={logo}

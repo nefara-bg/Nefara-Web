@@ -90,8 +90,8 @@ const About = () => {
                     </Stack>
 
 
-                    <Grid container width={"100%"} spacing={10}>
-                        <Grid size={6}>
+                    <Grid container width={"100%"} spacing={{ xs: 6, lg: 10 }}>
+                        <Grid size={{ xs: 12, md: 6 }}>
                             <SectionTag
                                 content={`🎯 ${t("about.tag")}`}
                                 props={{ mb: 4 }}

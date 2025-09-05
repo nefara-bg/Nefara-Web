@@ -34,9 +34,9 @@ const Hero = () => {
                         </TextGradient>
                     </Typography>
                     <Typography variant="body1" fontSize={"1.5rem"} mb={6}>{t("hero.content")}</Typography>
-                    <Stack direction={"row"} gap={2}>
-                        <HashLink to={`/${lng}/#contact`}><Button variant="contained" size="large" color="primary">{t("hero.button")}</Button></HashLink>
-                        <HashLink to={`/${lng}/#services`}><Button variant="outlined" size="large" color="primary">{t("hero.secondaryButton")}</Button></HashLink>
+                    <Stack direction={{ md: "row" }} gap={2}>
+                        <HashLink to={`/${lng}/#contact`}><Button fullWidth variant="contained" size="large" color="primary">{t("hero.button")}</Button></HashLink>
+                        <HashLink to={`/${lng}/#services`}><Button fullWidth variant="outlined" size="large" color="primary">{t("hero.secondaryButton")}</Button></HashLink>
                     </Stack>
                 </TextBox>
             </HeroSection>

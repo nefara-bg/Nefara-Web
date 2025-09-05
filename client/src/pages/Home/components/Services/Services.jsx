@@ -118,7 +118,7 @@ const Services = () => {
                         }
                     </Grid>
 
-                    <Stack gap={3} alignItems={"center"}>
+                    <Stack gap={3} alignItems={"center"} textAlign={"center"}>
                         <Typography variant="body2">{t("services.subtext")}</Typography>
 
                         <HashLink to={`/${lng}/#contact`}><Button size="large" variant="contained" color="primary">{t("services.button")} 💬</Button></HashLink>
