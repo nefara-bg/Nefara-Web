@@ -1,4 +1,4 @@
-import { Card, Stack, Typography } from "@mui/material"
+import { Stack, Typography } from "@mui/material"
 import { StyledFeatureCard } from "../../../../styling"
 import { useEffect, useRef, useState } from "react"
 import { motion, useAnimate } from "motion/react"

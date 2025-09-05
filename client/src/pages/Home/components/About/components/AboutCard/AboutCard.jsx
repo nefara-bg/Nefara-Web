@@ -1,6 +1,5 @@
-import { duration, Grid, Typography } from "@mui/material"
+import { Grid, Typography } from "@mui/material"
 import { StyledCard } from "../../../../styling"
-import ImageContainer from "../../../../../../components/ImageContainer/ImageContainer"
 import { motion } from "motion/react"
 
 const AboutCard = ({ cardContent }) => {

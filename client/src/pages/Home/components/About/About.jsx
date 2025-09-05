@@ -1,8 +1,5 @@
 import { Grid, Stack, Typography } from "@mui/material"
 import AboutCard from "./components/AboutCard/AboutCard"
-import solutions from "../../../../img/solutions.webp"
-import code from "../../../../img/code.webp"
-import developers from "../../../../img/developers.webp"
 import { useTranslation } from "react-i18next"
 import { AboutSection, HomeContainer } from "../../styling"
 import FadeInSection from "../../../../components/FadeInSection/FadeInSection"
@@ -10,7 +7,7 @@ import { motion } from "motion/react"
 import TextGradient from "../../../../components/TextGradient/TextGradient"
 import SectionTag from "../../../../components/SectionTag/SectionTag"
 import FeatureCard from "./components/FeatureCard/FeatureCard"
-import SectionContainer from "../SectionContainer/SectionContainer"
+import SectionContainer from "../../../../components/SectionContainer/SectionContainer"
 
 const About = () => {
     const { t } = useTranslation()

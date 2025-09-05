@@ -1,6 +1,6 @@
 import CircleIcon from '@mui/icons-material/Circle';
 import { Stack, Typography } from "@mui/material"
-import { motion, scale } from "motion/react"
+import { motion } from "motion/react"
 import { theme } from '../../../../../../../theme/theme';
 import { useEffect, useRef } from 'react';
 

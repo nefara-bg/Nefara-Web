@@ -1,4 +1,4 @@
-import { Box, CardContent, duration, Grid, Stack, Typography } from "@mui/material"
+import { Box, Grid, Stack, Typography } from "@mui/material"
 import { ServiceOverlay, StyledServiceCard } from "../../../styling"
 import { motion, useAnimate } from "motion/react";
 import ServiceCardContent from "./components/ServiceCardContent/ServiceCardContent";

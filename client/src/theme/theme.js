@@ -9,22 +9,14 @@ export const theme = createTheme({
     spacing: `0.5rem`,
     palette: {
         background: {
-            main: "hsl(0, 0%, 100%)",
-            secondary: "#f0f0f0ff",
-            // secondary: "linear-gradient(135deg, hsl(0, 0%, 100%) 0%, hsl(0, 0%, 98%) 50%, hsl(0, 0%, 96%) 100%)"
+            main: "hsl(0, 0%, 100%)"
         },
         primary: {
-            // main: "#4081e2",
             main: "#000",
-            light: "hsl(0 0% 15%)",
-            lighter: "hsl(0 0% 38%)",
-            dark: "hsl(0 0% 15%)",
-            darker: "hsl(0 0% 38%)",
             contrastText: "#fff"
         },
         neutral: {
             main: "#000",
-            // light: "#4d5d71",
             light: "hsl(0 0% 45%)",
             50: "hsl(0 0% 98%)",
             100: "hsl(0 0% 96%)",

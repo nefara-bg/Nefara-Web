@@ -1,11 +1,11 @@
-import { Box, Divider, Grid, Stack, Typography } from "@mui/material"
+import { Divider, Grid, Stack, Typography } from "@mui/material"
 import logo from "../../img/footer-logo.svg"
 import { HashLink } from "react-router-hash-link"
 import { useTranslation } from "react-i18next";
 import { FooterContainer, FooterLink } from "./styling";
 import ImageContainer from "../ImageContainer/ImageContainer";
 import { useParams } from "react-router-dom";
-import SectionContainer from "../../pages/Home/components/SectionContainer/SectionContainer";
+import SectionContainer from "../SectionContainer/SectionContainer";
 
 const Footer = () => {
     const { lng } = useParams()

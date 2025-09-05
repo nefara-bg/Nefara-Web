@@ -1,10 +1,7 @@
-import { Box, Button, Divider, duration, Grid, Stack, Typography } from "@mui/material"
+import { Box, Button, Grid, Stack, Typography } from "@mui/material"
 import ServiceCard from "./components/ServiceCard"
-import web from "../../../../img/web.webp"
 import webDev from "../../../../img/webDev.webp"
-import mobile from "../../../../img/mobile.webp"
 import mobileDev from "../../../../img/mobileDev.webp"
-import desktop from "../../../../img/desktop.webp"
 import desktopDev from "../../../../img/desktopDev.webp"
 import { useTranslation } from "react-i18next"
 import { HomeContainer } from "../../styling"
@@ -14,7 +11,7 @@ import TextGradient from "../../../../components/TextGradient/TextGradient"
 import { motion } from "motion/react"
 import { HashLink } from "react-router-hash-link"
 import { useParams } from "react-router-dom"
-import SectionContainer from "../SectionContainer/SectionContainer"
+import SectionContainer from "../../../../components/SectionContainer/SectionContainer"
 
 const Services = () => {
     const { lng } = useParams()
