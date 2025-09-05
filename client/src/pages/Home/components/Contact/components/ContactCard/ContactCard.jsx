@@ -20,8 +20,7 @@ const ContactCard = ({ icon = "", title = "", content = "", contact = "", href =
         <Grid
             component={motion.a}
             href={href}
-            flex={1}
-            size={6}
+            size={{ xs: 12, sm: 6 }}
             variants={variants}
         >
             <StyledContactCard variant="outlined">

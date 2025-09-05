@@ -43,11 +43,11 @@ const OurContacts = ({ email = "", phone = "", phoneLabel = "" }) => {
                 initial="initial"
                 whileInView="animate"
                 viewport={{ once: true }}
+
                 container
                 width={"100%"}
-                direction={"row"}
                 alignItems={"stretch"}
-                gap={3}
+                spacing={3}
                 mb={8}
             >
                 <ContactCard

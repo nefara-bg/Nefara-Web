@@ -93,7 +93,7 @@ const ContactForm = ({ phoneLabel = "" }) => {
                     anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
                 />
 
-                <Grid size={8} p={6} component={Stack} justifyContent={"center"}>
+                <Grid size={{ xs: 12, lg: 8 }} p={{ xs: 3, sm: 6 }} component={Stack} justifyContent={"center"}>
                     <Stack gap={1} mb={4}>
                         <Typography color="primary" variant="h5">{t("contact.formTitle")}</Typography>
                         <Typography variant="body2">{t("contact.formText")}</Typography>
@@ -134,9 +134,8 @@ const ContactForm = ({ phoneLabel = "" }) => {
 
                 <ContactInfoBox
                     size="grow"
-                    alignItems={"center"}
                     justifyContent={"center"}
-                    p={6}
+                    p={{ xs: 4, sm: 6 }}
                     component={Stack}
                 >
                     <form onSubmit={handleSubmit}>

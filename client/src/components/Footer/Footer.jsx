@@ -45,8 +45,8 @@ const Footer = () => {
 
             <SectionContainer>
                 <Stack>
-                    <Grid container mb={4} spacing={12}>
-                        <Grid size={6} spacing={4}>
+                    <Grid container mb={4} spacing={{ xs: 6, lg: 12 }}>
+                        <Grid size={{ xs: 12, lg: 6 }} spacing={4}>
                             <Stack direction={"row"} gap={2} alignItems={"center"} mb={3}>
                                 <ImageContainer props={{ width: "3.2rem" }} src={logo} alt="Our logo" />
                                 <Typography variant="h5" color="background">Nefara</Typography>
@@ -55,7 +55,7 @@ const Footer = () => {
                             <Typography variant="body2" color="neutral.300">{t("footer.text")}</Typography>
                         </Grid>
 
-                        <Grid size={3}>
+                        <Grid size={{ xs: 12, sm: 6, lg: 3 }}>
                             <Typography variant="body1" fontWeight={"bold"} color="background" mb={3}>{t("footer.services.title")}</Typography>
 
                             <Stack gap={1}>
@@ -67,7 +67,7 @@ const Footer = () => {
                             </Stack>
                         </Grid>
 
-                        <Grid size={3}>
+                        <Grid size={{ xs: 12, sm: 6, lg: 3 }}>
                             <Typography variant="body1" fontWeight={"bold"} color="background" mb={3}>{t("footer.contact.title")}</Typography>
 
                             <Stack gap={2}>
@@ -93,8 +93,7 @@ const Footer = () => {
 
                     <Divider sx={{ bgcolor: "neutral.500" }} />
 
-                        {/* <Typography variant="body2" color="primary.lighter">{t("footer.text")}</Typography> */}
-                    <Stack mt={4} direction={"row"} gap={1} justifyContent={"space-between"}>
+                    <Stack mt={4} direction={{ sm: "row" }} gap={1} justifyContent={"space-between"}>
                         <Typography variant="body2" color="neutral.500">&copy; {new Date().getFullYear()} {t("footer.copyright")}</Typography>
                         <HashLink to={`/${lng}/#hero`}><FooterLink variant="body2">{t("footer.back")} ↗️</FooterLink></HashLink>
                     </Stack>
