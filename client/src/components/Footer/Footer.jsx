@@ -1,11 +1,10 @@
 import { Divider, Grid, Stack, Typography } from "@mui/material"
-import logo from "../../img/footer-logo.svg"
 import { HashLink } from "react-router-hash-link"
 import { useTranslation } from "react-i18next";
 import { FooterContainer, FooterLink } from "./styling";
-import ImageContainer from "../ImageContainer/ImageContainer";
 import { useParams } from "react-router-dom";
 import SectionContainer from "../SectionContainer/SectionContainer";
+import Image from "next/image"
 
 const Footer = () => {
     const { lng } = useParams()
@@ -48,7 +47,15 @@ const Footer = () => {
                     <Grid container mb={4} spacing={{ xs: 6, lg: 12 }}>
                         <Grid size={{ xs: 12, lg: 6 }} spacing={4}>
                             <Stack direction={"row"} gap={2} alignItems={"center"} mb={3}>
-                                <ImageContainer props={{ width: "3.2rem" }} src={logo} alt="Our logo" />
+                                <Image
+                                    src="/footer-logo.svg"
+                                    alt="Our logo"
+                                    width={56}
+                                    height={56}
+                                    style={{
+                                        width: "3.2rem"
+                                    }}
+                                />
                                 <Typography variant="h5" color="background">Nefara</Typography>
                             </Stack>
 

@@ -4,10 +4,9 @@ import { MobileMenu, NavLink } from "../../styling";
 import { HashLink } from "react-router-hash-link";
 import LngSwitcher from "../LngSwitcher/LngSwitcher";
 import { useState } from "react";
-import logo from "../../../../img/logo.svg"
 import { useTranslation } from "react-i18next";
-import ImageContainer from "../../../ImageContainer/ImageContainer";
 import { useParams } from "react-router-dom";
+import Image from "next/image";
 
 const MobileNav = () => {
     const { lng } = useParams()
@@ -30,14 +29,14 @@ const MobileNav = () => {
 
             <SwipeableDrawer open={mobileMenu} onOpen={() => setMobileMenu(true)} onClose={() => setMobileMenu(false)}>
                 <MobileMenu>
-                    <ImageContainer
-                        src={logo}
+                    <Image
+                        src="/logo.svg"
                         alt="Our logo"
-                        props={{
-                            sx: { 
-                                width: "48px"
-                            },
-                            mb: 3
+                        width={48}
+                        height={48}
+                        style={{
+                            marginBottom: "24px",
+                            width: "48px"
                         }}
                     />
 

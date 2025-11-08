@@ -1,8 +1,5 @@
 import { Box, Button, Grid, Stack, Typography } from "@mui/material"
 import ServiceCard from "./components/ServiceCard"
-import webDev from "../../../../img/webDev.webp"
-import mobileDev from "../../../../img/mobileDev.webp"
-import desktopDev from "../../../../img/desktopDev.webp"
 import { useTranslation } from "react-i18next"
 import { HomeContainer } from "../../styling"
 import FadeInSection from "../../../../components/FadeInSection/FadeInSection"
@@ -32,7 +29,7 @@ const Services = () => {
                 t("services.web.content.content3")
             ],
             icon: "🌐",
-            image: webDev,
+            image: "/webDev.webp",
             colors: ["#2b7fff", "#ad46ff"]
         },
         {
@@ -44,7 +41,7 @@ const Services = () => {
                 t("services.desktop.content.content3"),
             ],
             icon: "💻",
-            image: desktopDev,
+            image: "/desktopDev.webp",
             colors: ["#00c950", "#00bba7"]
         },
         {
@@ -56,7 +53,7 @@ const Services = () => {
                 t("services.mobile.content.content3"),
             ],
             icon: "📱",
-            image: mobileDev,
+            image: "/mobileDev.webp",
             colors: ["#ff6900", "#fb2c36"]
         }
     ]

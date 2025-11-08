@@ -1,12 +1,11 @@
 import { Stack, Toolbar, Typography } from "@mui/material"
 import { HashLink } from "react-router-hash-link"
-import logo from "../../img/logo.svg"
 import { useTranslation } from "react-i18next";
 import LngSwitcher from "./components/LngSwitcher/LngSwitcher";
 import { NavigationBar, NavLink } from "./styling";
 import MobileNav from "./components/MobileNav/MobileNav";
-import ImageContainer from "../ImageContainer/ImageContainer";
 import { useParams } from "react-router-dom";
+import Image from "next/image";
 
 const Header = () => {
     const { lng } = useParams()
@@ -18,14 +17,11 @@ const Header = () => {
         <NavigationBar elevation={2} position="fixed">
             <Toolbar sx={{ maxWidth: "96rem", width: "100%", mx: "auto" }}>
                 <Stack direction={"row"} alignItems={"center"} gap={1}>
-                    <ImageContainer
-                        src={logo}
+                    <Image
+                        src="/logo.svg"
                         alt="Our logo"
-                        props={{
-                            sx: {
-                                width: "32px"
-                            }
-                        }}
+                        width={32}
+                        height={32}
                     />
                     <Typography variant="h5" sx={{ userSelect: "none" }} color="primary">Nefara</Typography>
                 </Stack>

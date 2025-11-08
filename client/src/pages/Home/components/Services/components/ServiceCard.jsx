@@ -4,6 +4,7 @@ import { motion, useAnimate } from "motion/react";
 import ServiceCardContent from "./components/ServiceCardContent/ServiceCardContent";
 import { useEffect, useRef, useState } from "react";
 import { theme } from "../../../../../theme/theme";
+import Image from "next/image";
 
 const ServiceCard = ({ serviceObject }) => {
     const cardVariants = {
@@ -142,14 +143,27 @@ const ServiceCard = ({ serviceObject }) => {
                     >
                         {serviceObject?.icon}
                     </Typography>
-                    <motion.img
-                        src={serviceObject?.image}
-                        alt="Service Image"
-                        loading="lazy"
-                        className={`image service-img`}
+                    <Box
+                        component={motion.div}
                         ref={imageRef}
                         variants={imageVariants}
-                    />
+                        sx={{
+                            aspectRatio: "16 / 9",
+                            width: "100%",
+                            position: "relative",
+                            overflow: "hidden"
+                        }}
+                    >
+                        <Image
+                            src={serviceObject?.image}
+                            alt="Service Image"
+                            fill
+                            style={{
+                                objectFit: "cover"
+                            }}
+                            sizes="425px"
+                        />
+                    </Box>
                 </Box>
 
                 <Stack sx={{ position: "relative", zIndex: 10, flex: 1 }}>
