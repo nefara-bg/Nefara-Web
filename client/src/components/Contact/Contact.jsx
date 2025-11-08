@@ -1,6 +1,6 @@
 import { Stack } from "@mui/material"
-import { ContactSection } from "../../styling";
-import FadeInSection from "../../../../components/FadeInSection/FadeInSection";
+import { ContactSection } from "../../app/styling";
+import FadeInSection from "../FadeInSection/FadeInSection";
 import ContactForm from "./components/ContactForm/ContactForm";
 import OurContacts from "./components/OurContacts/OurContacts";
 

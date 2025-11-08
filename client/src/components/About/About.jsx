@@ -1,13 +1,13 @@
 import { Grid, Stack, Typography } from "@mui/material"
 import AboutCard from "./components/AboutCard/AboutCard"
 import { useTranslation } from "react-i18next"
-import { AboutSection, HomeContainer } from "../../styling"
-import FadeInSection from "../../../../components/FadeInSection/FadeInSection"
+import { AboutSection, HomeContainer } from "../../app/styling"
+import FadeInSection from "../FadeInSection/FadeInSection"
 import { motion } from "motion/react"
-import TextGradient from "../../../../components/TextGradient/TextGradient"
-import SectionTag from "../../../../components/SectionTag/SectionTag"
+import TextGradient from "../TextGradient/TextGradient"
+import SectionTag from "../SectionTag/SectionTag"
 import FeatureCard from "./components/FeatureCard/FeatureCard"
-import SectionContainer from "../../../../components/SectionContainer/SectionContainer"
+import SectionContainer from "../SectionContainer/SectionContainer"
 
 const About = () => {
     const { t } = useTranslation()

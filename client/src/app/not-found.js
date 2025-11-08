@@ -1,3 +1,5 @@
+"use client"
+
 import { Section } from "./styling"
 import { Button, Typography } from "@mui/material"
 import { Link } from "react-router-dom"

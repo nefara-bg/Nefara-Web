@@ -1,11 +1,11 @@
 import { Button, Stack, Typography } from "@mui/material"
 import { useTranslation } from "react-i18next"
 import { HashLink } from "react-router-hash-link"
-import { HeroSection, TextBox } from "../../styling"
+import { HeroSection, TextBox } from "../../app/styling"
 import { useParams } from "react-router-dom"
-import FadeInSection from "../../../../components/FadeInSection/FadeInSection"
-import SectionTag from "../../../../components/SectionTag/SectionTag"
-import TextGradient from "../../../../components/TextGradient/TextGradient"
+import FadeInSection from "../FadeInSection/FadeInSection"
+import SectionTag from "../SectionTag/SectionTag"
+import TextGradient from "../TextGradient/TextGradient"
 
 const Hero = () => {
     const { lng } = useParams()

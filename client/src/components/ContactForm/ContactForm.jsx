@@ -1,6 +1,6 @@
 import { Box, Button, Card, Divider, Grid, Snackbar, Stack, Typography } from "@mui/material"
 import FormInputField from "../FormInputField/FormInputField"
-import { ContactInfoBox } from "../../../../styling"
+import { ContactInfoBox } from "../../app/styling"
 import { useTranslation } from "react-i18next"
 import { useRef, useState } from "react"
 import axios from "axios"

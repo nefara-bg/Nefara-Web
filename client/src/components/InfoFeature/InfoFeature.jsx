@@ -1,5 +1,5 @@
 import { Stack, Typography } from "@mui/material"
-import { CheckBox } from "../../../../styling"
+import { CheckBox } from "../../app/styling"
 
 const InfoFeature = ({ featureObject = {} }) => {
     return (

@@ -138,3 +138,11 @@ export const CheckBox = styled(Stack)(({ theme }) => ({
     height: theme.spacing(3),
     aspectRatio: "1 / 1"
 }))
+
+export const Section = styled(Stack)(({ theme }) => ({
+    minHeight: "100vh",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: `${theme.spacing(16)} ${theme.spacing(2)}`,
+    textAlign: "center"
+}))
