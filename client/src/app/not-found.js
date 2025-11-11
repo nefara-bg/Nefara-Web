@@ -1,11 +1,9 @@
-"use client"
-
 import { Button, Typography, Stack } from "@mui/material"
 import Link from "next/link"
-import { useTranslations } from "next-intl"
+import { getTranslations } from "next-intl/server"
 
-const NotFound = () => {
-    const t = useTranslations()
+const NotFound = async () => {
+    const t = await getTranslations()
 
 
 
