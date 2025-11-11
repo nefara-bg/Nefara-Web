@@ -1,9 +1,8 @@
-import { useTranslation } from "react-i18next"
-import { useParams } from "react-router-dom"
+import { getTranslations, getLocale } from "next-intl/server"
 
-const SeoTags = () => {
-    const { t } = useTranslation()
-    const { lng } = useParams()
+const SeoTags = async () => {
+    const t = await getTranslations()
+    const lng = await getLocale()
     const baseUrl = "https://nefara.org"
 
 

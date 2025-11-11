@@ -1,7 +1,7 @@
 import { Box, Grid, Stack, Typography } from "@mui/material"
 import { ServiceOverlay, StyledServiceCard } from "../../app/styling"
 import { motion, useAnimate } from "motion/react";
-import ServiceCardContent from "./components/ServiceCardContent/ServiceCardContent";
+import ServiceCardContent from "../ServiceCardContent/ServiceCardContent";
 import { useEffect, useRef, useState } from "react";
 import { theme } from "../../theme/theme";
 import Image from "next/image";

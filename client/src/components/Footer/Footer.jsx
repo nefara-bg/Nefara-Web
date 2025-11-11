@@ -1,33 +1,32 @@
 import { Divider, Grid, Stack, Typography } from "@mui/material"
-import { HashLink } from "react-router-hash-link"
-import { useTranslation } from "react-i18next";
+import { getTranslations, getLocale } from "next-intl/server";
+import Link from "next/link";
 import { FooterContainer, FooterLink } from "./styling";
-import { useParams } from "react-router-dom";
 import SectionContainer from "../SectionContainer/SectionContainer";
 import Image from "next/image"
 
-const Footer = () => {
-    const { lng } = useParams()
-    const { t } = useTranslation()
+const Footer = async () => {
+    const t = await getTranslations()
+    const locale = await getLocale()
 
 
 
     const links = [
         {
             title: t("footer.services.web"),
-            link: `/${lng}/#services`
+            link: `/${locale}#services`
         },
         {
             title: t("footer.services.desktop"),
-            link: `/${lng}/#services`
+            link: `/${locale}#services`
         },
         {
             title: t("footer.services.mobile"),
-            link: `/${lng}/#services`
+            link: `/${locale}#services`
         },
         {
             title: t("footer.services.consulting"),
-            link: `/${lng}/#contact`
+            link: `/${locale}#contact`
         }
     ]
 
@@ -68,7 +67,7 @@ const Footer = () => {
                             <Stack gap={1}>
                                 {
                                     links.map((link, i) => (
-                                        <HashLink key={i} to={link.link}><FooterLink variant="body2">{link.title}</FooterLink></HashLink>
+                                        <Link key={i} href={link.link}><FooterLink variant="body2">{link.title}</FooterLink></Link>
                                     ))
                                 }
                             </Stack>
@@ -102,7 +101,7 @@ const Footer = () => {
 
                     <Stack mt={4} direction={{ sm: "row" }} gap={1} justifyContent={"space-between"}>
                         <Typography variant="body2" color="neutral.500">&copy; {new Date().getFullYear()} {t("footer.copyright")}</Typography>
-                        <HashLink to={`/${lng}/#hero`}><FooterLink variant="body2">{t("footer.back")} ↗️</FooterLink></HashLink>
+                        <Link href={`/${locale}#hero`}><FooterLink variant="body2">{t("footer.back")} ↗️</FooterLink></Link>
                     </Stack>
                 </Stack>
             </SectionContainer>

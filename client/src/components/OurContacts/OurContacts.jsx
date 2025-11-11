@@ -2,11 +2,11 @@ import { Grid, Stack, Typography } from "@mui/material"
 import SectionTag from "../SectionTag/SectionTag"
 import TextGradient from "../TextGradient/TextGradient"
 import ContactCard from "../ContactCard/ContactCard"
-import { useTranslation } from "react-i18next"
+import { getTranslations } from "next-intl/server"
 import { motion } from "motion/react"
 
-const OurContacts = ({ email = "", phone = "", phoneLabel = "" }) => {
-    const { t } = useTranslation()
+const OurContacts = async ({ email = "", phone = "", phoneLabel = "" }) => {
+    const t = await getTranslations()
 
 
 

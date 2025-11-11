@@ -1,8 +1,8 @@
 import { Stack } from "@mui/material"
 import { ContactSection } from "../../app/styling";
 import FadeInSection from "../FadeInSection/FadeInSection";
-import ContactForm from "./components/ContactForm/ContactForm";
-import OurContacts from "./components/OurContacts/OurContacts";
+import ContactForm from "../ContactForm/ContactForm";
+import OurContacts from "../OurContacts/OurContacts";
 
 const Contact = () => {
     const phone = "+359887383000"
