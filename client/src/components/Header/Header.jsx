@@ -8,7 +8,7 @@ import MobileNav from "@/components/Header/components/MobileNav/MobileNav";
 import Image from "next/image";
 
 const Header = () => {
-    const { t } = useTranslations()
+    const t = useTranslations()
 
 
 
