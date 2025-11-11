@@ -1,5 +1,4 @@
-import { Box, Grid, Stack, Typography } from "@mui/material"
-import { ServiceOverlay, StyledServiceCard } from "@/app/styling"
+import { Box, Card, Grid, Stack, Typography } from "@mui/material"
 import { motion, useAnimate } from "motion/react";
 import ServiceCardContent from "@/components/ServiceCardContent/ServiceCardContent";
 import { useEffect, useRef, useState } from "react";
@@ -117,10 +116,36 @@ const ServiceCard = ({ serviceObject }) => {
             component={motion.div}
             variants={cardVariants}
         >
-            <StyledServiceCard component={motion.div} ref={scope} variant="outlined" onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
-
-                <ServiceOverlay
+            <Card 
+                component={motion.div} 
+                ref={scope} 
+                variant="outlined" 
+                onMouseEnter={() => setHovered(true)} 
+                onMouseLeave={() => setHovered(false)}
+                sx={{
+                    padding: 3,
+                    paddingBottom: 5,
+                    backgroundColor: "linear-gradient(145deg, hsl(0 0 100%) 0%, hsl(0 0 98%) 100%)",
+                    textAlign: "center",
+                    height: "100%",
+                    transition: "0.5s",
+                    "&:hover": {
+                        transform: "scale(1.05)"
+                    },
+                    overflow: "hidden",
+                    position: "relative",
+                    display: "flex",
+                    flexDirection: "column"
+                }}
+            >
+                <Box
                     sx={{ 
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        width: "100%",
+                        height: "100%",
+                        opacity: 0,
                         backgroundImage: `linear-gradient(to bottom right, ${serviceObject.colors[0]}1A, ${serviceObject.colors[1]}1A)`,
                     }}
                     component={motion.div}
@@ -131,7 +156,7 @@ const ServiceCard = ({ serviceObject }) => {
                 <Box
                     borderRadius="1rem"
                     overflow="hidden"
-                    marginBottom="1.5rem"
+                    marginBottom={3}
                     position={"relative"}
                 >
                     <Typography
@@ -197,7 +222,7 @@ const ServiceCard = ({ serviceObject }) => {
                         ))}
                     </Stack>
                 </Stack>
-            </StyledServiceCard>
+            </Card>
         </Grid>
     )
 }

@@ -1,6 +1,5 @@
-import { Stack, SwipeableDrawer } from "@mui/material"
+import { Stack, SwipeableDrawer, Typography } from "@mui/material"
 import MenuIcon from '@mui/icons-material/Menu';
-import { MobileMenu, NavLink } from "@/components/Header/styling";
 import Link from "next/link";
 import LngSwitcher from "@/components/Header/components/LngSwitcher/LngSwitcher";
 import { useState } from "react";
@@ -28,7 +27,13 @@ const MobileNav = () => {
             </Stack>
 
             <SwipeableDrawer open={mobileMenu} onOpen={() => setMobileMenu(true)} onClose={() => setMobileMenu(false)}>
-                <MobileMenu>
+                <Stack
+                    sx={{
+                        height: "100%",
+                        py: 4,
+                        px: 4
+                    }}
+                >
                     <Image
                         src="/logo.svg"
                         alt="Our logo"
@@ -41,14 +46,14 @@ const MobileNav = () => {
                     />
 
                     <Stack gap={{ xs: 2, md: 4 }} mb={3}>
-                        <Link href={`/${lng}/#hero`}><NavLink variant="body2">{t("header.home")}</NavLink></Link>
-                        <Link href={`/${lng}/#services`}><NavLink variant="body2">{t("header.services")}</NavLink></Link>
-                        <Link href={`/${lng}/#about`}><NavLink variant="body2">{t("header.about")}</NavLink></Link>
-                        <Link href={`/${lng}/#contact`}><NavLink variant="body2">{t("header.contact")}</NavLink></Link>
+                        <Link href={`/${lng}/#hero`}><Typography variant="body2" sx={{ transition: ".2s", "&:hover": { color: "var(--mui-palette-primary-main)" } }}>{t("header.home")}</Typography></Link>
+                        <Link href={`/${lng}/#services`}><Typography variant="body2" sx={{ transition: ".2s", "&:hover": { color: "var(--mui-palette-primary-main)" } }}>{t("header.services")}</Typography></Link>
+                        <Link href={`/${lng}/#about`}><Typography variant="body2" sx={{ transition: ".2s", "&:hover": { color: "var(--mui-palette-primary-main)" } }}>{t("header.about")}</Typography></Link>
+                        <Link href={`/${lng}/#contact`}><Typography variant="body2" sx={{ transition: ".2s", "&:hover": { color: "var(--mui-palette-primary-main)" } }}>{t("header.contact")}</Typography></Link>
                     </Stack>
 
                     <LngSwitcher />
-                </MobileMenu>
+                </Stack>
             </SwipeableDrawer>
         </>
     )

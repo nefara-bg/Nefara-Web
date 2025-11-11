@@ -1,7 +1,6 @@
 import { Box, Button, Grid, Stack, Typography } from "@mui/material"
 import ServiceCard from "@/components/ServiceCard/ServiceCard"
 import { useTranslation } from "react-i18next"
-import { HomeContainer } from "@/app/styling"
 import FadeInSection from "@/components/FadeInSection/FadeInSection"
 import SectionTag from "@/components/SectionTag/SectionTag"
 import TextGradient from "@/components/TextGradient/TextGradient"
@@ -76,7 +75,14 @@ const Services = () => {
 
     return (
         <FadeInSection>
-            <HomeContainer id="services">
+            <Stack 
+                id="services"
+                sx={{
+                    py: { xs: 9, sm: 9, md: 9, lg: 9, xl: 9 },
+                    px: { xs: 2, sm: 6, md: 6, lg: 8, xl: 12 },
+                    alignItems: "center"
+                }}
+            >
                 <SectionContainer props={{ component: Stack, alignItems: "center" }}>
                     <SectionTag props={{ mb: 4 }} content={t("services.tag")} />
 
@@ -118,7 +124,7 @@ const Services = () => {
                         <Link href={`/${lng}/#contact`}><Button size="large" variant="contained" color="primary">{t("services.button")} 💬</Button></Link>
                     </Stack>
                 </SectionContainer>
-            </HomeContainer>
+            </Stack>
         </FadeInSection>
     )
 }

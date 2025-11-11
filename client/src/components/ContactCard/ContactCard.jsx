@@ -1,5 +1,4 @@
-import { Grid, Typography } from "@mui/material"
-import { StyledContactCard } from "@/app/styling"
+import { Card, Grid, Typography } from "@mui/material"
 import { motion } from "motion/react"
 
 const ContactCard = ({ icon = "", title = "", content = "", contact = "", href = "" }) => {
@@ -23,12 +22,22 @@ const ContactCard = ({ icon = "", title = "", content = "", contact = "", href =
             size={{ xs: 12, sm: 6 }}
             variants={variants}
         >
-            <StyledContactCard variant="outlined">
+            <Card 
+                variant="outlined"
+                sx={{
+                    padding: 4,
+                    transition: "0.2s",
+                    height: "100%",
+                    "&:hover": {
+                        scale: 1.05
+                    }
+                }}
+            >
                 <Typography mb={2} variant="h3">{icon}</Typography>
                 <Typography variant="body1" mb={1} color="primary" fontWeight={"bold"}>{title}</Typography>
                 <Typography variant="body2" mb={1.5}>{content}</Typography>
                 <Typography variant="body2" fontWeight={500} color="primary">{contact}</Typography>
-            </StyledContactCard>
+            </Card>
         </Grid>
     )
 }

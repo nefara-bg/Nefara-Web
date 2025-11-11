@@ -1,8 +1,7 @@
-import { Stack, Toolbar, Typography } from "@mui/material"
+import { AppBar, Stack, Toolbar, Typography } from "@mui/material"
 import Link from "next/link"
 import { useTranslation } from "react-i18next";
 import LngSwitcher from "@/components/Header/components/LngSwitcher/LngSwitcher";
-import { NavigationBar, NavLink } from "@/components/Header/styling";
 import MobileNav from "@/components/Header/components/MobileNav/MobileNav";
 import { useParams } from "react-router-dom";
 import Image from "next/image";
@@ -14,7 +13,15 @@ const Header = () => {
 
 
     return (
-        <NavigationBar elevation={2} position="fixed">
+        <AppBar 
+            elevation={2} 
+            position="fixed"
+            sx={{
+                backgroundColor: "var(--mui-palette-background-main)",
+                py: 0,
+                px: { xs: 1, sm: 3, md: 3, lg: 5, xl: 9 }
+            }}
+        >
             <Toolbar sx={{ maxWidth: "96rem", width: "100%", mx: "auto" }}>
                 <Stack direction={"row"} alignItems={"center"} gap={1}>
                     <Image
@@ -28,10 +35,10 @@ const Header = () => {
                 
                 <Stack flex={1} direction={"row"} alignItems={"center"} justifyContent={"end"} gap={{ xs: 3, lg: 5 }} sx={{ display: { xs: "none", md: "flex" } }}>
                     <Stack direction={"row"} gap={{ xs: 2, lg: 4 }}>
-                        <Link href={`/${lng}/#hero`}><NavLink variant="body2">{t("header.home")}</NavLink></Link>
-                        <Link href={`/${lng}/#services`}><NavLink variant="body2">{t("header.services")}</NavLink></Link>
-                        <Link href={`/${lng}/#about`}><NavLink variant="body2">{t("header.about")}</NavLink></Link>
-                        <Link href={`/${lng}/#contact`}><NavLink variant="body2">{t("header.contact")}</NavLink></Link>
+                        <Link href={`/${lng}/#hero`}><Typography variant="body2" sx={{ transition: ".2s", "&:hover": { color: "var(--mui-palette-primary-main)" } }}>{t("header.home")}</Typography></Link>
+                        <Link href={`/${lng}/#services`}><Typography variant="body2" sx={{ transition: ".2s", "&:hover": { color: "var(--mui-palette-primary-main)" } }}>{t("header.services")}</Typography></Link>
+                        <Link href={`/${lng}/#about`}><Typography variant="body2" sx={{ transition: ".2s", "&:hover": { color: "var(--mui-palette-primary-main)" } }}>{t("header.about")}</Typography></Link>
+                        <Link href={`/${lng}/#contact`}><Typography variant="body2" sx={{ transition: ".2s", "&:hover": { color: "var(--mui-palette-primary-main)" } }}>{t("header.contact")}</Typography></Link>
                     </Stack>
                     
                     <Stack direction={"row"} gap={{ xs: 1, md: 2 }}>
@@ -42,7 +49,7 @@ const Header = () => {
 
                 <MobileNav />
             </Toolbar>
-        </NavigationBar>
+        </AppBar>
     )
 }
 

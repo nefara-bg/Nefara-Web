@@ -1,5 +1,4 @@
-import { Stack, Typography } from "@mui/material"
-import { StyledFeatureCard } from "@/app/styling"
+import { Card, Stack, Typography } from "@mui/material"
 import { useEffect, useRef, useState } from "react"
 import { motion, useAnimate } from "motion/react"
 import { theme } from "@/theme/theme"
@@ -39,12 +38,15 @@ const FeatureCard = ({ feature = {} }) => {
 
 
     return (
-        <StyledFeatureCard
+        <Card
             variant="outlined"
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
             ref={scope}
             component={motion.div}
+            sx={{
+                padding: 3
+            }}
         >
             <Stack direction={"row"} gap={1} alignItems={"start"}>
                 <Stack
@@ -71,7 +73,7 @@ const FeatureCard = ({ feature = {} }) => {
                     <Typography variant="body2">{feature?.description}</Typography>
                 </Stack>
             </Stack>
-        </StyledFeatureCard>
+        </Card>
     )
 }
 

@@ -102,7 +102,7 @@ const ServiceCardContent = ({ content = "", hovered = false, animate }) => {
             variants={containerVariants}
         >
             <CircleIcon
-                sx={{ width: "0.5rem", height: "0.5rem" }}
+                sx={{ width: 1, height: 1 }}
                 component={motion.svg}
                 ref={bulletRef}
                 variants={bulletVariants}

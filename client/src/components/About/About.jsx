@@ -1,7 +1,6 @@
 import { Grid, Stack, Typography } from "@mui/material"
 import AboutCard from "@/components/AboutCard/AboutCard"
 import { useTranslation } from "react-i18next"
-import { AboutSection, HomeContainer } from "@/app/styling"
 import FadeInSection from "@/components/FadeInSection/FadeInSection"
 import { motion } from "motion/react"
 import TextGradient from "@/components/TextGradient/TextGradient"
@@ -62,7 +61,15 @@ const About = () => {
 
     return (
         <FadeInSection>
-            <AboutSection id="about">
+            <Stack 
+                id="about"
+                sx={{
+                    py: { xs: 9, sm: 9, md: 9, lg: 9, xl: 9 },
+                    px: { xs: 2, sm: 6, md: 6, lg: 8, xl: 12 },
+                    alignItems: "center",
+                    background: "linear-gradient(145deg, var(--mui-palette-background-main) 0%, var(--mui-palette-neutral-50) 100%)"
+                }}
+            >
                 <SectionContainer props={{ component: Stack, alignItems: "center" }}>
                     <Stack mb={10}>
                         <Stack maxWidth={"60rem"} mb={10} textAlign={"center"}>
@@ -118,7 +125,7 @@ const About = () => {
                         </Grid>
                     </Grid>
                 </SectionContainer>
-            </AboutSection>
+            </Stack>
         </FadeInSection>
     )
 }
