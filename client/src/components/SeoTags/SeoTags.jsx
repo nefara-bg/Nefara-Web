@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom"
 
 const SeoTags = () => {
     const { t } = useTranslation()
-    const { lng } = useParams()
+    const lng = "en"
     const baseUrl = "https://nefara.org"
 
 

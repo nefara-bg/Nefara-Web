@@ -9,7 +9,7 @@ import { useParams } from "react-router-dom";
 import Image from "next/image";
 
 const MobileNav = () => {
-    const { lng } = useParams()
+    const lng = "en"
 
 
 

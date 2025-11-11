@@ -8,7 +8,7 @@ import { useParams } from "react-router-dom";
 import Image from "next/image";
 
 const Header = () => {
-    const { lng } = useParams()
+    const lng = "en"
     const { t } = useTranslation()
 
 

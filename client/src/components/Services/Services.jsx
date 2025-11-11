@@ -11,7 +11,7 @@ import { useParams } from "react-router-dom"
 import SectionContainer from "@/components/SectionContainer/SectionContainer"
 
 const Services = () => {
-    const { lng } = useParams()
+    const lng = "en"
 
 
 

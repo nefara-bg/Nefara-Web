@@ -7,7 +7,7 @@ import SectionContainer from "@/components/SectionContainer/SectionContainer";
 import Image from "next/image"
 
 const Footer = () => {
-    const { lng } = useParams()
+    const lng = "en"
     const { t } = useTranslation()
 
 

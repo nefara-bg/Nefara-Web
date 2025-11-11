@@ -8,7 +8,7 @@ import SectionTag from "@/components/SectionTag/SectionTag"
 import TextGradient from "@/components/TextGradient/TextGradient"
 
 const Hero = () => {
-    const { lng } = useParams()
+    const lng = "en"
     const { t } = useTranslation()
 
 

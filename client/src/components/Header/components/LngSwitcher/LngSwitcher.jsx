@@ -1,7 +1,9 @@
 import { Button, Stack, Typography } from "@mui/material";
 import { useState } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import LanguageIcon from '@mui/icons-material/Language';
+import { usePathname, useRouter } from "next/navigation";
+import { useNavigate } from "@/hooks/useNavigate";
 
 const LngSwitcher = () => {
   const languages = {
@@ -9,12 +11,12 @@ const LngSwitcher = () => {
     bg: "БГ",
   };
 
-  const { lng } = useParams()
+  const lng = "en"
 
   const [displayLng, setDisplayLng] = useState(lng === "bg" ? languages.en : languages.bg);
 
-  const location = useLocation()
-  const currentPath = location.pathname.replace(/^\/(en|bg)/, "")
+  const location = usePathname()
+  const currentPath = location.replace(/^\/(en|bg)/, "")
 
   const navigate = useNavigate()
 
