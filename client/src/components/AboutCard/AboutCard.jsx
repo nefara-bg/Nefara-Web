@@ -1,5 +1,5 @@
 import { Card, Grid, Typography } from "@mui/material"
-import { motion } from "motion/react"
+import * as motion from "motion/react-client"
 
 const AboutCard = ({ cardContent }) => {
     const cardVariants = {

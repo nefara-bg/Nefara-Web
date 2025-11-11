@@ -1,17 +1,15 @@
-"use client"
-
 import { Grid, Stack, Typography } from "@mui/material"
 import AboutCard from "@/components/AboutCard/AboutCard"
-import { useTranslations } from "next-intl"
+import { getTranslations } from "next-intl/server"
 import FadeInSection from "@/components/FadeInSection/FadeInSection"
-import { motion } from "motion/react"
+import * as motion from "motion/react-client"
 import TextGradient from "@/components/TextGradient/TextGradient"
 import SectionTag from "@/components/SectionTag/SectionTag"
 import FeatureCard from "@/components/FeatureCard/FeatureCard"
 import SectionContainer from "@/components/SectionContainer/SectionContainer"
 
-const About = () => {
-    const t = useTranslations()
+const About = async () => {
+    const t = await getTranslations()
 
 
 
