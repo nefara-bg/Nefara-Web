@@ -1,5 +1,3 @@
-"use client"
-
 import { Stack } from "@mui/material"
 import FadeInSection from "@/components/FadeInSection/FadeInSection";
 import ContactForm from "@/components/ContactForm/ContactForm";
