@@ -1,4 +1,5 @@
 import { Stack, Typography } from "@mui/material"
+import { Twemoji } from 'react-emoji-render'
 
 const SectionTag = ({ props = {}, content = "" }) => {
     return (
@@ -15,7 +16,7 @@ const SectionTag = ({ props = {}, content = "" }) => {
                     }
                 }}
             >
-                <Typography variant="body2" fontWeight={500} color="neutral">{content}</Typography>
+                <Typography variant="body2" fontWeight={500} color="neutral"><Twemoji svg text={content} /></Typography>
             </Stack>
         </Stack>
     )

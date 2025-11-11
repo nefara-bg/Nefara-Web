@@ -7,6 +7,7 @@ import { useRef, useState } from "react"
 import axios from "axios"
 import InfoFeature from "@/components/InfoFeature/InfoFeature"
 import { motion } from "motion/react"
+import { Twemoji } from 'react-emoji-render';
 
 const ContactForm = ({ phone = "", phoneLabel = "" }) => {
     const t = useTranslations()
@@ -128,7 +129,7 @@ const ContactForm = ({ phone = "", phoneLabel = "" }) => {
                             onClick={handleSubmit}
                             disabled={loading}
                         >
-                            {loading ? t("contact.loading") : t("contact.button")}
+                            <Twemoji svg text={loading ? t("contact.loading") : `${t("contact.button")} 🚀`} />
                         </Button>
                     </Stack>
                 </Grid>
@@ -160,7 +161,7 @@ const ContactForm = ({ phone = "", phoneLabel = "" }) => {
 
                         <Stack mt={4} gap={2}>
                             <Typography variant="body2" color="background" fontWeight={600}>{t("contact.call")}</Typography>
-                            <Typography component={"a"} href={`tel:${phone}`} variant="body2" color="background">📞 {phoneLabel}</Typography>
+                            <Typography component={"a"} href={`tel:${phone}`} variant="body2" color="background"><Twemoji svg text={`📞 ${phoneLabel}`} /></Typography>
                         </Stack>
                     </form>
                 </Grid>

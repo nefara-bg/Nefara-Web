@@ -3,6 +3,7 @@ import * as motion from "motion/react-client"
 import ServiceCardContent from "@/components/ServiceCardContent/ServiceCardContent";
 import Image from "next/image";
 import "./animation.css"
+import { Twemoji } from 'react-emoji-render';
 
 const ServiceCard = ({ serviceObject }) => {
     const cardVariants = {
@@ -85,7 +86,7 @@ const ServiceCard = ({ serviceObject }) => {
                         sx={{ opacity: 0, position: "absolute", left: "50%", top: "50%", transform: "translate(-50%, -50%)", zIndex: 10 }}
                         className="service-card-icon"
                     >
-                        {serviceObject?.icon}
+                        <Twemoji svg text={serviceObject?.icon} />
                     </Typography>
                     <Box
                         sx={{

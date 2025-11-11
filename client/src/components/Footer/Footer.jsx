@@ -3,6 +3,7 @@ import { Link } from "@/i18n/navigation";
 import { getTranslations } from "next-intl/server";
 import SectionContainer from "@/components/SectionContainer/SectionContainer";
 import Image from "next/image"
+import { Twemoji } from 'react-emoji-render';
 
 const Footer = async () => {
     const t = await getTranslations()
@@ -84,7 +85,7 @@ const Footer = async () => {
 
                             <Stack gap={2}>
                                 <Stack direction={"row"} gap={1}>
-                                    <Typography variant="body2">📧</Typography>
+                                    <Typography variant="body2"><Twemoji svg text="📧" /></Typography>
 
                                     <Stack>
                                         <Typography variant="body2" fontWeight={"bold"} color="background">{t("footer.contact.email")}</Typography>
@@ -92,7 +93,7 @@ const Footer = async () => {
                                     </Stack>
                                 </Stack>
                                 <Stack direction={"row"} gap={1}>
-                                    <Typography variant="body2">📞</Typography>
+                                    <Typography variant="body2"><Twemoji svg text="📞" /></Typography>
 
                                     <Stack>
                                         <Typography variant="body2" fontWeight={"bold"} color="background">{t("footer.contact.phone")}</Typography>
@@ -107,7 +108,11 @@ const Footer = async () => {
 
                     <Stack mt={4} direction={{ sm: "row" }} gap={1} justifyContent={"space-between"}>
                         <Typography variant="body2" color="neutral.500">&copy; {new Date().getFullYear()} {t("footer.copyright")}</Typography>
-                        <Link href={`/#hero`}><Typography variant="body2" sx={{ color: "var(--mui-palette-neutral-400)", transition: ".2s", "&:hover": { color: "var(--mui-palette-neutral-100)" }, flexWrap: "nowrap", whiteSpace: "nowrap" }}>{t("footer.back")} ↗️</Typography></Link>
+                        <Link href={`/#hero`}>
+                            <Typography variant="body2" sx={{ color: "var(--mui-palette-neutral-400)", transition: ".2s", "&:hover": { color: "var(--mui-palette-neutral-100)" }, flexWrap: "nowrap", whiteSpace: "nowrap" }}>
+                                <Twemoji svg text={`${t("footer.back")} ↗️`} />
+                            </Typography>
+                        </Link>
                     </Stack>
                 </Stack>
             </SectionContainer>

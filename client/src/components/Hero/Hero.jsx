@@ -32,7 +32,7 @@ const Hero = async () => {
                         maxWidth: "60rem"
                     }}
                 >
-                    <SectionTag props={{ mb: 6 }} content={t("hero.tag")} />
+                    <SectionTag props={{ mb: 6 }} content={`✨ ${t("hero.tag")}`} />
 
                     <Typography mb={1.5} variant="h1" color={"neutral.main"}>
                         {t("hero.title")}

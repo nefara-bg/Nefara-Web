@@ -7,6 +7,7 @@ import { Link } from "@/i18n/navigation"
 import SectionContainer from "@/components/SectionContainer/SectionContainer"
 import { getTranslations } from "next-intl/server"
 import * as motion from "motion/react-client"
+import { Twemoji } from 'react-emoji-render';
 
 const Services = async () => {
     const t = await getTranslations()
@@ -79,7 +80,7 @@ const Services = async () => {
                 }}
             >
                 <SectionContainer props={{ component: Stack, alignItems: "center" }}>
-                    <SectionTag props={{ mb: 4 }} content={t("services.tag")} />
+                    <SectionTag props={{ mb: 4 }} content={`🚀 ${t("services.tag")}`} />
 
                     <Box maxWidth={"60rem"}>
                         <TextGradient 
@@ -116,7 +117,7 @@ const Services = async () => {
                     <Stack gap={3} alignItems={"center"} textAlign={"center"}>
                         <Typography variant="body2">{t("services.subtext")}</Typography>
 
-                        <Link href={`/#contact`}><Button size="large" variant="contained" color="primary">{t("services.button")} 💬</Button></Link>
+                        <Link href={`/#contact`}><Button size="large" variant="contained" color="primary"><Twemoji svg text={`${t("services.button")} 💬`} /></Button></Link>
                     </Stack>
                 </SectionContainer>
             </Stack>

@@ -1,5 +1,6 @@
 import { Card, Grid, Typography } from "@mui/material"
 import * as motion from "motion/react-client"
+import { Twemoji } from 'react-emoji-render';
 
 const AboutCard = ({ cardContent }) => {
     const cardVariants = {
@@ -46,7 +47,7 @@ const AboutCard = ({ cardContent }) => {
             >
                 {
                     cardContent.icon &&
-                    <Typography variant="h3" mb={2}>{cardContent?.icon}</Typography>
+                    <Typography variant="h3" mb={2}><Twemoji svg text={cardContent?.icon} /></Typography>
                 }
                 <Typography variant="h4" color="neutral.main" mb={0.5}>{cardContent?.number}</Typography>
                 <Typography variant="body2" fontWeight={"bold"}>{cardContent?.label}</Typography>

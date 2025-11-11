@@ -1,6 +1,7 @@
 import { Card, Stack, Typography } from "@mui/material"
 import * as motion from "motion/react-client"
 import "./animation.css"
+import { Twemoji } from 'react-emoji-render';
 
 const FeatureCard = ({ feature = {} }) => {
     return (
@@ -18,7 +19,7 @@ const FeatureCard = ({ feature = {} }) => {
                     sx={{ aspectRatio: "1 / 1", bgcolor: "neutral.50" }}
                     className="feature-card-icon"
                 >
-                    <Typography variant="h5">{feature?.icon}</Typography>
+                    <Typography variant="h5"><Twemoji svg text={feature?.icon} /></Typography>
                 </Stack>
 
                 <Stack gap={1}>
