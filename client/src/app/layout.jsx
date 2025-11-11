@@ -1,6 +1,15 @@
+import { theme } from '@/theme/theme';
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
+import { ThemeProvider } from '@mui/material/styles';
+import { Inter } from "next/font/google"
+
+const inter = Inter({
+  subsets: ['latin', 'cyrillic']
+})
+
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className={inter.className}>
         <head>
             <link rel="icon" type="image/png" href="/tab-logo.png" media="(prefers-color-scheme: light)" />
             <link rel="icon" type="image/png" href="/tab-logo-dark.png" media="(prefers-color-scheme: dark)" />
@@ -12,7 +21,11 @@ export default function RootLayout({ children }) {
         </head>
         <body>
             <div id="root">
-                {children}
+              <AppRouterCacheProvider>
+                <ThemeProvider theme={theme}>
+                  {children}
+                </ThemeProvider>
+              </AppRouterCacheProvider>
             </div>
         </body>
     </html>
