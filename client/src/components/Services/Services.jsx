@@ -6,7 +6,7 @@ import FadeInSection from "@/components/FadeInSection/FadeInSection"
 import SectionTag from "@/components/SectionTag/SectionTag"
 import TextGradient from "@/components/TextGradient/TextGradient"
 import { motion } from "motion/react"
-import { HashLink } from "react-router-hash-link"
+import Link from "next/link"
 import { useParams } from "react-router-dom"
 import SectionContainer from "@/components/SectionContainer/SectionContainer"
 
@@ -115,7 +115,7 @@ const Services = () => {
                     <Stack gap={3} alignItems={"center"} textAlign={"center"}>
                         <Typography variant="body2">{t("services.subtext")}</Typography>
 
-                        <HashLink to={`/${lng}/#contact`}><Button size="large" variant="contained" color="primary">{t("services.button")} 💬</Button></HashLink>
+                        <Link href={`/${lng}/#contact`}><Button size="large" variant="contained" color="primary">{t("services.button")} 💬</Button></Link>
                     </Stack>
                 </SectionContainer>
             </HomeContainer>

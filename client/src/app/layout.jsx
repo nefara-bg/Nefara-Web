@@ -1,3 +1,4 @@
+import RouteWrapper from '@/components/RouteWrapper/RouteWrapper';
 import { theme } from '@/theme/theme';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import { ThemeProvider } from '@mui/material/styles';
@@ -23,7 +24,9 @@ export default function RootLayout({ children }) {
             <div id="root">
               <AppRouterCacheProvider>
                 <ThemeProvider theme={theme}>
-                  {children}
+                  <RouteWrapper>
+                    {children}
+                  </RouteWrapper>
                 </ThemeProvider>
               </AppRouterCacheProvider>
             </div>

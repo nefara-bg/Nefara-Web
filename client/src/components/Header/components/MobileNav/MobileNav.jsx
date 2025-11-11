@@ -1,7 +1,7 @@
 import { Stack, SwipeableDrawer } from "@mui/material"
 import MenuIcon from '@mui/icons-material/Menu';
 import { MobileMenu, NavLink } from "@/components/Header/styling";
-import { HashLink } from "react-router-hash-link";
+import Link from "next/link";
 import LngSwitcher from "@/components/Header/components/LngSwitcher/LngSwitcher";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -41,10 +41,10 @@ const MobileNav = () => {
                     />
 
                     <Stack gap={{ xs: 2, md: 4 }} mb={3}>
-                        <HashLink to={`/${lng}/#hero`}><NavLink variant="body2">{t("header.home")}</NavLink></HashLink>
-                        <HashLink to={`/${lng}/#services`}><NavLink variant="body2">{t("header.services")}</NavLink></HashLink>
-                        <HashLink to={`/${lng}/#about`}><NavLink variant="body2">{t("header.about")}</NavLink></HashLink>
-                        <HashLink to={`/${lng}/#contact`}><NavLink variant="body2">{t("header.contact")}</NavLink></HashLink>
+                        <Link href={`/${lng}/#hero`}><NavLink variant="body2">{t("header.home")}</NavLink></Link>
+                        <Link href={`/${lng}/#services`}><NavLink variant="body2">{t("header.services")}</NavLink></Link>
+                        <Link href={`/${lng}/#about`}><NavLink variant="body2">{t("header.about")}</NavLink></Link>
+                        <Link href={`/${lng}/#contact`}><NavLink variant="body2">{t("header.contact")}</NavLink></Link>
                     </Stack>
 
                     <LngSwitcher />

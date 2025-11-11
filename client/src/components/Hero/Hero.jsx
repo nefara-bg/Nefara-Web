@@ -1,6 +1,6 @@
 import { Button, Stack, Typography } from "@mui/material"
 import { useTranslation } from "react-i18next"
-import { HashLink } from "react-router-hash-link"
+import Link from "next/link"
 import { HeroSection, TextBox } from "@/app/styling"
 import { useParams } from "react-router-dom"
 import FadeInSection from "@/components/FadeInSection/FadeInSection"
@@ -34,8 +34,8 @@ const Hero = () => {
                     </Typography>
                     <Typography variant="body1" fontSize={"1.5rem"} mb={6}>{t("hero.content")}</Typography>
                     <Stack direction={{ md: "row" }} gap={2}>
-                        <HashLink to={`/${lng}/#contact`}><Button fullWidth variant="contained" size="large" color="primary">{t("hero.button")}</Button></HashLink>
-                        <HashLink to={`/${lng}/#services`}><Button fullWidth variant="outlined" size="large" color="primary">{t("hero.secondaryButton")}</Button></HashLink>
+                        <Link href={`/${lng}/#contact`}><Button fullWidth variant="contained" size="large" color="primary">{t("hero.button")}</Button></Link>
+                        <Link href={`/${lng}/#services`}><Button fullWidth variant="outlined" size="large" color="primary">{t("hero.secondaryButton")}</Button></Link>
                     </Stack>
                 </TextBox>
             </HeroSection>

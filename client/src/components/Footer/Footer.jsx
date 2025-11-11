@@ -1,5 +1,5 @@
 import { Divider, Grid, Stack, Typography } from "@mui/material"
-import { HashLink } from "react-router-hash-link"
+import Link from "next/link"
 import { useTranslation } from "react-i18next";
 import { FooterContainer, FooterLink } from "@/components/Footer/styling";
 import { useParams } from "react-router-dom";
@@ -68,7 +68,7 @@ const Footer = () => {
                             <Stack gap={1}>
                                 {
                                     links.map((link, i) => (
-                                        <HashLink key={i} to={link.link}><FooterLink variant="body2">{link.title}</FooterLink></HashLink>
+                                        <Link key={i} href={link.link}><FooterLink variant="body2">{link.title}</FooterLink></Link>
                                     ))
                                 }
                             </Stack>
@@ -102,7 +102,7 @@ const Footer = () => {
 
                     <Stack mt={4} direction={{ sm: "row" }} gap={1} justifyContent={"space-between"}>
                         <Typography variant="body2" color="neutral.500">&copy; {new Date().getFullYear()} {t("footer.copyright")}</Typography>
-                        <HashLink to={`/${lng}/#hero`}><FooterLink variant="body2">{t("footer.back")} ↗️</FooterLink></HashLink>
+                        <Link href={`/${lng}/#hero`}><FooterLink variant="body2">{t("footer.back")} ↗️</FooterLink></Link>
                     </Stack>
                 </Stack>
             </SectionContainer>

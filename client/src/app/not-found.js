@@ -2,7 +2,7 @@
 
 import { Section } from "@/app/styling"
 import { Button, Typography } from "@mui/material"
-import { Link } from "react-router-dom"
+import Link from "next/navigation"
 import { useTranslation } from "react-i18next"
 
 const NotFound = () => {
@@ -16,7 +16,7 @@ const NotFound = () => {
 
             <Typography variant="h4" mb={1} color="neutral">{t("notFound.title")}</Typography>
             <Typography variant="body2" mb={3}>{t("notFound.content")}</Typography>
-            <Link to={"/"}><Button variant="contained" size="large">{t("notFound.button")}</Button></Link>
+            <Link href={"/"}><Button variant="contained" size="large">{t("notFound.button")}</Button></Link>
         </Section>
     )
 }
