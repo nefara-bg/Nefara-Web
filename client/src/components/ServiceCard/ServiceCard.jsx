@@ -1,3 +1,5 @@
+"use client"
+
 import { Box, Card, Grid, Stack, Typography } from "@mui/material"
 import { motion, useAnimate } from "motion/react";
 import ServiceCardContent from "@/components/ServiceCardContent/ServiceCardContent";
