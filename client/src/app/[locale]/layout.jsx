@@ -36,7 +36,7 @@ export default async function RootLayout({ children, params }) {
             <AppRouterCacheProvider>
               <ThemeProvider theme={theme}>
                 <NextIntlClientProvider>
-                  <Header/>
+                  <Header locale={locale} />
                   {children}
                   <Footer/>
                 </NextIntlClientProvider>

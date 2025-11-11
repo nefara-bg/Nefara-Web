@@ -3,11 +3,11 @@
 import { AppBar, Stack, Toolbar, Typography } from "@mui/material"
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
-// import LngSwitcher from "@/components/Header/components/LngSwitcher/LngSwitcher";
+import LngSwitcher from "@/components/Header/components/LngSwitcher/LngSwitcher";
 import MobileNav from "@/components/Header/components/MobileNav/MobileNav";
 import Image from "next/image";
 
-const Header = () => {
+const Header = ({ locale = "en" }) => {
     const t = useTranslations()
 
 
@@ -42,12 +42,12 @@ const Header = () => {
                     </Stack>
                     
                     <Stack direction={"row"} gap={{ xs: 1, md: 2 }}>
-                        {/* <LngSwitcher /> */}
+                        <LngSwitcher locale={locale} />
 
                     </Stack>
                 </Stack>
 
-                <MobileNav />
+                <MobileNav locale={locale} />
             </Toolbar>
         </AppBar>
     )

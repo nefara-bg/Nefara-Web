@@ -1,12 +1,12 @@
 import { Stack, SwipeableDrawer, Typography } from "@mui/material"
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from "@/i18n/navigation";
-// import LngSwitcher from "@/components/Header/components/LngSwitcher/LngSwitcher";
+import LngSwitcher from "@/components/Header/components/LngSwitcher/LngSwitcher";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 
-const MobileNav = () => {
+const MobileNav = ({ locale = "en" }) => {
     const [mobileMenu, setMobileMenu] = useState(false)
 
 
@@ -47,7 +47,7 @@ const MobileNav = () => {
                         <Link href={`/#contact`}><Typography variant="body2" sx={{ transition: ".2s", "&:hover": { color: "var(--mui-palette-primary-main)" } }}>{t("header.contact")}</Typography></Link>
                     </Stack>
 
-                    {/* <LngSwitcher /> */}
+                    <LngSwitcher locale={locale} />
                 </Stack>
             </SwipeableDrawer>
         </>

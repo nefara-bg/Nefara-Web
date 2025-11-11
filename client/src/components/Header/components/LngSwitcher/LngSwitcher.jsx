@@ -1,28 +1,27 @@
+"use client"
+
 import { Button, Stack, Typography } from "@mui/material";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
 import LanguageIcon from '@mui/icons-material/Language';
 import { usePathname, useRouter } from "next/navigation";
-import { useNavigate } from "@/hooks/useNavigate";
 
-const LngSwitcher = () => {
+const LngSwitcher = ({ locale = "en" }) => {
   const languages = {
     en: "EN",
     bg: "БГ",
   };
 
-  const lng = "en"
-
-  const [displayLng, setDisplayLng] = useState(lng === "bg" ? languages.en : languages.bg);
+  const [displayLng, setDisplayLng] = useState(locale === "bg" ? languages.en : languages.bg);
 
   const location = usePathname()
   const currentPath = location.replace(/^\/(en|bg)/, "")
 
-  const navigate = useNavigate()
+  const router = useRouter()
+  const navigate = (route) => router.push(route)
 
   const handleToggleLng = () => {
-    const newLng = lng === "bg" ? "en" : "bg";
-    setDisplayLng(languages[lng]);
+    const newLng = locale === "bg" ? "en" : "bg";
+    setDisplayLng(languages[locale]);
     navigate(`/${newLng}${currentPath}`)
   };
 
