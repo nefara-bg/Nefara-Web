@@ -9,8 +9,8 @@ const InfoFeature = ({ featureObject = {} }) => {
                     alignItems: "center",
                     borderRadius: "100%",
                     background: "var(--mui-palette-neutral-600)",
-                    width: 3,
-                    height: 3,
+                    width: "1.5rem",
+                    height: "1.5rem",
                     aspectRatio: "1 / 1"
                 }}
             >
