@@ -1,9 +1,9 @@
 import { Stack, Toolbar, Typography } from "@mui/material"
 import { HashLink } from "react-router-hash-link"
 import { useTranslation } from "react-i18next";
-import LngSwitcher from "./components/LngSwitcher/LngSwitcher";
-import { NavigationBar, NavLink } from "./styling";
-import MobileNav from "./components/MobileNav/MobileNav";
+import LngSwitcher from "@/components/Header/components/LngSwitcher/LngSwitcher";
+import { NavigationBar, NavLink } from "@/components/Header/styling";
+import MobileNav from "@/components/Header/components/MobileNav/MobileNav";
 import { useParams } from "react-router-dom";
 import Image from "next/image";
 

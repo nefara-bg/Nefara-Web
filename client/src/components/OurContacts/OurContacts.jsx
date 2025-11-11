@@ -1,7 +1,7 @@
 import { Grid, Stack, Typography } from "@mui/material"
-import SectionTag from "../SectionTag/SectionTag"
-import TextGradient from "../TextGradient/TextGradient"
-import ContactCard from "../ContactCard/ContactCard"
+import SectionTag from "@/components/SectionTag/SectionTag"
+import TextGradient from "@/components/TextGradient/TextGradient"
+import ContactCard from "@/components/ContactCard/ContactCard"
 import { useTranslation } from "react-i18next"
 import { motion } from "motion/react"
 

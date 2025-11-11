@@ -1,6 +1,6 @@
 "use client"
 
-import { Section } from "./styling"
+import { Section } from "@/app/styling"
 import { Button, Typography } from "@mui/material"
 import { Link } from "react-router-dom"
 import { useTranslation } from "react-i18next"

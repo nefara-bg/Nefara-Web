@@ -1,9 +1,9 @@
 import { Divider, Grid, Stack, Typography } from "@mui/material"
 import { HashLink } from "react-router-hash-link"
 import { useTranslation } from "react-i18next";
-import { FooterContainer, FooterLink } from "./styling";
+import { FooterContainer, FooterLink } from "@/components/Footer/styling";
 import { useParams } from "react-router-dom";
-import SectionContainer from "../SectionContainer/SectionContainer";
+import SectionContainer from "@/components/SectionContainer/SectionContainer";
 import Image from "next/image"
 
 const Footer = () => {

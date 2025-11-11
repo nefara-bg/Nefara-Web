@@ -1,14 +1,14 @@
 import { Box, Button, Grid, Stack, Typography } from "@mui/material"
-import ServiceCard from "../ServiceCard/ServiceCard"
+import ServiceCard from "@/components/ServiceCard/ServiceCard"
 import { useTranslation } from "react-i18next"
-import { HomeContainer } from "../../app/styling"
-import FadeInSection from "../FadeInSection/FadeInSection"
-import SectionTag from "../SectionTag/SectionTag"
-import TextGradient from "../TextGradient/TextGradient"
+import { HomeContainer } from "@/app/styling"
+import FadeInSection from "@/components/FadeInSection/FadeInSection"
+import SectionTag from "@/components/SectionTag/SectionTag"
+import TextGradient from "@/components/TextGradient/TextGradient"
 import { motion } from "motion/react"
 import { HashLink } from "react-router-hash-link"
 import { useParams } from "react-router-dom"
-import SectionContainer from "../SectionContainer/SectionContainer"
+import SectionContainer from "@/components/SectionContainer/SectionContainer"
 
 const Services = () => {
     const { lng } = useParams()

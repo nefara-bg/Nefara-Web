@@ -1,10 +1,10 @@
 import { Box, Button, Card, Divider, Grid, Snackbar, Stack, Typography } from "@mui/material"
-import FormInputField from "../FormInputField/FormInputField"
-import { ContactInfoBox } from "../../app/styling"
+import FormInputField from "@/components/FormInputField/FormInputField"
+import { ContactInfoBox } from "@/app/styling"
 import { useTranslation } from "react-i18next"
 import { useRef, useState } from "react"
 import axios from "axios"
-import InfoFeature from "../InfoFeature/InfoFeature"
+import InfoFeature from "@/components/InfoFeature/InfoFeature"
 import { motion } from "motion/react"
 
 const ContactForm = ({ phone = "", phoneLabel = "" }) => {

@@ -1,5 +1,5 @@
 import { Stack, Typography } from "@mui/material"
-import { Tag } from "./styling"
+import { Tag } from "@/components/SectionTag/styling"
 
 const SectionTag = ({ props = {}, content = "" }) => {
     return (

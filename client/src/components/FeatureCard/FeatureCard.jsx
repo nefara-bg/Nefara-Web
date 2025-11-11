@@ -1,8 +1,8 @@
 import { Stack, Typography } from "@mui/material"
-import { StyledFeatureCard } from "../../app/styling"
+import { StyledFeatureCard } from "@/app/styling"
 import { useEffect, useRef, useState } from "react"
 import { motion, useAnimate } from "motion/react"
-import { theme } from "../../theme/theme"
+import { theme } from "@/theme/theme"
 
 const FeatureCard = ({ feature = {} }) => {
     const [scope, animate] = useAnimate()

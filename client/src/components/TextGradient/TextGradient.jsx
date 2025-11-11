@@ -1,4 +1,4 @@
-import { Gradient } from "./styling"
+import { Gradient } from "@/components/TextGradient/styling"
 
 const TextGradient = ({ props, children }) => {
     return (

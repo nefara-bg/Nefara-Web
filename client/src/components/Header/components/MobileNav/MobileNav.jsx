@@ -1,8 +1,8 @@
 import { Stack, SwipeableDrawer } from "@mui/material"
 import MenuIcon from '@mui/icons-material/Menu';
-import { MobileMenu, NavLink } from "../../styling";
+import { MobileMenu, NavLink } from "@/components/Header/styling";
 import { HashLink } from "react-router-hash-link";
-import LngSwitcher from "../LngSwitcher/LngSwitcher";
+import LngSwitcher from "@/components/Header/components/LngSwitcher/LngSwitcher";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
