@@ -1,32 +1,30 @@
 import { Divider, Grid, Stack, Typography } from "@mui/material"
-import { getTranslations, getLocale } from "next-intl/server";
-import Link from "next/link";
-import { FooterContainer, FooterLink } from "./styling";
-import SectionContainer from "../SectionContainer/SectionContainer";
+import { Link } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
+import SectionContainer from "@/components/SectionContainer/SectionContainer";
 import Image from "next/image"
 
-const Footer = async () => {
-    const t = await getTranslations()
-    const locale = await getLocale()
+const Footer = () => {
+    const { t } = useTranslations()
 
 
 
     const links = [
         {
             title: t("footer.services.web"),
-            link: `/${locale}#services`
+            link: `/#services`
         },
         {
             title: t("footer.services.desktop"),
-            link: `/${locale}#services`
+            link: `/#services`
         },
         {
             title: t("footer.services.mobile"),
-            link: `/${locale}#services`
+            link: `/#services`
         },
         {
             title: t("footer.services.consulting"),
-            link: `/${locale}#contact`
+            link: `/#contact`
         }
     ]
 
@@ -39,7 +37,16 @@ const Footer = async () => {
 
 
     return (
-        <FooterContainer>
+        <Stack
+            sx={{
+                background: "linear-gradient(135deg, var(--mui-palette-primary-main) 0%, var(--mui-palette-neutral-700) 50%, var(--mui-palette-neutral-900) 100%)",
+                position: "relative",
+                zIndex: 10,
+                py: { xs: 6, sm: 9, md: 9 },
+                px: { xs: 2, sm: 2, md: 12 },
+                gap: { xs: 3, md: 4 }
+            }}
+        >
 
             <SectionContainer>
                 <Stack>
@@ -67,7 +74,7 @@ const Footer = async () => {
                             <Stack gap={1}>
                                 {
                                     links.map((link, i) => (
-                                        <Link key={i} href={link.link}><FooterLink variant="body2">{link.title}</FooterLink></Link>
+                                        <Link key={i} href={link.link}><Typography variant="body2" sx={{ color: "var(--mui-palette-neutral-400)", transition: ".2s", "&:hover": { color: "var(--mui-palette-neutral-100)" }, flexWrap: "nowrap", whiteSpace: "nowrap" }}>{link.title}</Typography></Link>
                                     ))
                                 }
                             </Stack>
@@ -82,7 +89,7 @@ const Footer = async () => {
 
                                     <Stack>
                                         <Typography variant="body2" fontWeight={"bold"} color="background">{t("footer.contact.email")}</Typography>
-                                        <FooterLink component="a" href={`mailto:${email}`} variant="body2">{email}</FooterLink>
+                                        <Typography component="a" href={`mailto:${email}`} variant="body2" sx={{ color: "var(--mui-palette-neutral-400)", transition: ".2s", "&:hover": { color: "var(--mui-palette-neutral-100)" }, flexWrap: "nowrap", whiteSpace: "nowrap" }}>{email}</Typography>
                                     </Stack>
                                 </Stack>
                                 <Stack direction={"row"} gap={1}>
@@ -90,7 +97,7 @@ const Footer = async () => {
 
                                     <Stack>
                                         <Typography variant="body2" fontWeight={"bold"} color="background">{t("footer.contact.phone")}</Typography>
-                                        <FooterLink component="a" href={`mailto:${phone}`} variant="body2">{phoneLabel}</FooterLink>
+                                        <Typography component="a" href={`mailto:${phone}`} variant="body2" sx={{ color: "var(--mui-palette-neutral-400)", transition: ".2s", "&:hover": { color: "var(--mui-palette-neutral-100)" }, flexWrap: "nowrap", whiteSpace: "nowrap" }}>{phoneLabel}</Typography>
                                     </Stack>
                                 </Stack>
                             </Stack>
@@ -101,11 +108,11 @@ const Footer = async () => {
 
                     <Stack mt={4} direction={{ sm: "row" }} gap={1} justifyContent={"space-between"}>
                         <Typography variant="body2" color="neutral.500">&copy; {new Date().getFullYear()} {t("footer.copyright")}</Typography>
-                        <Link href={`/${locale}#hero`}><FooterLink variant="body2">{t("footer.back")} ↗️</FooterLink></Link>
+                        <Link href={`/#hero`}><Typography variant="body2" sx={{ color: "var(--mui-palette-neutral-400)", transition: ".2s", "&:hover": { color: "var(--mui-palette-neutral-100)" }, flexWrap: "nowrap", whiteSpace: "nowrap" }}>{t("footer.back")} ↗️</Typography></Link>
                     </Stack>
                 </Stack>
             </SectionContainer>
-        </FooterContainer>
+        </Stack>
     )
 }
 

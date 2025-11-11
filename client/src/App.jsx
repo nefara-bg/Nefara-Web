@@ -1,12 +1,12 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import RouteWrapper from './components/RouteWrapper/RouteWrapper'
+import RouteWrapper from '@/components/RouteWrapper/RouteWrapper'
 import { ThemeProvider } from '@emotion/react'
-import { theme } from './theme/theme'
-import i18n from "./translation/i18n"
+import { theme } from '@/theme/theme'
+import i18n from "@/translation/i18n"
 import { lazy } from 'react'
 
-const Home = lazy(() => import("./pages/Home/Home"))
-const NotFound = lazy(() => import("./pages/NotFound/NotFound"))
+const Home = lazy(() => import("@/pages/Home/Home"))
+const NotFound = lazy(() => import("@/pages/NotFound/NotFound"))
 
 function App() {
   return (

@@ -1,5 +1,4 @@
-import { Grid, Typography } from "@mui/material"
-import { StyledCard } from "../../app/styling"
+import { Card, Grid, Typography } from "@mui/material"
 import { motion } from "motion/react"
 
 const AboutCard = ({ cardContent }) => {
@@ -24,7 +23,7 @@ const AboutCard = ({ cardContent }) => {
             size={{ xs: 12, sm: 6, lg:4 }}
             variants={cardVariants}
         >
-            <StyledCard
+            <Card
                 variant="outlined"  
                 component={motion.div}
                 initial={{ scale: 1 }}
@@ -36,6 +35,14 @@ const AboutCard = ({ cardContent }) => {
                         bounce: 0.2
                     }
                 }}
+                sx={{
+                    textAlign: "center",
+                    height: "100%",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    padding: { xs: 4, sm: 4, md: 2 }
+                }}
             >
                 {
                     cardContent.icon &&
@@ -43,7 +50,7 @@ const AboutCard = ({ cardContent }) => {
                 }
                 <Typography variant="h4" color="neutral.main" mb={0.5}>{cardContent?.number}</Typography>
                 <Typography variant="body2" fontWeight={"bold"}>{cardContent?.label}</Typography>
-            </StyledCard>
+            </Card>
         </Grid>
     )
 }

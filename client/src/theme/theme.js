@@ -1,4 +1,6 @@
-import { createTheme } from "@mui/material";
+"use client"
+
+import { createTheme } from "@mui/material/styles";
 import { transform } from "motion/react";
 
 const headingStyles = {
@@ -6,6 +8,7 @@ const headingStyles = {
 }
 
 export const theme = createTheme({
+    cssVariables: true,
     spacing: `0.5rem`,
     palette: {
         background: {
@@ -38,7 +41,7 @@ export const theme = createTheme({
         roundedBorderRadius: "1.2rem"
     },
     typography: {
-        fontFamily: ["Inter", 'sans-serif'].join(","),
+        fontFamily: "var(--font-inter)",
         h1: { 
             ...headingStyles,
             fontSize: "5.4rem"

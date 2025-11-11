@@ -1,12 +1,11 @@
 "use client"
 
 import { Box, Button, Card, Divider, Grid, Snackbar, Stack, Typography } from "@mui/material"
-import FormInputField from "../FormInputField/FormInputField"
-import { ContactInfoBox } from "../../app/styling"
+import FormInputField from "@/components/FormInputField/FormInputField"
 import { useTranslations } from "next-intl"
 import { useRef, useState } from "react"
 import axios from "axios"
-import InfoFeature from "../InfoFeature/InfoFeature"
+import InfoFeature from "@/components/InfoFeature/InfoFeature"
 import { motion } from "motion/react"
 
 const ContactForm = ({ phone = "", phoneLabel = "" }) => {
@@ -134,8 +133,11 @@ const ContactForm = ({ phone = "", phoneLabel = "" }) => {
                     </Stack>
                 </Grid>
 
-                <ContactInfoBox
+                <Grid
                     size="grow"
+                    sx={{
+                        background: "linear-gradient(135deg, var(--mui-palette-primary-main) 0%, var(--mui-palette-neutral-700) 50%, var(--mui-palette-neutral-900) 100%)"
+                    }}
                     justifyContent={"center"}
                     p={{ xs: 4, sm: 6 }}
                     component={Stack}
@@ -161,7 +163,7 @@ const ContactForm = ({ phone = "", phoneLabel = "" }) => {
                             <Typography component={"a"} href={`tel:${phone}`} variant="body2" color="background">📞 {phoneLabel}</Typography>
                         </Stack>
                     </form>
-                </ContactInfoBox>
+                </Grid>
             </Card>
         </Box>
     )

@@ -1,7 +1,7 @@
 import CircleIcon from '@mui/icons-material/Circle';
 import { Stack, Typography } from "@mui/material"
 import { motion } from "motion/react"
-import { theme } from '../../theme/theme';
+import { theme } from '@/theme/theme';
 import { useEffect, useRef } from 'react';
 
 const ServiceCardContent = ({ content = "", hovered = false, animate }) => {
@@ -102,7 +102,7 @@ const ServiceCardContent = ({ content = "", hovered = false, animate }) => {
             variants={containerVariants}
         >
             <CircleIcon
-                sx={{ width: "0.5rem", height: "0.5rem" }}
+                sx={{ width: 1, height: 1 }}
                 component={motion.svg}
                 ref={bulletRef}
                 variants={bulletVariants}

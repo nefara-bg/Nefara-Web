@@ -1,8 +1,8 @@
 import { getTranslations, getLocale } from "next-intl/server"
+import { useTranslations } from "next-intl"
 
-const SeoTags = async () => {
-    const t = await getTranslations()
-    const lng = await getLocale()
+const SeoTags = () => {
+    const t = useTranslations()
     const baseUrl = "https://nefara.org"
 
 
@@ -19,7 +19,7 @@ const SeoTags = async () => {
             < meta property="og:title" content={t("seo.title")} />
             <meta property="og:description" content={t("seo.description")} />
             <meta property="og:type" content="website" />
-            <meta property="og:url" content={`${baseUrl}/${lng}`} />
+            {/* <meta property="og:url" content={`${baseUrl}/${lng}`} /> */}
             <meta property="og:image" content={`${baseUrl}/hero-desktop.webp`} />
 
             <meta name="twitter:card" content="summary_large_image" />

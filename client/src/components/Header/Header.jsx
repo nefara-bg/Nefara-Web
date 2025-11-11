@@ -1,19 +1,25 @@
-import { Stack, Toolbar, Typography } from "@mui/material"
-import { getTranslations, getLocale } from "next-intl/server";
-import Link from "next/link";
-import LngSwitcher from "./components/LngSwitcher/LngSwitcher";
-import { NavigationBar, NavLink } from "./styling";
-import MobileNav from "./components/MobileNav/MobileNav";
+import { AppBar, Stack, Toolbar, Typography } from "@mui/material"
+import { Link } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
+import LngSwitcher from "@/components/Header/components/LngSwitcher/LngSwitcher";
+import MobileNav from "@/components/Header/components/MobileNav/MobileNav";
 import Image from "next/image";
 
-const Header = async () => {
-    const t = await getTranslations()
-    const locale = await getLocale()
+const Header = () => {
+    const { t } = useTranslations()
 
 
 
     return (
-        <NavigationBar elevation={2} position="fixed">
+        <AppBar 
+            elevation={2} 
+            position="fixed"
+            sx={{
+                backgroundColor: "var(--mui-palette-background-main)",
+                py: 0,
+                px: { xs: 1, sm: 3, md: 3, lg: 5, xl: 9 }
+            }}
+        >
             <Toolbar sx={{ maxWidth: "96rem", width: "100%", mx: "auto" }}>
                 <Stack direction={"row"} alignItems={"center"} gap={1}>
                     <Image
@@ -27,10 +33,10 @@ const Header = async () => {
                 
                 <Stack flex={1} direction={"row"} alignItems={"center"} justifyContent={"end"} gap={{ xs: 3, lg: 5 }} sx={{ display: { xs: "none", md: "flex" } }}>
                     <Stack direction={"row"} gap={{ xs: 2, lg: 4 }}>
-                        <Link href={`/${locale}#hero`}><NavLink variant="body2">{t("header.home")}</NavLink></Link>
-                        <Link href={`/${locale}#services`}><NavLink variant="body2">{t("header.services")}</NavLink></Link>
-                        <Link href={`/${locale}#about`}><NavLink variant="body2">{t("header.about")}</NavLink></Link>
-                        <Link href={`/${locale}#contact`}><NavLink variant="body2">{t("header.contact")}</NavLink></Link>
+                        <Link href={`/#hero`}><Typography variant="body2" sx={{ transition: ".2s", "&:hover": { color: "var(--mui-palette-primary-main)" } }}>{t("header.home")}</Typography></Link>
+                        <Link href={`/#services`}><Typography variant="body2" sx={{ transition: ".2s", "&:hover": { color: "var(--mui-palette-primary-main)" } }}>{t("header.services")}</Typography></Link>
+                        <Link href={`/#about`}><Typography variant="body2" sx={{ transition: ".2s", "&:hover": { color: "var(--mui-palette-primary-main)" } }}>{t("header.about")}</Typography></Link>
+                        <Link href={`/#contact`}><Typography variant="body2" sx={{ transition: ".2s", "&:hover": { color: "var(--mui-palette-primary-main)" } }}>{t("header.contact")}</Typography></Link>
                     </Stack>
                     
                     <Stack direction={"row"} gap={{ xs: 1, md: 2 }}>
@@ -41,7 +47,7 @@ const Header = async () => {
 
                 <MobileNav />
             </Toolbar>
-        </NavigationBar>
+        </AppBar>
     )
 }
 

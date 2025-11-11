@@ -1,17 +1,15 @@
 import { Box, Button, Grid, Stack, Typography } from "@mui/material"
-import ServiceCard from "../ServiceCard/ServiceCard"
-import { getTranslations, getLocale } from "next-intl/server"
-import { HomeContainer } from "../../app/styling"
-import FadeInSection from "../FadeInSection/FadeInSection"
-import SectionTag from "../SectionTag/SectionTag"
-import TextGradient from "../TextGradient/TextGradient"
+import ServiceCard from "@/components/ServiceCard/ServiceCard"
+import { useTranslations } from "next-intl"
+import FadeInSection from "@/components/FadeInSection/FadeInSection"
+import SectionTag from "@/components/SectionTag/SectionTag"
+import TextGradient from "@/components/TextGradient/TextGradient"
 import { motion } from "motion/react"
-import Link from "next/link"
-import SectionContainer from "../SectionContainer/SectionContainer"
+import { Link } from "@/i18n/navigation"
+import SectionContainer from "@/components/SectionContainer/SectionContainer"
 
-const Services = async () => {
-    const t = await getTranslations()
-    const locale = await getLocale()
+const Services = () => {
+    const t = useTranslations()
 
 
 
@@ -72,7 +70,14 @@ const Services = async () => {
 
     return (
         <FadeInSection>
-            <HomeContainer id="services">
+            <Stack 
+                id="services"
+                sx={{
+                    py: { xs: 9, sm: 9, md: 9, lg: 9, xl: 9 },
+                    px: { xs: 2, sm: 6, md: 6, lg: 8, xl: 12 },
+                    alignItems: "center"
+                }}
+            >
                 <SectionContainer props={{ component: Stack, alignItems: "center" }}>
                     <SectionTag props={{ mb: 4 }} content={t("services.tag")} />
 
@@ -111,10 +116,10 @@ const Services = async () => {
                     <Stack gap={3} alignItems={"center"} textAlign={"center"}>
                         <Typography variant="body2">{t("services.subtext")}</Typography>
 
-                        <Link href={`/${locale}#contact`}><Button size="large" variant="contained" color="primary">{t("services.button")} 💬</Button></Link>
+                        <Link href={`/#contact`}><Button size="large" variant="contained" color="primary">{t("services.button")} 💬</Button></Link>
                     </Stack>
                 </SectionContainer>
-            </HomeContainer>
+            </Stack>
         </FadeInSection>
     )
 }

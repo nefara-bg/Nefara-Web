@@ -1,20 +1,12 @@
-"use client"
-
-import { Stack, SwipeableDrawer } from "@mui/material"
+import { Stack, SwipeableDrawer, Typography } from "@mui/material"
 import MenuIcon from '@mui/icons-material/Menu';
-import { MobileMenu, NavLink } from "../../styling";
-import { HashLink } from "react-router-hash-link";
-import LngSwitcher from "../LngSwitcher/LngSwitcher";
+import { Link } from "@/i18n/navigation";
+import LngSwitcher from "@/components/Header/components/LngSwitcher/LngSwitcher";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { useParams } from "react-router-dom";
 import Image from "next/image";
 
 const MobileNav = () => {
-    const { lng } = useParams()
-
-
-
     const [mobileMenu, setMobileMenu] = useState(false)
 
 
@@ -30,7 +22,13 @@ const MobileNav = () => {
             </Stack>
 
             <SwipeableDrawer open={mobileMenu} onOpen={() => setMobileMenu(true)} onClose={() => setMobileMenu(false)}>
-                <MobileMenu>
+                <Stack
+                    sx={{
+                        height: "100%",
+                        py: 4,
+                        px: 4
+                    }}
+                >
                     <Image
                         src="/logo.svg"
                         alt="Our logo"
@@ -43,14 +41,14 @@ const MobileNav = () => {
                     />
 
                     <Stack gap={{ xs: 2, md: 4 }} mb={3}>
-                        <HashLink to={`/${lng}/#hero`}><NavLink variant="body2">{t("header.home")}</NavLink></HashLink>
-                        <HashLink to={`/${lng}/#services`}><NavLink variant="body2">{t("header.services")}</NavLink></HashLink>
-                        <HashLink to={`/${lng}/#about`}><NavLink variant="body2">{t("header.about")}</NavLink></HashLink>
-                        <HashLink to={`/${lng}/#contact`}><NavLink variant="body2">{t("header.contact")}</NavLink></HashLink>
+                        <Link href={`/#hero`}><Typography variant="body2" sx={{ transition: ".2s", "&:hover": { color: "var(--mui-palette-primary-main)" } }}>{t("header.home")}</Typography></Link>
+                        <Link href={`/#services`}><Typography variant="body2" sx={{ transition: ".2s", "&:hover": { color: "var(--mui-palette-primary-main)" } }}>{t("header.services")}</Typography></Link>
+                        <Link href={`/#about`}><Typography variant="body2" sx={{ transition: ".2s", "&:hover": { color: "var(--mui-palette-primary-main)" } }}>{t("header.about")}</Typography></Link>
+                        <Link href={`/#contact`}><Typography variant="body2" sx={{ transition: ".2s", "&:hover": { color: "var(--mui-palette-primary-main)" } }}>{t("header.contact")}</Typography></Link>
                     </Stack>
 
                     <LngSwitcher />
-                </MobileMenu>
+                </Stack>
             </SwipeableDrawer>
         </>
     )
