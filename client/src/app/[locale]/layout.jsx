@@ -35,13 +35,11 @@ export default async function RootLayout({ children, params }) {
           <div id="root">
             <AppRouterCacheProvider>
               <ThemeProvider theme={theme}>
-                <RouteWrapper>
-                  <NextIntlClientProvider>
-                    <Header/>
-                    {children}
-                    <Footer/>
-                  </NextIntlClientProvider>
-                </RouteWrapper>
+                <NextIntlClientProvider>
+                  <Header/>
+                  {children}
+                  <Footer/>
+                </NextIntlClientProvider>
               </ThemeProvider>
             </AppRouterCacheProvider>
           </div>

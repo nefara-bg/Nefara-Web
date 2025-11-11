@@ -1,3 +1,5 @@
+"use client"
+
 import { Box, styled } from "@mui/material"
 // import SeoTags from "../../components/SeoTags/SeoTags"
 import About from "../../components/About/About"

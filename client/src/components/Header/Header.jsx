@@ -1,7 +1,9 @@
+"use client"
+
 import { AppBar, Stack, Toolbar, Typography } from "@mui/material"
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
-import LngSwitcher from "@/components/Header/components/LngSwitcher/LngSwitcher";
+// import LngSwitcher from "@/components/Header/components/LngSwitcher/LngSwitcher";
 import MobileNav from "@/components/Header/components/MobileNav/MobileNav";
 import Image from "next/image";
 
@@ -40,7 +42,7 @@ const Header = () => {
                     </Stack>
                     
                     <Stack direction={"row"} gap={{ xs: 1, md: 2 }}>
-                        <LngSwitcher />
+                        {/* <LngSwitcher /> */}
 
                     </Stack>
                 </Stack>

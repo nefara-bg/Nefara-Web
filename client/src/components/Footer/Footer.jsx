@@ -1,3 +1,5 @@
+"use client"
+
 import { Divider, Grid, Stack, Typography } from "@mui/material"
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
@@ -6,7 +8,6 @@ import Image from "next/image"
 
 const Footer = () => {
     const { t } = useTranslations()
-
 
 
     const links = [
