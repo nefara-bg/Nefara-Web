@@ -1,3 +1,5 @@
+"use client"
+
 import { Grid, Stack, Typography } from "@mui/material"
 import AboutCard from "@/components/AboutCard/AboutCard"
 import { useTranslations } from "next-intl"

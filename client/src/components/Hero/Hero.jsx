@@ -1,12 +1,12 @@
 import { Button, Stack, Typography } from "@mui/material"
-import { useTranslations } from "next-intl"
 import { Link } from "@/i18n/navigation"
 import FadeInSection from "@/components/FadeInSection/FadeInSection"
 import SectionTag from "@/components/SectionTag/SectionTag"
 import TextGradient from "@/components/TextGradient/TextGradient"
+import { getTranslations } from "next-intl/server"
 
-const Hero = () => {
-    const t = useTranslations()
+const Hero = async () => {
+    const t = await getTranslations()
 
 
 

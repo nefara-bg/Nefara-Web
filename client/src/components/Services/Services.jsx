@@ -1,3 +1,5 @@
+"use client"
+
 import { Box, Button, Grid, Stack, Typography } from "@mui/material"
 import ServiceCard from "@/components/ServiceCard/ServiceCard"
 import { useTranslations } from "next-intl"
