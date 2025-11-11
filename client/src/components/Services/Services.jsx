@@ -1,21 +1,17 @@
 import { Box, Button, Grid, Stack, Typography } from "@mui/material"
 import ServiceCard from "../ServiceCard/ServiceCard"
-import { useTranslation } from "react-i18next"
+import { getTranslations, getLocale } from "next-intl/server"
 import { HomeContainer } from "../../app/styling"
 import FadeInSection from "../FadeInSection/FadeInSection"
 import SectionTag from "../SectionTag/SectionTag"
 import TextGradient from "../TextGradient/TextGradient"
 import { motion } from "motion/react"
-import { HashLink } from "react-router-hash-link"
-import { useParams } from "react-router-dom"
+import Link from "next/link"
 import SectionContainer from "../SectionContainer/SectionContainer"
 
-const Services = () => {
-    const { lng } = useParams()
-
-
-
-    const { t } = useTranslation()
+const Services = async () => {
+    const t = await getTranslations()
+    const locale = await getLocale()
 
 
 
@@ -115,7 +111,7 @@ const Services = () => {
                     <Stack gap={3} alignItems={"center"} textAlign={"center"}>
                         <Typography variant="body2">{t("services.subtext")}</Typography>
 
-                        <HashLink to={`/${lng}/#contact`}><Button size="large" variant="contained" color="primary">{t("services.button")} 💬</Button></HashLink>
+                        <Link href={`/${locale}#contact`}><Button size="large" variant="contained" color="primary">{t("services.button")} 💬</Button></Link>
                     </Stack>
                 </SectionContainer>
             </HomeContainer>

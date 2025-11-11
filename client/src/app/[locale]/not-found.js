@@ -1,12 +1,12 @@
 "use client"
 
-import { Section } from "./styling"
+import { Section } from "../styling"
 import { Button, Typography } from "@mui/material"
-import { Link } from "react-router-dom"
-import { useTranslation } from "react-i18next"
+import Link from "next/link"
+import { useTranslations } from "next-intl"
 
 const NotFound = () => {
-    const { t } = useTranslation()
+    const t = useTranslations()
 
 
 
@@ -16,7 +16,7 @@ const NotFound = () => {
 
             <Typography variant="h4" mb={1} color="neutral">{t("notFound.title")}</Typography>
             <Typography variant="body2" mb={3}>{t("notFound.content")}</Typography>
-            <Link to={"/"}><Button variant="contained" size="large">{t("notFound.button")}</Button></Link>
+            <Link href="/"><Button variant="contained" size="large">{t("notFound.button")}</Button></Link>
         </Section>
     )
 }

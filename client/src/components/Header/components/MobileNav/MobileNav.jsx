@@ -1,10 +1,12 @@
+"use client"
+
 import { Stack, SwipeableDrawer } from "@mui/material"
 import MenuIcon from '@mui/icons-material/Menu';
 import { MobileMenu, NavLink } from "../../styling";
 import { HashLink } from "react-router-hash-link";
 import LngSwitcher from "../LngSwitcher/LngSwitcher";
 import { useState } from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslations } from "next-intl";
 import { useParams } from "react-router-dom";
 import Image from "next/image";
 
@@ -17,7 +19,7 @@ const MobileNav = () => {
 
 
 
-    const { t } = useTranslation()
+    const t = useTranslations()
 
 
 

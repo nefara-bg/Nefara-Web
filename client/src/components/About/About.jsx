@@ -1,16 +1,16 @@
 import { Grid, Stack, Typography } from "@mui/material"
-import AboutCard from "./components/AboutCard/AboutCard"
-import { useTranslation } from "react-i18next"
+import AboutCard from "../AboutCard/AboutCard"
+import { getTranslations } from "next-intl/server"
 import { AboutSection, HomeContainer } from "../../app/styling"
 import FadeInSection from "../FadeInSection/FadeInSection"
 import { motion } from "motion/react"
 import TextGradient from "../TextGradient/TextGradient"
 import SectionTag from "../SectionTag/SectionTag"
-import FeatureCard from "./components/FeatureCard/FeatureCard"
+import FeatureCard from "../FeatureCard/FeatureCard"
 import SectionContainer from "../SectionContainer/SectionContainer"
 
-const About = () => {
-    const { t } = useTranslation()
+const About = async () => {
+    const t = await getTranslations()
 
 
 
