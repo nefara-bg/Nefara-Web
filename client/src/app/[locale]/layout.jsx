@@ -8,6 +8,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import { Inter } from "next/font/google"
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
+import "@/app/globals.css"
 
 const inter = Inter({
   subsets: ['latin', 'cyrillic']
