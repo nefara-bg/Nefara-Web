@@ -1,11 +1,8 @@
-"use client"
-
 import { Box, Card, Grid, Stack, Typography } from "@mui/material"
-import { motion, useAnimate } from "motion/react";
+import * as motion from "motion/react-client"
 import ServiceCardContent from "@/components/ServiceCardContent/ServiceCardContent";
-import { useEffect, useRef, useState } from "react";
-import { theme } from "@/theme/theme";
 import Image from "next/image";
+import "./animation.css"
 
 const ServiceCard = ({ serviceObject }) => {
     const cardVariants = {
@@ -18,28 +15,6 @@ const ServiceCard = ({ serviceObject }) => {
                 duration: 1,
                 type: "spring"
             }
-        }
-    }
-
-
-
-    const iconVariants = {
-        initial: {
-            opacity: 0
-        },
-        hover: {
-            opacity: 1
-        }
-    }
-
-
-
-    const titleVariants = {
-        hover: {
-            color: theme.palette.neutral["600"]
-        },
-        unhover: {
-            color: theme.palette.neutral.main
         }
     }
 
@@ -60,57 +35,6 @@ const ServiceCard = ({ serviceObject }) => {
     }
 
 
-    const imageVariants = {
-        initial: {
-            scale: 1,
-            opacity: 1
-        },
-        hover: {
-            scale: 1.1,
-            opacity: 0.4
-        },
-        unhover: {
-            scale: 1,
-            opacity: 1
-        }
-    }
-
-
-
-    const overlayVariants = {
-        initial: {
-            opacity: 0
-        },
-        hover: {
-            opacity: 1
-        }
-    }
-
-
-    const [scope, animate] = useAnimate()
-    const titleRef = useRef(null)
-    const imageRef = useRef(null)
-    const iconRef = useRef(null)
-    const overlayRef = useRef(null)
-
-    const [hovered, setHovered] = useState(false)
-
-    useEffect(() => {
-        if(hovered) {
-            animate(titleRef.current, titleVariants.hover, { duration: 0.5 })
-            animate(imageRef.current, imageVariants.hover, { duration: 0.5 })
-            animate(iconRef.current, iconVariants.hover, { duration: 0.5 })
-            animate(overlayRef.current, overlayVariants.hover, { duration: 0.5 })
-        }
-        else {
-            animate(titleRef.current, titleVariants.unhover, { duration: 0.5 })
-            animate(imageRef.current, imageVariants.unhover, { duration: 0.5 })
-            animate(iconRef.current, iconVariants.initial, { duration: 0.5 })
-            animate(overlayRef.current, overlayVariants.initial, { duration: 0.5 })
-        }
-    }, [hovered])
-
-
 
     return (
         <Grid
@@ -119,18 +43,15 @@ const ServiceCard = ({ serviceObject }) => {
             variants={cardVariants}
         >
             <Card 
-                component={motion.div} 
-                ref={scope} 
+                component={motion.div}
                 variant="outlined" 
-                onMouseEnter={() => setHovered(true)} 
-                onMouseLeave={() => setHovered(false)}
+                className="service-card"
                 sx={{
                     padding: 3,
                     paddingBottom: 5,
                     backgroundColor: "linear-gradient(145deg, hsl(0 0 100%) 0%, hsl(0 0 98%) 100%)",
                     textAlign: "center",
                     height: "100%",
-                    transition: "0.5s",
                     "&:hover": {
                         transform: "scale(1.05)"
                     },
@@ -150,9 +71,7 @@ const ServiceCard = ({ serviceObject }) => {
                         opacity: 0,
                         backgroundImage: `linear-gradient(to bottom right, ${serviceObject.colors[0]}1A, ${serviceObject.colors[1]}1A)`,
                     }}
-                    component={motion.div}
-                    ref={overlayRef}
-                    variants={overlayVariants}
+                    className="service-card-overlay"
                 />
 
                 <Box
@@ -163,23 +82,19 @@ const ServiceCard = ({ serviceObject }) => {
                 >
                     <Typography
                         variant="h2"
-                        sx={{ position: "absolute", left: "50%", top: "50%", transform: "translate(-50%, -50%)", zIndex: 10 }}
-                        component={motion.p}
-                        variants={iconVariants}
-                        ref={iconRef}
+                        sx={{ opacity: 0, position: "absolute", left: "50%", top: "50%", transform: "translate(-50%, -50%)", zIndex: 10 }}
+                        className="service-card-icon"
                     >
                         {serviceObject?.icon}
                     </Typography>
                     <Box
-                        component={motion.div}
-                        ref={imageRef}
-                        variants={imageVariants}
                         sx={{
                             aspectRatio: "16 / 9",
                             width: "100%",
                             position: "relative",
                             overflow: "hidden"
                         }}
+                        className="service-card-image"
                     >
                         <Image
                             src={serviceObject?.image}
@@ -199,9 +114,7 @@ const ServiceCard = ({ serviceObject }) => {
                             variant="h5"
                             color="neutral.main" 
                             mb={1}
-                            component={motion.h5}
-                            variants={titleVariants}
-                            ref={titleRef}
+                            className="service-card-title"
                         >
                             {serviceObject?.title}
                         </Typography>
@@ -218,8 +131,6 @@ const ServiceCard = ({ serviceObject }) => {
                             <ServiceCardContent
                                 key={index}
                                 content={point}
-                                animate={animate}
-                                hovered={hovered}
                             />
                         ))}
                     </Stack>

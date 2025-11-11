@@ -1,10 +1,8 @@
 import CircleIcon from '@mui/icons-material/Circle';
 import { Stack, Typography } from "@mui/material"
-import { motion } from "motion/react"
-import { theme } from '@/theme/theme';
-import { useEffect, useRef } from 'react';
+import * as motion from "motion/react-client"
 
-const ServiceCardContent = ({ content = "", hovered = false, animate }) => {
+const ServiceCardContent = ({ content = "" }) => {
     const containerVariants = {
         initial: {
             opacity: 0
@@ -48,46 +46,8 @@ const ServiceCardContent = ({ content = "", hovered = false, animate }) => {
                 duration: 1,
                 type: "spring"
             }
-        },
-        hover: {
-            color: theme.palette.neutral.main
-        },
-        unhover: {
-            color: theme.palette.neutral.light
         }
     }
-
-
-
-    const bulletVariants = {
-        initial: {
-            scale: 1
-        },
-        hover: {
-            scale: 1.5
-        },
-        unhover: {
-            scale: 1
-        }
-    }
-
-
-
-    const bulletRef = useRef(null)
-    const textRef = useRef(null)
-
-
-
-    useEffect(() => {
-        if(hovered) {
-            animate(textRef.current, textVariants.hover, { duration: 0.5 })
-            animate(bulletRef.current, bulletVariants.hover, { duration: 0.5 })
-        }
-        else {
-            animate(textRef.current, textVariants.unhover, { duration: 0.5 })
-            animate(bulletRef.current, bulletVariants.unhover, { duration: 0.5 })
-        }
-    }, [hovered])
 
 
 
@@ -95,26 +55,18 @@ const ServiceCardContent = ({ content = "", hovered = false, animate }) => {
         <Stack
             direction="row"
             alignItems="center"
-            // justifyContent={"center"}
             spacing={1.5}
-            // pl={2}
             component={motion.div}
             variants={containerVariants}
         >
             <CircleIcon
                 sx={{ width: "0.5rem", height: "0.5rem" }}
-                component={motion.svg}
-                ref={bulletRef}
-                variants={bulletVariants}
-                initial="initial"
+                className='service-card-bullet'
             />
             <Typography
                 variant="body2"
                 textAlign={"start"}
-                component={motion.p}
-                variants={textVariants}
-                fontWeight={"500"}
-                ref={textRef}
+                className='service-card-text'
             >
                 {content}
             </Typography>
