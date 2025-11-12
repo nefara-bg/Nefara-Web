@@ -21,7 +21,6 @@ const LngSwitcher = ({ locale = "en" }) => {
 
   const handleToggleLng = () => {
     const newLng = locale === "bg" ? "en" : "bg";
-    console.log(`PATH: ${`/${newLng}${currentPath}`}`)
     router.push(currentPath, { locale: newLng })
   };
 

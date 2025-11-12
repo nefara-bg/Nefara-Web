@@ -6,14 +6,8 @@ import { useTranslations } from "next-intl";
 import LngSwitcher from "@/components/Header/components/LngSwitcher/LngSwitcher";
 import MobileNav from "@/components/Header/components/MobileNav/MobileNav";
 import Image from "next/image";
-import { useEffect } from "react";
 
 const Header = ({ locale = "en" }) => {
-    useEffect(() => {
-        console.log("Re rendered")
-    }, [])
-
-
     const t = useTranslations()
 
 
