@@ -1,4 +1,6 @@
 import {defineRouting} from 'next-intl/routing';
+
+export const locales = ['en', 'bg']
  
 export const routing = defineRouting({
   // A list of all locales that are supported

@@ -5,12 +5,12 @@ import SectionTag from "@/components/SectionTag/SectionTag"
 import TextGradient from "@/components/TextGradient/TextGradient"
 import { Link } from "@/i18n/navigation"
 import SectionContainer from "@/components/SectionContainer/SectionContainer"
-import { getTranslations } from "next-intl/server"
+import { useTranslations } from "next-intl"
 import * as motion from "motion/react-client"
 import { Twemoji } from 'react-emoji-render';
 
-const Services = async () => {
-    const t = await getTranslations()
+const Services = () => {
+    const t = useTranslations()
 
 
 

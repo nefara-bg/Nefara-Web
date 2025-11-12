@@ -3,10 +3,10 @@ import { Link } from "@/i18n/navigation"
 import FadeInSection from "@/components/FadeInSection/FadeInSection"
 import SectionTag from "@/components/SectionTag/SectionTag"
 import TextGradient from "@/components/TextGradient/TextGradient"
-import { getTranslations } from "next-intl/server"
+import { useTranslations } from "next-intl"
 
-const Hero = async () => {
-    const t = await getTranslations()
+const Hero = () => {
+    const t = useTranslations()
 
 
 

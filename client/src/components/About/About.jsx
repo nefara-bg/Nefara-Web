@@ -1,6 +1,6 @@
 import { Grid, Stack, Typography } from "@mui/material"
 import AboutCard from "@/components/AboutCard/AboutCard"
-import { getTranslations } from "next-intl/server"
+import { useTranslations } from "next-intl"
 import FadeInSection from "@/components/FadeInSection/FadeInSection"
 import * as motion from "motion/react-client"
 import TextGradient from "@/components/TextGradient/TextGradient"
@@ -8,8 +8,8 @@ import SectionTag from "@/components/SectionTag/SectionTag"
 import FeatureCard from "@/components/FeatureCard/FeatureCard"
 import SectionContainer from "@/components/SectionContainer/SectionContainer"
 
-const About = async () => {
-    const t = await getTranslations()
+const About = () => {
+    const t = useTranslations()
 
 
 

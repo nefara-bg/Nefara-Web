@@ -1,9 +1,12 @@
 import { Button, Typography, Stack } from "@mui/material"
 import Link from "next/link"
-import { getTranslations } from "next-intl/server"
+import { hasLocale, useTranslations } from "next-intl"
+import { routing } from "@/i18n/routing"
+import { notFound } from "next/navigation"
+import { setRequestLocale } from "next-intl/server"
 
 const NotFound = async () => {
-    const t = await getTranslations()
+    const t = useTranslations()
 
 
 

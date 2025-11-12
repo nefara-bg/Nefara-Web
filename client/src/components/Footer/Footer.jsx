@@ -1,12 +1,12 @@
 import { Divider, Grid, Stack, Typography } from "@mui/material"
 import { Link } from "@/i18n/navigation";
-import { getTranslations } from "next-intl/server";
+import { useTranslations } from "next-intl";
 import SectionContainer from "@/components/SectionContainer/SectionContainer";
 import Image from "next/image"
 import { Twemoji } from 'react-emoji-render';
 
-const Footer = async () => {
-    const t = await getTranslations()
+const Footer = () => {
+    const t = useTranslations()
 
 
     const links = [

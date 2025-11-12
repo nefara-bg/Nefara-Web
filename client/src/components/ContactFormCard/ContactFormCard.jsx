@@ -1,12 +1,12 @@
 import { Box, Card, Divider, Grid, Stack, Typography } from "@mui/material"
-import { getTranslations } from "next-intl/server"
+import { useTranslations } from "next-intl"
 import InfoFeature from "@/components/InfoFeature/InfoFeature"
 import * as motion from "motion/react-client"
 import ContactForm from "@/components/ContactForm/ContactForm"
 import { Twemoji } from "react-emoji-render"
 
-const ContactFormCard =  async ({ phone = "", phoneLabel = "" }) => {
-    const t = await getTranslations()
+const ContactFormCard =  ({ phone = "", phoneLabel = "" }) => {
+    const t = useTranslations()
 
 
 
