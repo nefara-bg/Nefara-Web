@@ -13,7 +13,7 @@ const inter = Inter({
 
 export default async function RootLayout({ children, params }) {
   return (
-    <html className={inter.className}>
+    <html className={inter.className} data-scroll-behaviour="smooth">
       <head>
             <link rel="icon" type="image/png" href="/tab-logo.png" media="(prefers-color-scheme: light)" />
             <link rel="icon" type="image/png" href="/tab-logo-dark.png" media="(prefers-color-scheme: dark)" />
