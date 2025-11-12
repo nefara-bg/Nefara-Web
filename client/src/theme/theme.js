@@ -1,7 +1,6 @@
 "use client"
 
 import { createTheme } from "@mui/material/styles";
-import { transform } from "motion/react";
 
 const headingStyles = {
     fontWeight: "bold"
