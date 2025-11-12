@@ -59,7 +59,6 @@ const Page = async ({ params }) => {
 
     return (
         <Box sx={{ bgcolor: "background.main" }}>
-            {/*<SeoTags />*/}
             <Hero />
             <Services />
             <About />
