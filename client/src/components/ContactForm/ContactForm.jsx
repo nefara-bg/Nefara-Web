@@ -7,7 +7,8 @@ import { useRef, useState } from "react"
 import axios from "axios"
 import InfoFeature from "@/components/InfoFeature/InfoFeature"
 import { motion } from "motion/react"
-dynamic(() => import("react-emoji-render").then(mod => mod.Twemoji), { ssr: false })
+import dynamic from "next/dynamic"
+const Twemoji = dynamic(() => import("react-emoji-render").then(mod => mod.Twemoji), { ssr: false })
 
 const ContactForm = ({ phone = "", phoneLabel = "" }) => {
     const t = useTranslations()
