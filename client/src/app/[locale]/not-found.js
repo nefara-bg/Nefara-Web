@@ -1,14 +1,13 @@
 import { Button, Typography, Stack } from "@mui/material"
-import Link from "next/link"
-import { hasLocale, useTranslations } from "next-intl"
-import { routing } from "@/i18n/routing"
-import { notFound } from "next/navigation"
-import { setRequestLocale } from "next-intl/server"
+import { Link } from "@/i18n/navigation"
+import { getLocale, getTranslations } from "next-intl/server"
 
-const NotFound = async () => {
-    const t = useTranslations()
-
-
+export default async function NotFound() {
+    // Get locale from next-intl context (extracted from the route)
+    const locale = await getLocale();
+    
+    // Get translations for the locale
+    const t = await getTranslations({ locale });
 
     return (
         <Stack
@@ -29,5 +28,3 @@ const NotFound = async () => {
         </Stack>
     )
 }
-
-export default NotFound
