@@ -93,7 +93,7 @@ const Footer = async () => {
                                     </Stack>
                                 </Stack>
                                 <Stack direction={"row"} gap={1}>
-                                    <Typography variant="body2"><Twemoji svg text="📞" /></Typography>
+                                    <Typography variant="body2"><Twemoji svg text="☎️" /></Typography>
 
                                     <Stack>
                                         <Typography variant="body2" fontWeight={"bold"} color="background">{t("footer.contact.phone")}</Typography>

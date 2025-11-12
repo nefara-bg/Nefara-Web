@@ -84,7 +84,7 @@ const ContactFormCard =  async ({ phone = "", phoneLabel = "" }) => {
 
                     <Stack mt={4} gap={2}>
                         <Typography variant="body2" color="background" fontWeight={600}>{t("contact.call")}</Typography>
-                        <Typography component={"a"} href={`tel:${phone}`} variant="body2" color="background"><Twemoji svg text={`📞 ${phoneLabel}`} /></Typography>
+                        <Typography component={"a"} href={`tel:${phone}`} variant="body2" color="background"><Twemoji svg text={`☎️ ${phoneLabel}`} /></Typography>
                     </Stack>
                 </Grid>
             </Card>
