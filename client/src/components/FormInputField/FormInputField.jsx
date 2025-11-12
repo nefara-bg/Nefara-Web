@@ -1,6 +1,6 @@
 import { Stack, TextField, Typography } from "@mui/material"
 
-const FormInputField = ({ label = "", placeholder = "", inputRef = null, multiline = false, rows = 1 }) => {
+const FormInputField = ({ label = "", placeholder = "", inputRef = null, multiline = false, rows = 1, name = "" }) => {
     const inputProps = {
         style: {
             fontSize: "0.875rem",
@@ -22,6 +22,7 @@ const FormInputField = ({ label = "", placeholder = "", inputRef = null, multili
                 multiline={multiline}
                 rows={rows}
                 required={true}
+                name={name}
             />
         </Stack>
     )

@@ -1,6 +1,6 @@
 import { Stack } from "@mui/material"
 import FadeInSection from "@/components/FadeInSection/FadeInSection";
-import ContactForm from "@/components/ContactForm/ContactForm";
+import ContactFormCard from "@/components/ContactFormCard/ContactFormCard";
 import OurContacts from "@/components/OurContacts/OurContacts";
 
 const Contact = () => {
@@ -30,7 +30,7 @@ const Contact = () => {
                         phoneLabel={phoneLabel}
                     />
 
-                    <ContactForm
+                    <ContactFormCard
                         phone={phone}
                         phoneLabel={phoneLabel}
                     />
