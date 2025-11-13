@@ -18,27 +18,28 @@ export async function generateMetadata({params}) {
     const baseUrl = process.env.NEXT_PUBLIC_CLIENT_URL
 
     return {
+        metadataBase: new URL(baseUrl),
         title: t("seo.title"),
         description: t("seo.description"),
         alternates: {
-            canonical: `${baseUrl}/${locale}`,
+            canonical: `/${locale}`,
             languages: {
-                en: `${baseUrl}/en`,
-                bg: `${baseUrl}/bg`,
-                "x-default": `${baseUrl}/en`,
+                en: `/en`,
+                bg: `/bg`,
+                "x-default": `/en`,
             },
         },
         openGraph: {
             title: t("seo.title"),
             description: t("seo.description"),
             type: "website",
-            images: [`${baseUrl}/meta.webp`],
+            images: [`/meta.webp`],
         },
         twitter: {
             card: "summary_large_image",
             title: t("seo.title"),
             description: t("seo.description"),
-            images: [`${baseUrl}/meta.webp`],
+            images: [`/meta.webp`],
         },
     };
 }

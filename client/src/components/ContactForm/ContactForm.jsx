@@ -37,6 +37,7 @@ const ContactForm = () => {
                             label={t("contact.email")}
                             placeholder={t("contact.emailPlaceholder")}
                             name="email"
+                            type="email"
                         />
                         <FormInputField
                             label={t("contact.subject")}

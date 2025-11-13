@@ -1,6 +1,11 @@
 import { Stack, TextField, Typography } from "@mui/material"
+import { useEffect, useState } from "react";
 
-const FormInputField = ({ label = "", placeholder = "", inputRef = null, multiline = false, rows = 1, name = "" }) => {
+const FormInputField = ({ label = "", placeholder = "", inputRef = null, multiline = false, rows = 1, name = "", type = "text" }) => {
+    const [mounted, setMounted] = useState(false);
+    useEffect(() => setMounted(true), []);
+    if (!mounted) return null;
+
     const inputProps = {
         style: {
             fontSize: "0.875rem",
@@ -23,6 +28,7 @@ const FormInputField = ({ label = "", placeholder = "", inputRef = null, multili
                 rows={rows}
                 required={true}
                 name={name}
+                type={type}
             />
         </Stack>
     )
