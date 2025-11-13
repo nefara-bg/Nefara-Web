@@ -10,7 +10,6 @@ import { setRequestLocale } from "next-intl/server"
 
 const Page = async ({ params }) => {
     const { locale } = await params
-    console.log(`LOCALE: ${locale}`)
 
     if (!hasLocale(routing.locales, locale)) {
         notFound();

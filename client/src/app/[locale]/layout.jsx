@@ -8,7 +8,6 @@ import "@/app/globals.css"
 
 export async function generateStaticParams() {
   const staticParams = locales.map((locale) => ({ locale }))
-  console.log(staticParams)
   return staticParams
 }
 
