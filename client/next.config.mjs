@@ -15,7 +15,12 @@ const nextConfig = {
   },
   turbopack: {
     root: path.resolve(__dirname)
-  }
+  },
+
+  // optimization for devlopment
+
+  reactStrictMode: false,
+  output: 'standalone',
 }
  
 export default withNextIntl(nextConfig)
