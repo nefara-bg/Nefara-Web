@@ -1,52 +1,55 @@
-import { Stack, Toolbar, Typography } from "@mui/material"
-import { HashLink } from "react-router-hash-link"
-import logo from "../../img/logo.svg"
-import { useTranslation } from "react-i18next";
-import LngSwitcher from "./components/LngSwitcher/LngSwitcher";
-import { NavigationBar, NavLink } from "./styling";
-import MobileNav from "./components/MobileNav/MobileNav";
-import ImageContainer from "../ImageContainer/ImageContainer";
-import { useParams } from "react-router-dom";
+"use client"
 
-const Header = () => {
-    const { lng } = useParams()
-    const { t } = useTranslation()
+import { AppBar, Stack, Toolbar, Typography } from "@mui/material"
+import { Link } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
+import LngSwitcher from "@/components/Header/components/LngSwitcher/LngSwitcher";
+import MobileNav from "@/components/Header/components/MobileNav/MobileNav";
+import Image from "next/image";
+
+const Header = ({ locale = "en" }) => {
+    const t = useTranslations()
 
 
 
     return (
-        <NavigationBar elevation={2} position="fixed">
+        <AppBar 
+            elevation={2} 
+            position="fixed"
+            sx={{
+                backgroundColor: "var(--mui-palette-background-main)",
+                py: 0,
+                px: { xs: 1, sm: 3, md: 3, lg: 5, xl: 9 }
+            }}
+        >
             <Toolbar sx={{ maxWidth: "96rem", width: "100%", mx: "auto" }}>
                 <Stack direction={"row"} alignItems={"center"} gap={1}>
-                    <ImageContainer
-                        src={logo}
+                    <Image
+                        src="/logo.svg"
                         alt="Our logo"
-                        props={{
-                            sx: {
-                                width: "32px"
-                            }
-                        }}
+                        width={32}
+                        height={32}
                     />
                     <Typography variant="h5" sx={{ userSelect: "none" }} color="primary">Nefara</Typography>
                 </Stack>
                 
                 <Stack flex={1} direction={"row"} alignItems={"center"} justifyContent={"end"} gap={{ xs: 3, lg: 5 }} sx={{ display: { xs: "none", md: "flex" } }}>
                     <Stack direction={"row"} gap={{ xs: 2, lg: 4 }}>
-                        <HashLink to={`/${lng}/#hero`}><NavLink variant="body2">{t("header.home")}</NavLink></HashLink>
-                        <HashLink to={`/${lng}/#services`}><NavLink variant="body2">{t("header.services")}</NavLink></HashLink>
-                        <HashLink to={`/${lng}/#about`}><NavLink variant="body2">{t("header.about")}</NavLink></HashLink>
-                        <HashLink to={`/${lng}/#contact`}><NavLink variant="body2">{t("header.contact")}</NavLink></HashLink>
+                        <Link href={`/#hero`}><Typography variant="body2" sx={{ transition: ".2s", "&:hover": { color: "var(--mui-palette-primary-main)" } }}>{t("header.home")}</Typography></Link>
+                        <Link href={`/#services`}><Typography variant="body2" sx={{ transition: ".2s", "&:hover": { color: "var(--mui-palette-primary-main)" } }}>{t("header.services")}</Typography></Link>
+                        <Link href={`/#about`}><Typography variant="body2" sx={{ transition: ".2s", "&:hover": { color: "var(--mui-palette-primary-main)" } }}>{t("header.about")}</Typography></Link>
+                        <Link href={`/#contact`}><Typography variant="body2" sx={{ transition: ".2s", "&:hover": { color: "var(--mui-palette-primary-main)" } }}>{t("header.contact")}</Typography></Link>
                     </Stack>
                     
                     <Stack direction={"row"} gap={{ xs: 1, md: 2 }}>
-                        <LngSwitcher />
+                        <LngSwitcher locale={locale} />
 
                     </Stack>
                 </Stack>
 
-                <MobileNav />
+                <MobileNav locale={locale} />
             </Toolbar>
-        </NavigationBar>
+        </AppBar>
     )
 }
 

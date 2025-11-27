@@ -1,0 +1,11 @@
+.feature-card, .feature-card * {
+    transition: 0.2s;
+}
+
+.feature-card:hover .feature-card-icon {
+    transform: scale(1.1);
+}
+
+.feature-card:hover .feature-card-title {
+    color: var(--mui-palette-neutral-700);
+}

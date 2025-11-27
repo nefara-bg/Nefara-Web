@@ -1,0 +1,142 @@
+{
+    "seo": {
+        "title": "Nefara - Web, mobile and desktop applications to help your business grow.",
+        "description": "At Nefara we build web, mobile, and desktop applications, as well as AI solutions tailored to your business. From modern apps to custom AI development, Nefara helps companies grow, innovate, and stay competitive."
+    },
+    "header": {
+        "home": "Home",
+        "services": "Services",
+        "about": "About",
+        "contact": "Contact",
+        "button": "Get Started"
+    },
+    "hero": {
+        "tag": "Building Digital Excellence Since 2024",
+        "title": "Custom Software",
+        "title2": "Solutions",
+        "content": "Transform your ideas into powerful digital experiences. We craft exceptional websites, desktop applications, and mobile apps that drive real business results.",
+        "button": "Get Started",
+        "secondaryButton": "View Our Services"
+    },
+    "services": {
+        "tag": "What We Build",
+        "title": "Our Services",
+        "content": "Comprehensive software development services designed to transform your ideas into powerful digital solutions that scale with your business.",
+        "web": {
+            "title": "Web Development",
+            "content": {
+                "text": "Modern, responsive websites and web applications built with cutting-edge technologies that deliver exceptional user experiences.",
+                "content1": "Responsive design",
+                "content2": "Pure code",
+                "content3": "AI integrated"
+            }
+        },
+        "mobile": {
+            "title": "Mobile Apps",
+            "content": {
+                "text": "Powerful desktop software solutions for Windows, macOS, and Linux with native performance and intuitive interfaces.",
+                "content1": "Cross platform for all operating systems",
+                "content2": "Secure applications",
+                "content3": "AI integrated"
+            }
+        },
+        "desktop": {
+            "title": "Desktop Apps",
+            "content": {
+                "text": "Powerful desktop software solutions for Windows, macOS, and Linux with native performance and intuitive interfaces.",
+                "content1": "Cross platform for all operating systems",
+                "content2": "High performance",
+                "content3": "AI integrated"
+            }
+        },
+        "subtext": "Don't see exactly what you need? We create custom solutions for unique challenges.",
+        "button": "Discuss Your Project"
+    },
+    "about": {
+        "title": "Why Choose",
+        "content": "We're not just developers — we're your digital transformation partners, committed to turning your vision into reality with precision and creativity.",
+        "experience": "Years Experience",
+        "support": "Support Available",
+        "client": "Client Satisfaction",
+        "tag": "Our Mission",
+        "subtitle": "Transforming Your Ideas Into",
+        "subtitle2": "Digital Excellence",
+        "paragraph1": "From concept to deployment, we handle every aspect of your software development journey. Our team combines technical expertise with creative problem-solving to deliver solutions that exceed expectations.",
+        "paragraph2": "Whether you're a startup disrupting an industry or an enterprise optimizing operations, we scale our approach to match your ambitions and timeline.",
+        "agile": {
+            "title": "Agile Development",
+            "content": "Fast, iterative development cycles that adapt to your changing needs"
+        },
+        "tech": {
+            "title": "Modern Tech Stack",
+            "content": "Latest technologies and best practices for optimal performance"
+        },
+        "featureSupport": {
+            "title": "24/7 Support",
+            "content": "Round-the-clock assistance to keep your applications running smoothly"
+        },
+        "quality": {
+            "title": "Quality Assurance",
+            "content": "Rigorous testing processes to ensure bug-free, reliable software"
+        }
+    },
+    "contact": {
+        "tag": "Ready to Start?",
+        "title": "Let's Build Something",
+        "subtitle": "Amazing Together",
+        "content": "Turn your vision into reality. Share your project details and we'll craft a custom solution that exceeds your expectations.",
+        "emailTitle": "Email Us",
+        "emailContent": "Get in touch via email",
+        "phoneTitle": "Call Us",
+        "phoneContent": "Speak directly with our team",
+        "formTitle": "Send us a message",
+        "formText": "Fill out the form below and we'll get back to you as soon as possible.",
+        "email": "Email",
+        "emailPlaceholder": "your@email.com",
+        "subject": "Subject",
+        "subjectPlaceholder": "Company website",
+        "message": "Your message",
+        "messagePlaceholder": "Tell us about your project goals, timeline and any specific requirements...",
+        "button": "Send Message",
+        "loading": "Sending...",
+        "divider": "You can also reach us at",
+        "alert": "Your message was successfully sent.",
+        "error": "Something went wrong. Please try again.",
+        "infoTitle": "Why Work With Us?",
+        "time": {
+            "title": "Fast Response Time",
+            "content": "We respond to all inquiries as soon as possible."
+        },
+        "consultation": {
+            "title": "Free Consultation",
+            "content": "Discovery calls to discuss your needs."
+        },
+        "proposals": {
+            "title": "Custom Proposals",
+            "content": "Tailored solutions and transparent pricing."
+        },
+        "call": "Prefer to call?"
+    },
+    "footer": {
+        "text": "Transforming ideas into exceptional software solutions. Building the future, one application at a time. Your success is our mission.",
+        "services": {
+            "title": "Our Services",
+            "web": "Web Development",
+            "desktop": "Desktop Applications",
+            "mobile": "Mobile Apps",
+            "consulting": "Consulting"
+        },
+        "contact": {
+            "title": "Get in Touch",
+            "email": "Email",
+            "phone": "Phone"
+        },
+        "copyright": "Nefara - All rights reserved.",
+        "back": "Back to Top"
+    },
+    "notFound": {
+        "title": "Not found!",
+        "content": "The page you're looking for was not found.",
+        "button": "Back to Home"
+    }
+}

@@ -1,22 +1,24 @@
-FROM node:18-alpine AS builder
+FROM node:24-alpine AS builder
 
 WORKDIR /app
 
-COPY package.json package-lock.json vite.config.js ./
-RUN npm ci
+COPY package.json package-lock.json ./
+
+RUN npm install
 
 COPY . .
 
 RUN npm run build
 
+FROM node:24-alpine AS final
 
-FROM nginx:stable-alpine
+WORKDIR /app
 
-RUN rm -rf /usr/share/nginx/html/*
+COPY --from=builder /app/dist/standalone ./
+COPY --from=builder /app/dist/static ./dist/static
+COPY --from=builder /app/public ./public
 
-COPY --from=builder /app/dist /usr/share/nginx/html
+ENV NODE_ENV=production
+EXPOSE 3000
 
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["node", "server.js"]

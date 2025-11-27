@@ -1,0 +1,29 @@
+.service-card {
+    transition: 0.5s;
+}
+
+.service-card * {
+    transition: 0.5s;
+}
+
+.service-card:hover .service-card-image {
+    transform: scale(1.1);
+    filter: opacity(0.4);
+}
+
+.service-card:hover .service-card-title {
+    color: var(--mui-palette-neutral-600);
+}
+
+.service-card:hover .service-card-icon, .service-card:hover .service-card-overlay {
+    opacity: 1;
+}
+
+.service-card:hover .service-card-bullet {
+    transform: scale(1.5);
+    transition: 0.5s;
+}
+
+.service-card:hover .service-card-text {
+    color: var(--mui-palette-neutral-main);
+}
