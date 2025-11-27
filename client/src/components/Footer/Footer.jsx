@@ -98,7 +98,7 @@ const Footer = () => {
 
                                     <Stack>
                                         <Typography variant="body2" fontWeight={"bold"} color="background">{t("footer.contact.phone")}</Typography>
-                                        <Typography component="a" href={`mailto:${phone}`} variant="body2" sx={{ color: "var(--mui-palette-neutral-400)", transition: ".2s", "&:hover": { color: "var(--mui-palette-neutral-100)" }, flexWrap: "nowrap", whiteSpace: "nowrap" }}>{phoneLabel}</Typography>
+                                        <Typography component="a" href={`tel:${phone}`} variant="body2" sx={{ color: "var(--mui-palette-neutral-400)", transition: ".2s", "&:hover": { color: "var(--mui-palette-neutral-100)" }, flexWrap: "nowrap", whiteSpace: "nowrap" }}>{phoneLabel}</Typography>
                                     </Stack>
                                 </Stack>
                             </Stack>
