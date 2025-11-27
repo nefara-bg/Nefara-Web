@@ -22,7 +22,8 @@
     "next-intl": "^4.5.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "react-emoji-render": "^2.0.1"
+    "react-emoji-render": "^2.0.1",
+    "resend": "^6.5.2"
   },
   "devDependencies": {
     "@types/react": "^19.1.10",
