@@ -7,7 +7,7 @@ export const contactAction = async (previousState, formData) => {
     const subject = formData.get("subject")
     const message = formData.get("message")
 
-    const result = await sendEmail({ email, subject, message })
+    const result = await sendEmail(email, subject, message)
 
     return result
 }
