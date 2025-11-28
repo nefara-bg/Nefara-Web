@@ -15,7 +15,7 @@ export async function generateMetadata({params}) {
     const {locale} = await params;
     const t = await getTranslations({locale});
 
-    const baseUrl = process.env.NEXT_PUBLIC_CLIENT_URL
+    const baseUrl = process.env.NEXT_PUBLIC_CLIENT_URL || 'http://localhost:3000'
 
     return {
         metadataBase: new URL(baseUrl),

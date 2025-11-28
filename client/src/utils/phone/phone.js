@@ -1,4 +1,9 @@
 export function parseBgPhone(number) {
+    // Handle undefined/null values
+    if (!number || typeof number !== 'string') {
+        return '';
+    }
+
     // Ensure only digits and + remain
     number = number.replace(/[^\d+]/g, "");
 

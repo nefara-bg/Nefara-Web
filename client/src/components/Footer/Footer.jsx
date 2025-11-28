@@ -31,9 +31,9 @@ const Footer = () => {
 
 
 
-    const email = process.env.NEXT_PUBLIC_CONTACT_EMAIL
-    const phone = process.env.NEXT_PUBLIC_CONTACT_PHONE
-    const phoneLabel = parseBgPhone(phone)
+    const email = process.env.NEXT_PUBLIC_CONTACT_EMAIL || ''
+    const phone = process.env.NEXT_PUBLIC_CONTACT_PHONE || ''
+    const phoneLabel = phone ? parseBgPhone(phone) : ''
 
 
 

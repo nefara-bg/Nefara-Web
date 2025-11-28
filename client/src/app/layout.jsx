@@ -9,7 +9,7 @@ const inter = Inter({
 })
 
 export async function generateMetadata() {
-    const baseUrl = process.env.NEXT_PUBLIC_CLIENT_URL
+    const baseUrl = process.env.NEXT_PUBLIC_CLIENT_URL || 'http://localhost:3000'
 
     return {
         icons: {
