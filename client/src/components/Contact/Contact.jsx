@@ -2,11 +2,12 @@ import { Stack } from "@mui/material"
 import FadeInSection from "@/components/FadeInSection/FadeInSection";
 import ContactFormCard from "@/components/ContactFormCard/ContactFormCard";
 import OurContacts from "@/components/OurContacts/OurContacts";
+import { parseBgPhone } from "@/utils/phone/phone";
 
 const Contact = () => {
-    const phone = "+359887383000"
-    const phoneLabel = "+359 88 738 3000"
-    const email = "contacts@nefara.org"
+    const phone = process.env.NEXT_PUBLIC_CONTACT_PHONE
+    const phoneLabel = parseBgPhone(phone)
+    const email = process.env.NEXT_PUBLIC_CONTACT_EMAIL
 
 
 

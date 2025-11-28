@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import SectionContainer from "@/components/SectionContainer/SectionContainer";
 import Image from "next/image"
 import { Twemoji } from 'react-emoji-render';
+import { parseBgPhone } from "@/utils/phone/phone";
 
 const Footer = () => {
     const t = useTranslations()
@@ -30,9 +31,9 @@ const Footer = () => {
 
 
 
-    const email = "contacts@nefara.org"
-    const phone = "+359887383000"
-    const phoneLabel = "+359 88 738 3000"
+    const email = process.env.NEXT_PUBLIC_CONTACT_EMAIL
+    const phone = process.env.NEXT_PUBLIC_CONTACT_PHONE
+    const phoneLabel = parseBgPhone(phone)
 
 
 
@@ -97,7 +98,7 @@ const Footer = () => {
 
                                     <Stack>
                                         <Typography variant="body2" fontWeight={"bold"} color="background">{t("footer.contact.phone")}</Typography>
-                                        <Typography component="a" href={`mailto:${phone}`} variant="body2" sx={{ color: "var(--mui-palette-neutral-400)", transition: ".2s", "&:hover": { color: "var(--mui-palette-neutral-100)" }, flexWrap: "nowrap", whiteSpace: "nowrap" }}>{phoneLabel}</Typography>
+                                        <Typography component="a" href={`tel:${phone}`} variant="body2" sx={{ color: "var(--mui-palette-neutral-400)", transition: ".2s", "&:hover": { color: "var(--mui-palette-neutral-100)" }, flexWrap: "nowrap", whiteSpace: "nowrap" }}>{phoneLabel}</Typography>
                                     </Stack>
                                 </Stack>
                             </Stack>
