@@ -2,6 +2,7 @@ import { theme } from '@/theme/theme';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import { ThemeProvider } from '@mui/material/styles';
 import { Inter } from "next/font/google"
+import { validateClientUrl } from "@/utils/env/env";
 import "@/app/globals.css"
 
 const inter = Inter({
@@ -9,7 +10,7 @@ const inter = Inter({
 })
 
 export async function generateMetadata() {
-    const baseUrl = process.env.NEXT_PUBLIC_CLIENT_URL
+    const baseUrl = validateClientUrl(process.env.NEXT_PUBLIC_CLIENT_URL)
 
     return {
         icons: {

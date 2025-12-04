@@ -3,11 +3,12 @@ import FadeInSection from "@/components/FadeInSection/FadeInSection";
 import ContactFormCard from "@/components/ContactFormCard/ContactFormCard";
 import OurContacts from "@/components/OurContacts/OurContacts";
 import { parseBgPhone } from "@/utils/phone/phone";
+import { validateContactEmail, validateContactPhone } from "@/utils/env/env";
 
 const Contact = () => {
-    const phone = process.env.NEXT_PUBLIC_CONTACT_PHONE
-    const phoneLabel = parseBgPhone(phone)
-    const email = process.env.NEXT_PUBLIC_CONTACT_EMAIL
+    const phone = validateContactPhone(process.env.NEXT_PUBLIC_CONTACT_PHONE)
+    const phoneLabel = phone ? parseBgPhone(phone) : ''
+    const email = validateContactEmail(process.env.NEXT_PUBLIC_CONTACT_EMAIL)
 
 
 

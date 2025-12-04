@@ -4,6 +4,7 @@ import TextGradient from "@/components/TextGradient/TextGradient"
 import ContactCard from "@/components/ContactCard/ContactCard"
 import { useTranslations } from "next-intl"
 import * as motion from "motion/react-client"
+import { encodeEmailForMailto, encodePhoneForTel } from "@/utils/url/url";
 
 const OurContacts = ({ email = "", phone = "", phoneLabel = "" }) => {
     const t = useTranslations()
@@ -55,14 +56,14 @@ const OurContacts = ({ email = "", phone = "", phoneLabel = "" }) => {
                     title={t("contact.emailTitle")}
                     content={t("contact.emailContent")}
                     contact={email}
-                    href={`mailto:${email}`}
+                    href={`mailto:${encodeEmailForMailto(email)}`}
                 />
                 <ContactCard
                     icon="📞"
                     title={t("contact.phoneTitle")}
                     content={t("contact.phoneContent")}
                     contact={phoneLabel}
-                    href={`tel:${phone}`}
+                    href={`tel:${encodePhoneForTel(phone)}`}
                 >
                     <Typography variant="h4"></Typography>
                 </ContactCard>

@@ -4,6 +4,7 @@ import InfoFeature from "@/components/InfoFeature/InfoFeature"
 import * as motion from "motion/react-client"
 import ContactForm from "@/components/ContactForm/ContactForm"
 import { Twemoji } from "react-emoji-render"
+import { encodePhoneForTel } from "@/utils/url/url";
 
 const ContactFormCard =  ({ phone = "", phoneLabel = "" }) => {
     const t = useTranslations()
@@ -84,7 +85,7 @@ const ContactFormCard =  ({ phone = "", phoneLabel = "" }) => {
 
                     <Stack mt={4} gap={2}>
                         <Typography variant="body2" color="background" fontWeight={600}>{t("contact.call")}</Typography>
-                        <Typography component={"a"} href={`tel:${phone}`} variant="body2" color="background"><Twemoji svg text={`☎️ ${phoneLabel}`} /></Typography>
+                        <Typography component={"a"} href={`tel:${encodePhoneForTel(phone)}`} variant="body2" color="background"><Twemoji svg text={`☎️ ${phoneLabel}`} /></Typography>
                     </Stack>
                 </Grid>
             </Card>
