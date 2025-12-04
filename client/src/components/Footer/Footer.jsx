@@ -5,6 +5,7 @@ import SectionContainer from "@/components/SectionContainer/SectionContainer";
 import Image from "next/image"
 import { Twemoji } from 'react-emoji-render';
 import { parseBgPhone } from "@/utils/phone/phone";
+import { encodeEmailForMailto, encodePhoneForTel } from "@/utils/url/url";
 
 const Footer = () => {
     const t = useTranslations()
@@ -90,7 +91,7 @@ const Footer = () => {
 
                                     <Stack>
                                         <Typography variant="body2" fontWeight={"bold"} color="background">{t("footer.contact.email")}</Typography>
-                                        <Typography component="a" href={`mailto:${email}`} variant="body2" sx={{ color: "var(--mui-palette-neutral-400)", transition: ".2s", "&:hover": { color: "var(--mui-palette-neutral-100)" }, flexWrap: "nowrap", whiteSpace: "nowrap" }}>{email}</Typography>
+                                        <Typography component="a" href={`mailto:${encodeEmailForMailto(email)}`} variant="body2" sx={{ color: "var(--mui-palette-neutral-400)", transition: ".2s", "&:hover": { color: "var(--mui-palette-neutral-100)" }, flexWrap: "nowrap", whiteSpace: "nowrap" }}>{email}</Typography>
                                     </Stack>
                                 </Stack>
                                 <Stack direction={"row"} gap={1}>
@@ -98,7 +99,7 @@ const Footer = () => {
 
                                     <Stack>
                                         <Typography variant="body2" fontWeight={"bold"} color="background">{t("footer.contact.phone")}</Typography>
-                                        <Typography component="a" href={`tel:${phone}`} variant="body2" sx={{ color: "var(--mui-palette-neutral-400)", transition: ".2s", "&:hover": { color: "var(--mui-palette-neutral-100)" }, flexWrap: "nowrap", whiteSpace: "nowrap" }}>{phoneLabel}</Typography>
+                                        <Typography component="a" href={`tel:${encodePhoneForTel(phone)}`} variant="body2" sx={{ color: "var(--mui-palette-neutral-400)", transition: ".2s", "&:hover": { color: "var(--mui-palette-neutral-100)" }, flexWrap: "nowrap", whiteSpace: "nowrap" }}>{phoneLabel}</Typography>
                                     </Stack>
                                 </Stack>
                             </Stack>
