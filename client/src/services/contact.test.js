@@ -242,7 +242,7 @@ describe('contact.js - sendEmail', () => {
             } else {
                 expect(result).toEqual({
                     success: false,
-                    error: 'Something went wrong. Please try again.',
+                    error: 'Message cannot be empty.',
                 });
             }
         });
@@ -263,7 +263,7 @@ describe('contact.js - sendEmail', () => {
             } else {
                 expect(result).toEqual({
                     success: false,
-                    error: 'Something went wrong. Please try again.',
+                    error: 'Message cannot be empty.',
                 });
             }
         });
