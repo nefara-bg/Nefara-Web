@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { locales, routing } from "@/i18n/routing";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
+import { validateClientUrl } from "@/utils/env/env";
 import "@/app/globals.css"
 
 export async function generateStaticParams() {
@@ -15,7 +16,7 @@ export async function generateMetadata({params}) {
     const {locale} = await params;
     const t = await getTranslations({locale});
 
-    const baseUrl = process.env.NEXT_PUBLIC_CLIENT_URL || 'http://localhost:3000'
+    const baseUrl = validateClientUrl(process.env.NEXT_PUBLIC_CLIENT_URL)
 
     return {
         metadataBase: new URL(baseUrl),

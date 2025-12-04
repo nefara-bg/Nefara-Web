@@ -6,6 +6,7 @@ import Image from "next/image"
 import { Twemoji } from 'react-emoji-render';
 import { parseBgPhone } from "@/utils/phone/phone";
 import { encodeEmailForMailto, encodePhoneForTel } from "@/utils/url/url";
+import { validateContactEmail, validateContactPhone } from "@/utils/env/env";
 
 const Footer = () => {
     const t = useTranslations()
@@ -32,8 +33,8 @@ const Footer = () => {
 
 
 
-    const email = process.env.NEXT_PUBLIC_CONTACT_EMAIL || ''
-    const phone = process.env.NEXT_PUBLIC_CONTACT_PHONE || ''
+    const email = validateContactEmail(process.env.NEXT_PUBLIC_CONTACT_EMAIL)
+    const phone = validateContactPhone(process.env.NEXT_PUBLIC_CONTACT_PHONE)
     const phoneLabel = phone ? parseBgPhone(phone) : ''
 
 
