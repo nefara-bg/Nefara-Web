@@ -59,7 +59,7 @@ describe('contact.js - sendEmail', () => {
             });
         });
 
-        it('TC2: Should successfully send email with special characters in message', async () => {
+        it('TC2: Should successfully send email with special characters in message (HTML escaped)', async () => {
             // Arrange
             const email = 'sender@example.com';
             const subject = 'Test Subject';
@@ -72,8 +72,16 @@ describe('contact.js - sendEmail', () => {
             expect(result).toEqual({ success: true });
             expect(mockTransporter.sendMail).toHaveBeenCalledTimes(1);
             const callArgs = mockTransporter.sendMail.mock.calls[0][0];
-            expect(callArgs.html).toContain(message);
-            expect(callArgs.html).toContain(email);
+            // Verify HTML is escaped (not raw HTML)
+            // Note: / is escaped as &#x2F;
+            expect(callArgs.html).toContain('&lt;script&gt;alert(&quot;xss&quot;)&lt;&#x2F;script&gt;');
+            expect(callArgs.html).toContain('&amp;');
+            expect(callArgs.html).toContain('&lt;div&gt;HTML content&lt;&#x2F;div&gt;');
+            // Verify email is escaped
+            expect(callArgs.html).toContain('sender@example.com');
+            // Verify original HTML is NOT present (security check)
+            expect(callArgs.html).not.toContain('<script>');
+            expect(callArgs.html).not.toContain('alert("xss")');
         });
 
         it('TC3: Should successfully send email with empty subject', async () => {
@@ -600,6 +608,220 @@ describe('contact.js - sendEmail', () => {
                     to: 'recipient@example.com',
                 })
             );
+        });
+    });
+
+    describe('Security Tests (HTML Escaping / XSS Prevention)', () => {
+        it('TC26: Should escape XSS in email field - special characters', async () => {
+            // Arrange
+            // Note: Email must pass regex validation, so we test with valid email format
+            // but with special characters that could be used in HTML injection
+            const email = 'user&test@example.com';
+            const subject = 'Test Subject';
+            const message = 'Test message';
+
+            // Act
+            const result = await sendEmail(email, subject, message);
+
+            // Assert
+            expect(result).toEqual({ success: true });
+            const callArgs = mockTransporter.sendMail.mock.calls[0][0];
+            // Verify email is escaped in HTML (ampersand becomes &amp;)
+            expect(callArgs.html).toContain('&amp;');
+            // Verify original ampersand is NOT present as raw character
+            expect(callArgs.html).not.toContain('user&test@example.com');
+            // But the email should still be readable (escaped)
+            expect(callArgs.html).toContain('user&amp;test@example.com');
+        });
+
+        it('TC27: Should escape XSS in message - script tags', async () => {
+            // Arrange
+            const email = 'sender@example.com';
+            const subject = 'Test Subject';
+            const message = '<script>alert("xss")</script>';
+
+            // Act
+            const result = await sendEmail(email, subject, message);
+
+            // Assert
+            expect(result).toEqual({ success: true });
+            const callArgs = mockTransporter.sendMail.mock.calls[0][0];
+            // Verify message is escaped
+            // Note: / is escaped as &#x2F;
+            expect(callArgs.html).toContain('&lt;script&gt;alert(&quot;xss&quot;)&lt;&#x2F;script&gt;');
+            // Verify original script is NOT present
+            expect(callArgs.html).not.toContain('<script>alert("xss")</script>');
+        });
+
+        it('TC28: Should escape XSS in subject - script tags', async () => {
+            // Arrange
+            const email = 'sender@example.com';
+            const subject = '<script>alert("xss")</script>';
+            const message = 'Test message';
+
+            // Act
+            const result = await sendEmail(email, subject, message);
+
+            // Assert
+            expect(result).toEqual({ success: true });
+            const callArgs = mockTransporter.sendMail.mock.calls[0][0];
+            // Verify subject is escaped
+            // Note: / is escaped as &#x2F;
+            expect(callArgs.subject).toBe('&lt;script&gt;alert(&quot;xss&quot;)&lt;&#x2F;script&gt;');
+            // Verify original script is NOT present
+            expect(callArgs.subject).not.toContain('<script>');
+        });
+
+        it('TC29: Should escape HTML injection in email - special characters', async () => {
+            // Arrange
+            // Note: Email must pass regex validation, so we use valid format with special chars
+            const email = 'user<test>@example.com';
+            const subject = 'Test Subject';
+            const message = 'Test message';
+
+            // Act
+            const result = await sendEmail(email, subject, message);
+
+            // Assert
+            expect(result).toEqual({ success: true });
+            const callArgs = mockTransporter.sendMail.mock.calls[0][0];
+            // Verify HTML is escaped
+            expect(callArgs.html).toContain('&lt;test&gt;');
+            // Verify original HTML is NOT present
+            expect(callArgs.html).not.toContain('<test>');
+        });
+
+        it('TC30: Should escape HTML injection in message - img tag', async () => {
+            // Arrange
+            const email = 'sender@example.com';
+            const subject = 'Test Subject';
+            const message = '<img src=x onerror="alert(1)">';
+
+            // Act
+            const result = await sendEmail(email, subject, message);
+
+            // Assert
+            expect(result).toEqual({ success: true });
+            const callArgs = mockTransporter.sendMail.mock.calls[0][0];
+            // Verify message is escaped
+            expect(callArgs.html).toContain('&lt;img src=x onerror=&quot;alert(1)&quot;&gt;');
+            // Verify original HTML is NOT present
+            expect(callArgs.html).not.toContain('<img src=x onerror="alert(1)">');
+        });
+
+        it('TC31: Should escape special characters in email', async () => {
+            // Arrange
+            const email = 'user&<>"\'/@example.com';
+            const subject = 'Test Subject';
+            const message = 'Test message';
+
+            // Act
+            const result = await sendEmail(email, subject, message);
+
+            // Assert
+            expect(result).toEqual({ success: true });
+            const callArgs = mockTransporter.sendMail.mock.calls[0][0];
+            // Verify all special characters are escaped
+            expect(callArgs.html).toContain('&amp;');
+            expect(callArgs.html).toContain('&lt;');
+            expect(callArgs.html).toContain('&gt;');
+            expect(callArgs.html).toContain('&quot;');
+            expect(callArgs.html).toContain('&#x27;');
+            expect(callArgs.html).toContain('&#x2F;');
+            // Verify original special characters are NOT present
+            expect(callArgs.html).not.toContain('&<>"\'/');
+        });
+
+        it('TC32: Should escape special characters in message', async () => {
+            // Arrange
+            const email = 'sender@example.com';
+            const subject = 'Test Subject';
+            const message = 'Message with &<>"\'/ characters';
+
+            // Act
+            const result = await sendEmail(email, subject, message);
+
+            // Assert
+            expect(result).toEqual({ success: true });
+            const callArgs = mockTransporter.sendMail.mock.calls[0][0];
+            // Verify all special characters are escaped
+            expect(callArgs.html).toContain('&amp;');
+            expect(callArgs.html).toContain('&lt;');
+            expect(callArgs.html).toContain('&gt;');
+            expect(callArgs.html).toContain('&quot;');
+            expect(callArgs.html).toContain('&#x27;');
+            expect(callArgs.html).toContain('&#x2F;');
+            // Verify original special characters are NOT present
+            expect(callArgs.html).not.toContain('&<>"\'/');
+        });
+
+        it('TC33: Should escape special characters in subject', async () => {
+            // Arrange
+            const email = 'sender@example.com';
+            const subject = 'Subject with &<>"\'/ characters';
+            const message = 'Test message';
+
+            // Act
+            const result = await sendEmail(email, subject, message);
+
+            // Assert
+            expect(result).toEqual({ success: true });
+            const callArgs = mockTransporter.sendMail.mock.calls[0][0];
+            // Verify all special characters are escaped in subject
+            expect(callArgs.subject).toContain('&amp;');
+            expect(callArgs.subject).toContain('&lt;');
+            expect(callArgs.subject).toContain('&gt;');
+            expect(callArgs.subject).toContain('&quot;');
+            expect(callArgs.subject).toContain('&#x27;');
+            expect(callArgs.subject).toContain('&#x2F;');
+        });
+
+        it('TC34: Should verify HTML escaping works for all HTML entities', async () => {
+            // Arrange
+            const email = 'sender@example.com';
+            const subject = 'Test Subject';
+            const message = 'Test & < > " \' /';
+
+            // Act
+            const result = await sendEmail(email, subject, message);
+
+            // Assert
+            expect(result).toEqual({ success: true });
+            const callArgs = mockTransporter.sendMail.mock.calls[0][0];
+            // Verify HTML entities are present
+            expect(callArgs.html).toContain('&amp;');  // &
+            expect(callArgs.html).toContain('&lt;');    // <
+            expect(callArgs.html).toContain('&gt;');    // >
+            expect(callArgs.html).toContain('&quot;');  // "
+            expect(callArgs.html).toContain('&#x27;'); // '
+            expect(callArgs.html).toContain('&#x2F;'); // /
+        });
+
+        it('TC35: Should verify no script execution - script tags are escaped', async () => {
+            // Arrange
+            const email = 'sender@example.com';
+            const subject = 'Test Subject';
+            const message = '<script>alert("xss")</script><img src=x onerror="alert(1)">';
+
+            // Act
+            const result = await sendEmail(email, subject, message);
+
+            // Assert
+            expect(result).toEqual({ success: true });
+            const callArgs = mockTransporter.sendMail.mock.calls[0][0];
+            // Verify script tags are escaped (cannot execute)
+            // Note: / is escaped as &#x2F;
+            expect(callArgs.html).toContain('&lt;script&gt;');
+            expect(callArgs.html).toContain('&lt;&#x2F;script&gt;');
+            // Verify onerror is escaped
+            expect(callArgs.html).toContain('&quot;alert(1)&quot;');
+            // Verify original executable code is NOT present
+            expect(callArgs.html).not.toContain('<script>');
+            expect(callArgs.html).not.toContain('onerror="alert(1)"');
+            // Verify HTML structure is still valid
+            expect(callArgs.html).toContain('<div>');
+            expect(callArgs.html).toContain('<h4>');
+            expect(callArgs.html).toContain('<p>');
         });
     });
 });

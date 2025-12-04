@@ -531,13 +531,70 @@ describe('Contact Form - Integration Tests', () => {
             // Verify email structure
             expect(email.html).toContain('<div>');
             expect(email.html).toContain('<h4>This message was sent by: content@test.com</h4>');
-            expect(email.html).toContain('<p>This is a test message with <special> characters & symbols</p>');
+            // Verify HTML is escaped (security check)
+            expect(email.html).toContain('&lt;special&gt;');
+            expect(email.html).toContain('&amp;');
+            // Verify original HTML is NOT present
+            expect(email.html).not.toContain('<special>');
             
             // Verify all required fields
             expect(email.from).toBe('Contact Us from Nefara! <test@example.com>');
             expect(email.to).toBe('test@example.com');
             expect(email.replyTo).toBe('content@test.com');
             expect(email.subject).toBe('Content Test');
+        });
+
+        it('IT21: Should escape XSS attempts in message field', async () => {
+            // Arrange
+            const formData = createFormData({
+                email: 'user@example.com',
+                subject: 'XSS Test',
+                message: '<script>alert("xss")</script><img src=x onerror="alert(1)">',
+            });
+
+            // Act
+            const result = await contactAction(null, formData);
+
+            // Assert
+            expect(result).toEqual({ success: true });
+            expect(capturedEmails).toHaveLength(1);
+            
+            const email = capturedEmails[0];
+            
+            // Verify XSS is escaped (security check)
+            // Note: / is escaped as &#x2F;
+            expect(email.html).toContain('&lt;script&gt;');
+            expect(email.html).toContain('&lt;&#x2F;script&gt;');
+            expect(email.html).toContain('&lt;img');
+            expect(email.html).toContain('&quot;alert(1)&quot;');
+            // Verify original executable code is NOT present
+            expect(email.html).not.toContain('<script>');
+            expect(email.html).not.toContain('onerror="alert(1)"');
+        });
+
+        it('IT22: Should escape special characters in subject field', async () => {
+            // Arrange
+            const formData = createFormData({
+                email: 'user@example.com',
+                subject: 'Subject with <tags> & "quotes"',
+                message: 'Test message',
+            });
+
+            // Act
+            const result = await contactAction(null, formData);
+
+            // Assert
+            expect(result).toEqual({ success: true });
+            expect(capturedEmails).toHaveLength(1);
+            
+            const email = capturedEmails[0];
+            
+            // Verify subject is escaped
+            expect(email.subject).toContain('&lt;tags&gt;');
+            expect(email.subject).toContain('&amp;');
+            expect(email.subject).toContain('&quot;quotes&quot;');
+            // Verify original HTML is NOT present
+            expect(email.subject).not.toContain('<tags>');
         });
 
         it('Should handle secure port (465) configuration', async () => {

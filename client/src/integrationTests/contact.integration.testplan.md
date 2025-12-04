@@ -246,4 +246,6 @@ The Contact Form feature allows users to submit inquiries through a web form. Th
 | IT18 | End-to-end success flow                | All valid inputs, env vars              | `{success: true}`                    | All layers execute correctly          |
 | IT19 | Error propagation through layers       | Invalid input, valid env                | Error response                       | Error correctly propagated            |
 | IT20 | Email content verification              | Valid input, test transport             | Email with correct content           | HTML format, fields correct          |
+| IT21 | XSS prevention in message               | Message with script tags                | Email with escaped content           | Script tags escaped, not executed    |
+| IT22 | XSS prevention in subject                | Subject with HTML tags                  | Email with escaped subject           | HTML tags escaped in subject         |
 

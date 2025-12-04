@@ -37,10 +37,11 @@ The `contact.js` service module is responsible for sending email notifications w
 ### Use Case 2: Email Send with Special Characters in Message
 - **Input:** Valid email, subject, message containing HTML/special characters
 - **Expected Behavior:** 
-  - Message is properly escaped/formatted in HTML
+  - Message is properly HTML-escaped (special characters converted to entities)
   - Email sends successfully
   - Returns `{success: true}`
-- **Side Effects:** Email is sent with properly formatted HTML
+  - HTML in email body contains escaped characters (e.g., `<script>` becomes `&lt;script&gt;`)
+- **Side Effects:** Email is sent with properly escaped HTML (safe from XSS attacks)
 
 ### Use Case 3: Email Send with Empty Subject
 - **Input:** Valid email, empty string subject, valid message
@@ -111,6 +112,31 @@ The `contact.js` service module is responsible for sending email notifications w
   - Email may fail during send
   - Function catches error and returns error response
 
+### Edge Case 9: XSS Attack Attempt in Email Field
+- **Input:** Valid email format but containing HTML/script tags (e.g., `user<script>alert('xss')</script>@example.com`)
+- **Expected Behavior:** 
+  - Email format validation passes (contains @ and valid structure)
+  - HTML content is escaped before insertion into email template
+  - Email sends successfully with escaped content
+  - Returns `{success: true}`
+- **Security Impact:** Prevents XSS attacks in email content
+
+### Edge Case 10: XSS Attack Attempt in Message Field
+- **Input:** Valid email, subject, message containing script tags or HTML injection attempts
+- **Expected Behavior:** 
+  - Message is HTML-escaped before insertion into email template
+  - Email sends successfully with escaped content
+  - Returns `{success: true}`
+- **Security Impact:** Prevents XSS attacks in email body
+
+### Edge Case 11: XSS Attack Attempt in Subject Field
+- **Input:** Valid email, subject containing HTML/script tags, valid message
+- **Expected Behavior:** 
+  - Subject is HTML-escaped before being passed to nodemailer
+  - Email sends successfully with escaped subject
+  - Returns `{success: true}`
+- **Security Impact:** Prevents HTML injection in email subject
+
 ## Error Conditions
 
 ### Error Condition 1: Transport Creation Error
@@ -153,11 +179,15 @@ The `contact.js` service module is responsible for sending email notifications w
 - The recipient is always `process.env.SMTP_USER` (sending to self)
 - The reply-to address is set to the sender's email
 
-### Business Rule 2: HTML Email Format
+### Business Rule 2: HTML Email Format and Security
 - Email body must be HTML formatted
 - Must include sender's email in an `<h4>` tag
 - Message must be wrapped in a `<p>` tag
 - Email structure: `<div><h4>This message was sent by: {email}</h4><p>{message}</p></div>`
+- **Security Rule**: All user input (email, message, subject) must be HTML-escaped before insertion into HTML template to prevent XSS/injection attacks
+- HTML special characters (`<`, `>`, `&`, `"`, `'`, `/`) must be escaped to their HTML entity equivalents
+- Email and message content must be escaped using `escapeHtml()` function
+- Subject must be escaped before being passed to nodemailer
 
 ### Business Rule 3: Email Validation
 - Email parameter must be a non-empty string
@@ -266,4 +296,19 @@ The `contact.js` service module is responsible for sending email notifications w
 | TC23 | Verify reply-to is set correctly   | Valid email, subject, msg | sendMail called with correct replyTo               |
 | TC24 | Verify from field format           | Valid email, subject, msg | sendMail called with correct from field            |
 | TC25 | Verify to field is SMTP_USER       | Valid email, subject, msg | sendMail called with SMTP_USER as to               |
+
+### Security Tests (HTML Escaping / XSS Prevention)
+
+| ID   | Test Case                          | Input                                    | Expected Output                                    |
+|------|------------------------------------|------------------------------------------|----------------------------------------------------|
+| TC26 | XSS in email field - script tags   | Email with `<script>alert('xss')</script>`, valid subject, msg | `{success: true}`, HTML contains escaped email |
+| TC27 | XSS in message - script tags      | Valid email, subject, message with `<script>alert('xss')</script>` | `{success: true}`, HTML contains escaped message |
+| TC28 | XSS in subject - script tags        | Valid email, subject with `<script>alert('xss')</script>`, valid msg | `{success: true}`, subject is escaped |
+| TC29 | HTML injection in email             | Email with `<img src=x onerror="alert(1)">`, valid subject, msg | `{success: true}`, HTML contains escaped email |
+| TC30 | HTML injection in message           | Valid email, subject, message with `<img src=x onerror="alert(1)">` | `{success: true}`, HTML contains escaped message |
+| TC31 | Special characters in email         | Email with `&<>"'/`, valid subject, msg | `{success: true}`, all special chars escaped |
+| TC32 | Special characters in message       | Valid email, subject, message with `&<>"'/` | `{success: true}`, all special chars escaped |
+| TC33 | Special characters in subject       | Valid email, subject with `&<>"'/`, valid msg | `{success: true}`, all special chars escaped |
+| TC34 | Verify HTML escaping works         | Email/message with all HTML entities | `{success: true}`, HTML contains `&amp;`, `&lt;`, `&gt;`, etc. |
+| TC35 | Verify no script execution         | Email/message with script tags | `{success: true}`, script tags are escaped, not executed |
 
