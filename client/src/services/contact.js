@@ -1,7 +1,26 @@
 import { createPrivateEmailTransport } from "@/utils/email/transporter";
 
+// Email validation regex pattern
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 export const sendEmail = async (email, subject, message) => {
     try {
+        // Validate email format
+        if (!email || typeof email !== 'string' || !EMAIL_REGEX.test(email.trim())) {
+            return {
+                success: false,
+                error: "Invalid email format."
+            }
+        }
+
+        // Validate that message is not empty
+        if (!message || (typeof message === 'string' && message.trim() === '')) {
+            return {
+                success: false,
+                error: "Message cannot be empty."
+            }
+        }
+
         const transporter = await createPrivateEmailTransport()
 
         await transporter.sendMail({
