@@ -1,6 +1,6 @@
 export function parseBgPhone(number) {
     // Handle undefined/null values
-    if (!number || typeof number !== 'string') {
+    if (!number || typeof number !== 'string' || number === '') {
         return '';
     }
 
