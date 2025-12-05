@@ -20,9 +20,9 @@ This module is a **trusted primitive** used by the presentation layer (component
 **Parameters:**
 - `number` (any): The phone number to parse and format
 
-**Returns:** `string` or throws `Error`
+**Returns:** `string`
 
-**Description:** Parses a phone number string, validates it matches Bulgarian format (+359 followed by 9 digits), and returns a formatted string in the pattern "+359 XX XXX XXXX". Returns empty string for invalid input types (null, undefined, non-string, or empty string). Throws error for invalid format after sanitization.
+**Description:** Parses a phone number string, validates it matches Bulgarian format (+359 followed by 9 digits), and returns a formatted string in the pattern "+359 XX XXX XXXX". Returns empty string for invalid input types (null, undefined, non-string, or empty string) or invalid format after sanitization.
 
 ## Complete List of Use Cases
 
@@ -109,35 +109,35 @@ This module is a **trusted primitive** used by the presentation layer (component
 - **Input:** "123456789" (no +359)
 - **Expected Behavior:** 
   - After sanitization, doesn't match pattern
-  - Throws Error: "Invalid Bulgarian phone format"
+  - Returns empty string `""`
 - **Side Effects:** None
 
 ### Edge Case 8: Phone Number with Wrong Country Code
 - **Input:** "+123456789012" (wrong country code)
 - **Expected Behavior:** 
   - After sanitization, doesn't match +359 pattern
-  - Throws Error: "Invalid Bulgarian phone format"
+  - Returns empty string `""`
 - **Side Effects:** None
 
 ### Edge Case 9: Phone Number Too Short
 - **Input:** "+35912345678" (only 8 digits after +359)
 - **Expected Behavior:** 
   - After sanitization, doesn't match pattern (needs 9 digits)
-  - Throws Error: "Invalid Bulgarian phone format"
+  - Returns empty string `""`
 - **Side Effects:** None
 
 ### Edge Case 10: Phone Number Too Long
 - **Input:** "+3591234567890" (10 digits after +359)
 - **Expected Behavior:** 
   - After sanitization, doesn't match pattern (needs exactly 9 digits)
-  - Throws Error: "Invalid Bulgarian phone format"
+  - Returns empty string `""`
 - **Side Effects:** None
 
 ### Edge Case 11: Phone Number with Only Plus Sign
 - **Input:** "+"
 - **Expected Behavior:** 
   - After sanitization, doesn't match pattern
-  - Throws Error: "Invalid Bulgarian phone format"
+  - Returns empty string `""`
 - **Side Effects:** None
 
 ### Edge Case 12: Phone Number with Letters
@@ -145,7 +145,7 @@ This module is a **trusted primitive** used by the presentation layer (component
 - **Expected Behavior:** 
   - Letters are stripped by sanitization
   - Remaining digits may or may not match pattern
-  - Either returns formatted or throws error
+  - Either returns formatted string or empty string
 - **Side Effects:** None
 
 ### Edge Case 13: Phone Number with Only Digits (No Plus)
@@ -153,7 +153,7 @@ This module is a **trusted primitive** used by the presentation layer (component
 - **Expected Behavior:** 
   - After sanitization, becomes "359123456789"
   - Doesn't match pattern (needs +359)
-  - Throws Error: "Invalid Bulgarian phone format"
+  - Returns empty string `""`
 - **Side Effects:** None
 
 ### Edge Case 14: Whitespace-Only String
@@ -161,7 +161,7 @@ This module is a **trusted primitive** used by the presentation layer (component
 - **Expected Behavior:** 
   - Spaces are stripped
   - Empty string remains
-  - Throws Error: "Invalid Bulgarian phone format"
+  - Returns empty string `""`
 - **Side Effects:** None
 
 ### Edge Case 15: String with Only Special Characters
@@ -169,36 +169,36 @@ This module is a **trusted primitive** used by the presentation layer (component
 - **Expected Behavior:** 
   - Special characters are stripped
   - Empty string remains
-  - Throws Error: "Invalid Bulgarian phone format"
+  - Returns empty string `""`
 - **Side Effects:** None
 
-## Error Conditions
+## Invalid Format Conditions
 
-### Error Condition 1: Invalid Format After Sanitization
+### Invalid Format Condition 1: Invalid Format After Sanitization
 - **Scenario:** Input string exists and is valid type, but after stripping non-digit/non-plus characters, doesn't match +359 pattern
 - **Expected Behavior:** 
-  - Throws Error: "Invalid Bulgarian phone format"
-  - Error message is exactly as specified
+  - Returns empty string `""`
+  - No error is thrown
 
 ## Invalid Inputs
 
 ### Invalid Input 1: Wrong Format - Missing Digits
 - **Input:** "+35912345" (only 5 digits after +359)
-- **Expected Behavior:** Throws Error: "Invalid Bulgarian phone format"
+- **Expected Behavior:** Returns empty string `""`
 
 ### Invalid Input 2: Wrong Format - Extra Digits
 - **Input:** "+35912345678901" (11 digits after +359)
-- **Expected Behavior:** Throws Error: "Invalid Bulgarian phone format"
+- **Expected Behavior:** Returns empty string `""`
 
 ### Invalid Input 3: Wrong Format - Invalid Prefix
 - **Input:** "+359012345678" (prefix starts with 0, which may be invalid)
 - **Expected Behavior:** 
   - May match pattern if regex allows 0X prefix
-  - Returns formatted or throws error depending on regex validation
+  - Returns formatted string or empty string depending on regex validation
 
 ### Invalid Input 4: Wrong Format - Missing Plus
 - **Input:** "359123456789" (no +)
-- **Expected Behavior:** Throws Error: "Invalid Bulgarian phone format"
+- **Expected Behavior:** Returns empty string `""`
 
 ## Domain/Business Rules Enforced
 
@@ -230,9 +230,9 @@ This module is a **trusted primitive** used by the presentation layer (component
   - Last (4 digits): `XXXX`
 
 ### Business Rule 5: Error Handling
-- Invalid format (after sanitization) throws Error with message: "Invalid Bulgarian phone format"
-- Invalid input types return empty string (no error)
-- Error is thrown, not returned
+- Invalid format (after sanitization) returns empty string `""`
+- Invalid input types return empty string `""`
+- No errors are thrown; function always returns a string
 
 ## Expected Interactions with Dependencies
 
@@ -251,7 +251,7 @@ This module is a **trusted primitive** used by the presentation layer (component
 ### Outputs
 - **Success (valid format):** Formatted string: `"+359 XX XXX XXXX"`
 - **Success (invalid type):** Empty string: `""`
-- **Error (invalid format):** Throws Error: `"Invalid Bulgarian phone format"`
+- **Success (invalid format):** Empty string: `""`
 
 ### Side Effects
 - No side effects (pure function)
@@ -290,17 +290,17 @@ This module is a **trusted primitive** used by the presentation layer (component
 
 | ID   | Test Case                              | Input                                    | Expected Output                    |
 |------|----------------------------------------|------------------------------------------|------------------------------------|
-| TC17 | Missing country code                   | "123456789"                              | Throws Error                       |
-| TC18 | Wrong country code                     | "+123456789012"                          | Throws Error                       |
-| TC19 | Too short (8 digits)                  | "+35912345678"                           | Throws Error                       |
-| TC20 | Too long (10 digits)                  | "+3591234567890"                         | Throws Error                       |
-| TC21 | Only plus sign                         | "+"                                      | Throws Error                       |
-| TC22 | No plus sign                           | "359123456789"                           | Throws Error                       |
-| TC23 | Whitespace only                       | "   "                                    | Throws Error                       |
-| TC24 | Special chars only                    | "---()[]"                                | Throws Error                       |
-| TC25 | With letters (stripped)                | "+359abc123456"                          | Throws Error (if doesn't match)    |
-| TC26 | Mixed formatting with extra text       | "+359 (123) 456-789 ext. 123"            | Throws Error (too many digits)     |
-| TC27 | Invalid prefix (00)                   | "+359001234567"                          | May format or throw (depends on regex) |
+| TC17 | Missing country code                   | "123456789"                              | ""                                 |
+| TC18 | Wrong country code                     | "+123456789012"                          | ""                                 |
+| TC19 | Too short (8 digits)                  | "+35912345678"                           | ""                                 |
+| TC20 | Too long (10 digits)                  | "+3591234567890"                         | ""                                 |
+| TC21 | Only plus sign                         | "+"                                      | ""                                 |
+| TC22 | No plus sign                           | "359123456789"                           | ""                                 |
+| TC23 | Whitespace only                       | "   "                                    | ""                                 |
+| TC24 | Special chars only                    | "---()[]"                                | ""                                 |
+| TC25 | With letters (stripped)                | "+359abc123456"                          | "" (if doesn't match)              |
+| TC26 | Mixed formatting with extra text       | "+359 (123) 456-789 ext. 123"            | "" (too many digits)               |
+| TC27 | Invalid prefix (00)                   | "+359001234567"                          | May format or "" (depends on regex) |
 
 ### Sanitization Tests
 
