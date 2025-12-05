@@ -172,86 +172,116 @@ describe('phone.js - parseBgPhone', () => {
     });
 
     describe('Invalid Format Tests', () => {
-        it('TC17: Should throw error for missing country code', () => {
+        it('TC17: Should return empty string for missing country code', () => {
             // Arrange
             const input = '123456789';
 
-            // Act & Assert
-            expect(() => parseBgPhone(input)).toThrow('Invalid Bulgarian phone format');
+            // Act
+            const result = parseBgPhone(input);
+
+            // Assert
+            expect(result).toBe('');
         });
 
-        it('TC18: Should throw error for wrong country code', () => {
+        it('TC18: Should return empty string for wrong country code', () => {
             // Arrange
             const input = '+123456789012';
 
-            // Act & Assert
-            expect(() => parseBgPhone(input)).toThrow('Invalid Bulgarian phone format');
+            // Act
+            const result = parseBgPhone(input);
+
+            // Assert
+            expect(result).toBe('');
         });
 
-        it('TC19: Should throw error for too short phone (8 digits)', () => {
+        it('TC19: Should return empty string for too short phone (8 digits)', () => {
             // Arrange
             const input = '+35912345678';
 
-            // Act & Assert
-            expect(() => parseBgPhone(input)).toThrow('Invalid Bulgarian phone format');
+            // Act
+            const result = parseBgPhone(input);
+
+            // Assert
+            expect(result).toBe('');
         });
 
-        it('TC20: Should throw error for too long phone (10 digits)', () => {
+        it('TC20: Should return empty string for too long phone (10 digits)', () => {
             // Arrange
             const input = '+3591234567890';
 
-            // Act & Assert
-            expect(() => parseBgPhone(input)).toThrow('Invalid Bulgarian phone format');
+            // Act
+            const result = parseBgPhone(input);
+
+            // Assert
+            expect(result).toBe('');
         });
 
-        it('TC21: Should throw error for only plus sign', () => {
+        it('TC21: Should return empty string for only plus sign', () => {
             // Arrange
             const input = '+';
 
-            // Act & Assert
-            expect(() => parseBgPhone(input)).toThrow('Invalid Bulgarian phone format');
+            // Act
+            const result = parseBgPhone(input);
+
+            // Assert
+            expect(result).toBe('');
         });
 
-        it('TC22: Should throw error for no plus sign', () => {
+        it('TC22: Should return empty string for no plus sign', () => {
             // Arrange
             const input = '359123456789';
 
-            // Act & Assert
-            expect(() => parseBgPhone(input)).toThrow('Invalid Bulgarian phone format');
+            // Act
+            const result = parseBgPhone(input);
+
+            // Assert
+            expect(result).toBe('');
         });
 
-        it('TC23: Should throw error for whitespace only', () => {
+        it('TC23: Should return empty string for whitespace only', () => {
             // Arrange
             const input = '   ';
 
-            // Act & Assert
-            expect(() => parseBgPhone(input)).toThrow('Invalid Bulgarian phone format');
+            // Act
+            const result = parseBgPhone(input);
+
+            // Assert
+            expect(result).toBe('');
         });
 
-        it('TC24: Should throw error for special characters only', () => {
+        it('TC24: Should return empty string for special characters only', () => {
             // Arrange
             const input = '---()[]';
 
-            // Act & Assert
-            expect(() => parseBgPhone(input)).toThrow('Invalid Bulgarian phone format');
+            // Act
+            const result = parseBgPhone(input);
+
+            // Assert
+            expect(result).toBe('');
         });
 
-        it('TC25: Should throw error for phone with letters (after stripping)', () => {
+        it('TC25: Should return empty string for phone with letters (after stripping)', () => {
             // Arrange
             const input = '+359abc123456';
 
-            // Act & Assert
+            // Act
+            const result = parseBgPhone(input);
+
+            // Assert
             // After stripping letters, becomes "+359123456" which is too short
-            expect(() => parseBgPhone(input)).toThrow('Invalid Bulgarian phone format');
+            expect(result).toBe('');
         });
 
-        it('TC26: Should throw error for mixed formatting with extra text', () => {
+        it('TC26: Should return empty string for mixed formatting with extra text', () => {
             // Arrange
             const input = '+359 (123) 456-789 ext. 123';
 
-            // Act & Assert
+            // Act
+            const result = parseBgPhone(input);
+
+            // Assert
             // After stripping, becomes "+359123456789123" which has too many digits
-            expect(() => parseBgPhone(input)).toThrow('Invalid Bulgarian phone format');
+            expect(result).toBe('');
         });
 
         it('TC27: Should format phone with prefix 00 (if regex allows)', () => {
@@ -359,14 +389,17 @@ describe('phone.js - parseBgPhone', () => {
         });
     });
 
-    describe('Error Message Verification', () => {
-        it('Should throw error with exact message "Invalid Bulgarian phone format"', () => {
+    describe('Invalid Format Return Value Verification', () => {
+        it('Should return empty string for invalid format', () => {
             // Arrange
             const input = 'invalid';
 
-            // Act & Assert
-            expect(() => parseBgPhone(input)).toThrow('Invalid Bulgarian phone format');
-            expect(() => parseBgPhone(input)).toThrow(Error);
+            // Act
+            const result = parseBgPhone(input);
+
+            // Assert
+            expect(result).toBe('');
+            expect(typeof result).toBe('string');
         });
     });
 

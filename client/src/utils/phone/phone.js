@@ -11,7 +11,7 @@ export function parseBgPhone(number) {
     const match = number.match(/^\+359(\d{2})(\d{3})(\d{4})$/);
 
     if (!match) {
-        throw new Error("Invalid Bulgarian phone format");
+        return '';
     }
 
     const [, prefix, middle, last] = match;
