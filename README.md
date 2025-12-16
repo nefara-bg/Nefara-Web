@@ -1,7 +1,7 @@
 # Nefara
 
 <div align="center">
-  <img src="client/public/logo.svg" alt="Nefara Logo" width="200"/>
+  <img src="client/public/meta.webp" alt="Nefara" width="200"/>
   
   **Building Digital Excellence Since 2024**
   
