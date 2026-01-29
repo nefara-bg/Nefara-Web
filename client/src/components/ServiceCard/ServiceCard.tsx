@@ -1,15 +1,14 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import * as motion from 'motion/react-client'
 import ServiceCardContent from '@/components/ServiceCardContent/ServiceCardContent'
 import Image from 'next/image'
-import { Twemoji } from 'react-emoji-render'
 import { cn } from '@/lib/utils'
 
 interface ServiceObject {
     title: string;
     text: string;
     content?: string[];
-    icon?: string;
+    icon?: ReactNode;
     image: string;
     colors: [string, string];
 }
@@ -75,9 +74,9 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ serviceObject }) => {
                     <div className={cn(
                         "absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10",
                         "opacity-0 group-hover:opacity-100 transition-opacity duration-300",
-                        "text-6xl"
+                        "text-primary"
                     )}>
-                        <Twemoji svg text={serviceObject?.icon || ""} />
+                        {serviceObject?.icon}
                     </div>
                     <div className={cn(
                         "aspect-video w-full relative overflow-hidden",

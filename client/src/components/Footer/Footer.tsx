@@ -3,10 +3,10 @@ import { Link } from '@/i18n/navigation'
 import { useTranslations } from 'next-intl'
 import SectionContainer from '@/components/SectionContainer/SectionContainer'
 import Image from 'next/image'
-import { Twemoji } from 'react-emoji-render'
 import { parseBgPhone } from '@/utils/phone/phone'
 import { encodeEmailForMailto, encodePhoneForTel } from '@/utils/url/url'
 import { validateContactEmail, validateContactPhone } from '@/utils/env/env'
+import { Mail, Phone, ArrowUp } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const Footer: React.FC = () => {
@@ -92,10 +92,10 @@ const Footer: React.FC = () => {
                             </p>
 
                             <div className="flex flex-col gap-4">
-                                <div className="flex flex-row gap-2">
-                                    <span className="text-sm">
-                                        <Twemoji svg text="📧" />
-                                    </span>
+                                <div className="flex flex-row gap-3">
+                                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-background/10 backdrop-blur-sm transition-colors group-hover:bg-background/20">
+                                        <Mail className="w-5 h-5 text-background" />
+                                    </div>
 
                                     <div className="flex flex-col">
                                         <p className="text-sm font-bold text-background">
@@ -114,10 +114,10 @@ const Footer: React.FC = () => {
                                         </a>
                                     </div>
                                 </div>
-                                <div className="flex flex-row gap-2">
-                                    <span className="text-sm">
-                                        <Twemoji svg text="☎️" />
-                                    </span>
+                                <div className="flex flex-row gap-3">
+                                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-background/10 backdrop-blur-sm transition-colors group-hover:bg-background/20">
+                                        <Phone className="w-5 h-5 text-background" />
+                                    </div>
 
                                     <div className="flex flex-col">
                                         <p className="text-sm font-bold text-background">
@@ -148,12 +148,13 @@ const Footer: React.FC = () => {
                         </p>
                         <Link href="/#hero">
                             <p className={cn(
-                                "text-sm text-gray-400",
+                                "text-sm text-gray-400 group flex items-center gap-1.5",
                                 "transition-colors duration-200",
                                 "hover:text-gray-100",
                                 "whitespace-nowrap"
                             )}>
-                                <Twemoji svg text={`${t("footer.back")} ↗️`} />
+                                {t("footer.back")}
+                                <ArrowUp className="w-3.5 h-3.5 transition-transform group-hover:-translate-y-0.5" />
                             </p>
                         </Link>
                     </div>

@@ -3,7 +3,7 @@ import { useTranslations } from 'next-intl'
 import InfoFeature from '@/components/InfoFeature/InfoFeature'
 import * as motion from 'motion/react-client'
 import ContactForm from '@/components/ContactForm/ContactForm'
-import { Twemoji } from 'react-emoji-render'
+import { Phone } from 'lucide-react'
 import { encodePhoneForTel } from '@/utils/url/url'
 import { cn } from '@/lib/utils'
 
@@ -85,9 +85,12 @@ const ContactFormCard: React.FC<ContactFormCardProps> = ({ phone = "", phoneLabe
                         </p>
                         <a
                             href={`tel:${encodePhoneForTel(phone)}`}
-                            className="text-sm text-background"
+                            className="flex items-center gap-3 text-sm text-background hover:opacity-80 transition-opacity"
                         >
-                            <Twemoji svg text={`☎️ ${phoneLabel}`} />
+                            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-background/20 backdrop-blur-sm">
+                                <Phone className="w-4 h-4" />
+                            </div>
+                            <span className="font-medium">{phoneLabel}</span>
                         </a>
                     </div>
                 </div>

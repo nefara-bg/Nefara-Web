@@ -1,10 +1,9 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import * as motion from 'motion/react-client'
-import { Twemoji } from 'react-emoji-render'
 import { cn } from '@/lib/utils'
 
 interface CardContent {
-    icon?: string;
+    icon?: ReactNode;
     number?: string;
     label?: string;
 }
@@ -49,8 +48,8 @@ const AboutCard: React.FC<AboutCardProps> = ({ cardContent }) => {
                 )}
             >
                 {cardContent.icon && (
-                    <div className="text-5xl mb-4">
-                        <Twemoji svg text={cardContent.icon} />
+                    <div className="mb-4 text-primary">
+                        {cardContent.icon}
                     </div>
                 )}
                 <h4 className="text-3xl font-bold text-foreground mb-1">

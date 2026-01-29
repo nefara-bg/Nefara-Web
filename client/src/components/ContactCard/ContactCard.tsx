@@ -1,10 +1,9 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import * as motion from 'motion/react-client'
-import { Twemoji } from 'react-emoji-render'
 import { cn } from '@/lib/utils'
 
 interface ContactCardProps {
-    icon?: string;
+    icon?: ReactNode;
     title?: string;
     content?: string;
     contact?: string;
@@ -12,7 +11,7 @@ interface ContactCardProps {
 }
 
 const ContactCard: React.FC<ContactCardProps> = ({
-    icon = "",
+    icon,
     title = "",
     content = "",
     contact = "",
@@ -39,10 +38,11 @@ const ContactCard: React.FC<ContactCardProps> = ({
                 "border rounded-lg p-8",
                 "transition-transform duration-200",
                 "hover:scale-105",
-                "h-full"
+                "h-full",
+                "flex flex-col items-start"
             )}>
-                <div className="text-5xl mb-4">
-                    <Twemoji svg text={icon} />
+                <div className="mb-4 text-primary">
+                    {icon}
                 </div>
                 <p className="text-base mb-2 text-primary font-bold">{title}</p>
                 <p className="text-sm mb-3 text-muted-foreground">{content}</p>

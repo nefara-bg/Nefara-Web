@@ -6,6 +6,7 @@ import TextGradient from '@/components/TextGradient/TextGradient'
 import { useTranslations } from 'next-intl'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
+import { Stars } from 'lucide-react'
 
 const Hero: React.FC = () => {
     const t = useTranslations()
@@ -24,7 +25,15 @@ const Hero: React.FC = () => {
                 )}
             >
                 <div className="flex flex-col items-center text-center max-w-4xl">
-                    <SectionTag className="mb-12" content={`✨ ${t("hero.tag")}`} />
+                    <SectionTag
+                        className="mb-12"
+                        content={
+                            <>
+                                <Stars className="w-3.5 h-3.5 text-primary" />
+                                {t("hero.tag")}
+                            </>
+                        }
+                    />
 
                     <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 text-foreground">
                         {t("hero.title")}

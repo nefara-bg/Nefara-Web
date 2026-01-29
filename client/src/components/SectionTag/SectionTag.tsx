@@ -1,12 +1,11 @@
-import React from 'react'
-import { Twemoji } from 'react-emoji-render'
+import React, { ReactNode } from 'react'
 import { cn } from '@/lib/utils'
 
-interface SectionTagProps extends React.HTMLAttributes<HTMLDivElement> {
-    content?: string;
+interface SectionTagProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'content'> {
+    content?: ReactNode;
 }
 
-const SectionTag: React.FC<SectionTagProps> = ({ content = "", className, ...props }) => {
+const SectionTag: React.FC<SectionTagProps> = ({ content, className, ...props }) => {
     return (
         <div className={cn("flex flex-col items-start", className)} {...props}>
             <div
@@ -15,8 +14,8 @@ const SectionTag: React.FC<SectionTagProps> = ({ content = "", className, ...pro
                     "hover:shadow-sm"
                 )}
             >
-                <span className="text-sm font-medium text-secondary-foreground flex items-center">
-                    <Twemoji svg text={content} />
+                <span className="text-sm font-medium text-secondary-foreground flex items-center gap-2">
+                    {content}
                 </span>
             </div>
         </div>

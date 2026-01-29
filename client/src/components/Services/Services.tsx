@@ -7,9 +7,9 @@ import { Link } from '@/i18n/navigation'
 import SectionContainer from '@/components/SectionContainer/SectionContainer'
 import { useTranslations } from 'next-intl'
 import * as motion from 'motion/react-client'
-import { Twemoji } from 'react-emoji-render'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
+import { Globe, Monitor, Smartphone, Rocket, MessageSquare } from 'lucide-react'
 
 const Services: React.FC = () => {
     const t = useTranslations()
@@ -23,7 +23,7 @@ const Services: React.FC = () => {
                 t("services.web.content.content2"),
                 t("services.web.content.content3")
             ],
-            icon: "🌐",
+            icon: <Globe className="w-8 h-8" />,
             image: "/webDev.webp",
             colors: ["#2b7fff", "#ad46ff"] as [string, string]
         },
@@ -35,7 +35,7 @@ const Services: React.FC = () => {
                 t("services.desktop.content.content2"),
                 t("services.desktop.content.content3"),
             ],
-            icon: "💻",
+            icon: <Monitor className="w-8 h-8" />,
             image: "/desktopDev.webp",
             colors: ["#00c950", "#00bba7"] as [string, string]
         },
@@ -47,7 +47,7 @@ const Services: React.FC = () => {
                 t("services.mobile.content.content2"),
                 t("services.mobile.content.content3"),
             ],
-            icon: "📱",
+            icon: <Smartphone className="w-8 h-8" />,
             image: "/mobileDev.webp",
             colors: ["#ff6900", "#fb2c36"] as [string, string]
         }
@@ -76,7 +76,15 @@ const Services: React.FC = () => {
                 )}
             >
                 <SectionContainer className="flex flex-col items-center">
-                    <SectionTag className="mb-8" content={`🚀 ${t("services.tag")}`} />
+                    <SectionTag
+                        className="mb-8"
+                        content={
+                            <>
+                                <Rocket className="w-3.5 h-3.5" />
+                                {t("services.tag")}
+                            </>
+                        }
+                    />
 
                     <div className="max-w-4xl">
                         <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-6">
@@ -108,8 +116,9 @@ const Services: React.FC = () => {
                         </p>
 
                         <Link href="/#contact">
-                            <Button size="lg">
-                                <Twemoji svg text={`${t("services.button")} 💬`} />
+                            <Button size="lg" className="gap-2">
+                                {t("services.button")}
+                                <MessageSquare className="w-4 h-4" />
                             </Button>
                         </Link>
                     </div>

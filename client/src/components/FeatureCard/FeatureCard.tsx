@@ -1,10 +1,9 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import * as motion from 'motion/react-client'
-import { Twemoji } from 'react-emoji-render'
 import { cn } from '@/lib/utils'
 
 interface Feature {
-    icon?: string;
+    icon?: ReactNode;
     title?: string;
     description?: string;
 }
@@ -25,13 +24,14 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ feature = {} }) => {
             <div className="flex flex-row gap-2 items-start">
                 <div
                     className={cn(
-                        "p-2 bg-secondary aspect-square",
+                        "p-2 bg-secondary/50 rounded-lg aspect-square text-primary",
                         "transition-all duration-300",
-                        "hover:scale-110"
+                        "hover:scale-110",
+                        "flex justify-center items-center"
                     )}
                 >
-                    <span className="text-2xl">
-                        <Twemoji svg text={feature?.icon || ""} />
+                    <span className="flex justify-center items-center w-8 h-8">
+                        {feature?.icon}
                     </span>
                 </div>
 

@@ -3,12 +3,10 @@
 import React, { useActionState, useEffect } from 'react'
 import { Button } from '@/components/ui/button'
 import FormInputField from '../FormInputField/FormInputField'
-import dynamic from 'next/dynamic'
 import { useTranslations } from 'next-intl'
 import { contactAction } from '@/actions/contact'
 import { toast } from 'sonner'
-
-const Twemoji = dynamic(() => import("react-emoji-render").then(mod => mod.Twemoji), { ssr: false })
+import { Send, Loader2 } from 'lucide-react'
 
 const ContactForm: React.FC = () => {
     const t = useTranslations()
@@ -55,8 +53,19 @@ const ContactForm: React.FC = () => {
                         size="lg"
                         type="submit"
                         disabled={isPending}
+                        className="gap-2"
                     >
-                        <Twemoji svg text={isPending ? t("contact.loading") : `${t("contact.button")} 🚀`} />
+                        {isPending ? (
+                            <>
+                                <Loader2 className="w-4 h-4 animate-spin" />
+                                {t("contact.loading")}
+                            </>
+                        ) : (
+                            <>
+                                {t("contact.button")}
+                                <Send className="w-4 h-4" />
+                            </>
+                        )}
                     </Button>
                 </div>
             </form>
