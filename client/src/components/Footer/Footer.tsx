@@ -2,12 +2,23 @@
 
 import React from "react";
 
+import { useTranslations } from "next-intl";
+
 const Footer = () => {
+    const t = useTranslations("footer");
+    const tHeader = useTranslations("header");
     const currentYear = new Date().getFullYear();
 
     const scrollToSection = (href: string) => {
         document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
     };
+
+    const links = [
+        { name: tHeader("home"), id: "home" },
+        { name: tHeader("services"), id: "services" },
+        { name: tHeader("about"), id: "about" },
+        { name: tHeader("contact"), id: "contact" },
+    ];
 
     return (
         <footer className="py-12 bg-card border-t border-border">
@@ -27,24 +38,20 @@ const Footer = () => {
 
                     {/* Links */}
                     <div className="flex items-center gap-8">
-                        {["Home", "Services", "About", "Contact"].map((link) => (
+                        {links.map((link) => (
                             <button
-                                key={link}
-                                // Map link names to section IDs
-                                onClick={() => {
-                                    const id = link === "Home" ? "home" : link.toLowerCase();
-                                    scrollToSection(`#${id}`);
-                                }}
+                                key={link.name}
+                                onClick={() => scrollToSection(`#${link.id}`)}
                                 className="text-muted-foreground hover:text-foreground transition-colors text-sm"
                             >
-                                {link}
+                                {link.name}
                             </button>
                         ))}
                     </div>
 
                     {/* Copyright */}
                     <p className="text-muted-foreground text-sm">
-                        © {currentYear} Nefara. All rights reserved.
+                        © {currentYear} {t("copyright")}
                     </p>
                 </div>
             </div>

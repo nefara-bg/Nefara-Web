@@ -3,36 +3,37 @@
 import * as motion from "motion/react-client";
 import { Globe, Monitor, Smartphone, Check } from "lucide-react";
 
-// Assuming we can use these images directly. If they fail (CORS or hotlinking protection), we should download them.
-// Likely they are public.
-const services = [
-    {
-        title: "Web Development",
-        description:
-            "Modern, responsive websites and web applications built with cutting-edge technologies that deliver exceptional user experiences.",
-        icon: Globe,
-        features: ["Responsive design", "Pure code", "AI integrated"],
-        image: "https://nefara.org/_next/image?url=%2FwebDev.webp&w=3840&q=75",
-    },
-    {
-        title: "Desktop Apps",
-        description:
-            "Powerful desktop software solutions for Windows, macOS, and Linux with native performance and intuitive interfaces.",
-        icon: Monitor,
-        features: ["Cross platform for all operating systems", "High performance", "AI integrated"],
-        image: "https://nefara.org/_next/image?url=%2FdesktopDev.webp&w=3840&q=75",
-    },
-    {
-        title: "Mobile Apps",
-        description:
-            "Native and cross-platform mobile applications that provide seamless experiences across iOS and Android devices.",
-        icon: Smartphone,
-        features: ["Cross platform for all operating systems", "Secure applications", "AI integrated"],
-        image: "https://nefara.org/_next/image?url=%2FmobileDev.webp&w=3840&q=75",
-    },
-];
+import { useTranslations } from "next-intl";
 
 export function ServicesSection() {
+    const t = useTranslations("services");
+
+    // Assuming we can use these images directly. If they fail (CORS or hotlinking protection), we should download them.
+    // Likely they are public.
+    const services = [
+        {
+            title: t("web.title"),
+            description: t("web.content.text"),
+            icon: Globe,
+            features: [t("web.content.content1"), t("web.content.content2"), t("web.content.content3")],
+            image: "https://nefara.org/_next/image?url=%2FwebDev.webp&w=3840&q=75",
+        },
+        {
+            title: t("desktop.title"),
+            description: t("desktop.content.text"),
+            icon: Monitor,
+            features: [t("desktop.content.content1"), t("desktop.content.content2"), t("desktop.content.content3")],
+            image: "https://nefara.org/_next/image?url=%2FdesktopDev.webp&w=3840&q=75",
+        },
+        {
+            title: t("mobile.title"),
+            description: t("mobile.content.text"),
+            icon: Smartphone,
+            features: [t("mobile.content.content1"), t("mobile.content.content2"), t("mobile.content.content3")],
+            image: "https://nefara.org/_next/image?url=%2FmobileDev.webp&w=3840&q=75",
+        },
+    ];
+
     return (
         <section id="services" className="py-24 bg-background">
             <div className="container mx-auto px-6">
@@ -43,13 +44,12 @@ export function ServicesSection() {
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
-                    <p className="section-label mb-4">What We Build</p>
+                    <p className="section-label mb-4">{t("tag")}</p>
                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
-                        Our Services
+                        {t("title")}
                     </h2>
                     <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-                        Comprehensive software development services designed to transform your
-                        ideas into powerful digital solutions that scale with your business.
+                        {t("content")}
                     </p>
                 </motion.div>
 
@@ -108,13 +108,13 @@ export function ServicesSection() {
                     className="text-center mt-16"
                 >
                     <p className="text-muted-foreground mb-4">
-                        Don't see exactly what you need? We create custom solutions for unique challenges.
+                        {t("subtext")}
                     </p>
                     <button
                         onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}
                         className="text-foreground font-medium hover:underline"
                     >
-                        Discuss Your Project →
+                        {t("button")} →
                     </button>
                 </motion.div>
             </div>

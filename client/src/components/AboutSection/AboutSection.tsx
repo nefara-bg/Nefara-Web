@@ -8,58 +8,61 @@ const teamMember1 = "/assets/team-member-1.jpg";
 const teamMember2 = "/assets/team-member-2.jpg";
 const teamMember3 = "/assets/team-member-3.jpg";
 
-const stats = [
-    { value: "3+", label: "Years Experience" },
-    { value: "24/7", label: "Support Available" },
-    { value: "100%", label: "Client Satisfaction" },
-    // Keeping exact content from nefara-elevate as requested
-];
-
-const features = [
-    {
-        icon: Zap,
-        title: "Agile Development",
-        description: "Fast, iterative development cycles that adapt to your changing needs",
-    },
-    {
-        icon: Layers,
-        title: "Modern Tech Stack",
-        description: "Latest technologies and best practices for optimal performance",
-    },
-    {
-        icon: Headphones,
-        title: "24/7 Support",
-        description: "Round-the-clock assistance to keep your applications running smoothly",
-    },
-    {
-        icon: Shield,
-        title: "Quality Assurance",
-        description: "Rigorous testing processes to ensure bug-free, reliable software",
-    },
-];
-
-const teamMembers = [
-    {
-        name: "Alexander Petrov",
-        role: "Lead Developer",
-        image: teamMember1,
-        number: "01",
-    },
-    {
-        name: "Elena Dimitrova",
-        role: "UX/UI Designer",
-        image: teamMember2,
-        number: "02",
-    },
-    {
-        name: "Viktor Ivanov",
-        role: "Project Manager",
-        image: teamMember3,
-        number: "03",
-    },
-];
+import { useTranslations } from "next-intl";
 
 export function AboutSection() {
+    const t = useTranslations("about");
+
+    const stats = [
+        { value: "3+", label: t("experience") },
+        { value: "24/7", label: t("support") },
+        { value: "100%", label: t("client") },
+    ];
+
+    const features = [
+        {
+            icon: Zap,
+            title: t("agile.title"),
+            description: t("agile.content"),
+        },
+        {
+            icon: Layers,
+            title: t("tech.title"),
+            description: t("tech.content"),
+        },
+        {
+            icon: Headphones,
+            title: t("featureSupport.title"),
+            description: t("featureSupport.content"),
+        },
+        {
+            icon: Shield,
+            title: t("quality.title"),
+            description: t("quality.content"),
+        },
+    ];
+
+    const teamMembers = [
+        {
+            name: "Alexander Petrov",
+            role: t("team.leadDev"),
+            image: teamMember1,
+            number: "01",
+        },
+        {
+            name: "Elena Dimitrova",
+            role: t("team.designer"),
+            image: teamMember2,
+            number: "02",
+        },
+        {
+            name: "Viktor Ivanov",
+            role: t("team.pm"),
+            image: teamMember3,
+            number: "03",
+        },
+    ];
+
     return (
         <section id="about" className="py-24 bg-secondary/20">
             <div className="container mx-auto px-6">
@@ -70,14 +73,14 @@ export function AboutSection() {
                     viewport={{ once: true }}
                     className="text-center mb-20"
                 >
-                    <p className="section-label mb-4">About</p>
+                    <p className="section-label mb-4">{t("sectionLabel")}</p>
                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-                        The dream team of
+                        {t("mainTitle")}
                         <br />
-                        digital solutions.
+                        {t("mainTitle2")}
                     </h2>
                     <p className="text-muted-foreground text-lg">
-                        We Grow Businesses Online. Period.
+                        {t("subText")}
                     </p>
                 </motion.div>
 
@@ -141,16 +144,14 @@ export function AboutSection() {
                         viewport={{ once: true }}
                         className="text-center mb-12"
                     >
-                        <p className="section-label mb-4">Our Mission</p>
+                        <p className="section-label mb-4">{t("tag")}</p>
                         <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-6">
-                            Transforming Your Ideas Into
+                            {t("subtitle")}
                             <br />
-                            Digital Excellence
+                            {t("subtitle2")}
                         </h3>
                         <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-                            From concept to deployment, we handle every aspect of your software
-                            development journey. Our team combines technical expertise with creative
-                            problem-solving to deliver solutions that exceed expectations.
+                            {t("paragraph1")}
                         </p>
                     </motion.div>
 

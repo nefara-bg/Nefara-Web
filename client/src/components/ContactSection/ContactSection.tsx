@@ -6,37 +6,40 @@ import { Mail, Phone, Send, Check, Clock, FileText, Loader2 } from "lucide-react
 import { contactAction } from "@/actions/contact";
 import { toast } from "sonner";
 
-const benefits = [
-    {
-        icon: Clock,
-        title: "Fast Response Time",
-        description: "We respond to all inquiries as soon as possible.",
-    },
-    {
-        icon: Check,
-        title: "Free Consultation",
-        description: "Discovery calls to discuss your needs.",
-    },
-    {
-        icon: FileText,
-        title: "Custom Proposals",
-        description: "Tailored solutions and transparent pricing.",
-    },
-];
+import { useTranslations } from "next-intl";
 
 export function ContactSection() {
+    const t = useTranslations("contact");
     const [state, formAction, isPending] = useActionState(contactAction, { error: null });
     const [isSuccess, setIsSuccess] = useState(false);
 
     useEffect(() => {
         if (state?.success) {
             setIsSuccess(true);
-            toast.success("Message sent successfully!");
+            toast.success(t("alert"));
         }
         if (state?.error) {
             // Error is handled by displaying it, or we can toast it
         }
     }, [state]);
+
+    const benefits = [
+        {
+            icon: Clock,
+            title: t("time.title"),
+            description: t("time.content"),
+        },
+        {
+            icon: Check,
+            title: t("consultation.title"),
+            description: t("consultation.content"),
+        },
+        {
+            icon: FileText,
+            title: t("proposals.title"),
+            description: t("proposals.content"),
+        },
+    ];
 
     // Use values compatible with nefara-elevate visual but maybe fallbacks for logic
     // Hardcoding for now to match exactly the design request as primary goal
@@ -54,15 +57,14 @@ export function ContactSection() {
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
-                    <p className="section-label mb-4">Ready to Start?</p>
+                    <p className="section-label mb-4">{t("tag")}</p>
                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-                        Let's Build Something
+                        {t("title")}
                         <br />
-                        Amazing Together
+                        {t("subtitle")}
                     </h2>
                     <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-                        Turn your vision into reality. Share your project details and we'll craft a
-                        custom solution that exceeds your expectations.
+                        {t("content")}
                     </p>
                 </motion.div>
 
@@ -83,8 +85,8 @@ export function ContactSection() {
                                     <Mail className="w-6 h-6 text-primary" />
                                 </div>
                                 <div>
-                                    <h4 className="text-foreground font-semibold">Email Us</h4>
-                                    <p className="text-muted-foreground text-sm">{displayEmail}</p>
+                                    <h4 className="text-foreground font-semibold">{t("emailTitle")}</h4>
+                                    <p className="text-muted-foreground text-sm">{t("emailContent")}</p>
                                 </div>
                             </a>
 
@@ -96,14 +98,14 @@ export function ContactSection() {
                                     <Phone className="w-6 h-6 text-primary" />
                                 </div>
                                 <div>
-                                    <h4 className="text-foreground font-semibold">Call Us</h4>
-                                    <p className="text-muted-foreground text-sm">{displayPhone}</p>
+                                    <h4 className="text-foreground font-semibold">{t("phoneTitle")}</h4>
+                                    <p className="text-muted-foreground text-sm">{t("phoneContent")}</p>
                                 </div>
                             </a>
                         </div>
 
                         {/* Benefits */}
-                        <h3 className="text-lg font-semibold text-foreground mb-6">Why Work With Us?</h3>
+                        <h3 className="text-lg font-semibold text-foreground mb-6">{t("infoTitle")}</h3>
                         <div className="space-y-4">
                             {benefits.map((benefit, index) => (
                                 <motion.div
@@ -127,7 +129,7 @@ export function ContactSection() {
 
                         <div className="mt-8 p-4 rounded-lg bg-secondary/50">
                             <p className="text-sm text-muted-foreground">
-                                Prefer to call? <a href={`tel:${telPhone}`} className="text-foreground font-medium hover:underline">{displayPhone}</a>
+                                {t("call")} <a href={`tel:${telPhone}`} className="text-foreground font-medium hover:underline">{displayPhone}</a>
                             </p>
                         </div>
                     </motion.div>
@@ -140,10 +142,10 @@ export function ContactSection() {
                     >
                         <div className="p-8 rounded-2xl bg-card border border-border card-elevated">
                             <h3 className="text-xl font-semibold text-foreground mb-2">
-                                Send us a message
+                                {t("formTitle")}
                             </h3>
                             <p className="text-muted-foreground text-sm mb-6">
-                                Fill out the form below and we'll get back to you as soon as possible.
+                                {t("formText")}
                             </p>
 
                             {state?.error && (
@@ -155,7 +157,7 @@ export function ContactSection() {
                             <form action={formAction} className="space-y-5">
                                 <div>
                                     <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
-                                        Email *
+                                        {t("email")} *
                                     </label>
                                     <input
                                         type="email"
@@ -163,13 +165,13 @@ export function ContactSection() {
                                         name="email"
                                         required
                                         className="flex h-12 w-full rounded-xl border border-input bg-background px-4 py-3 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 transition-all duration-300"
-                                        placeholder="you@example.com"
+                                        placeholder={t("emailPlaceholder")}
                                     />
                                 </div>
 
                                 <div>
                                     <label htmlFor="subject" className="block text-sm font-medium text-foreground mb-2">
-                                        Subject *
+                                        {t("subject")} *
                                     </label>
                                     <input
                                         type="text"
@@ -177,13 +179,13 @@ export function ContactSection() {
                                         name="subject"
                                         required
                                         className="flex h-12 w-full rounded-xl border border-input bg-background px-4 py-3 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 transition-all duration-300"
-                                        placeholder="Project inquiry"
+                                        placeholder={t("subjectPlaceholder")}
                                     />
                                 </div>
 
                                 <div>
                                     <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
-                                        Your message *
+                                        {t("message")} *
                                     </label>
                                     <textarea
                                         id="message"
@@ -191,7 +193,7 @@ export function ContactSection() {
                                         required
                                         rows={5}
                                         className="flex min-h-[120px] w-full rounded-xl border border-input bg-background px-4 py-3 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 resize-y transition-all duration-300"
-                                        placeholder="Tell us about your project..."
+                                        placeholder={t("messagePlaceholder")}
                                     />
                                 </div>
 
@@ -203,17 +205,17 @@ export function ContactSection() {
                                     {isPending ? (
                                         <>
                                             <Loader2 className="w-5 h-5 animate-spin" />
-                                            Sending...
+                                            {t("loading")}
                                         </>
                                     ) : isSuccess ? (
                                         <>
                                             <Check className="w-5 h-5" />
-                                            Message Sent!
+                                            {t("alert")}
                                         </>
                                     ) : (
                                         <>
                                             <Send className="w-5 h-5" />
-                                            Send Message
+                                            {t("button")}
                                         </>
                                     )}
                                 </button>

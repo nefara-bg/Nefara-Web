@@ -34,7 +34,7 @@
         "mobile": {
             "title": "Mobile Apps",
             "content": {
-                "text": "Powerful desktop software solutions for Windows, macOS, and Linux with native performance and intuitive interfaces.",
+                "text": "Native and cross-platform mobile applications that provide seamless experiences across iOS and Android devices.",
                 "content1": "Cross platform for all operating systems",
                 "content2": "Secure applications",
                 "content3": "AI integrated"
@@ -58,6 +58,15 @@
         "experience": "Years Experience",
         "support": "Support Available",
         "client": "Client Satisfaction",
+        "sectionLabel": "About",
+        "mainTitle": "The dream team of",
+        "mainTitle2": "digital solutions.",
+        "subText": "We Grow Businesses Online. Period.",
+        "team": {
+            "leadDev": "Lead Developer",
+            "designer": "UX/UI Designer",
+            "pm": "Project Manager"
+        },
         "tag": "Our Mission",
         "subtitle": "Transforming Your Ideas Into",
         "subtitle2": "Digital Excellence",
