@@ -68,6 +68,7 @@ export const sendEmail = async (email: string, subject: string, message: string)
             success: true
         }
     } catch (e) {
+        console.error("Failed to send email:", e);
         return {
             success: false,
             error: "Something went wrong. Please try again."
