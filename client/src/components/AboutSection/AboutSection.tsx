@@ -160,52 +160,120 @@ export function AboutSection() {
                 </motion.div>
 
                 {/* Mission Section */}
-                <div className="max-w-4xl mx-auto">
+                <div className="max-w-7xl mx-auto">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-center mb-12"
+                        className="text-center mb-20"
                     >
                         <p className="section-label mb-4">{t("tag")}</p>
-                        <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-6">
+                        <h3 className="text-3xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
                             {t("subtitle")}
-                            <br />
-                            {t("subtitle2")}
+                            <span className="text-primary block mt-2">
+                                {t("subtitle2")}
+                            </span>
                         </h3>
-                        <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+                        <p className="text-muted-foreground text-lg leading-relaxed max-w-3xl mx-auto">
                             {t("paragraph1")}
                         </p>
                     </motion.div>
 
-                    {/* Features Grid */}
+                    {/* Features Grid - Reference Style */}
                     <motion.div
                         variants={containerVariants}
                         initial="hidden"
                         whileInView="visible"
-                        viewport={{ once: true, margin: "-100px" }}
-                        className="grid sm:grid-cols-2 gap-6"
+                        viewport={{ once: true, margin: "-50px" }}
+                        className="grid md:grid-cols-2 gap-6"
                     >
                         {features.map((feature, index) => (
                             <motion.div
                                 key={index}
                                 variants={itemVariants}
-                                whileHover={{
-                                    scale: 1.02,
-                                    boxShadow: "0px 10px 20px rgba(0,0,0,0.05)",
-                                    transition: { duration: 0.2 }
-                                }}
-                                className="p-8 rounded-xl bg-card border border-border/50 hover:border-primary/20 transition-all duration-300"
+                                whileHover={{ y: -5 }}
+                                className="group relative overflow-hidden rounded-3xl bg-card border border-border transition-all duration-300 hover:shadow-2xl hover:shadow-primary/5 h-[400px] flex flex-col"
                             >
-                                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 text-primary">
-                                    <feature.icon className="w-6 h-6" />
+                                {/* Top Content: Title & Expand Icon */}
+                                <div className="p-8 pb-0 flex justify-between items-start relative z-20">
+                                    <div className="max-w-[80%]">
+                                        <h4 className="text-2xl font-bold text-foreground mb-3 leading-tight">
+                                            {feature.title}
+                                        </h4>
+                                        <p className="text-muted-foreground text-sm leading-relaxed">
+                                            {feature.description}
+                                        </p>
+                                    </div>
+                                    <div className="w-8 h-8 rounded-lg bg-secondary/50 flex items-center justify-center text-foreground/50 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                                        </svg>
+                                    </div>
                                 </div>
-                                <h4 className="text-lg font-semibold text-foreground mb-2">
-                                    {feature.title}
-                                </h4>
-                                <p className="text-muted-foreground text-sm leading-relaxed">
-                                    {feature.description}
-                                </p>
+
+                                {/* Bottom Visual Area - Different for each card */}
+                                <div className="flex-grow relative mt-6 overflow-hidden">
+                                    {/* Card 1: Personalized & Fast - Configuration UI */}
+                                    {index === 0 && (
+                                        <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-indigo-50/50 dark:from-blue-900/10 dark:to-indigo-900/10 flex items-center justify-center pt-8">
+                                            <div className="w-3/4 h-full bg-background border border-border rounded-t-2xl shadow-xl p-4 flex flex-col gap-3 transform group-hover:translate-y-[-10px] transition-transform duration-500">
+                                                <div className="flex items-center gap-3 mb-2">
+                                                    <div className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/50" />
+                                                    <div className="h-2 w-20 bg-muted rounded-full" />
+                                                </div>
+                                                <div className="h-2 w-full bg-secondary/50 rounded-full" />
+                                                <div className="h-2 w-2/3 bg-secondary/50 rounded-full" />
+                                                <div className="mt-4 flex gap-2">
+                                                    <div className="h-8 w-16 bg-primary/10 rounded-lg border border-primary/20" />
+                                                    <div className="h-8 w-16 bg-muted rounded-lg" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {/* Card 2: Tech Stack - Stacked Layers */}
+                                    {index === 1 && (
+                                        <div className="absolute inset-0 bg-gradient-to-br from-purple-50/50 to-pink-50/50 dark:from-purple-900/10 dark:to-pink-900/10 flex items-center justify-center">
+                                            <div className="relative w-48 h-48 transform rotate-x-12 group-hover:scale-110 transition-transform duration-500">
+                                                <div className="absolute top-0 left-0 w-full h-32 bg-background border border-border shadow-lg rounded-xl z-30 flex items-center justify-center transform -translate-y-8 translate-x-4">
+                                                    <Layers className="w-10 h-10 text-primary" />
+                                                </div>
+                                                <div className="absolute top-4 left-4 w-full h-32 bg-background/80 border border-border shadow-md rounded-xl z-20 opacity-80" />
+                                                <div className="absolute top-8 left-8 w-full h-32 bg-background/60 border border-border shadow-sm rounded-xl z-10 opacity-60" />
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {/* Card 3: Direct Access - Chat Bubbles */}
+                                    {index === 2 && (
+                                        <div className="absolute inset-0 bg-gradient-to-br from-cyan-50/50 to-emerald-50/50 dark:from-cyan-900/10 dark:to-emerald-900/10 flex flex-col items-center justify-end pb-8 px-8 gap-4">
+                                            <div className="self-end bg-primary text-primary-foreground px-4 py-3 rounded-2xl rounded-tr-sm shadow-lg transform group-hover:-translate-x-2 transition-transform duration-500 max-w-[80%]">
+                                                <p className="text-xs">Can we tweak the animation?</p>
+                                            </div>
+                                            <div className="self-start bg-background border border-border text-foreground px-4 py-3 rounded-2xl rounded-tl-sm shadow-md transform group-hover:translate-x-2 transition-transform duration-500 max-w-[80%] flex items-center gap-2">
+                                                <div className="w-4 h-4 rounded-full bg-green-500" />
+                                                <p className="text-xs font-medium">On it right now!</p>
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {/* Card 4: Quality - Shield Pulse */}
+                                    {index === 3 && (
+                                        <div className="absolute inset-0 bg-gradient-to-br from-rose-50/50 to-orange-50/50 dark:from-rose-900/10 dark:to-orange-900/10 flex items-center justify-center">
+                                            <div className="relative">
+                                                <div className="absolute inset-0 bg-primary/10 rounded-full blur-xl animate-pulse" />
+                                                <Shield className="w-24 h-24 text-foreground/5 relative z-10" />
+                                                <div className="absolute inset-0 flex items-center justify-center z-20">
+                                                    <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-500">
+                                                        <svg className="w-6 h-6 text-primary-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
                             </motion.div>
                         ))}
                     </motion.div>
