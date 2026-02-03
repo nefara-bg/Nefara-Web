@@ -29,6 +29,13 @@ export function ServicesSection() {
         },
     ];
 
+    const scrollToContact = () => {
+        const contactSection = document.getElementById("contact");
+        if (contactSection) {
+            contactSection.scrollIntoView({ behavior: "smooth" });
+        }
+    };
+
     return (
         <section id="services" className="py-32 bg-background relative overflow-hidden">
             <div className="container mx-auto px-6 relative z-10">
@@ -84,7 +91,10 @@ export function ServicesSection() {
                                         ))}
                                     </div>
 
-                                    <button className="group/btn flex items-center gap-2 text-primary font-semibold hover:text-primary/80 transition-colors">
+                                    <button
+                                        onClick={scrollToContact}
+                                        className="group/btn flex items-center gap-2 text-primary font-semibold hover:text-primary/80 transition-colors"
+                                    >
                                         Start with {service.title}
                                         <span className="group-hover/btn:translate-x-1 transition-transform">→</span>
                                     </button>
@@ -135,7 +145,7 @@ export function ServicesSection() {
                         {t("subtext")}
                     </h3>
                     <button
-                        onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}
+                        onClick={scrollToContact}
                         className="inline-flex h-12 items-center justify-center rounded-full bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-all hover:bg-primary/90 hover:scale-105"
                     >
                         {t("button")}
