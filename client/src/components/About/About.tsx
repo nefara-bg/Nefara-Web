@@ -125,13 +125,13 @@ const About: React.FC = () => {
                                     {t("about.paragraph2")}
                                 </p>
 
-                                {/* <Link
+                                <Link
                                     href="/about"
                                     className="flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all duration-300 w-fit"
                                 >
                                     Learn More About Us
                                     <ArrowRight className="w-4 h-4" />
-                                </Link> */}
+                                </Link>
                             </div>
                         </div>
 

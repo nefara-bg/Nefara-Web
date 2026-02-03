@@ -33,17 +33,21 @@ const ContactFormCard: React.FC<ContactFormCardProps> = ({ phone = "", phoneLabe
     return (
         <motion.div
             initial={{
-                scale: 0
+                opacity: 0,
+                y: 50
             }}
             whileInView={{
-                scale: 1,
+                opacity: 1,
+                y: 0,
                 transition: {
-                    duration: 1.5,
-                    type: "spring"
+                    duration: 0.8,
+                    type: "spring",
+                    bounce: 0.3
                 }
             }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-100px" }}
         >
+
             <div className="border rounded-lg grid grid-cols-1 lg:grid-cols-12 w-full text-left overflow-hidden">
                 <div className="lg:col-span-8 p-6 sm:p-12 flex flex-col justify-center">
                     <div className="flex flex-col gap-2 mb-8">
