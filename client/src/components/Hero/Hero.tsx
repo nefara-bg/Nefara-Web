@@ -19,7 +19,7 @@ const Hero: React.FC = () => {
                     "py-16 sm:py-20 md:py-24 lg:py-28",
                     "px-4 sm:px-12 md:px-16 lg:px-20 xl:px-24",
                     "flex items-center justify-center",
-                    "bg-gradient-to-br from-background via-secondary to-muted",
+                    "bg-gradient-to-br from-background via-secondary/5 to-muted",
                     "min-h-[min(100vh,60rem)]",
                     "pt-16 sm:pt-20 md:pt-24 lg:pt-28"
                 )}

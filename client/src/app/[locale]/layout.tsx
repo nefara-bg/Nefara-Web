@@ -2,7 +2,7 @@ import { hasLocale, NextIntlClientProvider } from "next-intl"
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server"
 import { notFound } from "next/navigation"
 import { locales, routing } from "@/i18n/routing"
-import Header from "@/components/Header/Header"
+import { Navigation } from "@/components/Navigation/Navigation"
 import Footer from "@/components/Footer/Footer"
 import { validateClientUrl } from "@/utils/env/env"
 import "@/app/globals.css"
@@ -65,7 +65,8 @@ export default async function RootLayout({
 
     return (
         <NextIntlClientProvider locale={locale} messages={messages}>
-            <Header locale={locale} />
+            {/* Using Navigation from Nefara Elevate design */}
+            <Navigation locale={locale} />
             {children}
             <Footer />
         </NextIntlClientProvider>
