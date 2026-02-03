@@ -37,63 +37,63 @@ export function ServicesSection() {
     };
 
     return (
-        <section id="services" className="py-32 bg-background relative overflow-hidden">
-            <div className="container mx-auto px-6 relative z-10">
+        <section id="services" className="py-16 md:py-32 bg-background relative overflow-hidden">
+            <div className="container mx-auto px-4 md:px-6 relative z-10">
                 {/* Section Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="max-w-4xl mb-24"
+                    className="max-w-4xl mb-12 md:mb-24"
                 >
-                    <p className="text-primary font-semibold mb-6 tracking-wide uppercase text-sm">{t("tag")}</p>
-                    <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold text-foreground mb-8 text-balance">
+                    <p className="text-primary font-semibold mb-4 md:mb-6 tracking-wide uppercase text-xs md:text-sm">{t("tag")}</p>
+                    <h2 className="text-3xl md:text-5xl lg:text-7xl font-bold text-foreground mb-4 md:mb-8 text-balance leading-tight">
                         {t("title")}
                     </h2>
-                    <p className="text-muted-foreground text-xl md:text-2xl max-w-2xl leading-relaxed">
+                    <p className="text-muted-foreground text-base md:text-xl lg:text-2xl max-w-2xl leading-relaxed">
                         {t("content")}
                     </p>
                 </motion.div>
 
                 {/* Services List - Stripe Style */}
-                <div className="space-y-40">
+                <div className="space-y-16 md:space-y-40">
                     {services.map((service, index) => (
                         <div key={service.title} className="group">
                             <motion.div
                                 initial={{ opacity: 0, y: 40 }}
                                 whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, margin: "-100px" }}
+                                viewport={{ once: true, margin: "-50px" }}
                                 transition={{ duration: 0.7 }}
-                                className={`grid lg:grid-cols-2 gap-16 lg:gap-24 items-center ${index % 2 === 1 ? "lg:flex-row-reverse" : ""}`}
+                                className={`grid lg:grid-cols-2 gap-8 md:gap-16 lg:gap-24 items-center ${index % 2 === 1 ? "lg:flex-row-reverse" : ""}`}
                             >
                                 {/* Text Content */}
                                 <div className={`${index % 2 === 1 ? "lg:order-2" : "lg:order-1"}`}>
-                                    <div className="inline-flex items-center justify-center p-3 rounded-2xl bg-secondary/50 mb-8 text-primary">
-                                        <service.icon className="w-8 h-8" />
+                                    <div className="inline-flex items-center justify-center p-2 md:p-3 rounded-xl md:rounded-2xl bg-secondary/50 mb-6 md:mb-8 text-primary">
+                                        <service.icon className="w-6 h-6 md:w-8 md:h-8" />
                                     </div>
 
-                                    <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+                                    <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-4 md:mb-6">
                                         {service.title}
                                     </h3>
 
-                                    <p className="text-lg md:text-xl text-muted-foreground mb-10 leading-relaxed border-l-2 border-border pl-6">
+                                    <p className="text-base md:text-lg lg:text-xl text-muted-foreground mb-6 md:mb-10 leading-relaxed border-l-2 border-border pl-4 md:pl-6">
                                         {service.description}
                                     </p>
 
-                                    <div className="grid gap-4 mb-10">
+                                    <div className="grid gap-3 md:gap-4 mb-6 md:mb-10">
                                         {service.features.map((feature, idx) => (
-                                            <div key={feature} className="flex items-center gap-4">
-                                                <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 text-primary">
-                                                    <Check className="w-3.5 h-3.5" />
+                                            <div key={feature} className="flex items-center gap-3 md:gap-4">
+                                                <div className="w-5 h-5 md:w-6 md:h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 text-primary">
+                                                    <Check className="w-3 h-3 md:w-3.5 md:h-3.5" />
                                                 </div>
-                                                <span className="font-medium text-foreground/90">{feature}</span>
+                                                <span className="font-medium text-sm md:text-base text-foreground/90">{feature}</span>
                                             </div>
                                         ))}
                                     </div>
 
                                     <button
                                         onClick={scrollToContact}
-                                        className="group/btn flex items-center gap-2 text-primary font-semibold hover:text-primary/80 transition-colors"
+                                        className="group/btn flex items-center gap-2 text-primary font-semibold hover:text-primary/80 transition-colors text-sm md:text-base active:scale-95 py-2 px-4 -mx-4 md:mx-0 md:p-0 rounded-lg md:rounded-none hover:bg-primary/5 md:hover:bg-transparent"
                                     >
                                         Start with {service.title}
                                         <span className="group-hover/btn:translate-x-1 transition-transform">→</span>
@@ -101,35 +101,35 @@ export function ServicesSection() {
                                 </div>
 
                                 {/* Visual Outline Placeholder */}
-                                <div className={`relative ${index % 2 === 1 ? "lg:order-1" : "lg:order-2"}`}>
+                                <div className={`relative mt-8 lg:mt-0 ${index % 2 === 1 ? "lg:order-1" : "lg:order-2"}`}>
                                     {/* Main Container Outline */}
-                                    <div className="relative aspect-[4/3] w-full rounded-2xl border-2 border-dashed border-primary/20 bg-secondary/5 transition-all duration-500 hover:border-primary/40 group-hover:bg-secondary/10">
+                                    <div className="relative aspect-[16/11] md:aspect-[4/3] w-full rounded-xl md:rounded-2xl border-2 border-dashed border-primary/20 bg-secondary/5 transition-all duration-500 hover:border-primary/40 group-hover:bg-secondary/10">
                                         {/* Placeholder Label */}
                                         <div className="absolute inset-0 flex items-center justify-center">
                                             <div className="text-center px-4">
-                                                <p className="text-sm font-mono text-muted-foreground/60 mb-2">Image Placeholder</p>
-                                                <p className="text-xs text-muted-foreground/40">1200 x 900px</p>
+                                                <p className="text-xs md:text-sm font-mono text-muted-foreground/60 mb-1 md:mb-2">Image Placeholder</p>
+                                                <p className="text-[10px] md:text-xs text-muted-foreground/40">1200 x 900px</p>
                                             </div>
                                         </div>
 
-                                        {/* Floating Card Outline 1 (Top Right) */}
-                                        <div className="absolute -right-8 -top-8 w-48 h-32 rounded-xl border-2 border-dashed border-primary/30 bg-background shadow-xl p-4 hidden md:block transform transition-transform duration-500 hover:-translate-y-2">
-                                            <div className="w-full h-2 bg-secondary/50 rounded-full mb-3" />
-                                            <div className="w-2/3 h-2 bg-secondary/50 rounded-full mb-6" />
-                                            <div className="flex gap-2">
-                                                <div className="w-8 h-8 rounded-full bg-primary/10" />
-                                                <div className="w-8 h-8 rounded-full bg-primary/10" />
+                                        {/* Floating Card Outline 1 (Top Right) - Enhanced for mobile */}
+                                        <div className="absolute -right-4 md:-right-8 -top-4 md:-top-8 w-32 h-20 md:w-48 md:h-32 rounded-lg md:rounded-xl border-2 border-dashed border-primary/30 bg-background shadow-lg md:shadow-xl p-2 md:p-4 block transform transition-transform duration-500 hover:-translate-y-1 md:hover:-translate-y-2">
+                                            <div className="w-full h-1 md:h-2 bg-secondary/50 rounded-full mb-2 md:mb-3" />
+                                            <div className="w-2/3 h-1 md:h-2 bg-secondary/50 rounded-full mb-3 md:mb-6" />
+                                            <div className="flex gap-1 md:gap-2">
+                                                <div className="w-5 h-5 md:w-8 md:h-8 rounded-full bg-primary/10" />
+                                                <div className="w-5 h-5 md:w-8 md:h-8 rounded-full bg-primary/10" />
                                             </div>
                                         </div>
 
-                                        {/* Floating Card Outline 2 (Bottom Left) */}
-                                        <div className={`absolute -left-8 -bottom-8 w-64 h-24 rounded-xl border-2 border-dashed border-primary/30 bg-background shadow-xl p-4 hidden md:flex items-center gap-4 transform transition-transform duration-500 hover:translate-y-2 ${index % 2 === 1 ? "right-auto left-8" : "left-auto -right-8"}`}>
-                                            <div className="w-12 h-12 rounded-lg bg-green-500/10 border border-green-500/20 flex items-center justify-center text-green-600">
-                                                <Check className="w-6 h-6" />
+                                        {/* Floating Card Outline 2 (Bottom Left) - Simplified for mobile */}
+                                        <div className={`absolute -left-4 md:-left-8 -bottom-4 md:-bottom-8 w-48 md:w-64 h-16 md:h-24 rounded-lg md:rounded-xl border-2 border-dashed border-primary/30 bg-background shadow-lg md:shadow-xl p-2 md:p-4 flex items-center gap-2 md:gap-4 transform transition-transform duration-500 hover:translate-y-1 md:hover:translate-y-2 ${index % 2 === 1 ? "right-auto left-4 md:left-8" : "left-auto -right-4 md:-right-8"}`}>
+                                            <div className="w-8 h-8 md:w-12 md:h-12 rounded-md md:rounded-lg bg-green-500/10 border border-green-500/20 flex items-center justify-center text-green-600">
+                                                <Check className="w-4 h-4 md:w-6 md:h-6" />
                                             </div>
                                             <div>
-                                                <div className="w-24 h-2 bg-secondary/50 rounded-full mb-2" />
-                                                <div className="w-16 h-2 bg-secondary/30 rounded-full" />
+                                                <div className="w-16 md:w-24 h-1 md:h-2 bg-secondary/50 rounded-full mb-1 md:mb-2" />
+                                                <div className="w-10 md:w-16 h-1 md:h-2 bg-secondary/30 rounded-full" />
                                             </div>
                                         </div>
                                     </div>
@@ -140,13 +140,13 @@ export function ServicesSection() {
                 </div>
 
                 {/* Bottom CTA */}
-                <div className="mt-40 text-center">
-                    <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-6">
+                <div className="mt-20 md:mt-40 text-center">
+                    <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-foreground mb-4 md:mb-6 px-4">
                         {t("subtext")}
                     </h3>
                     <button
                         onClick={scrollToContact}
-                        className="inline-flex h-12 items-center justify-center rounded-full bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-all hover:bg-primary/90 hover:scale-105"
+                        className="inline-flex h-11 md:h-12 items-center justify-center rounded-full bg-primary px-6 md:px-8 text-sm font-medium text-primary-foreground shadow transition-all hover:bg-primary/90 active:scale-95 md:hover:scale-105"
                     >
                         {t("button")}
                     </button>
