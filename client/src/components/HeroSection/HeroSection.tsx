@@ -68,13 +68,13 @@ export function HeroSection() {
                 >
                     <button
                         onClick={scrollToContact}
-                        className="bg-primary text-primary-foreground px-8 py-4 rounded-xl font-semibold text-lg shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5 transition-all duration-300"
+                        className="bg-primary text-primary-foreground px-6 py-3 rounded-xl font-semibold text-base shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5 transition-all duration-300"
                     >
                         {t("button")}
                     </button>
                     <button
                         onClick={scrollToServices}
-                        className="group bg-background border border-input text-foreground px-8 py-4 rounded-xl font-semibold text-lg hover:bg-secondary/50 hover:border-primary/50 transition-all duration-300"
+                        className="group bg-background border border-input text-foreground px-6 py-3 rounded-xl font-semibold text-base hover:bg-secondary/50 hover:border-primary/50 transition-all duration-300"
                     >
                         {t("secondaryButton")}
                     </button>
