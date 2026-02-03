@@ -64,10 +64,16 @@ export function HeroSection() {
                     transition={{ delay: 0.5 }}
                     className="flex flex-col sm:flex-row gap-4 justify-center"
                 >
-                    <button onClick={scrollToContact} className="btn-primary">
+                    <button
+                        onClick={scrollToContact}
+                        className="bg-primary text-primary-foreground px-8 py-4 rounded-xl font-semibold text-lg shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5 transition-all duration-300"
+                    >
                         Get Started
                     </button>
-                    <button onClick={scrollToServices} className="btn-outline">
+                    <button
+                        onClick={scrollToServices}
+                        className="group bg-background border border-input text-foreground px-8 py-4 rounded-xl font-semibold text-lg hover:bg-secondary/50 hover:border-primary/50 transition-all duration-300"
+                    >
                         View Our Services
                     </button>
                 </motion.div>

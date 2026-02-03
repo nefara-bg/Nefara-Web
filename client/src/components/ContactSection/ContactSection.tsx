@@ -162,7 +162,7 @@ export function ContactSection() {
                                         id="email"
                                         name="email"
                                         required
-                                        className="form-input"
+                                        className="flex h-12 w-full rounded-xl border border-input bg-background px-4 py-3 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 transition-all duration-300"
                                         placeholder="you@example.com"
                                     />
                                 </div>
@@ -176,7 +176,7 @@ export function ContactSection() {
                                         id="subject"
                                         name="subject"
                                         required
-                                        className="form-input"
+                                        className="flex h-12 w-full rounded-xl border border-input bg-background px-4 py-3 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 transition-all duration-300"
                                         placeholder="Project inquiry"
                                     />
                                 </div>
@@ -190,7 +190,7 @@ export function ContactSection() {
                                         name="message"
                                         required
                                         rows={5}
-                                        className="form-input resize-none"
+                                        className="flex min-h-[120px] w-full rounded-xl border border-input bg-background px-4 py-3 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 resize-y transition-all duration-300"
                                         placeholder="Tell us about your project..."
                                     />
                                 </div>
@@ -198,7 +198,7 @@ export function ContactSection() {
                                 <button
                                     type="submit"
                                     disabled={isPending || isSuccess}
-                                    className="w-full btn-primary flex items-center justify-center gap-2 disabled:opacity-70"
+                                    className="w-full bg-primary text-primary-foreground h-12 rounded-xl font-medium flex items-center justify-center gap-2 hover:opacity-90 disabled:opacity-70 transition-all duration-300 shadow-md shadow-primary/20"
                                 >
                                     {isPending ? (
                                         <>
