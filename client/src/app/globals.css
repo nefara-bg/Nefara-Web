@@ -45,9 +45,9 @@
 
 @layer base {
   :root {
-    /* Nefara Design System - Clean, Light, Professional */
-    /* Light clean background with subtle gradient */
-    --background: 210 25% 97%;
+    /* Nefara Design System - Blue Enhanced */
+    /* Light background with slightly more blue tint */
+    --background: 215 50% 98%;
     --foreground: 222 47% 11%;
 
     --card: 0 0% 100%;
@@ -56,28 +56,28 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222 47% 11%;
 
-    /* Primary - Dark Navy (like nefara.org) */
-    --primary: 222 47% 11%;
+    /* Primary - Richer Navy Blue */
+    --primary: 225 60% 15%;
     --primary-foreground: 210 40% 98%;
 
-    /* Secondary - Light Gray Blue */
-    --secondary: 214 32% 91%;
+    /* Secondary - Cooler Light Blue */
+    --secondary: 215 60% 94%;
     --secondary-foreground: 222 47% 11%;
 
     /* Muted */
-    --muted: 210 20% 94%;
-    --muted-foreground: 215 16% 47%;
+    --muted: 215 30% 96%;
+    --muted-foreground: 215 25% 45%;
 
-    /* Accent - Subtle blue */
-    --accent: 217 95% 55%;
+    /* Accent - Vibrant Blue */
+    --accent: 220 95% 55%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 222 47% 11%;
+    --border: 215 40% 92%;
+    --input: 215 40% 92%;
+    --ring: 225 60% 15%;
 
     --radius: 0.5rem;
 
@@ -92,25 +92,33 @@
   }
 
   .dark {
-    --background: 222 47% 6%;
-    --foreground: 210 40% 98%;
-    --card: 222 47% 8%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222 47% 8%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 210 40% 98%;
-    --primary-foreground: 222 47% 11%;
-    --secondary: 222 30% 14%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 222 30% 14%;
-    --muted-foreground: 215 20% 65%;
-    --accent: 217 91% 60%;
-    --accent-foreground: 222 47% 11%;
+    /* Dark mode with deeper blue tint */
+    --background: 224 55% 6%;
+    --foreground: 215 30% 98%;
+    --card: 224 50% 8%;
+    --card-foreground: 215 30% 98%;
+    --popover: 224 50% 8%;
+    --popover-foreground: 215 30% 98%;
+
+    --primary: 215 90% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 224 40% 15%;
+    --secondary-foreground: 215 30% 98%;
+
+    --muted: 224 40% 12%;
+    --muted-foreground: 215 25% 65%;
+
+    --accent: 220 90% 60%;
+    --accent-foreground: 224 55% 6%;
+
     --destructive: 0 62% 30%;
     --destructive-foreground: 210 40% 98%;
-    --border: 222 30% 18%;
-    --input: 222 30% 18%;
-    --ring: 217 91% 60%;
+
+    --border: 224 40% 16%;
+    --input: 224 40% 16%;
+    --ring: 215 90% 60%;
+
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -144,12 +152,12 @@
 
 @layer components {
 
-  /* Hero gradient background like nefara.org */
+  /* Hero gradient background - Enhanced Blue */
   .hero-gradient {
     background: linear-gradient(135deg,
-        hsl(210 25% 97%) 0%,
-        hsl(214 32% 93%) 50%,
-        hsl(210 25% 97%) 100%);
+        hsl(215 50% 98%) 0%,
+        hsl(218 60% 94%) 50%,
+        hsl(215 50% 98%) 100%);
   }
 
   /* Nav link underline animation */
