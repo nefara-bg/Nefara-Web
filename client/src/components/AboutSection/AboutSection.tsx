@@ -3,10 +3,10 @@
 import * as motion from "motion/react-client";
 import { Zap, Layers, Shield, UserCog, MessageSquare } from "lucide-react";
 
-// Update paths to use public assets
-const teamMember1 = "/assets/team-member-1.jpg";
-const teamMember2 = "/assets/team-member-2.jpg";
-const teamMember3 = "/assets/team-member-3.jpg";
+// Placeholder images
+const teamMember1 = "https://placehold.co/400x600/1a1a1a/666666?text=Dimitar+Dimkov";
+const teamMember2 = "https://placehold.co/400x600/1a1a1a/666666?text=Dimitar+Anastasov";
+const teamMember3 = "https://placehold.co/400x600/1a1a1a/666666?text=Martin+Velchev";
 
 import { useTranslations } from "next-intl";
 
@@ -14,9 +14,9 @@ export function AboutSection() {
     const t = useTranslations("about");
 
     const stats = [
-        { value: "3+", label: t("experience") },
-        { value: "24/7", label: t("support") },
-        { value: "100%", label: t("client") },
+        { value: "3+", label: "Years Experience" },
+        { value: "24/7", label: "Support Available" },
+        { value: "100%", label: "Client Satisfaction" },
     ];
 
     const features = [
@@ -44,22 +44,19 @@ export function AboutSection() {
 
     const teamMembers = [
         {
-            name: "Alexander Petrov",
-            role: t("team.leadDev"),
+            name: "Dimitar Dimkov",
+            role: "PR Specialist",
             image: teamMember1,
-            number: "01",
         },
         {
-            name: "Elena Dimitrova",
-            role: t("team.designer"),
+            name: "Dimitar Anastasov",
+            role: "Software Developer",
             image: teamMember2,
-            number: "02",
         },
         {
-            name: "Viktor Ivanov",
-            role: t("team.pm"),
+            name: "Martin Velchev",
+            role: "Full Stack Developer",
             image: teamMember3,
-            number: "03",
         },
     ];
 
@@ -120,24 +117,22 @@ export function AboutSection() {
                         >
                             {/* Image Container */}
                             <div className="relative mb-6 group">
-                                <div className="relative overflow-hidden rounded-2xl bg-secondary/30">
+                                <div className="relative overflow-hidden rounded-2xl bg-secondary/30 border border-border/50 shadow-lg group-hover:shadow-xl group-hover:shadow-primary/10 transition-all duration-500">
                                     <img
                                         src={member.image}
                                         alt={member.name}
                                         className="w-full aspect-[3/4] object-cover transition-transform duration-500 group-hover:scale-105"
                                     />
-                                    {/* Number overlay */}
-                                    <div className="absolute bottom-4 left-4 bg-card/90 backdrop-blur-sm px-3 py-1 rounded-lg">
-                                        <span className="text-sm font-medium text-foreground">{member.number}</span>
-                                    </div>
+                                    {/* Gradient overlay for depth */}
+                                    <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                                 </div>
                             </div>
 
                             {/* Info */}
-                            <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">
+                            <h3 className="text-lg md:text-xl font-bold text-foreground mb-1">{member.name}</h3>
+                            <p className="text-xs md:text-sm text-muted-foreground uppercase tracking-wider">
                                 {member.role}
                             </p>
-                            <h3 className="text-lg font-semibold text-foreground">{member.name}</h3>
                         </motion.div>
                     ))}
                 </div>
@@ -147,14 +142,14 @@ export function AboutSection() {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="grid grid-cols-3 gap-6 max-w-3xl mx-auto mb-20"
+                    className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 max-w-4xl mx-auto mb-20"
                 >
                     {stats.map((stat) => (
-                        <div key={stat.label} className="text-center p-6 rounded-xl bg-card card-elevated">
-                            <div className="text-3xl md:text-4xl font-bold text-foreground mb-2">
+                        <div key={stat.label} className="text-center p-6 md:p-8 rounded-2xl bg-card border border-border shadow-lg hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 hover:-translate-y-1">
+                            <div className="text-4xl md:text-5xl font-bold text-primary mb-3">
                                 {stat.value}
                             </div>
-                            <p className="text-sm text-muted-foreground">{stat.label}</p>
+                            <p className="text-xs md:text-sm text-muted-foreground font-medium leading-relaxed">{stat.label}</p>
                         </div>
                     ))}
                 </motion.div>
@@ -194,9 +189,9 @@ export function AboutSection() {
                                 whileHover={{ y: -5 }}
                                 className="group relative overflow-hidden rounded-3xl bg-card border border-border transition-all duration-300 hover:shadow-2xl hover:shadow-primary/5 h-[400px] flex flex-col"
                             >
-                                {/* Top Content: Title & Expand Icon */}
+                                {/* Top Content: Title & Description */}
                                 <div className="p-8 pb-0 flex justify-between items-start relative z-20">
-                                    <div className="max-w-[80%]">
+                                    <div className="max-w-[85%]">
                                         <h4 className="text-2xl font-bold text-foreground mb-3 leading-tight">
                                             {feature.title}
                                         </h4>
@@ -204,11 +199,8 @@ export function AboutSection() {
                                             {feature.description}
                                         </p>
                                     </div>
-                                    <div className="w-8 h-8 rounded-lg bg-secondary/50 flex items-center justify-center text-foreground/50 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
-                                        </svg>
-                                    </div>
+                                    {/* Decorative dot */}
+                                    <div className="w-3 h-3 rounded-full bg-secondary/50 group-hover:bg-primary group-hover:scale-150 transition-all duration-300" />
                                 </div>
 
                                 {/* Bottom Visual Area - Different for each card */}
