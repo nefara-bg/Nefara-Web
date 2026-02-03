@@ -8,115 +8,139 @@ import { useTranslations } from "next-intl";
 export function ServicesSection() {
     const t = useTranslations("services");
 
-    // Assuming we can use these images directly. If they fail (CORS or hotlinking protection), we should download them.
-    // Likely they are public.
     const services = [
         {
             title: t("web.title"),
             description: t("web.content.text"),
             icon: Globe,
             features: [t("web.content.content1"), t("web.content.content2"), t("web.content.content3")],
-            image: "https://nefara.org/_next/image?url=%2FwebDev.webp&w=3840&q=75",
         },
         {
             title: t("desktop.title"),
             description: t("desktop.content.text"),
             icon: Monitor,
             features: [t("desktop.content.content1"), t("desktop.content.content2"), t("desktop.content.content3")],
-            image: "https://nefara.org/_next/image?url=%2FdesktopDev.webp&w=3840&q=75",
         },
         {
             title: t("mobile.title"),
             description: t("mobile.content.text"),
             icon: Smartphone,
             features: [t("mobile.content.content1"), t("mobile.content.content2"), t("mobile.content.content3")],
-            image: "https://nefara.org/_next/image?url=%2FmobileDev.webp&w=3840&q=75",
         },
     ];
 
     return (
-        <section id="services" className="py-24 bg-background">
-            <div className="container mx-auto px-6">
+        <section id="services" className="py-32 bg-background relative overflow-hidden">
+            <div className="container mx-auto px-6 relative z-10">
                 {/* Section Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="text-center mb-16"
+                    className="max-w-4xl mb-24"
                 >
-                    <p className="section-label mb-4">{t("tag")}</p>
-                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
+                    <p className="text-primary font-semibold mb-6 tracking-wide uppercase text-sm">{t("tag")}</p>
+                    <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold text-foreground mb-8 text-balance">
                         {t("title")}
                     </h2>
-                    <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+                    <p className="text-muted-foreground text-xl md:text-2xl max-w-2xl leading-relaxed">
                         {t("content")}
                     </p>
                 </motion.div>
 
-                {/* Services Grid */}
-                <div className="space-y-16">
+                {/* Services List - Stripe Style */}
+                <div className="space-y-40">
                     {services.map((service, index) => (
-                        <motion.div
-                            key={service.title}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.1 }}
-                            className={`grid md:grid-cols-2 gap-8 items-center ${index % 2 === 1 ? "md:flex-row-reverse" : ""
-                                }`}
-                        >
-                            {/* Image */}
-                            <div className={`${index % 2 === 1 ? "md:order-2" : ""}`}>
-                                <div className="relative overflow-hidden rounded-2xl bg-secondary/30">
-                                    <img
-                                        src={service.image}
-                                        alt={service.title}
-                                        className="w-full h-64 md:h-80 object-cover"
-                                    />
-                                </div>
-                            </div>
-
-                            {/* Content */}
-                            <div className={`${index % 2 === 1 ? "md:order-1" : ""}`}>
-                                <div className="flex items-center gap-3 mb-4">
-                                    <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-                                        <service.icon className="w-5 h-5 text-primary" />
+                        <div key={service.title} className="group">
+                            <motion.div
+                                initial={{ opacity: 0, y: 40 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: "-100px" }}
+                                transition={{ duration: 0.7 }}
+                                className={`grid lg:grid-cols-2 gap-16 lg:gap-24 items-center ${index % 2 === 1 ? "lg:flex-row-reverse" : ""}`}
+                            >
+                                {/* Text Content */}
+                                <div className={`${index % 2 === 1 ? "lg:order-2" : "lg:order-1"}`}>
+                                    <div className="inline-flex items-center justify-center p-3 rounded-2xl bg-secondary/50 mb-8 text-primary">
+                                        <service.icon className="w-8 h-8" />
                                     </div>
-                                    <h3 className="text-2xl font-bold text-foreground">{service.title}</h3>
+
+                                    <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+                                        {service.title}
+                                    </h3>
+
+                                    <p className="text-lg md:text-xl text-muted-foreground mb-10 leading-relaxed border-l-2 border-border pl-6">
+                                        {service.description}
+                                    </p>
+
+                                    <div className="grid gap-4 mb-10">
+                                        {service.features.map((feature, idx) => (
+                                            <div key={feature} className="flex items-center gap-4">
+                                                <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 text-primary">
+                                                    <Check className="w-3.5 h-3.5" />
+                                                </div>
+                                                <span className="font-medium text-foreground/90">{feature}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+
+                                    <button className="group/btn flex items-center gap-2 text-primary font-semibold hover:text-primary/80 transition-colors">
+                                        Start with {service.title}
+                                        <span className="group-hover/btn:translate-x-1 transition-transform">→</span>
+                                    </button>
                                 </div>
-                                <p className="text-muted-foreground mb-6 leading-relaxed">
-                                    {service.description}
-                                </p>
-                                <ul className="space-y-2">
-                                    {service.features.map((feature) => (
-                                        <li key={feature} className="flex items-center gap-2 text-muted-foreground">
-                                            <Check className="w-4 h-4 text-primary flex-shrink-0" />
-                                            <span>{feature}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        </motion.div>
+
+                                {/* Visual Outline Placeholder */}
+                                <div className={`relative ${index % 2 === 1 ? "lg:order-1" : "lg:order-2"}`}>
+                                    {/* Main Container Outline */}
+                                    <div className="relative aspect-[4/3] w-full rounded-2xl border-2 border-dashed border-primary/20 bg-secondary/5 transition-all duration-500 hover:border-primary/40 group-hover:bg-secondary/10">
+                                        {/* Placeholder Label */}
+                                        <div className="absolute inset-0 flex items-center justify-center">
+                                            <div className="text-center px-4">
+                                                <p className="text-sm font-mono text-muted-foreground/60 mb-2">Image Placeholder</p>
+                                                <p className="text-xs text-muted-foreground/40">1200 x 900px</p>
+                                            </div>
+                                        </div>
+
+                                        {/* Floating Card Outline 1 (Top Right) */}
+                                        <div className="absolute -right-8 -top-8 w-48 h-32 rounded-xl border-2 border-dashed border-primary/30 bg-background shadow-xl p-4 hidden md:block transform transition-transform duration-500 hover:-translate-y-2">
+                                            <div className="w-full h-2 bg-secondary/50 rounded-full mb-3" />
+                                            <div className="w-2/3 h-2 bg-secondary/50 rounded-full mb-6" />
+                                            <div className="flex gap-2">
+                                                <div className="w-8 h-8 rounded-full bg-primary/10" />
+                                                <div className="w-8 h-8 rounded-full bg-primary/10" />
+                                            </div>
+                                        </div>
+
+                                        {/* Floating Card Outline 2 (Bottom Left) */}
+                                        <div className={`absolute -left-8 -bottom-8 w-64 h-24 rounded-xl border-2 border-dashed border-primary/30 bg-background shadow-xl p-4 hidden md:flex items-center gap-4 transform transition-transform duration-500 hover:translate-y-2 ${index % 2 === 1 ? "right-auto left-8" : "left-auto -right-8"}`}>
+                                            <div className="w-12 h-12 rounded-lg bg-green-500/10 border border-green-500/20 flex items-center justify-center text-green-600">
+                                                <Check className="w-6 h-6" />
+                                            </div>
+                                            <div>
+                                                <div className="w-24 h-2 bg-secondary/50 rounded-full mb-2" />
+                                                <div className="w-16 h-2 bg-secondary/30 rounded-full" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        </div>
                     ))}
                 </div>
 
-                {/* CTA */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="text-center mt-16"
-                >
-                    <p className="text-muted-foreground mb-4">
+                {/* Bottom CTA */}
+                <div className="mt-40 text-center">
+                    <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-6">
                         {t("subtext")}
-                    </p>
+                    </h3>
                     <button
                         onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}
-                        className="text-foreground font-medium hover:underline"
+                        className="inline-flex h-12 items-center justify-center rounded-full bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-all hover:bg-primary/90 hover:scale-105"
                     >
-                        {t("button")} →
+                        {t("button")}
                     </button>
-                </motion.div>
+                </div>
             </div>
         </section>
     );
