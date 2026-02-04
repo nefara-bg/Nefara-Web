@@ -1,7 +1,7 @@
 "use client"
 
 import * as motion from "motion/react-client";
-import { Globe, Monitor, Smartphone, Check } from "lucide-react";
+import { Globe, Monitor, Smartphone, Check, ExternalLink } from "lucide-react";
 import Image from "next/image";
 
 import { useTranslations } from "next-intl";
@@ -28,6 +28,12 @@ export function ServicesSection() {
             icon: Smartphone,
             features: [t("mobile.content.content1"), t("mobile.content.content2"), t("mobile.content.content3")],
         },
+    ];
+
+    const projectUrls = [
+        "https://fylex.org", // Fylex
+        "https://devpost.com/software/meravalens", // Merava Lens
+        "https://morzio.com", // Morzio
     ];
 
     const scrollToContact = () => {
@@ -137,7 +143,7 @@ export function ServicesSection() {
                                         </div>
 
                                         {/* Floating Card Outline 1 (Top Right) - Enhanced for mobile */}
-                                        <div className="absolute -right-4 md:-right-8 -top-4 md:-top-8 w-32 h-20 md:w-48 md:h-32 rounded-lg md:rounded-xl border-2 border-dashed border-primary/30 bg-background shadow-lg md:shadow-xl p-2 md:p-4 block float-animation transition-transform duration-500 hover:-translate-y-1 md:hover:-translate-y-2">
+                                        <div className="absolute -right-4 md:-right-8 -top-4 md:-top-8 w-32 h-20 md:w-48 md:h-32 rounded-lg md:rounded-xl bg-background shadow-lg md:shadow-xl p-2 md:p-4 block float-animation transition-transform duration-500 hover:-translate-y-1 md:hover:-translate-y-2">
                                             <div className="w-full h-1 md:h-2 bg-secondary/50 rounded-full mb-2 md:mb-3" />
                                             <div className="w-2/3 h-1 md:h-2 bg-secondary/50 rounded-full mb-3 md:mb-6" />
                                             <div className="flex gap-1 md:gap-2">
@@ -146,15 +152,41 @@ export function ServicesSection() {
                                             </div>
                                         </div>
 
-                                        {/* Floating Card Outline 2 (Bottom Left) - Simplified for mobile */}
-                                        <div className={`absolute -left-4 md:-left-8 -bottom-4 md:-bottom-8 w-48 md:w-64 h-16 md:h-24 rounded-lg md:rounded-xl border-2 border-dashed border-primary/30 bg-background shadow-lg md:shadow-xl p-2 md:p-4 flex items-center gap-2 md:gap-4 float-animation-delayed transition-transform duration-500 hover:translate-y-1 md:hover:translate-y-2 ${index % 2 === 1 ? "right-auto left-4 md:left-8" : "left-auto -right-4 md:-right-8"}`}>
-                                            <div className="w-8 h-8 md:w-12 md:h-12 rounded-md md:rounded-lg bg-green-500/10 border border-green-500/20 flex items-center justify-center text-green-600">
-                                                <Check className="w-4 h-4 md:w-6 md:h-6" />
+                                        {/* Floating Card Outline 2 (Bottom Left) - Project Name */}
+                                        <div className={`absolute -left-4 md:-left-8 -bottom-4 md:-bottom-8 h-16 md:h-24 rounded-lg md:rounded-xl bg-background shadow-lg md:shadow-xl px-3 md:px-4 py-2 md:py-4 inline-flex items-center gap-2 md:gap-4 float-animation-delayed transition-transform duration-500 hover:translate-y-1 md:hover:translate-y-2 w-fit ${index % 2 === 1 ? "right-auto left-4 md:left-8" : "left-auto -right-4 md:-right-8"}`}>
+                                            <div className="w-8 h-8 md:w-12 md:h-12 rounded-md md:rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center text-primary flex-shrink-0 overflow-hidden">
+                                                {index === 0 ? (
+                                                    <Image
+                                                        src="/fylex-logo.webp"
+                                                        alt="Fylex"
+                                                        width={24}
+                                                        height={24}
+                                                        className="w-4 h-4 md:w-6 md:h-6 object-contain"
+                                                    />
+                                                ) : index === 1 ? (
+                                                    <Image
+                                                        src="/merava-logo.webp"
+                                                        alt="Merava Lens"
+                                                        width={24}
+                                                        height={24}
+                                                        className="w-4 h-4 md:w-6 md:h-6 object-contain"
+                                                    />
+                                                ) : (
+                                                    <Check className="w-4 h-4 md:w-6 md:h-6" />
+                                                )}
                                             </div>
-                                            <div>
-                                                <div className="w-16 md:w-24 h-1 md:h-2 bg-secondary/50 rounded-full mb-1 md:mb-2" />
-                                                <div className="w-10 md:w-16 h-1 md:h-2 bg-secondary/30 rounded-full" />
-                                            </div>
+                                            <span className="text-xs md:text-sm font-semibold text-foreground whitespace-nowrap">
+                                                {index === 0 ? "Fylex" : index === 1 ? "Merava Lens" : "Morzio"}
+                                            </span>
+                                            <a
+                                                href={projectUrls[index]}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="flex items-center justify-center text-primary hover:text-primary/80 transition-colors flex-shrink-0"
+                                                aria-label={`Visit ${index === 0 ? "Fylex" : index === 1 ? "Merava Lens" : "Morzio"}`}
+                                            >
+                                                <ExternalLink className="w-3 h-3 md:w-4 md:h-4" />
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
