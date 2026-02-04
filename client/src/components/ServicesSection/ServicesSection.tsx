@@ -2,6 +2,7 @@
 
 import * as motion from "motion/react-client";
 import { Globe, Monitor, Smartphone, Check } from "lucide-react";
+import Image from "next/image";
 
 import { useTranslations } from "next-intl";
 
@@ -100,16 +101,30 @@ export function ServicesSection() {
                                     </button>
                                 </div>
 
-                                {/* Visual Outline Placeholder */}
+                                {/* Visual Image/Placeholder */}
                                 <div className={`relative mt-8 lg:mt-0 ${index % 2 === 1 ? "lg:order-1" : "lg:order-2"}`}>
-                                    {/* Main Container Outline */}
-                                    <div className="relative aspect-[16/11] md:aspect-[4/3] w-full rounded-xl md:rounded-2xl border-2 border-dashed border-primary/20 bg-secondary/5 transition-all duration-500 hover:border-primary/40 group-hover:bg-secondary/10">
-                                        {/* Placeholder Label */}
-                                        <div className="absolute inset-0 flex items-center justify-center">
-                                            <div className="text-center px-4">
-                                                <p className="text-xs md:text-sm font-mono text-muted-foreground/60 mb-1 md:mb-2">Image Placeholder</p>
-                                                <p className="text-[10px] md:text-xs text-muted-foreground/40">1200 x 900px</p>
-                                            </div>
+                                    {/* Main Container */}
+                                    <div className="relative aspect-[16/11] md:aspect-[4/3] w-full">
+                                        {/* Image/Placeholder Container with rounded corners */}
+                                        <div className="absolute inset-0 rounded-xl md:rounded-2xl bg-secondary/5 transition-all duration-500 hover:border-primary/40 group-hover:bg-secondary/10 overflow-hidden">
+                                            {index === 0 ? (
+                                                /* Web Development Image */
+                                                <Image
+                                                    src="/fylex.webp"
+                                                    alt={service.title}
+                                                    fill
+                                                    className="object-cover"
+                                                    priority={index === 0}
+                                                />
+                                            ) : (
+                                                /* Placeholder Label for other services */
+                                                <div className="absolute inset-0 flex items-center justify-center">
+                                                    <div className="text-center px-4">
+                                                        <p className="text-xs md:text-sm font-mono text-muted-foreground/60 mb-1 md:mb-2">Image Placeholder</p>
+                                                        <p className="text-[10px] md:text-xs text-muted-foreground/40">1200 x 900px</p>
+                                                    </div>
+                                                </div>
+                                            )}
                                         </div>
 
                                         {/* Floating Card Outline 1 (Top Right) - Enhanced for mobile */}
