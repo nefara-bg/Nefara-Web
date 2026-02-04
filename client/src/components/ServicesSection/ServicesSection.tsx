@@ -116,6 +116,15 @@ export function ServicesSection() {
                                                     className="object-cover"
                                                     priority={index === 0}
                                                 />
+                                            ) : index === 1 ? (
+                                                /* Desktop Apps Image */
+                                                <Image
+                                                    src="/merava.webp"
+                                                    alt={service.title}
+                                                    fill
+                                                    className="object-cover"
+                                                    priority={index === 1}
+                                                />
                                             ) : (
                                                 /* Placeholder Label for other services */
                                                 <div className="absolute inset-0 flex items-center justify-center">
