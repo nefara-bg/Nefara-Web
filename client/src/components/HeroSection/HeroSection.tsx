@@ -28,16 +28,18 @@ export function HeroSection() {
                     className="absolute -top-24 -right-24 w-96 h-96 md:w-[600px] md:h-[600px] rounded-full opacity-40"
                     style={{
                         background: 'radial-gradient(circle, hsl(200, 100%, 60%) 0%, hsl(220, 90%, 55%) 50%, transparent 70%)',
-                        animation: 'float-1 20s ease-in-out infinite'
+                        animation: 'float-1 8s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        willChange: 'transform'
                     }}
                 />
 
                 {/* Gradient Orb 2 - Bottom Left - Purple/Blue */}
                 <div
-                    className="absolute -bottom-32 -left-32 w-[500px] h-[500px] md:w-[700px] md:h-[700px] rounded-full opacity-30"
+                    className="absolute -bottom-32 -left-32 w-[500px] h-[500px] md:w-[700px] md:h-[700px] rounded-full opacity-40"
                     style={{
                         background: 'radial-gradient(circle, hsl(260, 75%, 60%) 0%, hsl(240, 70%, 50%) 50%, transparent 70%)',
-                        animation: 'float-2 25s ease-in-out infinite'
+                        animation: 'float-2 10s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        willChange: 'transform'
                     }}
                 />
 
@@ -46,7 +48,8 @@ export function HeroSection() {
                     className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] md:w-[550px] md:h-[550px] rounded-full opacity-25"
                     style={{
                         background: 'radial-gradient(circle, hsl(180, 85%, 55%) 0%, hsl(200, 80%, 50%) 50%, transparent 70%)',
-                        animation: 'float-3 18s ease-in-out infinite'
+                        animation: 'float-3 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        willChange: 'transform'
                     }}
                 />
 
@@ -55,7 +58,8 @@ export function HeroSection() {
                     className="absolute top-10 left-10 w-80 h-80 md:w-96 md:h-96 rounded-full opacity-20"
                     style={{
                         background: 'radial-gradient(circle, hsl(215, 80%, 60%) 0%, hsl(235, 70%, 55%) 50%, transparent 70%)',
-                        animation: 'float-4 22s ease-in-out infinite'
+                        animation: 'float-4 16s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        willChange: 'transform'
                     }}
                 />
 
@@ -121,50 +125,6 @@ export function HeroSection() {
                 </motion.div>
             </div>
 
-            {/* CSS Animations */}
-            <style jsx>{`
-                @keyframes float-1 {
-                    0%, 100% {
-                        transform: translate(0, 0) scale(1);
-                    }
-                    33% {
-                        transform: translate(30px, -30px) scale(1.1);
-                    }
-                    66% {
-                        transform: translate(-20px, 20px) scale(0.9);
-                    }
-                }
-
-                @keyframes float-2 {
-                    0%, 100% {
-                        transform: translate(0, 0) scale(1);
-                    }
-                    33% {
-                        transform: translate(-40px, -25px) scale(1.15);
-                    }
-                    66% {
-                        transform: translate(25px, 30px) scale(0.85);
-                    }
-                }
-
-                @keyframes float-3 {
-                    0%, 100% {
-                        transform: translate(-50%, -50%) scale(1);
-                    }
-                    50% {
-                        transform: translate(calc(-50% + 40px), calc(-50% - 40px)) scale(1.2);
-                    }
-                }
-
-                @keyframes float-4 {
-                    0%, 100% {
-                        transform: translate(0, 0) scale(1) rotate(0deg);
-                    }
-                    50% {
-                        transform: translate(20px, -20px) scale(1.1) rotate(5deg);
-                    }
-                }
-            `}</style>
         </section>
     );
 }
