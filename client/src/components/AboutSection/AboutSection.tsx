@@ -1,7 +1,7 @@
 "use client"
 
 import * as motion from "motion/react-client";
-import { Zap, Layers, Shield, UserCog, MessageSquare } from "lucide-react";
+import { Zap, Layers, Shield, UserCog, MessageSquare, Linkedin } from "lucide-react";
 
 // Placeholder images
 const teamMember1 = "https://placehold.co/400x600/1a1a1a/666666?text=Dimitar+Dimkov";
@@ -47,16 +47,19 @@ export function AboutSection() {
             name: "Dimitar Dimkov",
             role: "PR Specialist",
             image: teamMember1,
+            linkedin: "https://www.linkedin.com/in/dimitar-dimkov"
         },
         {
             name: "Dimitar Anastasov",
             role: "Software Developer",
             image: teamMember2,
+            linkedin: "https://www.linkedin.com/in/dimitar-anastasov-339a94310/"
         },
         {
             name: "Martin Velchev",
             role: "Full Stack Developer",
             image: teamMember3,
+            linkedin: "https://www.linkedin.com/in/martin-velchev-5917b836b/"
         },
     ];
 
@@ -115,16 +118,34 @@ export function AboutSection() {
                             transition={{ delay: index * 0.15 }}
                             className={`text-center ${index === 1 ? "md:-translate-y-8" : ""}`}
                         >
-                            {/* Image Container */}
+                            {/* Card Container */}
                             <div className="relative mb-6 group">
-                                <div className="relative overflow-hidden rounded-2xl bg-secondary/30 border border-border/50 shadow-lg group-hover:shadow-xl group-hover:shadow-primary/10 transition-all duration-500">
-                                    <img
-                                        src={member.image}
-                                        alt={member.name}
-                                        className="w-full aspect-[3/4] object-cover transition-transform duration-500 group-hover:scale-105"
-                                    />
+                                <div 
+                                    className="relative overflow-hidden rounded-2xl border border-border/50 shadow-lg group-hover:shadow-xl group-hover:shadow-primary/10 transition-all duration-500 aspect-[3/4] flex items-center justify-center"
+                                    style={{
+                                        background: index === 0 
+                                            ? 'linear-gradient(135deg, hsl(200, 40%, 85%) 0%, hsl(220, 35%, 88%) 50%, hsl(240, 30%, 90%) 100%)'
+                                            : index === 1
+                                            ? 'linear-gradient(135deg, hsl(260, 35%, 85%) 0%, hsl(240, 30%, 88%) 50%, hsl(220, 35%, 90%) 100%)'
+                                            : 'linear-gradient(135deg, hsl(180, 40%, 85%) 0%, hsl(200, 35%, 88%) 50%, hsl(215, 30%, 90%) 100%)'
+                                    }}
+                                >
                                     {/* Gradient overlay for depth */}
-                                    <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                    <div className="absolute inset-0 bg-gradient-to-br from-background/60 via-background/40 to-background/30" />
+                                    
+                                    {/* LinkedIn Icon Button - Centered */}
+                                    {member.linkedin && (
+                                        <a
+                                            href={member.linkedin}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="relative z-10 flex items-center justify-center w-16 h-16 rounded-full bg-background/90 dark:bg-background/80 backdrop-blur-sm border border-border/50 text-muted-foreground hover:text-primary transition-all duration-300 shadow-lg group-hover:scale-105"
+                                            aria-label={`${member.name}'s LinkedIn profile`}
+                                            onClick={(e) => e.stopPropagation()}
+                                        >
+                                            <Linkedin className="w-6 h-6" />
+                                        </a>
+                                    )}
                                 </div>
                             </div>
 

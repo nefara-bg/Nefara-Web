@@ -1,7 +1,7 @@
 import React from 'react'
-import Image from 'next/image'
 import * as motion from 'motion/react-client'
 import { cn } from '@/lib/utils'
+import { Linkedin } from 'lucide-react'
 
 interface TeamCardProps {
     name: string;
@@ -10,9 +10,10 @@ interface TeamCardProps {
     index: number;
     title: string;
     description: string;
+    linkedin?: string;
 }
 
-const TeamCard: React.FC<TeamCardProps> = ({ name, role, image, index, title, description }) => {
+const TeamCard: React.FC<TeamCardProps> = ({ name, role, image, index, title, description, linkedin }) => {
     return (
         <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -33,45 +34,51 @@ const TeamCard: React.FC<TeamCardProps> = ({ name, role, image, index, title, de
                 index === 1 ? "lg:mt-16" : ""
             )}
         >
-            {/* Image Container - Floating Effect */}
-            <div className="relative w-full aspect-[4/5] z-10 mx-auto px-4 !overflow-visible">
-                <div className="relative w-full h-full transition-transform duration-500 group-hover:-translate-y-2">
-                    <Image
-                        src={image}
-                        alt={name}
-                        fill
-                        className="object-contain object-bottom drop-shadow-xl"
-                        priority
-                    />
-
-                    {/* Floating Name Tag */}
-                    <div className="absolute bottom-12 right-4 bg-white/90 backdrop-blur-sm shadow-md border px-4 py-2 rounded-full flex items-center gap-2 transform transition-all duration-500 group-hover:bottom-16 group-hover:scale-105 z-20">
-                        <div className="w-2 h-2 rounded-full bg-black shrink-0" />
-                        <span className="text-xs font-semibold tracking-wide text-foreground whitespace-nowrap">
-                            {name}
-                        </span>
-                    </div>
-                </div>
-            </div>
-
             {/* Content Card */}
-            <div className="relative -mt-24 pt-28 pb-10 px-8 bg-secondary/30 dark:bg-muted/30 rounded-[2rem] overflow-hidden flex flex-col h-full z-0 transition-colors duration-300 hover:bg-secondary/50 dark:hover:bg-muted/50">
+            <div 
+                className="relative pt-10 pb-10 px-8 rounded-[2rem] overflow-hidden flex flex-col h-full z-0 transition-all duration-300 border border-border/50 shadow-lg hover:shadow-xl"
+                style={{
+                    background: index === 0 
+                        ? 'linear-gradient(135deg, hsl(200, 40%, 85%) 0%, hsl(220, 35%, 88%) 50%, hsl(240, 30%, 90%) 100%)'
+                        : index === 1
+                        ? 'linear-gradient(135deg, hsl(260, 35%, 85%) 0%, hsl(240, 30%, 88%) 50%, hsl(220, 35%, 90%) 100%)'
+                        : 'linear-gradient(135deg, hsl(180, 40%, 85%) 0%, hsl(200, 35%, 88%) 50%, hsl(215, 30%, 90%) 100%)'
+                }}
+            >
+                {/* Gradient overlay for depth and readability */}
+                <div className="absolute inset-0 bg-gradient-to-br from-background/60 via-background/40 to-background/30 pointer-events-none" />
+                
                 {/* Number Stripe */}
-                <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-transparent to-secondary/0 pointer-events-none" />
+                <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-transparent to-background/0 pointer-events-none" />
 
-                <div className="mb-6 flex items-center">
-                    <div className="bg-primary/10 dark:bg-primary/20 px-4 py-1 rounded-full">
+                <div className="relative z-10 mb-6 flex items-center justify-center">
+                    <div className="bg-primary/10 dark:bg-primary/20 px-4 py-1 rounded-full backdrop-blur-sm">
                         <span className="text-sm font-bold text-foreground/80">
                             {String(index + 1).padStart(2, '0')}
                         </span>
                     </div>
                 </div>
 
-                <h3 className="text-2xl font-bold mb-4 text-foreground leading-tight group-hover:text-primary transition-colors">
+                {/* LinkedIn Icon - Centered */}
+                {linkedin && (
+                    <div className="relative z-10 flex items-center justify-center mb-6">
+                        <a
+                            href={linkedin}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center justify-center w-16 h-16 rounded-full bg-background/90 dark:bg-background/80 backdrop-blur-sm border border-border/50 text-muted-foreground hover:text-primary transition-all duration-300 shadow-lg group-hover:scale-105"
+                            aria-label={`${name}'s LinkedIn profile`}
+                        >
+                            <Linkedin className="w-6 h-6" />
+                        </a>
+                    </div>
+                )}
+
+                <h3 className="relative z-10 text-2xl font-bold mb-4 text-foreground leading-tight group-hover:text-primary transition-colors">
                     {title}
                 </h3>
 
-                <p className="text-muted-foreground text-sm leading-relaxed mb-8">
+                <p className="relative z-10 text-muted-foreground text-sm leading-relaxed mb-8">
                     {description}
                 </p>
 

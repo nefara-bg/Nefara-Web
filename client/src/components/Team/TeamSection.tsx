@@ -9,21 +9,24 @@ const TeamSection: React.FC = () => {
             role: "SEO Specialist",
             image: "/team/member1.png",
             title: "Custom SEO Services",
-            description: "Custom, organic SEO services that include technical audits, on-page search engine optimization."
+            description: "Custom, organic SEO services that include technical audits, on-page search engine optimization.",
+            linkedin: "https://www.linkedin.com/in/ahmad-subarjo"
         },
         {
             name: "Andrew Silabus",
             role: "Marketing Director",
             image: "/team/member2.png",
             title: "SEO Website Design",
-            description: "1st on the List provides highly effective PPC advertising for every budget including Google PPC Ads, Bing PPC, and ad retargeting strategies."
+            description: "1st on the List provides highly effective PPC advertising for every budget including Google PPC Ads, Bing PPC, and ad retargeting strategies.",
+            linkedin: "https://www.linkedin.com/in/andrew-silabus"
         },
         {
             name: "Zahra Agustin",
             role: "Content Strategist",
             image: "/team/member3.png",
             title: "SEO Consulting",
-            description: "B2B SEO is the process of generating valuable inbound leads from other businesses."
+            description: "B2B SEO is the process of generating valuable inbound leads from other businesses.",
+            linkedin: "https://www.linkedin.com/in/zahra-agustin"
         }
     ]
 
