@@ -44,7 +44,7 @@ export function ServicesSection() {
     };
 
     return (
-        <section id="services" className="py-16 md:py-32 bg-background relative overflow-hidden">
+        <section id="services" className="py-16 md:py-32 services-gradient relative overflow-hidden">
             <div className="container mx-auto px-4 md:px-6 relative z-10">
                 {/* Section Header */}
                 <motion.div

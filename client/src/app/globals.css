@@ -164,6 +164,14 @@
         hsl(215 50% 98%) 100%);
   }
 
+  /* Services gradient background - Similar to hero */
+  .services-gradient {
+    background: linear-gradient(135deg,
+        hsl(215 50% 98%) 0%,
+        hsl(218 60% 94%) 50%,
+        hsl(215 50% 98%) 100%);
+  }
+
   /* Nav link underline animation */
   .nav-link {
     @apply relative text-muted-foreground hover:text-foreground transition-colors duration-300;
