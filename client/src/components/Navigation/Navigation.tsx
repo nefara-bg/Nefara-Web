@@ -6,6 +6,7 @@ import { Menu, X } from "lucide-react";
 import LngSwitcher from '@/components/Header/components/LngSwitcher/LngSwitcher';
 import { useTranslations } from "next-intl";
 import Image from "next/image";
+import { Link } from "@/i18n/navigation";
 
 export function Navigation({ locale }: { locale: string }) {
   const t = useTranslations("header");
@@ -13,10 +14,10 @@ export function Navigation({ locale }: { locale: string }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navLinks = [
-    { name: t("home"), href: "#home" },
-    { name: t("services"), href: "#services" },
-    { name: t("about"), href: "#about" },
-    { name: t("contact"), href: "#contact" },
+    { name: t("home"), href: "/#home" },
+    { name: t("services"), href: "/#services" },
+    { name: t("about"), href: "/#about" },
+    { name: t("contact"), href: "/#contact" },
   ];
 
   useEffect(() => {
@@ -28,13 +29,6 @@ export function Navigation({ locale }: { locale: string }) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-    setIsMobileMenuOpen(false);
-  };
 
   return (
     <>
@@ -47,19 +41,8 @@ export function Navigation({ locale }: { locale: string }) {
       >
         <div className="container mx-auto px-6 flex items-center justify-between">
           {/* Logo */}
-          <button
-            onClick={() => scrollToSection("#home")}
-            className="flex items-center gap-2"
-          >
-            {/* <svg
-              className="w-8 h-8 text-foreground"
-              viewBox="0 0 32 32"
-              fill="currentColor"
-            >
-              <path d="M16 2L4 8v16l12 6 12-6V8L16 2zm0 4l8 4-8 4-8-4 8-4zm-10 7.5l10 5v9l-10-5v-9zm12 14v-9l10-5v9l-10 5z" />
-            </svg>
-            <span className="text-xl font-bold text-foreground">Nefara</span> */}
-            <div className="flex flex-row items-center gap-0.4">
+          <Link href="/#home" className="flex items-center gap-2">
+            <div className="flex flex-row items-center gap-1">
                 <Image
                     src="/logo.svg"
                     alt="Our logo"
@@ -68,32 +51,24 @@ export function Navigation({ locale }: { locale: string }) {
                 />
                 <h5 className="text-2xl font-bold select-none text-primary">efara</h5>
             </div>
-          </button>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <button
+              <Link
                 key={link.name}
-                onClick={() => scrollToSection(link.href)}
+                href={link.href}
                 className="nav-link"
               >
                 {link.name}
-              </button>
+              </Link>
             ))}
           </div>
 
           <div className="hidden md:flex items-center gap-4">
             {/* LngSwitcher from SoftwareSolutions */}
             <LngSwitcher locale={locale} />
-
-            {/* CTA Button */}
-            <button
-              onClick={() => scrollToSection("#contact")}
-              className="btn-outline text-sm py-2 px-4 ml-4"
-            >
-              {t("contact")}
-            </button>
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -115,20 +90,25 @@ export function Navigation({ locale }: { locale: string }) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-40 bg-background pt-24 md:hidden"
+          className="fixed inset-0 z-40 bg-background/95 backdrop-blur-sm pt-24 md:hidden"
+          onClick={() => setIsMobileMenuOpen(false)}
         >
-          <div className="flex flex-col items-center gap-6">
+          <div className="flex flex-col items-center gap-6" onClick={(e) => e.stopPropagation()}>
             {navLinks.map((link, i) => (
-              <motion.button
+              <motion.div
                 key={link.name}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
-                onClick={() => scrollToSection(link.href)}
-                className="text-xl font-medium text-foreground"
               >
-                {link.name}
-              </motion.button>
+                <Link
+                  href={link.href}
+                  className="text-xl font-medium text-foreground"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {link.name}
+                </Link>
+              </motion.div>
             ))}
           </div>
         </motion.div>
