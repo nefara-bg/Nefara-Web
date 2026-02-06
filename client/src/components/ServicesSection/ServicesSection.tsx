@@ -117,7 +117,7 @@ export function ServicesSection() {
                                         onClick={scrollToContact}
                                         className="group/btn flex items-center gap-2 text-primary font-semibold hover:text-primary/80 transition-colors text-sm md:text-base active:scale-95 py-2 px-4 -mx-4 md:mx-0 md:p-0 rounded-lg md:rounded-none hover:bg-primary/5 md:hover:bg-transparent"
                                     >
-                                        Start with {service.title}
+                                        {t("buttonStartWith")} {service.title}
                                         <span className="group-hover/btn:translate-x-1 transition-transform">→</span>
                                     </button>
                                 </div>
@@ -215,7 +215,7 @@ export function ServicesSection() {
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                                 className="flex items-center justify-center text-primary hover:text-primary/80 transition-colors flex-shrink-0"
-                                                aria-label={`Visit ${index === 0 ? "Fylex" : index === 1 ? "Merava Lens" : "Morzio"}`}
+                                                aria-label={`${t("visit")} ${index === 0 ? "Fylex" : index === 1 ? "Merava Lens" : "Izgodno"}`}
                                             >
                                                 <ExternalLink className="w-3 h-3 md:w-4 md:h-4" />
                                             </a>

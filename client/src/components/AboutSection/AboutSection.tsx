@@ -14,9 +14,9 @@ export function AboutSection() {
     const t = useTranslations("about");
 
     const stats = [
-        { value: "3+", label: "Years Experience" },
-        { value: "24/7", label: "Support Available" },
-        { value: "100%", label: "Client Satisfaction" },
+        { value: "3+", label: t("stats.yearsExperience") },
+        { value: "24/7", label: t("stats.supportAvailable") },
+        { value: "100%", label: t("stats.clientSatisfaction") },
     ];
 
     const features = [
@@ -44,20 +44,20 @@ export function AboutSection() {
 
     const teamMembers = [
         {
-            name: "Dimitar Dimkov",
-            role: "PR Specialist",
+            name: t("team.members.dimitarDimkov"),
+            role: t("team.roles.prSpecialist"),
             image: teamMember1,
             linkedin: "https://www.linkedin.com/in/dimitar-dimkov"
         },
         {
-            name: "Dimitar Anastasov",
-            role: "Software Developer",
+            name: t("team.members.dimitarAnastasov"),
+            role: t("team.roles.softwareDeveloper"),
             image: teamMember2,
             linkedin: "https://www.linkedin.com/in/dimitar-anastasov-339a94310/"
         },
         {
-            name: "Martin Velchev",
-            role: "Full Stack Developer",
+            name: t("team.members.martinVelchev"),
+            role: t("team.roles.fullStackDeveloper"),
             image: teamMember3,
             linkedin: "https://www.linkedin.com/in/martin-velchev-5917b836b/"
         },

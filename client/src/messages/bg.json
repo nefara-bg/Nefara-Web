@@ -51,6 +51,8 @@
         },
         "subtext": "Не намирате това, от което се нуждаете? Ние създаваме персонализирани решения за Вашите проблеми.",
         "button": "Обсъдете Проекта Си",
+        "buttonStartWith": "Започнете с",
+        "visit": "Посетете",
         "announcements": {
             "fylex": "Нашият нов продукт Fylex току-що стартира. Вижте го!",
             "merava": "Merava Lens спечели 3-то място на най-големия международен ученически хакатон - LaunchHacks IV",
@@ -63,6 +65,11 @@
         "experience": "Години Опит",
         "support": "Налична Поддръжка",
         "client": "Доволни Клиенти",
+        "stats": {
+            "yearsExperience": "Години Опит",
+            "supportAvailable": "Налична Поддръжка",
+            "clientSatisfaction": "Доволни Клиенти"
+        },
         "sectionLabel": "За Нас",
         "mainTitle": "Мечтаният екип за",
         "mainTitle2": "дигитални решения.",
@@ -70,7 +77,17 @@
         "team": {
             "leadDev": "Водещ Разработчик",
             "designer": "UX/UI Дизайнер",
-            "pm": "Проджект Мениджър"
+            "pm": "Проджект Мениджър",
+            "roles": {
+                "prSpecialist": "PR Специалист",
+                "softwareDeveloper": "Софтуерен Разработчик",
+                "fullStackDeveloper": "Full Stack Разработчик"
+            },
+            "members": {
+                "dimitarDimkov": "Димитър Димков",
+                "dimitarAnastasov": "Димитър Анастасов",
+                "martinVelchev": "Мартин Велчев"
+            }
         },
         "tag": "Нашата Мисия",
         "subtitle": "Превръщаме Идеите Ви В",
