@@ -84,9 +84,10 @@ export function ContactSection() {
                                 <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
                                     <Mail className="w-6 h-6 text-primary" />
                                 </div>
-                                <div>
+                                <div className="flex-1">
                                     <h4 className="text-foreground font-semibold">{t("emailTitle")}</h4>
                                     <p className="text-muted-foreground text-sm">{t("emailContent")}</p>
+                                    <p className="text-foreground font-medium text-sm mt-1">{displayEmail}</p>
                                 </div>
                             </a>
 
@@ -97,9 +98,10 @@ export function ContactSection() {
                                 <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
                                     <Phone className="w-6 h-6 text-primary" />
                                 </div>
-                                <div>
+                                <div className="flex-1">
                                     <h4 className="text-foreground font-semibold">{t("phoneTitle")}</h4>
                                     <p className="text-muted-foreground text-sm">{t("phoneContent")}</p>
+                                    <p className="text-foreground font-medium text-sm mt-1">{displayPhone}</p>
                                 </div>
                             </a>
                         </div>
