@@ -1,7 +1,7 @@
 "use client"
 
 import * as motion from "motion/react-client";
-import { Globe, Monitor, Smartphone, Check, ExternalLink } from "lucide-react";
+import { Globe, Monitor, Smartphone, Check, ExternalLink, Sparkles, Trophy, Rocket } from "lucide-react";
 import Image from "next/image";
 
 import { useTranslations } from "next-intl";
@@ -34,6 +34,21 @@ export function ServicesSection() {
         "https://fylex.org", // Fylex
         "https://devpost.com/software/meravalens", // Merava Lens
         "https://morzio.com", // Morzio
+    ];
+
+    const projectAnnouncements = [
+        {
+            text: t("announcements.fylex"),
+            icon: Rocket,
+        },
+        {
+            text: t("announcements.merava"),
+            icon: Trophy,
+        },
+        {
+            text: t("announcements.izgodno"),
+            icon: Sparkles,
+        },
     ];
 
     const scrollToContact = () => {
@@ -132,23 +147,40 @@ export function ServicesSection() {
                                                     priority={index === 1}
                                                 />
                                             ) : (
-                                                /* Placeholder Label for other services */
-                                                <div className="absolute inset-0 flex items-center justify-center">
-                                                    <div className="text-center px-4">
-                                                        <p className="text-xs md:text-sm font-mono text-muted-foreground/60 mb-1 md:mb-2">Image Placeholder</p>
-                                                        <p className="text-[10px] md:text-xs text-muted-foreground/40">1200 x 900px</p>
+                                                /* Mobile Apps - Two Images Side by Side */
+                                                <div className="absolute inset-0 flex gap-2 md:gap-4 p-2 md:p-4">
+                                                    <div className="relative flex-1 rounded-lg md:rounded-xl overflow-hidden">
+                                                        <Image
+                                                            src="/izgodno1.webp"
+                                                            alt="Izgodno App 1"
+                                                            fill
+                                                            className="object-cover"
+                                                        />
+                                                    </div>
+                                                    <div className="relative flex-1 rounded-lg md:rounded-xl overflow-hidden">
+                                                        <Image
+                                                            src="/izgodno2.webp"
+                                                            alt="Izgodno App 2"
+                                                            fill
+                                                            className="object-cover"
+                                                        />
                                                     </div>
                                                 </div>
                                             )}
                                         </div>
 
-                                        {/* Floating Card Outline 1 (Top Right) - Enhanced for mobile */}
-                                        <div className="absolute -right-4 md:-right-8 -top-4 md:-top-8 w-32 h-20 md:w-48 md:h-32 rounded-lg md:rounded-xl bg-background shadow-lg md:shadow-xl p-2 md:p-4 block float-animation transition-transform duration-500 hover:-translate-y-1 md:hover:-translate-y-2">
-                                            <div className="w-full h-1 md:h-2 bg-secondary/50 rounded-full mb-2 md:mb-3" />
-                                            <div className="w-2/3 h-1 md:h-2 bg-secondary/50 rounded-full mb-3 md:mb-6" />
-                                            <div className="flex gap-1 md:gap-2">
-                                                <div className="w-5 h-5 md:w-8 md:h-8 rounded-full bg-primary/10" />
-                                                <div className="w-5 h-5 md:w-8 md:h-8 rounded-full bg-primary/10" />
+                                        {/* Floating Card Outline 1 (Top Right) - Project Announcement */}
+                                        <div className="absolute -right-4 md:-right-8 -top-4 md:-top-8 max-w-[280px] md:max-w-[360px] rounded-lg md:rounded-xl bg-background shadow-lg md:shadow-xl p-3 md:p-4 float-animation transition-transform duration-500 hover:-translate-y-1 md:hover:-translate-y-2">
+                                            <div className="flex items-start gap-2 md:gap-3">
+                                                <div className="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 rounded-lg md:rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
+                                                    {(() => {
+                                                        const IconComponent = projectAnnouncements[index].icon;
+                                                        return <IconComponent className="w-4 h-4 md:w-5 md:h-5" />;
+                                                    })()}
+                                                </div>
+                                                <p className="text-[10px] md:text-xs leading-relaxed text-muted-foreground flex-1">
+                                                    {projectAnnouncements[index].text}
+                                                </p>
                                             </div>
                                         </div>
 

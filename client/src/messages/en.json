@@ -50,7 +50,12 @@
             }
         },
         "subtext": "Don't see exactly what you need? We create custom solutions for unique challenges.",
-        "button": "Discuss Your Project"
+        "button": "Discuss Your Project",
+        "announcements": {
+            "fylex": "Our newest startup Fylex has just launched. Check it out!",
+            "merava": "Won 3rd place in the biggest international students' hackathon - LaunchHacks IV",
+            "izgodno": "Izgodno was developed during the international INVESTech Skills Hackathon of 2025"
+        }
     },
     "about": {
         "title": "About",
