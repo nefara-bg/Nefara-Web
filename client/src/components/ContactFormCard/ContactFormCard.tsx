@@ -32,7 +32,7 @@ const ContactFormCard: React.FC<ContactFormCardProps> = ({ phone = "", phoneLabe
 
     return (
         <motion.div
-            ial={{
+            initial={{
                 scale: 0
             }}
             whileInView={{

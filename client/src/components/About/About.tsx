@@ -147,7 +147,7 @@ const About: React.FC = () => {
                 </SectionContainer>
             </section>
         </FadeInSection>
-    )
+    )   
 }
 
 export default About
