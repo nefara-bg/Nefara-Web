@@ -169,8 +169,8 @@ export function ServicesSection() {
                                             )}
                                         </div>
 
-                                        {/* Floating Card Outline 1 (Top Right) - Project Announcement */}
-                                        <div className="absolute -right-4 md:-right-8 -top-4 md:-top-8 max-w-[280px] md:max-w-[360px] rounded-lg md:rounded-xl bg-background shadow-lg md:shadow-xl p-3 md:p-4 float-animation transition-transform duration-500 hover:-translate-y-1 md:hover:-translate-y-2">
+                                        {/* Floating Card Outline 1 (Top - Left on xs/sm, Right on md+) - Project Announcement */}
+                                        <div className="absolute -right-4 lg:-right-8 -top-12 md:-top-8 max-w-[280px] md:max-w-[360px] rounded-lg md:rounded-xl bg-background shadow-lg md:shadow-xl p-3 md:p-4 float-animation transition-transform duration-500 hover:-translate-y-1 md:hover:-translate-y-2">
                                             <div className="flex items-start gap-2 md:gap-3">
                                                 <div className="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 rounded-lg md:rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
                                                     {(() => {
@@ -184,8 +184,8 @@ export function ServicesSection() {
                                             </div>
                                         </div>
 
-                                        {/* Floating Card Outline 2 (Bottom Left) - Project Name */}
-                                        <div className={`absolute -left-4 md:-left-8 -bottom-4 md:-bottom-8 h-16 md:h-24 rounded-lg md:rounded-xl bg-background shadow-lg md:shadow-xl px-3 md:px-4 py-2 md:py-4 inline-flex items-center gap-2 md:gap-4 float-animation-delayed transition-transform duration-500 hover:translate-y-1 md:hover:translate-y-2 w-fit ${index % 2 === 1 ? "right-auto left-4 md:left-8" : "left-auto -right-4 md:-right-8"}`}>
+                                        {/* Floating Card Outline 2 (Bottom - Same positioning as Merava Lens for all projects) - Project Name */}
+                                        <div className="absolute -left-4 md:right-auto md:left-4 lg:-left-4 2xl:-left-8 -bottom-12 md:-bottom-12 h-16 md:h-24 rounded-lg md:rounded-xl bg-background shadow-lg md:shadow-xl px-3 md:px-4 py-2 md:py-4 inline-flex items-center gap-2 md:gap-4 float-animation-delayed transition-transform duration-500 hover:translate-y-1 md:hover:translate-y-2 w-fit">
                                             <div className="w-8 h-8 md:w-12 md:h-12 rounded-md md:rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center text-primary flex-shrink-0 overflow-hidden">
                                                 {index === 0 ? (
                                                     <Image
