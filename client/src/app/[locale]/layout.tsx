@@ -22,6 +22,13 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
         metadataBase: new URL(baseUrl),
         title: t("seo.title"),
         description: t("seo.description"),
+        icons: {
+            icon: [
+                { url: `${baseUrl}/favicon.png`, sizes: "32x32", type: "image/png" },
+                { url: `${baseUrl}/tab-logo.png`, type: "image/png", media: "(prefers-color-scheme: light)" },
+                { url: `${baseUrl}/tab-logo-dark.png`, type: "image/png", media: "(prefers-color-scheme: dark)" },
+            ],
+        },
         alternates: {
             canonical: `/${locale}`,
             languages: {
