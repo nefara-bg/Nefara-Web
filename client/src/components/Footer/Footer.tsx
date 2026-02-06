@@ -4,21 +4,18 @@ import React from "react";
 
 import { useTranslations } from "next-intl";
 import Image from "next/image";
+import { Link } from "@/i18n/navigation";
 
 const Footer = () => {
     const t = useTranslations("footer");
     const tHeader = useTranslations("header");
     const currentYear = new Date().getFullYear();
 
-    const scrollToSection = (href: string) => {
-        document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
-    };
-
     const links = [
-        { name: tHeader("home"), id: "home" },
-        { name: tHeader("services"), id: "services" },
-        { name: tHeader("about"), id: "about" },
-        { name: tHeader("contact"), id: "contact" },
+        { name: tHeader("home"), href: "/#home" },
+        { name: tHeader("services"), href: "/#services" },
+        { name: tHeader("about"), href: "/#about" },
+        { name: tHeader("contact"), href: "/#contact" },
     ];
 
     return (
@@ -36,7 +33,7 @@ const Footer = () => {
                         </svg>
                         <span className="text-xl font-bold text-foreground">Nefara</span>
                     </div> */}
-                    <div className="flex flex-row items-center gap-0.4">
+                    <div className="flex flex-row items-center gap-1">
                         <Image
                             src="/logo.svg"
                             alt="Our logo"
@@ -49,13 +46,13 @@ const Footer = () => {
                     {/* Links */}
                     <div className="flex items-center gap-8">
                         {links.map((link) => (
-                            <button
+                            <Link
                                 key={link.name}
-                                onClick={() => scrollToSection(`#${link.id}`)}
+                                href={link.href}
                                 className="text-muted-foreground hover:text-foreground transition-colors text-sm"
                             >
                                 {link.name}
-                            </button>
+                            </Link>
                         ))}
                     </div>
 
