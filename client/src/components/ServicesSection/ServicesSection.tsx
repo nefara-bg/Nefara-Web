@@ -210,15 +210,17 @@ export function ServicesSection() {
                                             <span className="text-xs md:text-sm font-semibold text-foreground whitespace-nowrap">
                                                 {index === 0 ? "Fylex" : index === 1 ? "Merava Lens" : "Izgodno"}
                                             </span>
-                                            <a
-                                                href={projectUrls[index]}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="flex items-center justify-center text-primary hover:text-primary/80 transition-colors flex-shrink-0"
-                                                aria-label={`${t("visit")} ${index === 0 ? "Fylex" : index === 1 ? "Merava Lens" : "Izgodno"}`}
-                                            >
-                                                <ExternalLink className="w-3 h-3 md:w-4 md:h-4" />
-                                            </a>
+                                            {index !== 2 && (
+                                                <a
+                                                    href={projectUrls[index]}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="flex items-center justify-center text-primary hover:text-primary/80 transition-colors flex-shrink-0"
+                                                    aria-label={`${t("visit")} ${index === 0 ? "Fylex" : index === 1 ? "Merava Lens" : "Izgodno"}`}
+                                                >
+                                                    <ExternalLink className="w-3 h-3 md:w-4 md:h-4" />
+                                                </a>
+                                            )}
                                         </div>
                                     </div>
                                 </div>
