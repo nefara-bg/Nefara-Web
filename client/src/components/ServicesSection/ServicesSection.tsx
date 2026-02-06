@@ -161,7 +161,7 @@ export function ServicesSection() {
                                                         alt="Fylex"
                                                         width={24}
                                                         height={24}
-                                                        className="w-4 h-4 md:w-6 md:h-6 object-contain"
+                                                        className="w-6 h-6 md:w-8 md:h-8 object-contain"
                                                     />
                                                 ) : index === 1 ? (
                                                     <Image
@@ -176,7 +176,7 @@ export function ServicesSection() {
                                                 )}
                                             </div>
                                             <span className="text-xs md:text-sm font-semibold text-foreground whitespace-nowrap">
-                                                {index === 0 ? "Fylex" : index === 1 ? "Merava Lens" : "Morzio"}
+                                                {index === 0 ? "Fylex" : index === 1 ? "Merava Lens" : "Izgodno"}
                                             </span>
                                             <a
                                                 href={projectUrls[index]}
