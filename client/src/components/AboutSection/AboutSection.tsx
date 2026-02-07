@@ -47,7 +47,7 @@ export function AboutSection() {
             name: t("team.members.dimitarDimkov"),
             role: t("team.roles.prSpecialist"),
             image: teamMember1,
-            linkedin: "https://www.linkedin.com/in/dimitar-dimkov"
+            linkedin: "https://www.linkedin.com/in/dimitar-dimkov-20a0233ab/"
         },
         {
             name: t("team.members.dimitarAnastasov"),
