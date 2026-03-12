@@ -69,7 +69,7 @@ export function HeroSection() {
 
             <div className="container mx-auto px-6 text-center relative z-10 pt-20">
                 {/* Badge */}
-                <motion.div
+                {/* <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2 }}
@@ -77,7 +77,7 @@ export function HeroSection() {
                 >
                     <Sparkles className="w-4 h-4 text-primary" />
                     <span>{t("tag")}</span>
-                </motion.div>
+                </motion.div> */}
 
                 {/* Main Heading */}
                 <motion.h1
