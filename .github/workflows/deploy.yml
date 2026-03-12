@@ -24,7 +24,7 @@ jobs:
           docker buildx create --use
           docker buildx build \
             --platform linux/amd64,linux/arm64 \
-            -t anastassow/nefara-client:latest \
+            -t nefara/nefara-client:latest \
             --push \
             client/
 
@@ -35,7 +35,7 @@ jobs:
           username: ${{ secrets.LIGHTSAIL_USER }}
           key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
           script: |
-            echo "cd /home/ec2-user/app"
-            echo "git pull origin main"
-            echo "docker compose pull"
-            echo "docker compose up -d --build"
+            cd /nefara
+            git pull origin main
+            docker-compose pull
+            docker-compose up -d
