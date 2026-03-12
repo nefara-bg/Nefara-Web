@@ -35,7 +35,7 @@ jobs:
           username: ${{ secrets.LIGHTSAIL_USER }}
           key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
           script: |
-            cd /nefara
+            cd /home/ec2-user/nefara
             git pull origin main
             docker-compose pull
             docker-compose up -d
