@@ -26,7 +26,7 @@ jobs:
             --platform linux/amd64,linux/arm64 \
             -t anastassow/nefara-client:latest \
             --push \
-            .
+            client/
 
       - name: Deploy to Lightsail
         uses: appleboy/ssh-action@v1
