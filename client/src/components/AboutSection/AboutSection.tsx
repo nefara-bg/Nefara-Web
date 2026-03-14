@@ -261,11 +261,11 @@ export function AboutSection() {
                                     {index === 2 && (
                                         <div className="absolute inset-0 bg-gradient-to-br from-cyan-50/50 to-emerald-50/50 dark:from-cyan-900/10 dark:to-emerald-900/10 flex flex-col items-center justify-end pb-8 px-8 gap-4">
                                             <div className="self-end bg-primary text-primary-foreground px-4 py-3 rounded-2xl rounded-tr-sm shadow-lg transform group-hover:-translate-x-2 transition-transform duration-500 max-w-[80%]">
-                                                <p className="text-xs">Can we tweak the animation?</p>
+                                                <p className="text-xs">{t("communication.chatQuestion")}</p>
                                             </div>
                                             <div className="self-start bg-background border border-border text-foreground px-4 py-3 rounded-2xl rounded-tl-sm shadow-md transform group-hover:translate-x-2 transition-transform duration-500 max-w-[80%] flex items-center gap-2">
                                                 <div className="w-4 h-4 rounded-full bg-green-500" />
-                                                <p className="text-xs font-medium">On it right now!</p>
+                                                <p className="text-xs font-medium">{t("communication.chatAnswer")}</p>
                                             </div>
                                         </div>
                                     )}
