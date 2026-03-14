@@ -2,7 +2,7 @@ import { hasLocale, NextIntlClientProvider } from "next-intl"
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server"
 import { notFound } from "next/navigation"
 import { locales, routing } from "@/i18n/routing"
-import Header from "@/components/Header/Header"
+import { Navigation } from "@/components/Navigation/Navigation"
 import Footer from "@/components/Footer/Footer"
 import { validateClientUrl } from "@/utils/env/env"
 import "@/app/globals.css"
@@ -22,6 +22,13 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
         metadataBase: new URL(baseUrl),
         title: t("seo.title"),
         description: t("seo.description"),
+        icons: {
+            icon: [
+                { url: `${baseUrl}/favicon.png`, sizes: "32x32", type: "image/png" },
+                { url: `${baseUrl}/tab-logo.png`, type: "image/png", media: "(prefers-color-scheme: light)" },
+                { url: `${baseUrl}/tab-logo-dark.png`, type: "image/png", media: "(prefers-color-scheme: dark)" },
+            ],
+        },
         alternates: {
             canonical: `/${locale}`,
             languages: {
@@ -65,7 +72,8 @@ export default async function RootLayout({
 
     return (
         <NextIntlClientProvider locale={locale} messages={messages}>
-            <Header locale={locale} />
+            {/* Using Navigation from Nefara Elevate design */}
+            <Navigation locale={locale} />
             {children}
             <Footer />
         </NextIntlClientProvider>

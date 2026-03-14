@@ -32,52 +32,101 @@
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
   --radius-sm: calc(var(--radius) - 4px);
+
+  --color-sidebar-background: hsl(var(--sidebar-background));
+  --color-sidebar-foreground: hsl(var(--sidebar-foreground));
+  --color-sidebar-primary: hsl(var(--sidebar-primary));
+  --color-sidebar-primary-foreground: hsl(var(--sidebar-primary-foreground));
+  --color-sidebar-accent: hsl(var(--sidebar-accent));
+  --color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
+  --color-sidebar-border: hsl(var(--sidebar-border));
+  --color-sidebar-ring: hsl(var(--sidebar-ring));
 }
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Nefara Design System - Blue Enhanced */
+    /* Light background with slightly more blue tint */
+    --background: 215 50% 98%;
+    --foreground: 222 47% 11%;
+
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 222 47% 11%;
+
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 222.2 47.4% 11.2%;
+    --popover-foreground: 222 47% 11%;
+
+    /* Primary - Richer Navy Blue */
+    --primary: 225 60% 15%;
     --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
+
+    /* Secondary - Cooler Light Blue */
+    --secondary: 215 60% 94%;
+    --secondary-foreground: 222 47% 11%;
+
+    /* Muted */
+    --muted: 215 30% 96%;
+    --muted-foreground: 215 25% 45%;
+
+    /* Accent - Vibrant Blue */
+    --accent: 220 95% 55%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+
+    --border: 215 40% 92%;
+    --input: 215 40% 92%;
+    --ring: 225 60% 15%;
+
     --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
+    /* Dark mode with deeper blue tint */
+    --background: 224 55% 6%;
+    --foreground: 215 30% 98%;
+    --card: 224 50% 8%;
+    --card-foreground: 215 30% 98%;
+    --popover: 224 50% 8%;
+    --popover-foreground: 215 30% 98%;
+
+    --primary: 215 90% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 224 40% 15%;
+    --secondary-foreground: 215 30% 98%;
+
+    --muted: 224 40% 12%;
+    --muted-foreground: 215 25% 65%;
+
+    --accent: 220 90% 60%;
+    --accent-foreground: 224 55% 6%;
+
+    --destructive: 0 62% 30%;
     --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+
+    --border: 224 40% 16%;
+    --input: 224 40% 16%;
+    --ring: 215 90% 60%;
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
 
@@ -87,24 +136,132 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply tracking-tight font-bold;
+  }
+
+  button {
+    cursor: pointer;
   }
 }
 
+@layer components {
+
+  /* Hero gradient background - Enhanced Blue */
+  .hero-gradient {
+    background: linear-gradient(135deg,
+        hsl(215 50% 98%) 0%,
+        hsl(218 60% 94%) 50%,
+        hsl(215 50% 98%) 100%);
+  }
+
+  /* Services gradient background - Similar to hero */
+  .services-gradient {
+    background: linear-gradient(135deg,
+        hsl(215 50% 98%) 0%,
+        hsl(218 60% 94%) 50%,
+        hsl(215 50% 98%) 100%);
+  }
+
+  /* Nav link underline animation */
+  .nav-link {
+    @apply relative text-muted-foreground hover:text-foreground transition-colors duration-300;
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute left-0 -bottom-1 h-0.5 w-0 bg-foreground transition-all duration-300;
+  }
+
+  .nav-link:hover::after,
+  .nav-link.active::after {
+    @apply w-full;
+  }
+
+  /* Card with subtle shadow */
+  .card-elevated {
+    @apply bg-card rounded-xl border border-border/50;
+    box-shadow: 0 4px 20px -4px hsl(222 47% 11% / 0.08);
+  }
+
+  .card-elevated:hover {
+    box-shadow: 0 8px 30px -4px hsl(222 47% 11% / 0.12);
+  }
+
+  /* Section title */
+  .section-label {
+    @apply text-muted-foreground text-sm uppercase tracking-widest font-medium;
+  }
+
+  /* Checkmark badge */
+  .feature-check {
+    @apply inline-flex items-center gap-2 text-sm text-muted-foreground;
+  }
+
+  .feature-check::before {
+    content: '✓';
+    @apply text-primary font-bold;
+  }
+
+  /* About section staggered layout */
+  .team-staggered {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    align-items: end;
+  }
+
+  .team-staggered>*:nth-child(2) {
+    transform: translateY(-2rem);
+  }
+
+  /* Floating animation for decorative cards */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .float-animation {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .float-animation-delayed {
+    animation: float 3s ease-in-out infinite;
+    animation-delay: 1.5s;
+  }
+}
+
+/* Smooth scroll */
 html {
   scroll-behavior: smooth;
-  overscroll-behavior: none;
 }
 
-a {
-  text-decoration: none;
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-.image {
-  width: 100%;
+::-webkit-scrollbar-track {
+  @apply bg-muted;
 }
 
-.service-img {
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
+::-webkit-scrollbar-thumb {
+  @apply bg-muted-foreground/30 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-muted-foreground/50;
 }

@@ -34,7 +34,7 @@
         "mobile": {
             "title": "Mobile Apps",
             "content": {
-                "text": "Powerful desktop software solutions for Windows, macOS, and Linux with native performance and intuitive interfaces.",
+                "text": "Native and cross-platform mobile applications that provide seamless experiences across iOS and Android devices.",
                 "content1": "Cross platform for all operating systems",
                 "content2": "Secure applications",
                 "content3": "AI integrated"
@@ -50,7 +50,14 @@
             }
         },
         "subtext": "Don't see exactly what you need? We create custom solutions for unique challenges.",
-        "button": "Discuss Your Project"
+        "button": "Discuss Your Project",
+        "buttonStartWith": "Start with",
+        "visit": "Visit",
+        "announcements": {
+            "fylex": "Our newest startup Fylex has just launched. Check it out!",
+            "merava": "Won 3rd place in the biggest international students' hackathon - LaunchHacks IV",
+            "izgodno": "Izgodno was developed during the international INVESTech Skills Hackathon of 2025"
+        }
     },
     "about": {
         "title": "About",
@@ -58,22 +65,46 @@
         "experience": "Years Experience",
         "support": "Support Available",
         "client": "Client Satisfaction",
+        "stats": {
+            "yearsExperience": "Years Experience",
+            "supportAvailable": "Support Available",
+            "clientSatisfaction": "Client Satisfaction"
+        },
+        "sectionLabel": "About",
+        "mainTitle": "The dream team of",
+        "mainTitle2": "digital solutions.",
+        "subText": "We Grow Businesses Online. Period.",
+        "team": {
+            "leadDev": "Lead Developer",
+            "designer": "UX/UI Designer",
+            "pm": "Project Manager",
+            "roles": {
+                "prSpecialist": "PR Specialist",
+                "softwareDeveloper": "Software Developer",
+                "fullStackDeveloper": "Full Stack Developer"
+            },
+            "members": {
+                "dimitarDimkov": "Dimitar Dimkov",
+                "dimitarAnastasov": "Dimitar Anastasov",
+                "martinVelchev": "Martin Velchev"
+            }
+        },
         "tag": "Our Mission",
         "subtitle": "Transforming Your Ideas Into",
         "subtitle2": "Digital Excellence",
         "paragraph1": "From concept to deployment, we handle every aspect of your software development journey. Our team combines technical expertise with creative problem-solving to deliver solutions that exceed expectations.",
         "paragraph2": "Whether you're a startup disrupting an industry or an enterprise optimizing operations, we scale our approach to match your ambitions and timeline.",
-        "agile": {
-            "title": "Agile Development",
-            "content": "Fast, iterative development cycles that adapt to your changing needs"
+        "personalized": {
+            "title": "Personalized & Fast",
+            "content": "Tailored solutions built rapidly to match your unique vision and timeline."
         },
         "tech": {
             "title": "Modern Tech Stack",
             "content": "Latest technologies and best practices for optimal performance"
         },
-        "featureSupport": {
-            "title": "24/7 Support",
-            "content": "Round-the-clock assistance to keep your applications running smoothly"
+        "communication": {
+            "title": "Direct Developer Access",
+            "content": "Speak directly with the experts building your product, ensuring clear and efficient communication."
         },
         "quality": {
             "title": "Quality Assurance",

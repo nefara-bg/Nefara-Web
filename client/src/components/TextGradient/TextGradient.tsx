@@ -9,7 +9,7 @@ const TextGradient: React.FC<TextGradientProps> = ({ children, className, ...pro
     return (
         <span
             className={cn(
-                "bg-gradient-to-br from-gray-600 to-black",
+                "bg-gradient-to-br from-slate-900 to-slate-950",
                 "bg-clip-text text-transparent",
                 className
             )}

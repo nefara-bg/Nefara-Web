@@ -68,18 +68,39 @@ const ContactFormCard: React.FC<ContactFormCardProps> = ({ phone = "", phoneLabe
                         {t("contact.infoTitle")}
                     </h5>
 
-                    <div className="flex flex-col gap-4 mb-8">
+                    <div className="flex flex-col gap-0 mb-8">
                         {infoFeatures.map((feature, i) => (
                             <InfoFeature
                                 featureObject={feature}
                                 key={i}
+                                index={i}
+                                isLast={i === infoFeatures.length - 1}
                             />
                         ))}
                     </div>
 
-                    <div className="h-px bg-gray-500" />
+                    <motion.div
+                        initial={{ width: 0, opacity: 0 }}
+                        whileInView={{ width: "100%", opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{
+                            delay: infoFeatures.length * 0.4,
+                            duration: 0.8,
+                            ease: "easeOut"
+                        }}
+                        className="h-px bg-gray-500/50"
+                    />
 
-                    <div className="mt-8 flex flex-col gap-4">
+                    <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{
+                            delay: infoFeatures.length * 0.4 + 0.6,
+                            duration: 0.5
+                        }}
+                        className="mt-8 flex flex-col gap-4"
+                    >
                         <p className="text-sm text-background font-semibold">
                             {t("contact.call")}
                         </p>
@@ -92,7 +113,7 @@ const ContactFormCard: React.FC<ContactFormCardProps> = ({ phone = "", phoneLabe
                             </div>
                             <span className="font-medium">{phoneLabel}</span>
                         </a>
-                    </div>
+                    </motion.div>
                 </div>
             </div>
         </motion.div>

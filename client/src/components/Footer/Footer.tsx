@@ -1,167 +1,95 @@
-import React from 'react'
-import { Link } from '@/i18n/navigation'
-import { useTranslations } from 'next-intl'
-import SectionContainer from '@/components/SectionContainer/SectionContainer'
-import Image from 'next/image'
-import { parseBgPhone } from '@/utils/phone/phone'
-import { encodeEmailForMailto, encodePhoneForTel } from '@/utils/url/url'
-import { validateContactEmail, validateContactPhone } from '@/utils/env/env'
-import { Mail, Phone, ArrowUp } from 'lucide-react'
-import { cn } from '@/lib/utils'
+"use client"
 
-const Footer: React.FC = () => {
-    const t = useTranslations()
+import React from "react";
+
+import { useTranslations } from "next-intl";
+import Image from "next/image";
+import { Link } from "@/i18n/navigation";
+import { Instagram, Facebook, Linkedin } from "lucide-react";
+import { SOCIAL_MEDIA_URLS } from "@/config/socialMedia";
+
+const Footer = () => {
+    const t = useTranslations("footer");
+    const tHeader = useTranslations("header");
+    const currentYear = new Date().getFullYear();
 
     const links = [
-        {
-            title: t("footer.services.web"),
-            link: `/#services`
-        },
-        {
-            title: t("footer.services.desktop"),
-            link: `/#services`
-        },
-        {
-            title: t("footer.services.mobile"),
-            link: `/#services`
-        },
-        {
-            title: t("footer.services.consulting"),
-            link: `/#contact`
-        }
-    ]
-
-    const email = validateContactEmail(process.env.NEXT_PUBLIC_CONTACT_EMAIL)
-    const phone = validateContactPhone(process.env.NEXT_PUBLIC_CONTACT_PHONE)
-    const phoneLabel = phone ? parseBgPhone(phone) : ''
+        { name: tHeader("home"), href: "/#home" },
+        { name: tHeader("services"), href: "/#services" },
+        { name: tHeader("about"), href: "/#about" },
+        { name: tHeader("contact"), href: "/#contact" },
+    ];
 
     return (
-        <footer
-            className={cn(
-                "bg-gradient-to-br from-primary via-gray-700 to-gray-900",
-                "relative z-10",
-                "py-12 sm:py-16 md:py-20",
-                "px-4 sm:px-6 md:px-24",
-                "flex flex-col gap-6 md:gap-8"
-            )}
-        >
-            <SectionContainer>
-                <div className="flex flex-col">
-                    <div className="grid grid-cols-1 lg:grid-cols-12 mb-8 gap-12 lg:gap-24">
-                        <div className="lg:col-span-6 flex flex-col gap-6">
-                            <div className="flex flex-row gap-4 items-center">
-                                <Image
-                                    src="/footer-logo.svg"
-                                    alt="Our logo"
-                                    width={56}
-                                    height={56}
-                                    style={{
-                                        width: "3.2rem"
-                                    }}
-                                />
-                                <h5 className="text-2xl font-bold text-background">Nefara</h5>
-                            </div>
-
-                            <p className="text-sm text-gray-300">{t("footer.text")}</p>
+        <footer className="py-12 bg-card border-t border-border">
+            <div className="container mx-auto px-6">
+                <div className="flex flex-col gap-6">
+                    {/* Main Footer Content */}
+                    <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+                        {/* Logo */}
+                        <div className="flex flex-row items-center gap-1">
+                            <Image
+                                src="/logo.svg"
+                                alt="Our logo"
+                                width={20}
+                                height={20}
+                            />
+                            <h5 className="text-2xl font-bold select-none text-primary">efara</h5>
                         </div>
 
-                        <div className="lg:col-span-3">
-                            <p className="text-base font-bold text-background mb-6">
-                                {t("footer.services.title")}
-                            </p>
-
-                            <div className="flex flex-col gap-2">
-                                {links.map((link, i) => (
-                                    <Link key={i} href={link.link}>
-                                        <p className={cn(
-                                            "text-sm text-gray-400",
-                                            "transition-colors duration-200",
-                                            "hover:text-gray-100",
-                                            "whitespace-nowrap"
-                                        )}>
-                                            {link.title}
-                                        </p>
-                                    </Link>
-                                ))}
-                            </div>
+                        {/* Links */}
+                        <div className="flex items-center gap-8">
+                            {links.map((link) => (
+                                <Link
+                                    key={link.name}
+                                    href={link.href}
+                                    className="text-muted-foreground hover:text-foreground transition-colors text-sm"
+                                >
+                                    {link.name}
+                                </Link>
+                            ))}
                         </div>
 
-                        <div className="lg:col-span-3">
-                            <p className="text-base font-bold text-background mb-6">
-                                {t("footer.contact.title")}
-                            </p>
-
-                            <div className="flex flex-col gap-4">
-                                <div className="flex flex-row gap-3">
-                                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-background/10 backdrop-blur-sm transition-colors group-hover:bg-background/20">
-                                        <Mail className="w-5 h-5 text-background" />
-                                    </div>
-
-                                    <div className="flex flex-col">
-                                        <p className="text-sm font-bold text-background">
-                                            {t("footer.contact.email")}
-                                        </p>
-                                        <a
-                                            href={`mailto:${encodeEmailForMailto(email)}`}
-                                            className={cn(
-                                                "text-sm text-gray-400",
-                                                "transition-colors duration-200",
-                                                "hover:text-gray-100",
-                                                "whitespace-nowrap"
-                                            )}
-                                        >
-                                            {email}
-                                        </a>
-                                    </div>
-                                </div>
-                                <div className="flex flex-row gap-3">
-                                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-background/10 backdrop-blur-sm transition-colors group-hover:bg-background/20">
-                                        <Phone className="w-5 h-5 text-background" />
-                                    </div>
-
-                                    <div className="flex flex-col">
-                                        <p className="text-sm font-bold text-background">
-                                            {t("footer.contact.phone")}
-                                        </p>
-                                        <a
-                                            href={`tel:${encodePhoneForTel(phone)}`}
-                                            className={cn(
-                                                "text-sm text-gray-400",
-                                                "transition-colors duration-200",
-                                                "hover:text-gray-100",
-                                                "whitespace-nowrap"
-                                            )}
-                                        >
-                                            {phoneLabel}
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        {/* Copyright */}
+                        <p className="text-muted-foreground text-sm">
+                            © {currentYear} {t("copyright")}
+                        </p>
                     </div>
 
-                    <div className="h-px bg-gray-500" />
-
-                    <div className="mt-8 flex flex-col sm:flex-row gap-2 justify-between">
-                        <p className="text-sm text-gray-500">
-                            &copy; {new Date().getFullYear()} {t("footer.copyright")}
-                        </p>
-                        <Link href="/#hero">
-                            <p className={cn(
-                                "text-sm text-gray-400 group flex items-center gap-1.5",
-                                "transition-colors duration-200",
-                                "hover:text-gray-100",
-                                "whitespace-nowrap"
-                            )}>
-                                {t("footer.back")}
-                                <ArrowUp className="w-3.5 h-3.5 transition-transform group-hover:-translate-y-0.5" />
-                            </p>
-                        </Link>
+                    {/* Social Media Icons - Below all other content */}
+                    <div className="flex items-center justify-center md:justify-start gap-4 pt-4 border-t border-border/50 group">
+                        <a
+                            href={SOCIAL_MEDIA_URLS.instagram}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center justify-center w-12 h-12 rounded-full bg-background/90 dark:bg-background/80 backdrop-blur-sm border border-border/50 text-muted-foreground hover:text-primary transition-all duration-300 shadow-lg hover:scale-105"
+                            aria-label="Instagram"
+                        >
+                            <Instagram className="w-5 h-5" />
+                        </a>
+                        <a
+                            href={SOCIAL_MEDIA_URLS.facebook}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center justify-center w-12 h-12 rounded-full bg-background/90 dark:bg-background/80 backdrop-blur-sm border border-border/50 text-muted-foreground hover:text-primary transition-all duration-300 shadow-lg hover:scale-105"
+                            aria-label="Facebook"
+                        >
+                            <Facebook className="w-5 h-5" />
+                        </a>
+                        <a
+                            href={SOCIAL_MEDIA_URLS.linkedin}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center justify-center w-12 h-12 rounded-full bg-background/90 dark:bg-background/80 backdrop-blur-sm border border-border/50 text-muted-foreground hover:text-primary transition-all duration-300 shadow-lg hover:scale-105"
+                            aria-label="LinkedIn"
+                        >
+                            <Linkedin className="w-5 h-5" />
+                        </a>
                     </div>
                 </div>
-            </SectionContainer>
+            </div>
         </footer>
-    )
-}
+    );
+};
 
-export default Footer
+export default Footer;
