@@ -104,7 +104,9 @@
         },
         "communication": {
             "title": "Direct Developer Access",
-            "content": "Speak directly with the experts building your product, ensuring clear and efficient communication."
+            "content": "Speak directly with the experts building your product, ensuring clear and efficient communication.",
+            "chatQuestion": "Can we tweak the animation?",
+            "chatAnswer": "On it right now!"
         },
         "quality": {
             "title": "Quality Assurance",
