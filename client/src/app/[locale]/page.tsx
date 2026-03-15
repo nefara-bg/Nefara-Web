@@ -4,7 +4,7 @@ import { notFound } from "next/navigation"
 import { setRequestLocale } from "next-intl/server"
 import { HeroSection } from "@/components/HeroSection/HeroSection"
 import { ServicesSection } from "@/components/ServicesSection/ServicesSection"
-import { AboutSection } from "@/components/AboutSection/AboutSection"
+import { DreamTeam } from "@/components/DreamTeam/DreamTeam"
 import { ContactSection } from "@/components/ContactSection/ContactSection"
 
 const Page = async ({ params }: { params: Promise<{ locale: string }> }) => {
@@ -20,7 +20,7 @@ const Page = async ({ params }: { params: Promise<{ locale: string }> }) => {
         <main className="min-h-screen bg-background">
             <HeroSection />
             <ServicesSection />
-            <AboutSection />
+            <DreamTeam />
             <ContactSection />
         </main>
     )
