@@ -43,9 +43,9 @@ export function ContactSection() {
 
     // Use values compatible with nefara-elevate visual but maybe fallbacks for logic
     // Hardcoding for now to match exactly the design request as primary goal
-    const displayEmail = "contacts@nefara.org";
-    const displayPhone = "+359 88 738 3000";
-    const telPhone = "+359887383000";
+    const displayEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL;
+    const displayPhone = process.env.NEXT_PUBLIC_CONTACT_PHONE;
+    const telPhone = process.env.NEXT_PUBLIC_CONTACT_PHONE;
 
     return (
         <section id="contact" className="py-24 bg-background">
