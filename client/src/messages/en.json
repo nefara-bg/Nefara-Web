@@ -19,6 +19,10 @@
         "secondaryButton": "View Our Services"
     },
     "services": {
+        "seo": {
+            "title": "Services – Nefara | Web, Mobile & Desktop Development",
+            "description": "Explore Nefara's software services: responsive web apps, cross-platform mobile apps, and powerful desktop software — all built with modern tech and AI integration."
+        },
         "tag": "What We Build",
         "title": "Our Services",
         "content": "Comprehensive software development services designed to transform your ideas into powerful digital solutions that scale with your business.",

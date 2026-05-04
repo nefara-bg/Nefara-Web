@@ -14,15 +14,15 @@ const Footer = () => {
 
     const navLinks = [
         { name: tHeader("home"), href: "/#home" },
-        { name: tHeader("services"), href: "/#services" },
+        { name: tHeader("services"), href: "/services" },
         { name: tHeader("about"), href: "/#about" },
         { name: tHeader("contact"), href: "/#contact" },
     ]
 
     const serviceLinks = [
-        { name: t("services.web"), href: "/#services" },
-        { name: t("services.desktop"), href: "/#services" },
-        { name: t("services.mobile"), href: "/#services" },
+        { name: t("services.web"), href: "/services" },
+        { name: t("services.desktop"), href: "/services" },
+        { name: t("services.mobile"), href: "/services" },
         { name: t("services.consulting"), href: "/#contact" },
     ]
 

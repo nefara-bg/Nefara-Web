@@ -1,13 +1,12 @@
-"use client"
-
 import * as motion from "motion/react-client"
 import { Globe, Monitor, Smartphone, Check, ExternalLink, Sparkles, Trophy, Rocket, ArrowRight } from "lucide-react"
 import Image from "next/image"
-import { useTranslations } from "next-intl"
+import { getTranslations } from "next-intl/server"
 import { Button } from "@/components/ui/button"
+import { Link } from "@/i18n/navigation"
 
-export function ServicesSection() {
-    const t = useTranslations("services")
+export default async function ServicesSection() {
+    const t = await getTranslations("services")
 
     const services = [
         {
@@ -44,13 +43,8 @@ export function ServicesSection() {
 
     const projectNames = ["Fylex", "Merava Lens", "Izgodno"]
 
-    const scrollToContact = () => {
-        document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
-    }
-
     return (
         <section id="services" className="relative overflow-hidden bg-background section-shell">
-            {/* Subtle backdrop accent */}
             <div
                 className="absolute top-0 right-0 w-[500px] h-[500px] -z-10 opacity-50"
                 style={{
@@ -118,10 +112,12 @@ export function ServicesSection() {
                                         ))}
                                     </ul>
 
-                                    <Button variant="link" onClick={scrollToContact} className="px-0">
-                                        {t("buttonStartWith")} {service.title}
-                                        <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                                    </Button>
+                                    <Link href="/#contact">
+                                        <Button variant="link" className="px-0">
+                                            {t("buttonStartWith")} {service.title}
+                                            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                                        </Button>
+                                    </Link>
                                 </div>
 
                                 {/* Visual */}
@@ -194,10 +190,12 @@ export function ServicesSection() {
                     <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-6 leading-tight">
                         {t("subtext")}
                     </h3>
-                    <Button size="lg" onClick={scrollToContact}>
-                        {t("button")}
-                        <ArrowRight className="w-4 h-4" />
-                    </Button>
+                    <Link href="/#contact">
+                        <Button size="lg">
+                            {t("button")}
+                            <ArrowRight className="w-4 h-4" />
+                        </Button>
+                    </Link>
                 </div>
             </div>
         </section>
