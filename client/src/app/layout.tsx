@@ -1,4 +1,4 @@
-import { Manrope, Nunito_Sans } from "next/font/google"
+import { Manrope, Nunito_Sans, Poppins } from "next/font/google"
 import { validateClientUrl } from "@/utils/env/env"
 import "@/app/globals.css"
 import { Toaster } from "@/components/ui/sonner"
@@ -14,6 +14,13 @@ const nunitoSans = Nunito_Sans({
     subsets: ["latin", "cyrillic"],
     weight: ["400", "500", "600", "700"],
     variable: "--font-nunito-sans",
+    display: "swap",
+})
+
+const poppins = Poppins({
+    subsets: ["latin"],
+    weight: ["400", "500", "600", "700"],
+    variable: "--font-poppins",
     display: "swap",
 })
 
@@ -33,7 +40,7 @@ export async function generateMetadata() {
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
     return (
-        <html className={`${manrope.variable} ${nunitoSans.variable}`} data-scroll-behaviour="smooth">
+        <html className={`${manrope.variable} ${nunitoSans.variable} ${poppins.variable}`} data-scroll-behaviour="smooth">
             <body>
                 <div id="root">
                     {children}

@@ -1,8 +1,8 @@
 "use client"
 
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import * as motion from "motion/react-client"
-import { Menu, X } from "lucide-react"
+import { Menu, X, ChevronDown } from "lucide-react"
 import LngSwitcher from "@/components/Header/components/LngSwitcher/LngSwitcher"
 import { useTranslations } from "next-intl"
 import Image from "next/image"
@@ -14,19 +14,24 @@ export function Navigation({ locale }: { locale: string }) {
   const t = useTranslations("header")
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-
-  const navLinks = [
-    { name: t("home"), href: "/#home" },
-    { name: t("services"), href: "/services" },
-    { name: t("about"), href: "/#about" },
-    { name: t("team"), href: "/team" },
-    { name: t("contact"), href: "/contact" },
-  ]
+  const [isCompanyOpen, setIsCompanyOpen] = useState(false)
+  const [isMobileCompanyOpen, setIsMobileCompanyOpen] = useState(false)
+  const companyRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 16)
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (companyRef.current && !companyRef.current.contains(e.target as Node)) {
+        setIsCompanyOpen(false)
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => document.removeEventListener("mousedown", handleClickOutside)
   }, [])
 
   return (
@@ -44,24 +49,62 @@ export function Navigation({ locale }: { locale: string }) {
       >
         <div className="mx-auto max-w-7xl h-16 px-4 sm:px-6 lg:px-8 flex items-center gap-6">
           {/* Logo */}
-          <Link href="/#home" className="flex items-center gap-2 shrink-0">
-            <Image src="/logo.svg" alt="Nefara" width={28} height={28} priority />
-            <span className="font-display text-xl font-bold tracking-tight text-foreground">
-              Nefara
-            </span>
+          <Link href="/" className="flex items-center gap-2 shrink-0">
+            <Image src="/logo.svg" alt="Nefara" width={96} height={96} priority />
           </Link>
 
           {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-1 flex-1">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className="px-3 py-2 rounded-md text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-[hsl(var(--foreground)/0.04)] transition-colors"
+            <Link
+              href="/services"
+              className="px-3 py-2 rounded-md text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-[hsl(var(--foreground)/0.04)] transition-colors"
+            >
+              {t("services")}
+            </Link>
+
+            {/* Company dropdown */}
+            <div ref={companyRef} className="relative">
+              <button
+                onClick={() => setIsCompanyOpen((v) => !v)}
+                className="flex items-center gap-1 px-3 py-2 rounded-md text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-[hsl(var(--foreground)/0.04)] transition-colors"
               >
-                {link.name}
-              </Link>
-            ))}
+                {t("company")}
+                <ChevronDown
+                  className={cn("h-3.5 w-3.5 transition-transform duration-200", isCompanyOpen && "rotate-180")}
+                />
+              </button>
+
+              {isCompanyOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: -6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.15 }}
+                  className="absolute top-full left-0 mt-1 w-40 rounded-lg border border-border bg-card shadow-lg overflow-hidden"
+                >
+                  <Link
+                    href="/#about"
+                    onClick={() => setIsCompanyOpen(false)}
+                    className="block px-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-[hsl(var(--foreground)/0.04)] transition-colors"
+                  >
+                    {t("about")}
+                  </Link>
+                  <Link
+                    href="/team"
+                    onClick={() => setIsCompanyOpen(false)}
+                    className="block px-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-[hsl(var(--foreground)/0.04)] transition-colors"
+                  >
+                    {t("team")}
+                  </Link>
+                </motion.div>
+              )}
+            </div>
+
+            <Link
+              href="/contact"
+              className="px-3 py-2 rounded-md text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-[hsl(var(--foreground)/0.04)] transition-colors"
+            >
+              {t("contact")}
+            </Link>
           </div>
 
           {/* Actions */}
@@ -97,22 +140,57 @@ export function Navigation({ locale }: { locale: string }) {
           onClick={() => setIsMobileMenuOpen(false)}
         >
           <div className="flex flex-col gap-2" onClick={(e) => e.stopPropagation()}>
-            {navLinks.map((link, i) => (
-              <motion.div
-                key={link.name}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.06 }}
+            <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0 }}>
+              <Link
+                href="/services"
+                className="block py-4 px-2 border-b border-border font-display font-bold text-lg text-foreground hover:text-[hsl(var(--primary-strong))] transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
               >
-                <Link
-                  href={link.href}
-                  className="block py-4 px-2 border-b border-border font-display font-bold text-lg text-foreground hover:text-[hsl(var(--primary-strong))] transition-colors"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {link.name}
-                </Link>
-              </motion.div>
-            ))}
+                {t("services")}
+              </Link>
+            </motion.div>
+
+            {/* Company expandable */}
+            <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.06 }}>
+              <button
+                onClick={() => setIsMobileCompanyOpen((v) => !v)}
+                className="w-full flex items-center justify-between py-4 px-2 border-b border-border font-display font-bold text-lg text-foreground hover:text-[hsl(var(--primary-strong))] transition-colors"
+              >
+                {t("company")}
+                <ChevronDown
+                  className={cn("h-5 w-5 transition-transform duration-200", isMobileCompanyOpen && "rotate-180")}
+                />
+              </button>
+              {isMobileCompanyOpen && (
+                <div className="flex flex-col pl-4">
+                  <Link
+                    href="/#about"
+                    className="py-3 px-2 border-b border-border/50 text-base text-muted-foreground hover:text-foreground transition-colors"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {t("about")}
+                  </Link>
+                  <Link
+                    href="/team"
+                    className="py-3 px-2 border-b border-border/50 text-base text-muted-foreground hover:text-foreground transition-colors"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {t("team")}
+                  </Link>
+                </div>
+              )}
+            </motion.div>
+
+            <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.12 }}>
+              <Link
+                href="/contact"
+                className="block py-4 px-2 border-b border-border font-display font-bold text-lg text-foreground hover:text-[hsl(var(--primary-strong))] transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {t("contact")}
+              </Link>
+            </motion.div>
+
             <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} className="mt-6">
               <Button className="w-full" size="lg">{t("button")}</Button>
             </Link>
