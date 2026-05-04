@@ -3,7 +3,8 @@ import { hasLocale } from "next-intl"
 import { notFound } from "next/navigation"
 import { setRequestLocale } from "next-intl/server"
 import { HeroSection } from "@/components/HeroSection/HeroSection"
-import { AboutSection } from "@/components/AboutSection/AboutSection"
+import { TeamSection } from "@/components/AboutSection/TeamSection"
+import { MissionSection } from "@/components/AboutSection/MissionSection"
 import { ContactSection } from "@/components/ContactSection/ContactSection"
 
 const Page = async ({ params }: { params: Promise<{ locale: string }> }) => {
@@ -18,7 +19,8 @@ const Page = async ({ params }: { params: Promise<{ locale: string }> }) => {
     return (
         <main className="min-h-screen bg-background">
             <HeroSection />
-            <AboutSection />
+            <TeamSection />
+            <MissionSection />
             <ContactSection />
         </main>
     )
