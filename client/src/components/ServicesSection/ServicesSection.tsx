@@ -112,7 +112,7 @@ export default async function ServicesSection() {
                                         ))}
                                     </ul>
 
-                                    <Link href="/#contact">
+                                    <Link href="/contact">
                                         <Button variant="link" className="px-0">
                                             {t("buttonStartWith")} {service.title}
                                             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -190,7 +190,7 @@ export default async function ServicesSection() {
                     <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-6 leading-tight">
                         {t("subtext")}
                     </h3>
-                    <Link href="/#contact">
+                    <Link href="/contact">
                         <Button size="lg">
                             {t("button")}
                             <ArrowRight className="w-4 h-4" />

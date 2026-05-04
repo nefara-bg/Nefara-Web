@@ -123,6 +123,16 @@
         }
     },
     "contact": {
+        "seo": {
+            "title": "Contact – Nefara | Let's Build Something Together",
+            "description": "Get in touch with the Nefara team. Share your project details and we'll craft a custom software solution that exceeds your expectations."
+        },
+        "cta": {
+            "title": "Never Far Away",
+            "subtitle": "We build software that scales — personalized, direct, and always by your side.",
+            "button": "Contact Us",
+            "secondaryButton": "About Nefara"
+        },
         "tag": "Ready to Start?",
         "title": "Let's Build Something",
         "subtitle": "Amazing Together",

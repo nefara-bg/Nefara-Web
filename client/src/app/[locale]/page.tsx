@@ -4,7 +4,7 @@ import { notFound } from "next/navigation"
 import { setRequestLocale } from "next-intl/server"
 import { HeroSection } from "@/components/HeroSection/HeroSection"
 import { MissionSection } from "@/components/AboutSection/MissionSection"
-import { ContactSection } from "@/components/ContactSection/ContactSection"
+import { ContactCTA } from "@/components/ContactSection/ContactCTA"
 
 const Page = async ({ params }: { params: Promise<{ locale: string }> }) => {
     const { locale } = await params
@@ -19,7 +19,7 @@ const Page = async ({ params }: { params: Promise<{ locale: string }> }) => {
         <main className="min-h-screen bg-background">
             <HeroSection />
             <MissionSection />
-            <ContactSection />
+            <ContactCTA />
         </main>
     )
 }

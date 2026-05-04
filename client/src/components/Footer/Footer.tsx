@@ -16,7 +16,7 @@ const Footer = () => {
         { name: tHeader("home"), href: "/#home" },
         { name: tHeader("services"), href: "/services" },
         { name: tHeader("about"), href: "/team" },
-        { name: tHeader("contact"), href: "/#contact" },
+        { name: tHeader("contact"), href: "/contact" },
     ]
 
     const serviceLinks = [

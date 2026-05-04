@@ -20,7 +20,7 @@ export function Navigation({ locale }: { locale: string }) {
     { name: t("services"), href: "/services" },
     { name: t("about"), href: "/#about" },
     { name: t("team"), href: "/team" },
-    { name: t("contact"), href: "/#contact" },
+    { name: t("contact"), href: "/contact" },
   ]
 
   useEffect(() => {
@@ -67,7 +67,7 @@ export function Navigation({ locale }: { locale: string }) {
           {/* Actions */}
           <div className="hidden md:flex items-center gap-2 shrink-0">
             <LngSwitcher locale={locale} />
-            <Link href="/#contact">
+            <Link href="/contact">
               <Button size="sm">{t("button")}</Button>
             </Link>
           </div>
@@ -113,7 +113,7 @@ export function Navigation({ locale }: { locale: string }) {
                 </Link>
               </motion.div>
             ))}
-            <Link href="/#contact" onClick={() => setIsMobileMenuOpen(false)} className="mt-6">
+            <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} className="mt-6">
               <Button className="w-full" size="lg">{t("button")}</Button>
             </Link>
           </div>
