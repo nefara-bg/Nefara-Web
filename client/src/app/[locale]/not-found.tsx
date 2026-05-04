@@ -1,23 +1,35 @@
 import { Link } from "@/i18n/navigation"
 import { getLocale, getTranslations } from "next-intl/server"
 import { Button } from "@/components/ui/button"
+import { ArrowLeft } from "lucide-react"
 
 export default async function NotFound() {
-    // Get locale from next-intl context (extracted from the route)
-    const locale = await getLocale();
-
-    // Get translations for the locale
-    const t = await getTranslations({ locale });
+    const locale = await getLocale()
+    const t = await getTranslations({ locale })
 
     return (
-        <div className="min-h-screen flex flex-col items-center justify-center py-16 px-4 text-center">
-            <h2 className="text-6xl font-bold text-primary mb-6">404</h2>
+        <div className="relative min-h-screen flex flex-col items-center justify-center px-6 text-center bg-background overflow-hidden">
+            <div className="absolute inset-0 grid-pattern opacity-50 -z-10" />
+            <div
+                className="absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full -z-10"
+                style={{
+                    background:
+                        "radial-gradient(circle, hsl(var(--primary) / 0.18) 0%, transparent 70%)",
+                }}
+            />
 
-            <h4 className="text-3xl font-semibold mb-2 text-foreground">{t("notFound.title")}</h4>
-            <p className="text-sm text-muted-foreground mb-8 max-w-md">{t("notFound.content")}</p>
+            <p className="font-display text-[clamp(7rem,18vw,12rem)] font-extrabold leading-none bg-gradient-to-br from-[hsl(var(--primary))] to-[hsl(var(--secondary))] bg-clip-text text-transparent select-none">
+                404
+            </p>
+
+            <h1 className="font-display text-2xl md:text-3xl font-bold text-foreground mt-2 mb-3">
+                {t("notFound.title")}
+            </h1>
+            <p className="text-muted-foreground max-w-md mb-8">{t("notFound.content")}</p>
 
             <Link href="/">
                 <Button size="lg">
+                    <ArrowLeft className="w-4 h-4" />
                     {t("notFound.button")}
                 </Button>
             </Link>

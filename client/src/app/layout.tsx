@@ -1,10 +1,20 @@
-import { Inter } from "next/font/google"
+import { Manrope, Nunito_Sans } from "next/font/google"
 import { validateClientUrl } from "@/utils/env/env"
 import "@/app/globals.css"
 import { Toaster } from "@/components/ui/sonner"
 
-const inter = Inter({
-    subsets: ['latin', 'cyrillic']
+const manrope = Manrope({
+    subsets: ["latin", "cyrillic"],
+    weight: ["500", "600", "700", "800"],
+    variable: "--font-manrope",
+    display: "swap",
+})
+
+const nunitoSans = Nunito_Sans({
+    subsets: ["latin", "cyrillic"],
+    weight: ["400", "500", "600", "700"],
+    variable: "--font-nunito-sans",
+    display: "swap",
 })
 
 export async function generateMetadata() {
@@ -23,7 +33,7 @@ export async function generateMetadata() {
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
     return (
-        <html className={inter.className} data-scroll-behaviour="smooth">
+        <html className={`${manrope.variable} ${nunitoSans.variable}`} data-scroll-behaviour="smooth">
             <body>
                 <div id="root">
                     {children}

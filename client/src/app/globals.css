@@ -1,6 +1,50 @@
 @import "tailwindcss";
 
-@theme {
+/* ────────── Nefara Design System ──────────
+   background  #F6F9FB   surface    #FFFFFF
+   text        #0F172A   muted      #64748B
+   accent      #00CDBC   secondary  #0B1F2A
+   border      #E2E8F0
+*/
+:root {
+  --background: 210 33% 98%;
+  --foreground: 222 47% 11%;
+
+  --card: 0 0% 100%;
+  --card-foreground: 222 47% 11%;
+
+  --popover: 0 0% 100%;
+  --popover-foreground: 222 47% 11%;
+
+  /* Primary = teal accent — CTAs, icons, highlights */
+  --primary: 174 100% 40%;
+  --primary-foreground: 0 0% 100%;
+  --primary-soft: 174 80% 95%;
+  --primary-strong: 175 100% 33%;
+
+  /* Secondary = deep navy — dark contrast sections */
+  --secondary: 202 60% 10%;
+  --secondary-foreground: 0 0% 100%;
+
+  /* Muted = page-toned subtle bg */
+  --muted: 210 33% 96%;
+  --muted-foreground: 215 16% 47%;
+
+  /* Accent = soft teal wash for hovers */
+  --accent: 174 80% 95%;
+  --accent-foreground: 175 100% 25%;
+
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+
+  --border: 214 32% 91%;
+  --input: 214 32% 91%;
+  --ring: 174 100% 40%;
+
+  --radius: 0.5rem;
+}
+
+@theme inline {
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
 
@@ -12,6 +56,8 @@
 
   --color-primary: hsl(var(--primary));
   --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-primary-soft: hsl(var(--primary-soft));
+  --color-primary-strong: hsl(var(--primary-strong));
 
   --color-secondary: hsl(var(--secondary));
   --color-secondary-foreground: hsl(var(--secondary-foreground));
@@ -33,120 +79,33 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-sm: calc(var(--radius) - 4px);
 
-  --color-sidebar-background: hsl(var(--sidebar-background));
-  --color-sidebar-foreground: hsl(var(--sidebar-foreground));
-  --color-sidebar-primary: hsl(var(--sidebar-primary));
-  --color-sidebar-primary-foreground: hsl(var(--sidebar-primary-foreground));
-  --color-sidebar-accent: hsl(var(--sidebar-accent));
-  --color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
-  --color-sidebar-border: hsl(var(--sidebar-border));
-  --color-sidebar-ring: hsl(var(--sidebar-ring));
-}
-
-@layer base {
-  :root {
-    /* Nefara Design System - Blue Enhanced */
-    /* Light background with slightly more blue tint */
-    --background: 215 50% 98%;
-    --foreground: 222 47% 11%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
-
-    /* Primary - Richer Navy Blue */
-    --primary: 225 60% 15%;
-    --primary-foreground: 210 40% 98%;
-
-    /* Secondary - Cooler Light Blue */
-    --secondary: 215 60% 94%;
-    --secondary-foreground: 222 47% 11%;
-
-    /* Muted */
-    --muted: 215 30% 96%;
-    --muted-foreground: 215 25% 45%;
-
-    /* Accent - Vibrant Blue */
-    --accent: 220 95% 55%;
-    --accent-foreground: 0 0% 100%;
-
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 215 40% 92%;
-    --input: 215 40% 92%;
-    --ring: 225 60% 15%;
-
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    /* Dark mode with deeper blue tint */
-    --background: 224 55% 6%;
-    --foreground: 215 30% 98%;
-    --card: 224 50% 8%;
-    --card-foreground: 215 30% 98%;
-    --popover: 224 50% 8%;
-    --popover-foreground: 215 30% 98%;
-
-    --primary: 215 90% 60%;
-    --primary-foreground: 0 0% 100%;
-
-    --secondary: 224 40% 15%;
-    --secondary-foreground: 215 30% 98%;
-
-    --muted: 224 40% 12%;
-    --muted-foreground: 215 25% 65%;
-
-    --accent: 220 90% 60%;
-    --accent-foreground: 224 55% 6%;
-
-    --destructive: 0 62% 30%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 224 40% 16%;
-    --input: 224 40% 16%;
-    --ring: 215 90% 60%;
-
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
+  --font-display: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-nunito-sans), ui-sans-serif, system-ui, sans-serif;
 }
 
 @layer base {
   * {
-    @apply border-border;
+    border-color: hsl(var(--border));
+  }
+
+  html {
+    scroll-behavior: smooth;
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: var(--font-nunito-sans), ui-sans-serif, system-ui, sans-serif;
+    font-weight: 500;
+    -webkit-font-smoothing: antialiased;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply tracking-tight font-bold;
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
   }
 
   button {
@@ -154,114 +113,88 @@
   }
 }
 
-@layer components {
+/* ────────── Component classes (plain CSS — guaranteed emission) ────────── */
 
-  /* Hero gradient background - Enhanced Blue */
-  .hero-gradient {
-    background: linear-gradient(135deg,
-        hsl(215 50% 98%) 0%,
-        hsl(218 60% 94%) 50%,
-        hsl(215 50% 98%) 100%);
-  }
-
-  /* Services gradient background - Similar to hero */
-  .services-gradient {
-    background: linear-gradient(135deg,
-        hsl(215 50% 98%) 0%,
-        hsl(218 60% 94%) 50%,
-        hsl(215 50% 98%) 100%);
-  }
-
-  /* Nav link underline animation */
-  .nav-link {
-    @apply relative text-muted-foreground hover:text-foreground transition-colors duration-300;
-  }
-
-  .nav-link::after {
-    content: '';
-    @apply absolute left-0 -bottom-1 h-0.5 w-0 bg-foreground transition-all duration-300;
-  }
-
-  .nav-link:hover::after,
-  .nav-link.active::after {
-    @apply w-full;
-  }
-
-  /* Card with subtle shadow */
-  .card-elevated {
-    @apply bg-card rounded-xl border border-border/50;
-    box-shadow: 0 4px 20px -4px hsl(222 47% 11% / 0.08);
-  }
-
-  .card-elevated:hover {
-    box-shadow: 0 8px 30px -4px hsl(222 47% 11% / 0.12);
-  }
-
-  /* Section title */
-  .section-label {
-    @apply text-muted-foreground text-sm uppercase tracking-widest font-medium;
-  }
-
-  /* Checkmark badge */
-  .feature-check {
-    @apply inline-flex items-center gap-2 text-sm text-muted-foreground;
-  }
-
-  .feature-check::before {
-    content: '✓';
-    @apply text-primary font-bold;
-  }
-
-  /* About section staggered layout */
-  .team-staggered {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    align-items: end;
-  }
-
-  .team-staggered>*:nth-child(2) {
-    transform: translateY(-2rem);
-  }
-
-  /* Floating animation for decorative cards */
-  @keyframes float {
-    0%, 100% {
-      transform: translateY(0px);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
-  }
-
-  .float-animation {
-    animation: float 3s ease-in-out infinite;
-  }
-
-  .float-animation-delayed {
-    animation: float 3s ease-in-out infinite;
-    animation-delay: 1.5s;
-  }
+/* Eyebrow label: tiny uppercase teal tag with leading dash */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: hsl(var(--primary-strong));
+}
+.eyebrow::before {
+  content: '';
+  display: block;
+  width: 1.25rem;
+  height: 2px;
+  background-color: hsl(var(--primary));
 }
 
-/* Smooth scroll */
-html {
-  scroll-behavior: smooth;
+/* Section padding shell */
+.section-shell {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+@media (min-width: 640px) {
+  .section-shell { padding-left: 2rem; padding-right: 2rem; }
+}
+@media (min-width: 768px) {
+  .section-shell { padding-left: 3rem; padding-right: 3rem; padding-top: 7rem; padding-bottom: 7rem; }
+}
+@media (min-width: 1024px) {
+  .section-shell { padding-left: 4rem; padding-right: 4rem; }
+}
+@media (min-width: 1280px) {
+  .section-shell { padding-left: 5rem; padding-right: 5rem; }
+}
+
+/* Accent surface — used for icon chips */
+.accent-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.375rem;
+  border: 1px solid hsl(var(--primary) / 0.18);
+  background-color: hsl(var(--primary) / 0.10);
+  color: hsl(var(--primary-strong));
+}
+
+/* Dark contrast section — deep navy background */
+.dark-section {
+  background-color: hsl(var(--secondary));
+  color: hsl(var(--secondary-foreground));
+}
+.dark-section h1,
+.dark-section h2,
+.dark-section h3,
+.dark-section h4,
+.dark-section h5,
+.dark-section h6 {
+  color: #ffffff;
+}
+
+/* Subtle grid overlay backdrop */
+.grid-pattern {
+  background-image:
+    linear-gradient(hsl(var(--border)) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(var(--border)) 1px, transparent 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 30%, transparent 80%);
+          mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 30%, transparent 80%);
 }
 
 /* Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  @apply bg-muted;
-}
-
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: hsl(var(--background)); }
 ::-webkit-scrollbar-thumb {
-  @apply bg-muted-foreground/30 rounded-full;
+  background: hsl(var(--border));
+  border-radius: 999px;
+  border: 2px solid hsl(var(--background));
 }
-
-::-webkit-scrollbar-thumb:hover {
-  @apply bg-muted-foreground/50;
-}
+::-webkit-scrollbar-thumb:hover { background: hsl(var(--muted-foreground) / 0.5); }
