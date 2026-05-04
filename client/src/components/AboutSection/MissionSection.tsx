@@ -5,10 +5,10 @@ export async function MissionSection() {
     const t = await getTranslations("about")
 
     const features = [
-        { num: "01", title: t("personalized.title"), description: t("personalized.content") },
-        { num: "02", title: t("tech.title"), description: t("tech.content") },
-        { num: "03", title: t("communication.title"), description: t("communication.content") },
-        { num: "04", title: t("quality.title"), description: t("quality.content") },
+        { num: "01", title: t("directContact.title"), description: t("directContact.content") },
+        { num: "02", title: t("ownTools.title"), description: t("ownTools.content") },
+        { num: "03", title: t("seoOptimization.title"), description: t("seoOptimization.content") },
+        { num: "04", title: t("maintenance.title"), description: t("maintenance.content") },
     ]
 
     return (

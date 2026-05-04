@@ -103,23 +103,21 @@
         "subtitle2": "Digital Excellence",
         "paragraph1": "From concept to deployment, we handle every aspect of your software development journey. Our team combines technical expertise with creative problem-solving to deliver solutions that exceed expectations.",
         "paragraph2": "Whether you're a startup disrupting an industry or an enterprise optimizing operations, we scale our approach to match your ambitions and timeline.",
-        "personalized": {
-            "title": "Personalized & Fast",
-            "content": "Tailored solutions built rapidly to match your unique vision and timeline."
+        "directContact": {
+            "title": "Direct communication with developers",
+            "content": "When working with Nefara, you communicate directly with the developers building your product — no middlemen and no wasted time."
         },
-        "tech": {
-            "title": "Modern Tech Stack",
-            "content": "Latest technologies and best practices for optimal performance"
+        "ownTools": {
+            "title": "Our own software systems",
+            "content": "At Nefara we develop our own software systems and integrate them directly into the solutions we build for clients. This gives us a deep understanding of the technology behind our products and allows us to deliver faster, more stable, and more efficient results."
         },
-        "communication": {
-            "title": "Direct Developer Access",
-            "content": "Speak directly with the experts building your product, ensuring clear and efficient communication.",
-            "chatQuestion": "Can we tweak the animation?",
-            "chatAnswer": "On it right now!"
+        "seoOptimization": {
+            "title": "SEO Optimization",
+            "content": "We optimize your digital presence so your website ranks higher in search engines, attracts more traffic, and stands out from the competition."
         },
-        "quality": {
-            "title": "Quality Assurance",
-            "content": "Rigorous testing processes to ensure bug-free, reliable software"
+        "maintenance": {
+            "title": "Maintenance",
+            "content": "Our commitment doesn't end at launch. We treat your software as our own - monitoring it in real time, optimizing performance, and keeping it up to date at every stage of your business growth."
         }
     },
     "contact": {
