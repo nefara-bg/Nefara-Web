@@ -19,6 +19,7 @@ export function Navigation({ locale }: { locale: string }) {
     { name: t("home"), href: "/#home" },
     { name: t("services"), href: "/services" },
     { name: t("about"), href: "/#about" },
+    { name: t("team"), href: "/team" },
     { name: t("contact"), href: "/#contact" },
   ]
 

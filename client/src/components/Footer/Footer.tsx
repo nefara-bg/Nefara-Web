@@ -15,7 +15,7 @@ const Footer = () => {
     const navLinks = [
         { name: tHeader("home"), href: "/#home" },
         { name: tHeader("services"), href: "/services" },
-        { name: tHeader("about"), href: "/#about" },
+        { name: tHeader("about"), href: "/team" },
         { name: tHeader("contact"), href: "/#contact" },
     ]
 

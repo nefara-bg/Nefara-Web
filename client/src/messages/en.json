@@ -7,6 +7,7 @@
         "home": "Home",
         "services": "Services",
         "about": "About",
+        "team": "Team",
         "contact": "Contact",
         "button": "Get Started"
     },
@@ -64,6 +65,10 @@
         }
     },
     "about": {
+        "seo": {
+            "title": "Team – Nefara | Meet the People Behind the Software",
+            "description": "Meet the Nefara team — a group of passionate developers, designers, and project managers dedicated to building exceptional software solutions for your business."
+        },
         "title": "About",
         "content": "We're not just developers — we're your digital transformation partners, committed to turning your vision into reality with precision and creativity.",
         "experience": "Years Experience",
