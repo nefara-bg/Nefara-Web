@@ -101,7 +101,12 @@
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
     font-weight: 700;
     letter-spacing: -0.025em;
@@ -126,6 +131,7 @@
   letter-spacing: 0.14em;
   color: hsl(var(--primary-strong));
 }
+
 .eyebrow::before {
   content: '';
   display: block;
@@ -141,17 +147,35 @@
   padding-top: 5rem;
   padding-bottom: 5rem;
 }
+
 @media (min-width: 640px) {
-  .section-shell { padding-left: 2rem; padding-right: 2rem; }
+  .section-shell {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
 }
+
 @media (min-width: 768px) {
-  .section-shell { padding-left: 3rem; padding-right: 3rem; padding-top: 7rem; padding-bottom: 7rem; }
+  .section-shell {
+    padding-left: 3rem;
+    padding-right: 3rem;
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
 }
+
 @media (min-width: 1024px) {
-  .section-shell { padding-left: 4rem; padding-right: 4rem; }
+  .section-shell {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
 }
+
 @media (min-width: 1280px) {
-  .section-shell { padding-left: 5rem; padding-right: 5rem; }
+  .section-shell {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
 }
 
 /* Accent surface — used for icon chips */
@@ -170,6 +194,7 @@
   background-color: hsl(var(--secondary));
   color: hsl(var(--secondary-foreground));
 }
+
 .dark-section h1,
 .dark-section h2,
 .dark-section h3,
@@ -186,15 +211,25 @@
     linear-gradient(90deg, hsl(var(--border)) 1px, transparent 1px);
   background-size: 56px 56px;
   -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 30%, transparent 80%);
-          mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 30%, transparent 80%);
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 30%, transparent 80%);
 }
 
 /* Scrollbar */
-::-webkit-scrollbar { width: 10px; height: 10px; }
-::-webkit-scrollbar-track { background: hsl(var(--background)); }
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
 ::-webkit-scrollbar-thumb {
   background: hsl(var(--border));
   border-radius: 999px;
   border: 2px solid hsl(var(--background));
 }
-::-webkit-scrollbar-thumb:hover { background: hsl(var(--muted-foreground) / 0.5); }
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.5);
+}

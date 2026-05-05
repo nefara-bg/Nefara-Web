@@ -41,20 +41,20 @@ export function Navigation({ locale }: { locale: string }) {
         animate={{ y: 0 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 border-b transition-all duration-300",
+          "fixed top-0 left-0 right-0 z-50 border transition-all duration-300 border-[hsl(var(--primary)/0.65)]",
           isScrolled
-            ? "border-border bg-card/90 backdrop-blur-xl shadow-[0_1px_16px_rgba(15,23,42,0.06)]"
-            : "border-transparent bg-card/70 backdrop-blur-md"
+            ? "bg-card/90 backdrop-blur-xl shadow-[0_1px_16px_rgba(15,23,42,0.06)]"
+            : "bg-card/70 backdrop-blur-md"
         )}
       >
-        <div className="mx-auto max-w-7xl h-16 px-4 sm:px-6 lg:px-8 flex items-center gap-6">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 shrink-0">
+        <div className="w-full h-16 px-6 lg:px-10 grid grid-cols-[auto_1fr_auto] items-center gap-6">
+          {/* Logo – left */}
+          <Link href="/" className="flex items-center gap-2">
             <Image src="/logo.svg" alt="Nefara" width={96} height={96} priority />
           </Link>
 
-          {/* Desktop nav */}
-          <div className="hidden md:flex items-center gap-1 flex-1">
+          {/* Desktop nav – centred */}
+          <div className="hidden md:flex items-center justify-center gap-1">
             <Link
               href="/services"
               className="px-3 py-2 rounded-md text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-[hsl(var(--foreground)/0.04)] transition-colors"
@@ -70,7 +70,10 @@ export function Navigation({ locale }: { locale: string }) {
               >
                 {t("company")}
                 <ChevronDown
-                  className={cn("h-3.5 w-3.5 transition-transform duration-200", isCompanyOpen && "rotate-180")}
+                  className={cn(
+                    "h-3.5 w-3.5 transition-transform duration-200 text-[hsl(var(--primary))]",
+                    isCompanyOpen && "rotate-180"
+                  )}
                 />
               </button>
 
@@ -100,15 +103,15 @@ export function Navigation({ locale }: { locale: string }) {
             </div>
 
             <Link
-              href="/contact"
+              href="/work"
               className="px-3 py-2 rounded-md text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-[hsl(var(--foreground)/0.04)] transition-colors"
             >
-              {t("contact")}
+              {t("work")}
             </Link>
           </div>
 
-          {/* Actions */}
-          <div className="hidden md:flex items-center gap-2 shrink-0">
+          {/* Actions – right */}
+          <div className="hidden md:flex items-center gap-3 justify-self-end">
             <LngSwitcher locale={locale} />
             <Link href="/contact">
               <Button size="sm">{t("button")}</Button>

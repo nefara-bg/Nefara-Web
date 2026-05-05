@@ -8,15 +8,16 @@
         "company": "Company",
         "about": "About",
         "team": "Team",
+        "work": "Work",
         "contact": "Contact Us",
-        "button": "Get Started"
+        "button": "Contact Us"
     },
     "hero": {
         "tag": "Building Digital Excellence Since 2024",
         "title": "Never",
         "title2": "Far Away",
         "content": "Nefara offers software services and specialises in solutions, built to accelerate business growth - from a website for your business to building full software systems.",
-        "button": "Get Started",
+        "button": "Contact Us",
         "secondaryButton": "View Our Services"
     },
     "services": {
@@ -103,6 +104,8 @@
         "subtitle2": "Digital Excellence",
         "paragraph1": "From concept to deployment, we handle every aspect of your software development journey. Our team combines technical expertise with creative problem-solving to deliver solutions that exceed expectations.",
         "paragraph2": "Whether you're a startup disrupting an industry or an enterprise optimizing operations, we scale our approach to match your ambitions and timeline.",
+        "whatMakesDifferent": "What makes us different?",
+        "ownToolsStatement": "We use our software systems to improve our products.",
         "directContact": {
             "title": "Direct communication with developers",
             "content": "When working with Nefara, you communicate directly with the developers building your product — no middlemen and no wasted time."
@@ -116,7 +119,7 @@
             "content": "We optimize your digital presence so your website ranks higher in search engines, attracts more traffic, and stands out from the competition."
         },
         "maintenance": {
-            "title": "Maintenance",
+            "title": "Support",
             "content": "Our commitment doesn't end at launch. We treat your software as our own - monitoring it in real time, optimizing performance, and keeping it up to date at every stage of your business growth."
         }
     },
