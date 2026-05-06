@@ -2,7 +2,7 @@ import * as motion from "motion/react-client"
 import { getTranslations } from "next-intl/server"
 import HeroButtonsFlow from "./HeroButtonsFlow"
 import { TitleLines } from "./TitleLines"
-import { CONTAINER_WIDTH } from "@/config/container"
+import { CONTAINER_STYLE } from "@/config/container"
 
 export async function HeroSection() {
     const t = await getTranslations("hero")
@@ -13,7 +13,7 @@ export async function HeroSection() {
             className="relative isolate overflow-hidden bg-background flex flex-col"
             style={{ height: "100vh" }}
         >
-            <div className="flex flex-col h-full" style={{ width: CONTAINER_WIDTH, margin: "0 auto" }}>
+            <div className="flex flex-col h-full" style={{ ...CONTAINER_STYLE, margin: "0 auto" }}>
                 {/* Spacer: 0 → 32.5vh */}
                 <div style={{ flex: "0 0 32.5vh" }} />
 

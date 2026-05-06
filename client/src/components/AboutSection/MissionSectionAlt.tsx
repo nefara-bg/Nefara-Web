@@ -1,5 +1,5 @@
 import { getTranslations } from "next-intl/server"
-import { CONTAINER_WIDTH } from "@/config/container"
+import { CONTAINER_STYLE } from "@/config/container"
 import MissionHeadingFlow from "./MissionHeadingFlow"
 import FeatureCardFlow from "./FeatureCardFlow"
 import WidgetCell from "./WidgetCell"
@@ -16,7 +16,7 @@ export async function MissionSectionAlt() {
             id="about-alt"
             className="relative isolate overflow-hidden bg-background flex flex-col"
         >
-            <div className="relative flex flex-col h-full mx-auto" style={{ width: CONTAINER_WIDTH }}>
+            <div className="relative flex flex-col h-full mx-auto" style={{ ...CONTAINER_STYLE, margin: "0 auto" }}>
                 <div className="absolute w-px h-full bg-primary top-0 left-0 z-10" />
                 <div className="absolute w-px h-full bg-primary top-0 right-0 z-10" />
                 <div className="absolute w-px h-full bg-primary top-10 left-1/2 z-10" />
