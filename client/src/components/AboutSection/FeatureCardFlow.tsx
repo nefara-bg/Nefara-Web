@@ -15,7 +15,7 @@ export default function FeatureCardFlow({
 
     return (
         <motion.div
-            className="relative w-full overflow-hidden group cursor-default"
+            className="bg-card relative w-full overflow-hidden group cursor-default"
             initial={{ opacity: 0, x: isLeft ? -36 : 36 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-40px" }}
@@ -37,11 +37,10 @@ export default function FeatureCardFlow({
                 }}
             />
 
-            <div className="flex flex-col justify-center pl-6 py-6">
+            <div className="flex flex-col justify-center px-6 py-6">
                 <div className="flex items-center gap-2 mb-3">
                     <span
-                        className="font-mono font-bold tracking-[0.18em] transition-[letter-spacing] duration-300 group-hover:tracking-[0.28em]"
-                        style={{ color: "hsl(var(--primary))", fontSize: "clamp(0.48rem, 0.68vh, 0.62rem)" }}
+                        className="font-manrope font-bold tracking-[0.18em] transition-[letter-spacing] duration-300 group-hover:tracking-[0.28em] text-primary text-xs"
                     >
                         {num}
                     </span>
@@ -52,15 +51,13 @@ export default function FeatureCardFlow({
                 </div>
 
                 <h3
-                    className="font-display font-bold text-foreground leading-tight transition-colors duration-200 group-hover:text-[hsl(var(--primary-strong))] mb-3"
-                    style={{ fontSize: "clamp(0.78rem, 2.3vh, 1.55rem)", lineHeight: 1.18 }}
+                    className="text-xl font-manrope font-bold text-foreground transition-colors duration-200 group-hover:text-[hsl(var(--primary-strong))] mb-3"
                 >
                     {title}
                 </h3>
 
                 <p
-                    className="text-muted-foreground transition-colors duration-200 group-hover:text-foreground/65"
-                    style={{ fontSize: "clamp(0.58rem, 1.15vh, 0.8rem)", lineHeight: 1.7 }}
+                    className=" text-muted-foreground transition-colors duration-200 group-hover:text-foreground/65 text-sm"
                 >
                     {desc}
                 </p>

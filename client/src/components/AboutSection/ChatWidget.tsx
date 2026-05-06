@@ -4,7 +4,7 @@ import * as motion from "motion/react-client"
 
 export default function ChatWidget() {
     return (
-        <div className="flex flex-col gap-2 select-none" style={{ width: 186 }}>
+        <div className="flex flex-col gap-3 select-none" style={{ width: 260 }}>
             <motion.div
                 className="flex items-end gap-1.5"
                 initial={{ opacity: 0, x: -8 }}
@@ -12,13 +12,13 @@ export default function ChatWidget() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.1, duration: 0.4 }}
             >
-                <div className="w-6 h-6 rounded-full flex-shrink-0 grid place-items-center font-bold text-[9px]"
+                <div className="w-8 h-8 rounded-full flex-shrink-0 grid place-items-center font-bold text-[11px]"
                     style={{ background: "hsl(var(--primary)/0.18)", color: "hsl(var(--primary))" }}>D</div>
                 <div style={{
                     background: "hsl(var(--primary)/0.12)",
                     color: "hsl(var(--foreground)/0.85)",
                     borderRadius: "1rem 1rem 1rem 0.2rem",
-                    padding: "6px 10px", fontSize: 9, lineHeight: 1.45,
+                    padding: "8px 13px", fontSize: 12, lineHeight: 1.45,
                 }}>
                     Ready to build your vision!
                 </div>
@@ -35,11 +35,11 @@ export default function ChatWidget() {
                     background: "hsl(var(--foreground)/0.06)",
                     color: "hsl(var(--foreground)/0.8)",
                     borderRadius: "1rem 1rem 0.2rem 1rem",
-                    padding: "6px 10px", fontSize: 9, lineHeight: 1.45,
+                    padding: "8px 13px", fontSize: 12, lineHeight: 1.45,
                 }}>
                     Let's get started!
                 </div>
-                <div className="w-6 h-6 rounded-full flex-shrink-0 grid place-items-center font-bold text-[9px]"
+                <div className="w-8 h-8 rounded-full flex-shrink-0 grid place-items-center font-bold text-[11px]"
                     style={{ background: "hsl(var(--foreground)/0.08)", color: "hsl(var(--foreground)/0.45)" }}>C</div>
             </motion.div>
 
@@ -60,7 +60,7 @@ export default function ChatWidget() {
                     }}>
                     {[0, 0.22, 0.44].map((d, i) => (
                         <span key={i} style={{
-                            display: "block", width: 5, height: 5, borderRadius: "50%",
+                            display: "block", width: 7, height: 7, borderRadius: "50%",
                             background: "hsl(var(--primary))",
                             animation: `typingBounce 1.4s ease-in-out ${d}s infinite`,
                         }} />

@@ -1,17 +1,17 @@
 export default function SupportWidget() {
     return (
-        <div className="flex flex-col gap-3 select-none" style={{ width: 160 }}>
+        <div className="flex flex-col gap-3 select-none" style={{ width: 220 }}>
             <div className="flex items-center gap-2">
-                <div className="relative w-2 h-2 flex-shrink-0">
+                <div className="relative w-3 h-3 flex-shrink-0">
                     <div className="absolute inset-0 rounded-full" style={{ background: "#22c55e" }} />
                     <div className="absolute inset-0 rounded-full"
                         style={{ background: "#22c55e", animation: "pulseRing 1.8s ease-out infinite" }} />
                 </div>
-                <span style={{ fontSize: 8.5, color: "hsl(var(--foreground)/0.6)" }}>
+                <span style={{ fontSize: 12, color: "hsl(var(--foreground)/0.6)" }}>
                     All systems operational
                 </span>
             </div>
-            <svg width="150" height="36" viewBox="0 0 150 36" style={{ overflow: "visible" }}>
+            <svg width="210" height="50" viewBox="0 0 150 36" style={{ overflow: "visible" }}>
                 <line x1="0" y1="18" x2="150" y2="18"
                     stroke="hsl(var(--primary)/0.15)" strokeWidth={1} />
                 <path
@@ -27,16 +27,16 @@ export default function SupportWidget() {
             </svg>
             <div className="flex gap-5">
                 <div>
-                    <div className="font-display font-bold" style={{ color: "hsl(var(--primary))", fontSize: 15 }}>
+                    <div className="font-display font-bold" style={{ color: "hsl(var(--primary))", fontSize: 22 }}>
                         99.9%
                     </div>
-                    <div style={{ fontSize: 8, color: "hsl(var(--foreground)/0.4)" }}>Uptime</div>
+                    <div style={{ fontSize: 11, color: "hsl(var(--foreground)/0.4)" }}>Uptime</div>
                 </div>
                 <div>
-                    <div className="font-display font-bold" style={{ color: "hsl(var(--primary))", fontSize: 15 }}>
+                    <div className="font-display font-bold" style={{ color: "hsl(var(--primary))", fontSize: 22 }}>
                         24/7
                     </div>
-                    <div style={{ fontSize: 8, color: "hsl(var(--foreground)/0.4)" }}>Monitoring</div>
+                    <div style={{ fontSize: 11, color: "hsl(var(--foreground)/0.4)" }}>Monitoring</div>
                 </div>
             </div>
         </div>

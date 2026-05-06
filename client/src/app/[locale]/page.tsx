@@ -20,7 +20,7 @@ const Page = async ({ params }: { params: Promise<{ locale: string }> }) => {
         <main className="min-h-screen bg-background">
             <HeroSection />
             <MissionSectionAlt />
-            <MissionSection />
+            {/* <MissionSection /> */}
             <ContactCTA />
         </main>
     )
