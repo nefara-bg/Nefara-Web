@@ -1,7 +1,6 @@
-"use client"
-
 import * as motion from "motion/react-client"
-import { useTranslations } from "next-intl"
+import { getTranslations } from "next-intl/server"
+import HeroButtons from "./HeroButtons"
 
 // All pixel values are from the 1920×1080 SVG design spec.
 // Converted to % of viewport width (vw) and % of viewport height (vh).
@@ -27,12 +26,8 @@ import { useTranslations } from "next-intl"
 
 const T = "hsl(var(--primary) / 0.65)" // teal line colour
 
-export function HeroSection() {
-    const t = useTranslations("hero")
-
-    const scrollTo = (id: string) => () => {
-        document.querySelector(id)?.scrollIntoView({ behavior: "smooth" })
-    }
+export async function HeroSection() {
+    const t = await getTranslations("hero")
 
     return (
         <section
@@ -126,44 +121,7 @@ export function HeroSection() {
             </motion.p>
 
             {/* ── Buttons ── y 62.9 → 68.5, x 33.7 → 68.6 ────────────── */}
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.25 }}
-                className="absolute flex"
-                style={{
-                    top: "62.9%",
-                    left: "33.7%",
-                    right: "31.4%",   // 100 - 68.6
-                    height: "5.6%",
-                }}
-            >
-                {/* "Contact Us" – 255 / 668 ≈ 38.2% of combined width */}
-                <button
-                    onClick={scrollTo("#contact")}
-                    className="flex-none flex items-center justify-center font-display font-bold text-foreground bg-transparent hover:bg-[hsl(var(--primary)/0.06)] active:scale-[0.98] transition-colors cursor-pointer"
-                    style={{
-                        width: "38.2%",
-                        border: `1px solid ${T}`,
-                        fontSize: "clamp(0.7rem, 0.9vw, 0.95rem)",
-                    }}
-                >
-                    {t("button")}
-                </button>
-
-                {/* "View Our Services" – 411 / 668 ≈ 61.5% */}
-                <button
-                    onClick={scrollTo("#services")}
-                    className="flex-1 flex items-center justify-center font-display font-bold text-foreground bg-transparent hover:bg-[hsl(var(--primary)/0.06)] active:scale-[0.98] transition-colors cursor-pointer"
-                    style={{
-                        border: `1px solid ${T}`,
-                        borderLeft: "none",
-                        fontSize: "clamp(0.7rem, 0.9vw, 0.95rem)",
-                    }}
-                >
-                    {t("secondaryButton")}
-                </button>
-            </motion.div>
+            <HeroButtons T={T} />
         </section>
     )
 }
