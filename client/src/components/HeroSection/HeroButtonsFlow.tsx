@@ -11,14 +11,31 @@ export default function HeroButtonsFlow() {
     const t = useTranslations("hero")
 
     return (
-        <div style={{ flex: "0 0 5.6vh" }} className="flex justify-center items-stretch">
+        <div style={{ flex: "0 0 5.6vh" }} className="flex relative w-[75%] mx-auto justify-center items-stretch px-4">
+            {/* Button zone – upper horizontal */}
+            <div className="absolute h-px bg-primary top-0 left-0 w-full" />
+            {/* Button zone – lower horizontal */}
+            <div className="absolute h-px bg-primary bottom-0 left-0 w-full" />
+
+            {/* Tall left bracket tick */}
+            <div className="absolute h-[160%] w-px bg-primary left-4 top-1/2 -translate-y-1/2" />
+
+            {/* Tall right bracket tick */}
+            <div className="absolute h-[160%] w-px bg-primary right-4 top-1/2 -translate-y-1/2" />
+
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.25 }}
-                className="flex h-full"
-                style={{ width: "34.9%" }}
+                className="flex h-full relative w-[65%]"
             >
+                {/* Inner tick – left edge of "Get Started" */}
+                {/* Tall right bracket tick */}
+                <div className="absolute h-full w-px bg-primary left-0 top-0" />
+                {/* Inner tick – left edge of "Get Started" */}
+                {/* Tall right bracket tick */}
+                <div className="absolute h-full w-px bg-primary right-0 top-0" />
+
                 <Button
                     variant="hero"
                     onClick={scrollTo("#contact")}
@@ -27,6 +44,10 @@ export default function HeroButtonsFlow() {
                 >
                     {t("button")}
                 </Button>
+
+                {/* Tall right bracket tick */}
+                <div className="h-full w-px bg-primary" />                
+
                 <Button
                     variant="hero"
                     onClick={scrollTo("#services")}
