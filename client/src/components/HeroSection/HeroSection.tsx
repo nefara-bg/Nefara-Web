@@ -121,7 +121,7 @@ export async function HeroSection() {
             </motion.p>
 
             {/* ── Buttons ── y 62.9 → 68.5, x 33.7 → 68.6 ────────────── */}
-            <HeroButtons T={T} />
+            <HeroButtons />
         </section>
     )
 }

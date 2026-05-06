@@ -29,6 +29,9 @@ const buttonVariants = cva(
           "text-[hsl(var(--primary-strong))] underline-offset-4 hover:underline",
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+        // Hero blueprint buttons — transparent with teal border, no radius
+        hero:
+          "rounded-none border border-[hsl(var(--primary)/0.65)] bg-transparent text-foreground hover:bg-[hsl(var(--primary)/0.06)]",
       },
       size: {
         default: "h-10 px-5 text-sm",

@@ -2,8 +2,9 @@
 
 import { motion } from "motion/react"
 import { useTranslations } from "next-intl"
+import { Button } from "@/components/ui/button"
 
-export default function HeroButtons({ T }: { T: string }) {
+export default function HeroButtons() {
     const scrollTo = (id: string) => () => {
         document.querySelector(id)?.scrollIntoView({ behavior: "smooth" })
     }
@@ -19,35 +20,34 @@ export default function HeroButtons({ T }: { T: string }) {
             style={{
                 top: "62.9%",
                 left: "33.7%",
-                right: "31.4%",   // 100 - 68.6
+                right: "31.4%",
                 height: "5.6%",
             }}
         >
             {/* "Contact Us" – 255 / 668 ≈ 38.2% of combined width */}
-            <button
+            <Button
+                variant="hero"
                 onClick={scrollTo("#contact")}
-                className="flex-none flex items-center justify-center font-display font-bold text-foreground bg-transparent hover:bg-[hsl(var(--primary)/0.06)] active:scale-[0.98] transition-colors cursor-pointer"
+                className="flex-none h-full border-0"
                 style={{
                     width: "38.2%",
-                    border: `1px solid ${T}`,
                     fontSize: "clamp(0.7rem, 0.9vw, 0.95rem)",
                 }}
             >
                 {t("button")}
-            </button>
+            </Button>
 
             {/* "View Our Services" – 411 / 668 ≈ 61.5% */}
-            <button
+            <Button
+                variant="hero"
                 onClick={scrollTo("#services")}
-                className="flex-1 flex items-center justify-center font-display font-bold text-foreground bg-transparent hover:bg-[hsl(var(--primary)/0.06)] active:scale-[0.98] transition-colors cursor-pointer"
+                className="flex-1 h-full border-0"
                 style={{
-                    border: `1px solid ${T}`,
-                    borderLeft: "none",
                     fontSize: "clamp(0.7rem, 0.9vw, 0.95rem)",
                 }}
             >
                 {t("secondaryButton")}
-            </button>
+            </Button>
         </motion.div>
     )
 }
