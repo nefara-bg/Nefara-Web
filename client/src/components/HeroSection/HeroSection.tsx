@@ -1,6 +1,7 @@
 import * as motion from "motion/react-client"
 import { getTranslations } from "next-intl/server"
 import HeroButtonsFlow from "./HeroButtonsFlow"
+import { TitleLines } from "./TitleLines"
 
 export async function HeroSection() {
     const t = await getTranslations("hero")
@@ -20,14 +21,7 @@ export async function HeroSection() {
                     style={{ flex: "0 0 11.8vh", paddingLeft: "14%", paddingRight: "14.6%" }}
                     className="relative flex border-0 border-primary items-center w-full mx-auto"
                 >
-                    {/* Upper horizontal: 32.5%y, 13.9%x → right edge */}
-                    <div className="absolute bg-primary w-[100vw] h-px top-0 left-0" />
-                    {/* Bottom horizontal: 32.5%y, 13.9%x → right edge */}
-                    <div className="absolute bg-primary w-[100vw] h-px bottom-0 right-0" />
-                    {/* Right vertical: 32.5%y, 13.9%x → right edge */}
-                    <div className="absolute bg-primary h-[100vw] w-px top-0 right-0" />
-                    {/* Left vertical: 32.5%y, 13.9%x → right edge */}
-                    <div className="absolute bg-primary h-[100vw] w-px bottom-0 left-0" />
+                    <TitleLines />
                     <motion.h1
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}

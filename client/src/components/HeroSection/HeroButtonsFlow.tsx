@@ -3,6 +3,7 @@
 import { motion } from "motion/react"
 import { useTranslations } from "next-intl"
 import { Button } from "@/components/ui/button"
+import { ButtonZoneLines } from "./ButtonZoneLines"
 
 export default function HeroButtonsFlow() {
     const scrollTo = (id: string) => () => {
@@ -29,12 +30,7 @@ export default function HeroButtonsFlow() {
                 transition={{ duration: 0.5, delay: 0.25 }}
                 className="flex h-full relative w-[65%]"
             >
-                {/* Inner tick – left edge of "Get Started" */}
-                {/* Tall right bracket tick */}
-                <div className="absolute h-full w-px bg-primary left-0 top-0" />
-                {/* Inner tick – left edge of "Get Started" */}
-                {/* Tall right bracket tick */}
-                <div className="absolute h-full w-px bg-primary right-0 top-0" />
+                <ButtonZoneLines />
 
                 <Button
                     variant="hero"
@@ -45,7 +41,7 @@ export default function HeroButtonsFlow() {
                     {t("button")}
                 </Button>
 
-                {/* Tall right bracket tick */}
+                {/* Middle bracket tick */}
                 <div className="h-full w-px bg-primary" />                
 
                 <Button
