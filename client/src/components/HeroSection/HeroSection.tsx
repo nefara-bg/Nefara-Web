@@ -1,58 +1,69 @@
 import * as motion from "motion/react-client"
 import { getTranslations } from "next-intl/server"
-import HeroButtons from "./HeroButtons"
-import HeroLines from "./HeroLines"
+import HeroButtonsFlow from "./HeroButtonsFlow"
 
 export async function HeroSection() {
     const t = await getTranslations("hero")
 
     return (
         <section
-            id="home"
-            className="relative isolate overflow-hidden bg-background"
+            id="home-alt"
+            className="relative isolate overflow-hidden bg-background flex flex-col"
             style={{ height: "100vh" }}
         >
-            <HeroLines />
+            <div className="flex flex-col h-full" style={{ width: "71.5vw", margin: "0 auto" }}>
+                {/* Spacer: 0 → 32.5vh */}
+                <div style={{ flex: "0 0 32.5vh" }} />
 
-            {/* ── Title ── fills y 32.5 → 44.3 ───────────────────────── */}
-            <motion.h1
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.05 }}
-                className="absolute w-full text-center font-display font-extrabold tracking-tight text-foreground select-none"
-                style={{
-                    top: "38.4%",
-                    transform: "translateY(-50%)",
-                    // min(7vw, 8vh) keeps the text inside the 11.8vh-tall box at any viewport
-                    fontSize: "clamp(1.8rem, min(6.5vw, 8vh), 8rem)",
-                    lineHeight: 1,
-                    paddingLeft: "14%",
-                    paddingRight: "14.6%",
-                }}
-            >
-                {t("title")} {t("title2")}
-            </motion.h1>
+                {/* Title zone: 32.5vh → 44.3vh (11.8vh) */}
+                <div
+                    style={{ flex: "0 0 11.8vh", paddingLeft: "14%", paddingRight: "14.6%" }}
+                    className="relative flex border-0 border-primary items-center w-full mx-auto"
+                >
+                    {/* Upper horizontal: 32.5%y, 13.9%x → right edge */}
+                    <div className="absolute bg-primary w-[100vw] h-px top-0 left-0" />
+                    {/* Bottom horizontal: 32.5%y, 13.9%x → right edge */}
+                    <div className="absolute bg-primary w-[100vw] h-px bottom-0 right-0" />
+                    {/* Right vertical: 32.5%y, 13.9%x → right edge */}
+                    <div className="absolute bg-primary h-[100vw] w-px top-0 right-0" />
+                    {/* Left vertical: 32.5%y, 13.9%x → right edge */}
+                    <div className="absolute bg-primary h-[100vw] w-px bottom-0 left-0" />
+                    <motion.h1
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.5, delay: 0.05 }}
+                        className="text-center font-manrope font-bold tracking-tight w-full"
+                        style={{
+                            fontSize: "clamp(1.8rem, min(6.5vw, 8vh), 8rem)",
+                            lineHeight: 1,
+                        }}
+                    >
+                        {t("title")} {t("title2")}
+                    </motion.h1>
+                </div>
 
-            {/* ── Subtitle ── fills y 44.3 → 62.9 ────────────────────── */}
-            <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.15 }}
-                className="absolute text-center text-muted-foreground"
-                style={{
-                    top: "53.6%",
-                    transform: "translateY(-50%)",
-                    left: "14%",
-                    right: "14.6%",
-                    fontSize: "clamp(0.8rem, 1.1vw, 1.15rem)",
-                    lineHeight: 1.65,
-                }}
-            >
-                {t("content")}
-            </motion.p>
+                {/* Subtitle zone: 44.3vh → 62.9vh (18.6vh) */}
+                <div
+                    style={{ flex: "0 0 18.6vh", paddingLeft: "14%", paddingRight: "14.6%" }}
+                    className="flex items-center justify-center"
+                >
+                    <motion.p
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.5, delay: 0.15 }}
+                        className="w-full text-center text-muted-foreground"
+                        style={{
+                            fontSize: "clamp(0.8rem, 1.1vw, 1.15rem)",
+                            lineHeight: 1.65,
+                        }}
+                    >
+                        {t("content")}
+                    </motion.p>
+                </div>
 
-            {/* ── Buttons ── y 62.9 → 68.5, x 33.7 → 68.6 ────────────── */}
-            <HeroButtons />
+                {/* Button zone: 62.9vh → 68.5vh (5.6vh) */}
+                <HeroButtonsFlow />
+            </div>
         </section>
     )
 }
