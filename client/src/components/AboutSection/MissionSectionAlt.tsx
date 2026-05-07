@@ -20,7 +20,6 @@ export async function MissionSectionAlt() {
             <div className="relative pt-32 flex flex-col h-full mx-auto" style={{ ...CONTAINER_STYLE, margin: "0 auto" }}>
                 {/* Heading row */}
                 <div className="relative grid grid-cols-2 items-end pt-16">
-                    <div className="absolute w-px h-full bg-primary top-16 left-1/2 z-10" />
                     <div className="pl-6 flex flex-col gap-2 pb-2">
                         <motion.div
                             className="flex items-center gap-3"
@@ -37,17 +36,11 @@ export async function MissionSectionAlt() {
                         <MissionHeadingFlow heading={t("whatMakesDifferent")} />
                     </div>
                     <div className="relative w-full h-full">
-                        <div className="absolute w-px h-full bg-primary top-0 right-0 z-10" />
-                        <div className="absolute w-full h-px bg-primary top-0 left-0 z-10" />
                     </div>
-                    <div className="absolute h-px w-[100vw] bg-primary bottom-0 right-0" />
                 </div>
 
                 {/* Cards: rows 1–4 */}
                 <div className="relative grid grid-cols-2 flex-1">
-                    <div className="absolute w-px h-full bg-primary top-16 left-1/2 z-10" />
-                    <div className="absolute w-px h-full bg-primary top-0 left-0 z-10" />
-                    <div className="absolute w-px h-full bg-primary top-0 right-0 z-10" />
 
                     <WidgetCell delay={0.15} side="left">
                         <ChatWidget />
@@ -59,7 +52,6 @@ export async function MissionSectionAlt() {
                         side="right"
                         delay={0.15}
                     />
-                    <div className="col-span-2 h-px bg-primary" />
                     <FeatureCardFlow
                         num="02"
                         title={t("ownToolsStatement")}
@@ -70,7 +62,6 @@ export async function MissionSectionAlt() {
                     <WidgetCell delay={0.22} side="right">
                         <SystemsWidget />
                     </WidgetCell>
-                    <div className="col-span-2 h-px bg-primary" />
                     <WidgetCell delay={0.30} side="left">
                         <SEOWidget />
                     </WidgetCell>
@@ -81,7 +72,6 @@ export async function MissionSectionAlt() {
                         side="right"
                         delay={0.30}
                     />
-                    <div className="col-span-2 h-px bg-primary" />
                     <FeatureCardFlow
                         num="04"
                         title={t("maintenance.title")}
