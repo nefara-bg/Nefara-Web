@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from "react"
 import * as motion from "motion/react-client"
 import { Menu, X, ChevronDown } from "lucide-react"
+import { EASE } from "@/lib/motion"
 import LngSwitcher from "@/components/Header/components/LngSwitcher/LngSwitcher"
 import { useTranslations } from "next-intl"
 import Image from "next/image"
@@ -19,8 +20,8 @@ export function Navigation({ locale }: { locale: string }) {
   const companyRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 16)
-    window.addEventListener("scroll", handleScroll)
+    const handleScroll = () => setIsScrolled(window.scrollY > 20)
+    window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
@@ -37,11 +38,11 @@ export function Navigation({ locale }: { locale: string }) {
   return (
     <>
       <motion.nav
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8, ease: EASE }}
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 border transition-all duration-300 border-[hsl(var(--primary)/0.65)]",
+          "fixed top-0 left-0 right-0 z-50 border transition-all duration-500 border-[hsl(var(--primary)/0.65)]",
           isScrolled
             ? "bg-card/90 backdrop-blur-xl shadow-[0_1px_16px_rgba(15,23,42,0.06)]"
             : "bg-card/70 backdrop-blur-md"

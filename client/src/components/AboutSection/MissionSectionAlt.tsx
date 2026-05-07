@@ -17,12 +17,10 @@ export async function MissionSectionAlt() {
             id="about-alt"
             className="relative isolate overflow-hidden bg-background flex flex-col"
         >
-            <div className="relative flex flex-col h-full mx-auto" style={{ ...CONTAINER_STYLE, margin: "0 auto" }}>
-                <div className="absolute w-px h-full bg-primary top-0 right-0 z-10" />
-                <div className="absolute w-px h-full bg-primary top-16 left-1/2 z-10" />
-
+            <div className="relative pt-32 flex flex-col h-full mx-auto" style={{ ...CONTAINER_STYLE, margin: "0 auto" }}>
                 {/* Heading row */}
                 <div className="relative grid grid-cols-2 items-end pt-16">
+                    <div className="absolute w-px h-full bg-primary top-16 left-1/2 z-10" />
                     <div className="pl-6 flex flex-col gap-2 pb-2">
                         <motion.div
                             className="flex items-center gap-3"
@@ -39,6 +37,7 @@ export async function MissionSectionAlt() {
                         <MissionHeadingFlow heading={t("whatMakesDifferent")} />
                     </div>
                     <div className="relative w-full h-full">
+                        <div className="absolute w-px h-full bg-primary top-0 right-0 z-10" />
                         <div className="absolute w-full h-px bg-primary top-0 left-0 z-10" />
                     </div>
                     <div className="absolute h-px w-[100vw] bg-primary bottom-0 right-0" />
@@ -46,7 +45,9 @@ export async function MissionSectionAlt() {
 
                 {/* Cards: rows 1–4 */}
                 <div className="relative grid grid-cols-2 flex-1">
+                    <div className="absolute w-px h-full bg-primary top-16 left-1/2 z-10" />
                     <div className="absolute w-px h-full bg-primary top-0 left-0 z-10" />
+                    <div className="absolute w-px h-full bg-primary top-0 right-0 z-10" />
 
                     <WidgetCell delay={0.15} side="left">
                         <ChatWidget />

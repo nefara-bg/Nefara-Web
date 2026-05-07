@@ -2,10 +2,10 @@ import { routing } from "@/i18n/routing"
 import { hasLocale } from "next-intl"
 import { notFound } from "next/navigation"
 import { setRequestLocale } from "next-intl/server"
-import { MissionSection } from "@/components/AboutSection/MissionSection"
 import { MissionSectionAlt } from "@/components/AboutSection/MissionSectionAlt"
 import { ContactCTA } from "@/components/ContactSection/ContactCTA"
 import { HeroSection } from "@/components/HeroSection/HeroSection"
+import { HeroMissionTransition } from "@/components/ScrollStory/HeroMissionTransition"
 
 const Page = async ({ params }: { params: Promise<{ locale: string }> }) => {
     const { locale } = await params
@@ -18,9 +18,10 @@ const Page = async ({ params }: { params: Promise<{ locale: string }> }) => {
 
     return (
         <main className="min-h-screen bg-background">
-            <HeroSection />
-            <MissionSectionAlt />
-            {/* <MissionSection /> */}
+            <HeroMissionTransition
+                hero={<HeroSection />}
+                mission={<MissionSectionAlt />}
+            />
             <ContactCTA />
         </main>
     )
