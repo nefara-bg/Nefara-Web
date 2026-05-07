@@ -42,9 +42,9 @@ export function Navigation({ locale }: { locale: string }) {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: EASE }}
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 border transition-all duration-500 border-[hsl(var(--primary)/0.65)]",
+          "fixed top-0 left-0 right-0 z-50 border transition-all duration-500 border-secondary/15",
           isScrolled
-            ? "bg-card/90 backdrop-blur-xl shadow-[0_1px_16px_rgba(15,23,42,0.06)]"
+            ? "bg-card/90 backdrop-blur-xl"
             : "bg-card/70 backdrop-blur-md"
         )}
       >

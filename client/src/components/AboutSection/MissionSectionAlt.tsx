@@ -17,9 +17,9 @@ export async function MissionSectionAlt() {
             id="about-alt"
             className="relative isolate overflow-hidden bg-background flex flex-col"
         >
-            <div className="relative pt-32 flex flex-col h-full mx-auto" style={{ ...CONTAINER_STYLE, margin: "0 auto" }}>
+            <div className="relative flex flex-col h-full mx-auto" style={{ ...CONTAINER_STYLE, margin: "0 auto" }}>
                 {/* Heading row */}
-                <div className="relative grid grid-cols-2 items-end pt-16">
+                <div className="relative min-h-screen grid grid-cols-2 items-center pt-16">
                     <div className="pl-6 flex flex-col gap-2 pb-2">
                         <motion.div
                             className="flex items-center gap-3"
@@ -40,7 +40,7 @@ export async function MissionSectionAlt() {
                 </div>
 
                 {/* Cards: rows 1–4 */}
-                <div className="relative grid grid-cols-2 flex-1">
+                <div className="relative grid grid-cols-2 flex-1" style={{ gridAutoRows: "minmax(100vh, auto)" }}>
 
                     <WidgetCell delay={0.15} side="left">
                         <ChatWidget />

@@ -15,7 +15,7 @@ export default function FeatureCardFlow({
 
     return (
         <motion.div
-            className="bg-card relative w-full overflow-hidden group cursor-default"
+            className="relative w-full h-full overflow-hidden group cursor-default flex"
             initial={{ opacity: 0, x: isLeft ? -36 : 36 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-40px" }}

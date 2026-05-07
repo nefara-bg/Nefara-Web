@@ -6,7 +6,7 @@ export async function ContactCTA() {
     const t = await getTranslations("contact")
 
     return (
-        <section className="dark-section relative overflow-hidden py-28 md:py-40 px-6 text-center">
+        <section className="dark-section relative py-28 md:py-40 px-6 text-center h-screen">
             {/* Centered teal radial glow */}
             <div
                 className="absolute inset-0 -z-0 pointer-events-none"
