@@ -1,7 +1,7 @@
 import * as motion from "motion/react-client"
 import { getTranslations } from "next-intl/server"
 import HeroButtonsFlow from "./HeroButtonsFlow"
-import { CONTAINER_STYLE } from "@/config/container"
+import ScrollCta from "./ScrollCta"
 
 export async function HeroSection() {
     const t = await getTranslations("hero")
@@ -9,54 +9,59 @@ export async function HeroSection() {
     return (
         <section
             id="home-alt"
-            className="relative isolate overflow-hidden bg-background flex flex-col"
-            style={{ height: "100vh" }}
+            className="relative isolate overflow-hidden flex flex-col items-center justify-center min-h-screen bg-background"
         >
-            <div className="flex flex-col h-full" style={{ ...CONTAINER_STYLE, margin: "0 auto" }}>
-                {/* Spacer: 0 → 32.5vh */}
-                <div style={{ flex: "0 0 32.5vh" }} />
+            {/* Radial gradient — top right */}
+            <div
+                aria-hidden
+                className="pointer-events-none absolute -z-10 top-0 right-0 w-[600px] h-[500px] rounded-full opacity-20 blur-3xl"
+                style={{ background: "radial-gradient(ellipse at top right, var(--color-primary), transparent 70%)" }}
+            />
 
-                {/* Title zone: 32.5vh → 44.3vh (11.8vh) */}
-                <div
-                    style={{ flex: "0 0 11.8vh", paddingLeft: "14%", paddingRight: "14.6%" }}
-                    className="relative flex border-0 border-primary items-center w-full mx-auto"
+            {/* Radial gradient — bottom left */}
+            <div
+                aria-hidden
+                className="pointer-events-none absolute -z-10 bottom-0 left-0 w-[600px] h-[500px] rounded-full opacity-15 blur-3xl"
+                style={{ background: "radial-gradient(ellipse at bottom left, var(--color-primary), transparent 70%)" }}
+            />
+
+            {/* Subtle technical grid */}
+            <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0 -z-10 opacity-[0.028]"
+                style={{
+                    backgroundImage:
+                        "linear-gradient(var(--color-foreground) 1px, transparent 1px), " +
+                        "linear-gradient(90deg, var(--color-foreground) 1px, transparent 1px)",
+                    backgroundSize: "52px 52px",
+                }}
+            />
+
+
+            <div className="max-w-3xl flex flex-col items-center gap-6 mx-auto px-6">
+
+                <motion.h1
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5, delay: 0.05 }}
+                    className="text-center font-manrope font-bold tracking-tight text-6xl leading-none"
                 >
-                    <motion.h1
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 0.5, delay: 0.05 }}
-                        className="text-center font-manrope font-bold tracking-tight w-full"
-                        style={{
-                            fontSize: "clamp(1.8rem, min(6.5vw, 8vh), 8rem)",
-                            lineHeight: 1,
-                        }}
-                    >
-                        {t("title")} {t("title2")}
-                    </motion.h1>
-                </div>
+                    {t("title")} {t("title2")}
+                </motion.h1>
 
-                {/* Subtitle zone: 44.3vh → 62.9vh (18.6vh) */}
-                <div
-                    style={{ flex: "0 0 18.6vh", paddingLeft: "14%", paddingRight: "14.6%" }}
-                    className="flex items-center justify-center"
+                <motion.p
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5, delay: 0.15 }}
+                    className="text-center text-muted-foreground text-lg leading-relaxed max-w-2xl"
                 >
-                    <motion.p
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 0.5, delay: 0.15 }}
-                        className="w-full text-center text-muted-foreground"
-                        style={{
-                            fontSize: "clamp(0.8rem, 1.1vw, 1.15rem)",
-                            lineHeight: 1.65,
-                        }}
-                    >
-                        {t("content")}
-                    </motion.p>
-                </div>
+                    {t("content")}
+                </motion.p>
 
-                {/* Button zone: 62.9vh → 68.5vh (5.6vh) */}
                 <HeroButtonsFlow />
             </div>
+
+            <ScrollCta label={t("scrollCta")} />
         </section>
     )
 }

@@ -22,7 +22,8 @@
         "title2": "Far Away",
         "content": "Nefara offers software services and specialises in solutions, built to accelerate business growth - from a website for your business to building full software systems.",
         "button": "Contact Us",
-        "secondaryButton": "View Our Services"
+        "secondaryButton": "View Our Services",
+        "scrollCta": "Scroll to see what makes us different"
     },
     "services": {
         "seo": {

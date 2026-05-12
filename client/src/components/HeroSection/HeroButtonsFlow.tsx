@@ -11,32 +11,26 @@ export default function HeroButtonsFlow() {
     const t = useTranslations("hero")
 
     return (
-        <div style={{ flex: "0 0 5.6vh" }} className="flex relative w-[75%] mx-auto justify-center items-stretch px-4">
-
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.25 }}
-                className="flex h-full relative w-[65%] gap-4"
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.25 }}
+            className="flex gap-3 mt-2"
+        >
+            <Button
+                variant="secondary"
+                onClick={scrollTo("#contact")}
+                className="border-0 px-6 h-10 text-sm"
             >
+                {t("button")}
+            </Button>
 
-                <Button
-                    variant="secondary"
-                    onClick={scrollTo("#contact")}
-                    className="flex-none h-full border-0"
-                    style={{ width: "38.2%", fontSize: "clamp(0.7rem, 0.9vw, 0.95rem)" }}
-                >
-                    {t("button")}
-                </Button>              
-
-                <Button
-                    onClick={scrollTo("#services")}
-                    className="flex-1 h-full border-0"
-                    style={{ fontSize: "clamp(0.7rem, 0.9vw, 0.95rem)" }}
-                >
-                    {t("secondaryButton")}
-                </Button>
-            </motion.div>
-        </div>
+            <Button
+                onClick={scrollTo("#services")}
+                className="border-0 px-6 h-10 text-sm"
+            >
+                {t("secondaryButton")}
+            </Button>
+        </motion.div>
     )
 }
