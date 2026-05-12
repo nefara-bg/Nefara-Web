@@ -243,6 +243,11 @@
   100% { stroke-dashoffset: -280; }
 }
 
+@keyframes borderSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
 ::-webkit-scrollbar-track {
   background: hsl(var(--background));
 }

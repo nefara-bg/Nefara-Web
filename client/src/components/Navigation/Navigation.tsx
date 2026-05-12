@@ -110,7 +110,7 @@ export function Navigation({ locale }: { locale: string }) {
                       onClick={() => setIsCompanyOpen(false)}
                       className="group flex items-center gap-4 rounded-xl px-3 py-4 transition-all duration-200 hover:bg-[hsl(var(--foreground)/0.04)]"
                     >
-                      <Image src="/aboutUsIcon.svg" alt="About" width={52} height={52} className="flex-shrink-0" />
+                      <Image src="/aboutUsIcon.svg" alt="About" width={48} height={48} className="flex-shrink-0" />
                       <div>
                         <div className="text-base font-medium text-foreground group-hover:text-[hsl(var(--primary-strong))] transition-colors">
                           {t("aboutTitle")}
