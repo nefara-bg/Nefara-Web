@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react"
 import * as motion from "motion/react-client"
-import { Menu, X, ChevronDown } from "lucide-react"
+import { Menu, X, ChevronDown, ArrowRight } from "lucide-react"
 import { EASE } from "@/lib/motion"
 import LngSwitcher from "@/components/Header/components/LngSwitcher/LngSwitcher"
 import { useTranslations } from "next-intl"
@@ -64,9 +64,13 @@ export function Navigation({ locale }: { locale: string }) {
             </Link>
 
             {/* Company dropdown */}
-            <div ref={companyRef} className="relative">
+            <div
+              ref={companyRef}
+              className="relative"
+              onMouseEnter={() => setIsCompanyOpen(true)}
+              onMouseLeave={() => setIsCompanyOpen(false)}
+            >
               <button
-                onClick={() => setIsCompanyOpen((v) => !v)}
                 className="flex items-center gap-1 px-3 py-2 rounded-md text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-[hsl(var(--foreground)/0.04)] transition-colors"
               >
                 {t("company")}
@@ -80,25 +84,60 @@ export function Navigation({ locale }: { locale: string }) {
 
               {isCompanyOpen && (
                 <motion.div
-                  initial={{ opacity: 0, y: -6 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.15 }}
-                  className="absolute top-full left-0 mt-1 w-40 rounded-lg border border-border bg-card shadow-lg overflow-hidden"
+                  initial={{ opacity: 0, y: -8, scale: 0.97 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
+                  className="absolute top-full left-1/2 -translate-x-1/2 mt-2 rounded-xl border border-border bg-card shadow-2xl overflow-hidden"
+                  style={{ width: "max-content", minWidth: 420 }}
                 >
-                  <Link
-                    href="/#about"
-                    onClick={() => setIsCompanyOpen(false)}
-                    className="block px-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-[hsl(var(--foreground)/0.04)] transition-colors"
-                  >
-                    {t("about")}
-                  </Link>
-                  <Link
-                    href="/team"
-                    onClick={() => setIsCompanyOpen(false)}
-                    className="block px-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-[hsl(var(--foreground)/0.04)] transition-colors"
-                  >
-                    {t("team")}
-                  </Link>
+                  {/* Top accent line */}
+                  <div className="h-px w-full" style={{ background: "linear-gradient(to right, transparent, hsl(var(--primary)/0.5), transparent)" }} />
+
+                  <div className="p-5 flex flex-col gap-1">
+                    <Link
+                      href="/#about"
+                      onClick={() => setIsCompanyOpen(false)}
+                      className="group flex items-center gap-4 rounded-xl px-3 py-4 transition-all duration-200 hover:bg-[hsl(var(--foreground)/0.04)]"
+                    >
+                      <Image src="/aboutUsIcon.svg" alt="About" width={52} height={52} className="flex-shrink-0" />
+                      <div>
+                        <div className="text-base font-medium text-foreground group-hover:text-[hsl(var(--primary-strong))] transition-colors">
+                          {t("aboutTitle")}
+                        </div>
+                        <div className="mt-1 text-sm text-muted-foreground whitespace-nowrap">
+                          {t("aboutDesc")}
+                        </div>
+                      </div>
+                    </Link>
+
+                    <Link
+                      href="/team"
+                      onClick={() => setIsCompanyOpen(false)}
+                      className="group flex items-center gap-4 rounded-xl px-3 py-4 transition-all duration-200 hover:bg-[hsl(var(--foreground)/0.04)]"
+                    >
+                      <Image src="/OurTeamIcon.svg" alt="Team" width={52} height={52} className="flex-shrink-0" />
+                      <div>
+                        <div className="text-base font-medium text-foreground group-hover:text-[hsl(var(--primary-strong))] transition-colors">
+                          {t("teamTitle")}
+                        </div>
+                        <div className="mt-1 text-sm text-muted-foreground whitespace-nowrap">
+                          {t("teamDesc")}
+                        </div>
+                      </div>
+                    </Link>
+                  </div>
+
+                  {/* Bottom CTA bar */}
+                  <div className="border-t border-border/50 bg-[hsl(var(--foreground)/0.02)] px-5 py-2.5 flex items-center justify-between">
+                    <span className="text-xs text-muted-foreground">Ready to build something great?</span>
+                    <Link
+                      href="/contact"
+                      onClick={() => setIsCompanyOpen(false)}
+                      className="flex items-center gap-1 text-xs font-semibold text-[hsl(var(--primary))] hover:text-[hsl(var(--primary-strong))] transition-colors"
+                    >
+                      Get in touch <ArrowRight className="h-3 w-3" />
+                    </Link>
+                  </div>
                 </motion.div>
               )}
             </div>

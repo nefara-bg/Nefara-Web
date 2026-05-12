@@ -10,7 +10,11 @@
         "team": "Team",
         "work": "Work",
         "contact": "Contact Us",
-        "button": "Contact Us"
+        "button": "Contact Us",
+        "aboutTitle": "About Nefara",
+        "aboutDesc": "Who we are, what we believe in, and the work we put our name on",
+        "teamTitle": "Our Team",
+        "teamDesc": "The developers and designers behind every project we deliver"
     },
     "hero": {
         "tag": "Building Digital Excellence Since 2024",
