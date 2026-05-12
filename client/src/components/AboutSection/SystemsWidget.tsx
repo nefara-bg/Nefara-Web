@@ -1,10 +1,16 @@
+"use client"
+
+import { useTranslations } from "next-intl"
+
 export default function SystemsWidget() {
+    const t = useTranslations("about.widgets.systems")
+
     const nodeW = 52, nodeH = 30, rx = 5
     const positions = [
-        { id: "App", x: 12,  y: 16 },
-        { id: "API", x: 164, y: 16 },
-        { id: "DB",  x: 12,  y: 106 },
-        { id: "CDN", x: 164, y: 106 },
+        { id: t("app"), x: 12,  y: 16 },
+        { id: t("api"), x: 164, y: 16 },
+        { id: t("db"),  x: 12,  y: 106 },
+        { id: t("cdn"), x: 164, y: 106 },
     ]
     const edges = [
         { path: "M64,31 L164,31",   dur: 1.6 },

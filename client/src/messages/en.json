@@ -156,6 +156,26 @@
         "maintenance": {
             "title": "Support",
             "content": "Our commitment doesn't end at launch. We treat your software as our own - monitoring it in real time, optimizing performance, and keeping it up to date at every stage of your business growth."
+        },
+        "widgets": {
+            "chat": {
+                "message1": "Ready to build your vision!",
+                "message2": "Let's get started!"
+            },
+            "support": {
+                "status": "All systems operational",
+                "uptime": "Uptime",
+                "monitoring": "Monitoring"
+            },
+            "seo": {
+                "trafficRising": "Organic traffic rising"
+            },
+            "systems": {
+                "app": "App",
+                "api": "API",
+                "db": "DB",
+                "cdn": "CDN"
+            }
         }
     },
     "contact": {

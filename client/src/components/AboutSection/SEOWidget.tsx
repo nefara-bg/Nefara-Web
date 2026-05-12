@@ -1,4 +1,9 @@
+"use client"
+
+import { useTranslations } from "next-intl"
+
 export default function SEOWidget() {
+    const t = useTranslations("about.widgets.seo")
     const bars = [
         { h: 22, d: 0 }, { h: 38, d: 0.18 }, { h: 52, d: 0.36 },
         { h: 68, d: 0.54 }, { h: 82, d: 0.72 }, { h: 100, d: 0.90 },
@@ -25,7 +30,7 @@ export default function SEOWidget() {
             </div>
             <div className="flex items-center gap-1"
                 style={{ fontSize: 12, color: "hsl(var(--primary))", fontWeight: 600 }}>
-                <span>↑</span><span>Organic traffic rising</span>
+                <span>↑</span><span>{t("trafficRising")}</span>
             </div>
         </div>
     )

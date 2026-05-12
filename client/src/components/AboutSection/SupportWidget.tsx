@@ -1,4 +1,10 @@
+"use client"
+
+import { useTranslations } from "next-intl"
+
 export default function SupportWidget() {
+    const t = useTranslations("about.widgets.support")
+
     return (
         <div className="flex flex-col scale-150 gap-3 select-none" style={{ width: 220 }}>
             <div className="flex items-center gap-2">
@@ -8,7 +14,7 @@ export default function SupportWidget() {
                         style={{ background: "#22c55e", animation: "pulseRing 1.8s ease-out infinite" }} />
                 </div>
                 <span style={{ fontSize: 12, color: "hsl(var(--foreground)/0.6)" }}>
-                    All systems operational
+                    {t("status")}
                 </span>
             </div>
             <svg width="210" height="50" viewBox="0 0 150 36" style={{ overflow: "visible" }}>
@@ -30,13 +36,13 @@ export default function SupportWidget() {
                     <div className="font-display font-bold" style={{ color: "hsl(var(--primary))", fontSize: 22 }}>
                         99.9%
                     </div>
-                    <div style={{ fontSize: 11, color: "hsl(var(--foreground)/0.4)" }}>Uptime</div>
+                    <div style={{ fontSize: 11, color: "hsl(var(--foreground)/0.4)" }}>{t("uptime")}</div>
                 </div>
                 <div>
                     <div className="font-display font-bold" style={{ color: "hsl(var(--primary))", fontSize: 22 }}>
                         24/7
                     </div>
-                    <div style={{ fontSize: 11, color: "hsl(var(--foreground)/0.4)" }}>Monitoring</div>
+                    <div style={{ fontSize: 11, color: "hsl(var(--foreground)/0.4)" }}>{t("monitoring")}</div>
                 </div>
             </div>
         </div>

@@ -1,8 +1,11 @@
 "use client"
 
 import * as motion from "motion/react-client"
+import { useTranslations } from "next-intl"
 
 export default function ChatWidget() {
+    const t = useTranslations("about.widgets.chat")
+
     return (
         <div className="flex flex-col scale-150 gap-3 select-none" style={{ width: 260 }}>
             <motion.div
@@ -20,7 +23,7 @@ export default function ChatWidget() {
                     borderRadius: "1rem 1rem 1rem 0.2rem",
                     padding: "8px 13px", fontSize: 12, lineHeight: 1.45,
                 }}>
-                    Ready to build your vision!
+                    {t("message1")}
                 </div>
             </motion.div>
 
@@ -37,7 +40,7 @@ export default function ChatWidget() {
                     borderRadius: "1rem 1rem 0.2rem 1rem",
                     padding: "8px 13px", fontSize: 12, lineHeight: 1.45,
                 }}>
-                    Let's get started!
+                    {t("message2")}
                 </div>
                 <div className="w-8 h-8 rounded-full flex-shrink-0 grid place-items-center font-bold text-[11px]"
                     style={{ background: "hsl(var(--foreground)/0.08)", color: "hsl(var(--foreground)/0.45)" }}>C</div>
