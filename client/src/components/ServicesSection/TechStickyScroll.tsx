@@ -1,5 +1,7 @@
 "use client";
 import { StickyScroll } from "@/components/ui/sticky-scroll-reveal";
+import { KeyboardWidget } from "./KeyboardWidget";
+import { QuicxStatsWidget } from "./QuicxStatsWidget";
 
 interface Props {
     s1Title: string;
@@ -20,12 +22,12 @@ export function TechStickyScroll({ s1Title, s1, s2Title, s2, s3Title, s3 }: Prop
         {
             title: s2Title,
             description: s2,
-            content: <div className="w-full h-full rounded-lg border border-white/20 bg-white/5" />,
+            content: <QuicxStatsWidget />,
         },
         {
             title: s3Title,
             description: s3,
-            content: <div className="w-full h-full rounded-lg border border-white/20 bg-white/5" />,
+            content: <KeyboardWidget />,
         },
     ];
 
