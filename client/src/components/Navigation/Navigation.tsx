@@ -94,9 +94,10 @@ export function Navigation({ locale }: { locale: string }) {
 
               {isCompanyOpen && (
                 <motion.div
-                  initial={{ opacity: 0, y: -8, scale: 0.97 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+                  style={{ transformOrigin: "top center" }}
                   className="absolute top-full left-1/2 -translate-x-1/2 mt-2 rounded-xl border border-border bg-card shadow-2xl overflow-hidden"
                   style={{ width: "max-content", minWidth: 420 }}
                 >
