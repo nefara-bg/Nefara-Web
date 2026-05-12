@@ -34,11 +34,6 @@ const Page = async ({ params }: { params: Promise<{ locale: string }> }) => {
 
     const scenes: ReactNode[] = [
         <HeroSection key="hero" />,
-        <MissionHeadingSection
-            key="heading"
-            tagline={t("whyNefara")}
-            heading={t("whatMakesDifferent")}
-        />,
         <MissionRowSection
             key="row1"
             num="01"
@@ -50,9 +45,9 @@ const Page = async ({ params }: { params: Promise<{ locale: string }> }) => {
         <MissionRowSection
             key="row2"
             num="02"
-            title={t("ownToolsStatement")}
-            desc={t("ownTools.content")}
-            widget={<SystemsWidget />}
+            title={t("maintenance.title")}
+            desc={t("maintenance.content")}
+            widget={<SupportWidget />}
             widgetSide="right"
         />,
         <MissionRowSection
@@ -66,9 +61,9 @@ const Page = async ({ params }: { params: Promise<{ locale: string }> }) => {
         <MissionRowSection
             key="row4"
             num="04"
-            title={t("maintenance.title")}
-            desc={t("maintenance.content")}
-            widget={<SupportWidget />}
+            title={t("ownToolsStatement")}
+            desc={t("ownTools.content")}
+            widget={<SystemsWidget />}
             widgetSide="right"
         />
     ]

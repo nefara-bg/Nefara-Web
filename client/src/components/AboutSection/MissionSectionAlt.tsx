@@ -18,27 +18,6 @@ export async function MissionSectionAlt() {
             className="relative isolate overflow-hidden bg-background flex flex-col"
         >
             <div className="relative flex flex-col h-full mx-auto" style={{ ...CONTAINER_STYLE, margin: "0 auto" }}>
-                {/* Heading row */}
-                <div className="relative min-h-screen grid grid-cols-2 items-center pt-16">
-                    <div className="pl-6 flex flex-col gap-2 pb-2">
-                        <motion.div
-                            className="flex items-center gap-3"
-                            initial={{ opacity: 0, x: -12 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                        >
-                            <div className="h-px w-6" style={{ background: "hsl(var(--primary))" }} />
-                            <span className="font-manrope font-bold tracking-wide uppercase text-primary text-xs">
-                                {t("whyNefara")}
-                            </span>
-                        </motion.div>
-                        <MissionHeadingFlow heading={t("whatMakesDifferent")} />
-                    </div>
-                    <div className="relative w-full h-full">
-                    </div>
-                </div>
-
                 {/* Cards: rows 1–4 */}
                 <div className="relative grid grid-cols-2 flex-1" style={{ gridAutoRows: "minmax(100vh, auto)" }}>
 
@@ -54,13 +33,13 @@ export async function MissionSectionAlt() {
                     />
                     <FeatureCardFlow
                         num="02"
-                        title={t("ownToolsStatement")}
-                        desc={t("ownTools.content")}
+                        title={t("maintenance.title")}
+                        desc={t("maintenance.content")}
                         side="left"
-                        delay={0.22}
+                        delay={0.38}
                     />
-                    <WidgetCell delay={0.22} side="right">
-                        <SystemsWidget />
+                    <WidgetCell delay={0.38} side="right">
+                        <SupportWidget />
                     </WidgetCell>
                     <WidgetCell delay={0.30} side="left">
                         <SEOWidget />
@@ -74,13 +53,13 @@ export async function MissionSectionAlt() {
                     />
                     <FeatureCardFlow
                         num="04"
-                        title={t("maintenance.title")}
-                        desc={t("maintenance.content")}
+                        title={t("ownToolsStatement")}
+                        desc={t("ownTools.content")}
                         side="left"
-                        delay={0.38}
+                        delay={0.22}
                     />
-                    <WidgetCell delay={0.38} side="right">
-                        <SupportWidget />
+                    <WidgetCell delay={0.22} side="right">
+                        <SystemsWidget />
                     </WidgetCell>
                 </div>
 
