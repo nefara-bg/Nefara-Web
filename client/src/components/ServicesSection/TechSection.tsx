@@ -9,6 +9,7 @@ export default async function TechSection() {
             <TechStickyScroll
                 s1Title={t("s1Title")}
                 s1={t("s1")}
+                s1Keywords={t.raw("s1Keywords") as string[]}
                 s2Title={t("s2Title")}
                 s2={t("s2")}
                 s3Title={t("s3Title")}

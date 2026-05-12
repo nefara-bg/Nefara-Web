@@ -102,6 +102,7 @@
         "tech": {
             "s1Title": "What sets us apart",
             "s1": "What distinguishes us from most agencies is that we don't rely solely on ready-made solutions. At Nefara, we develop our own software and integrate it directly into the products we build for our clients.",
+            "s1Keywords": ["Own software", "No shortcuts", "Built in-house", "Direct integration"],
             "s2Title": "What is it? Quicx",
             "s2": "One of them is Quicx — the fastest and lightest task queue engine of its kind, built entirely by us in C. While other solutions compromise between speed and efficiency, Quicx makes none. Integrating it into the systems we build means faster processing, fewer resources, and a more stable product — without affecting the cost to the client.",
             "s3Title": "The inside advantage",

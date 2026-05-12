@@ -1,8 +1,11 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
-import { useMotionValueEvent, useScroll } from "motion/react";
+import React, { createContext, useContext, useEffect, useRef, useState } from "react";
+import { useMotionValueEvent, useScroll, MotionValue } from "motion/react";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
+
+export const StickyScrollProgressContext = createContext<MotionValue<number> | null>(null)
+export const useStickyScrollProgress = () => useContext(StickyScrollProgressContext)
 
 export const StickyScroll = ({
     content,
@@ -94,7 +97,9 @@ export const StickyScroll = ({
                     contentClassName
                 )}
             >
-                {content[activeCard].content ?? null}
+                <StickyScrollProgressContext.Provider value={scrollYProgress}>
+                    {content[activeCard].content ?? null}
+                </StickyScrollProgressContext.Provider>
             </div>
         </motion.div>
     );
