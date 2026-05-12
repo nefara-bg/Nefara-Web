@@ -99,6 +99,7 @@
     font-weight: 500;
     -webkit-font-smoothing: antialiased;
     font-feature-settings: "rlig" 1, "calt" 1;
+    overflow-x: clip;
   }
 
   h1,
