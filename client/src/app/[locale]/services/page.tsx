@@ -5,6 +5,7 @@ import { notFound } from "next/navigation"
 import { validateClientUrl } from "@/utils/env/env"
 import ServicesSection from "@/components/ServicesSection/ServicesSection"
 import TechSection from "@/components/ServicesSection/TechSection"
+import HowWeWork from "@/components/ServicesSection/HowWeWork"
 
 export async function generateStaticParams() {
     return routing.locales.map((locale) => ({ locale }))
@@ -56,6 +57,7 @@ const ServicesPage = async ({ params }: { params: Promise<{ locale: string }> })
         <main className="min-h-screen bg-background pt-16">
             <ServicesSection />
             <TechSection />
+            <HowWeWork />
         </main>
     )
 }

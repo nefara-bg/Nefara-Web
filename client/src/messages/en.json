@@ -106,6 +106,23 @@
             "s2": "One of them is Quicx — the fastest and lightest task queue engine of its kind, built entirely by us in C. While other solutions compromise between speed and efficiency, Quicx makes none. Integrating it into the systems we build means faster processing, fewer resources, and a more stable product — without affecting the cost to the client.",
             "s3Title": "The inside advantage",
             "s3": "A deep understanding of the technology behind our own software gives us an advantage that is hard to achieve from the outside: we know every detail of how the system works, which lets us optimise, scale and maintain it at a level that standard tools simply cannot match."
+        },
+        "howWeWork": {
+            "eyebrow": "Process",
+            "heading": "How we work",
+            "subtitle": "A transparent, three-step process — from first conversation to final delivery.",
+            "step1": {
+                "title": "First meeting",
+                "content": "We start with a personal meeting where we get to know you, understand the project, and align on the terms. Throughout development we maintain constant communication — at every enquiry we keep you informed about what is happening and what stage we are at. We are available to you 24/7."
+            },
+            "step2": {
+                "title": "Review & delivery",
+                "content": "When the product is ready, we present it for review. If anything does not meet your expectations, we fix the issues — at no extra charge. You pay only when you are completely satisfied with the final result."
+            },
+            "step3": {
+                "title": "No obligation",
+                "content": "If at the end of the process you decide to walk away, you owe nothing. The only thing we retain is the right to use the project as part of our portfolio."
+            }
         }
     },
     "about": {
