@@ -8,11 +8,21 @@ export type ContactState = {
 }
 
 export const contactAction = async (previousState: ContactState, formData: FormData): Promise<ContactState> => {
-    const email = formData.get("email") as string;
-    const subject = formData.get("subject") as string;
-    const message = formData.get("message") as string;
+    const name    = (formData.get("name")    as string) || ""
+    const email   = (formData.get("email")   as string) || ""
+    const company = (formData.get("company") as string) || ""
+    const service = (formData.get("service") as string) || ""
+    const message = (formData.get("message") as string) || ""
 
-    const result = await sendEmail(email, subject, message);
+    const subject = [service && `[${service}]`, `Inquiry from ${name || email}`].filter(Boolean).join(" ")
 
-    return result;
+    const fullMessage = [
+        name    && `Name: ${name}`,
+        company && `Company: ${company}`,
+        service && `Service: ${service}`,
+        "",
+        message,
+    ].filter((l) => l !== undefined).join("\n")
+
+    return await sendEmail(email, subject, fullMessage)
 }

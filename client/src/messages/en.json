@@ -231,7 +231,27 @@
             "title": "Custom Proposals",
             "content": "Tailored solutions and transparent pricing."
         },
-        "call": "Prefer to call?"
+        "call": "Prefer to call?",
+        "heroTitle": "Let's build\nsomething.",
+        "heroSubtitle": "Tell us about your project. We'll get back to you within one business day.",
+        "reachUs": "Or reach us directly",
+        "location": "Location",
+        "locationValue": "Sofia, Bulgaria",
+        "name": "Your name",
+        "namePlaceholder": "Your name",
+        "company": "Company (optional)",
+        "companyPlaceholder": "Your company",
+        "service": "Service interest",
+        "servicePlaceholder": "Select a service...",
+        "projectLabel": "Tell us about your project",
+        "serviceOptions": {
+            "web": "Web Development",
+            "mobile": "Mobile Apps",
+            "desktop": "Desktop Apps",
+            "software": "Software Systems",
+            "seo": "SEO Optimisation",
+            "other": "Other"
+        }
     },
     "footer": {
         "text": "Transforming ideas into exceptional software solutions. Building the future, one application at a time. Your success is our mission.",

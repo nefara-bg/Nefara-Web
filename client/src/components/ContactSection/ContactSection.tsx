@@ -1,16 +1,13 @@
 "use client"
 
 import React, { useActionState, useEffect, useState } from "react"
-import * as motion from "motion/react-client"
-import { Mail, Phone, Send, Check, Clock, FileText, Loader2 } from "lucide-react"
+import { Send, Check, Loader2 } from "lucide-react"
 import { contactAction } from "@/actions/contact"
 import { toast } from "sonner"
 import { useTranslations } from "next-intl"
-import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
-import { Card } from "@/components/ui/card"
 
 export function ContactSection() {
     const t = useTranslations("contact")
@@ -24,165 +21,150 @@ export function ContactSection() {
         }
     }, [state, t])
 
-    const benefits = [
-        { icon: Clock, title: t("time.title"), description: t("time.content") },
-        { icon: Check, title: t("consultation.title"), description: t("consultation.content") },
-        { icon: FileText, title: t("proposals.title"), description: t("proposals.content") },
-    ]
-
     const displayEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL
     const displayPhone = process.env.NEXT_PUBLIC_CONTACT_PHONE
 
+    const titleLines = t("heroTitle").split("\n")
+
     return (
-        <section id="contact" className="bg-background section-shell">
-            <div className="mx-auto max-w-7xl">
-                {/* Header */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="text-center max-w-3xl mx-auto mb-14 md:mb-20"
-                >
-                    <span className="eyebrow mb-5 justify-center">{t("tag")}</span>
-                    <h2 className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-foreground mt-4 mb-5 leading-[1.05] tracking-tight">
-                        {t("title")} <br />
-                        <span className="text-[hsl(var(--primary-strong))]">{t("subtitle")}</span>
-                    </h2>
-                    <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-                        {t("content")}
-                    </p>
-                </motion.div>
+        <section id="contact" className="bg-background">
+            <div className="mx-auto max-w-7xl px-6 lg:px-10 pt-14 pb-28">
+                <div className="grid lg:grid-cols-[2fr_3fr] gap-14 xl:gap-24 items-start">
 
-                {/* Split layout */}
-                <Card className="overflow-hidden grid lg:grid-cols-5 max-w-6xl mx-auto shadow-[0_24px_60px_-20px_rgba(15,23,42,0.16)]">
-                    {/* Form */}
-                    <motion.div
-                        initial={{ opacity: 0, x: -16 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        className="lg:col-span-3 p-8 md:p-12"
-                    >
-                        <h3 className="font-display text-2xl font-bold text-foreground mb-2">
-                            {t("formTitle")}
-                        </h3>
-                        <p className="text-sm text-muted-foreground mb-8">{t("formText")}</p>
+                    {/* Left — sticky info panel */}
+                    <div className="lg:sticky lg:top-24">
+                        <h1 className="font-display text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-[1.05] tracking-tight mb-5">
+                            {titleLines.map((line, i) => (
+                                <React.Fragment key={i}>
+                                    {line}
+                                    {i < titleLines.length - 1 && <br />}
+                                </React.Fragment>
+                            ))}
+                        </h1>
+                        <p className="text-base text-muted-foreground leading-relaxed mb-10 max-w-xs">
+                            {t("heroSubtitle")}
+                        </p>
 
+                        <div className="flex flex-col gap-5">
+                            <a href={`mailto:${displayEmail}`} className="flex items-center gap-4 group">
+                                <img src="/contacIcons/mailIcon.svg" alt="Email" className="w-11 h-11 shrink-0" />
+                                <div>
+                                    <p className="text-[10px] uppercase tracking-[0.14em] font-bold text-muted-foreground mb-0.5">
+                                        {t("emailTitle")}
+                                    </p>
+                                    <p className="text-sm font-semibold text-foreground group-hover:text-[hsl(var(--primary))] transition-colors">
+                                        {displayEmail}
+                                    </p>
+                                </div>
+                            </a>
+
+                            <a href={`tel:${displayPhone}`} className="flex items-center gap-4 group">
+                                <img src="/contacIcons/phoneIcon.svg" alt="Phone" className="w-11 h-11 shrink-0" />
+                                <div>
+                                    <p className="text-[10px] uppercase tracking-[0.14em] font-bold text-muted-foreground mb-0.5">
+                                        {t("phoneTitle")}
+                                    </p>
+                                    <p className="text-sm font-semibold text-foreground group-hover:text-[hsl(var(--primary))] transition-colors">
+                                        {displayPhone}
+                                    </p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    {/* Right — form card */}
+                    <div className="bg-card rounded-2xl border border-border shadow-[0_8px_48px_-16px_rgba(15,23,42,0.12)] p-8 md:p-10">
                         {state?.error && (
-                            <p className="text-sm text-destructive italic mb-4">{state.error}</p>
+                            <p className="text-sm text-destructive italic mb-5">{state.error}</p>
                         )}
 
                         <form action={formAction} className="flex flex-col gap-5">
-                            <div className="grid sm:grid-cols-2 gap-4">
-                                <div className="space-y-2">
-                                    <Label htmlFor="email">{t("email")} *</Label>
-                                    <Input id="email" name="email" type="email" required placeholder={t("emailPlaceholder")} />
+                            <div className="grid sm:grid-cols-2 gap-5">
+                                <div className="space-y-1.5">
+                                    <Label htmlFor="name">{t("name")}</Label>
+                                    <Input
+                                        id="name"
+                                        name="name"
+                                        type="text"
+                                        required
+                                        placeholder={t("namePlaceholder")}
+                                    />
                                 </div>
-                                <div className="space-y-2">
-                                    <Label htmlFor="subject">{t("subject")} *</Label>
-                                    <Input id="subject" name="subject" required placeholder={t("subjectPlaceholder")} />
+                                <div className="space-y-1.5">
+                                    <Label htmlFor="email">{t("email")}</Label>
+                                    <Input
+                                        id="email"
+                                        name="email"
+                                        type="email"
+                                        required
+                                        placeholder={t("emailPlaceholder")}
+                                    />
                                 </div>
                             </div>
-                            <div className="space-y-2">
-                                <Label htmlFor="message">{t("message")} *</Label>
-                                <Textarea id="message" name="message" required rows={5} placeholder={t("messagePlaceholder")} />
+
+                            <div className="space-y-1.5">
+                                <Label htmlFor="company">{t("company")}</Label>
+                                <Input
+                                    id="company"
+                                    name="company"
+                                    type="text"
+                                    placeholder={t("companyPlaceholder")}
+                                />
                             </div>
-                            <Button type="submit" size="lg" disabled={isPending || isSuccess} className="w-full sm:w-auto sm:self-start">
+
+                            <div className="space-y-1.5">
+                                <Label htmlFor="service">{t("service")}</Label>
+                                <select
+                                    id="service"
+                                    name="service"
+                                    defaultValue=""
+                                    className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 appearance-none cursor-pointer"
+                                    style={{
+                                        backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E")`,
+                                        backgroundRepeat: "no-repeat",
+                                        backgroundPosition: "right 0.75rem center",
+                                        paddingRight: "2.5rem",
+                                    }}
+                                >
+                                    <option value="" disabled>{t("servicePlaceholder")}</option>
+                                    <option value="Web Development">{t("serviceOptions.web")}</option>
+                                    <option value="Mobile Apps">{t("serviceOptions.mobile")}</option>
+                                    <option value="Desktop Apps">{t("serviceOptions.desktop")}</option>
+                                    <option value="Software Systems">{t("serviceOptions.software")}</option>
+                                    <option value="SEO Optimisation">{t("serviceOptions.seo")}</option>
+                                    <option value="Other">{t("serviceOptions.other")}</option>
+                                </select>
+                            </div>
+
+                            <div className="space-y-1.5">
+                                <Label htmlFor="message">{t("projectLabel")}</Label>
+                                <Textarea
+                                    id="message"
+                                    name="message"
+                                    required
+                                    rows={5}
+                                    placeholder={t("messagePlaceholder")}
+                                    className="resize-none"
+                                />
+                            </div>
+
+                            <button
+                                type="submit"
+                                disabled={isPending || isSuccess}
+                                className="w-full flex items-center justify-center gap-2 rounded-xl bg-[hsl(var(--primary))] py-3.5 text-sm font-semibold text-white transition-colors hover:bg-[hsl(var(--primary-strong))] disabled:opacity-60 disabled:cursor-not-allowed"
+                            >
                                 {isPending ? (
-                                    <>
-                                        <Loader2 className="w-4 h-4 animate-spin" />
-                                        {t("loading")}
-                                    </>
+                                    <><Loader2 className="w-4 h-4 animate-spin" />{t("loading")}</>
                                 ) : isSuccess ? (
-                                    <>
-                                        <Check className="w-4 h-4" />
-                                        {t("alert")}
-                                    </>
+                                    <><Check className="w-4 h-4" />{t("alert")}</>
                                 ) : (
-                                    <>
-                                        {t("button")}
-                                        <Send className="w-4 h-4" />
-                                    </>
+                                    <><Send className="w-4 h-4" />{t("button")}</>
                                 )}
-                            </Button>
+                            </button>
                         </form>
-                    </motion.div>
+                    </div>
 
-                    {/* Dark info panel */}
-                    <motion.div
-                        initial={{ opacity: 0, x: 16 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        className="lg:col-span-2 dark-section p-8 md:p-12 relative overflow-hidden"
-                    >
-                        <div
-                            className="absolute -top-20 -right-20 w-64 h-64 rounded-full opacity-50"
-                            style={{
-                                background: "radial-gradient(circle, hsl(var(--primary) / 0.4) 0%, transparent 70%)",
-                            }}
-                        />
-
-                        <div className="relative">
-                            <h3 className="font-display text-2xl font-bold text-white mb-6">
-                                {t("infoTitle")}
-                            </h3>
-
-                            {/* Direct contacts */}
-                            <div className="flex flex-col gap-3 mb-8">
-                                <a
-                                    href={`mailto:${displayEmail}`}
-                                    className="flex items-center gap-3 p-3 rounded-md border border-white/10 hover:border-[hsl(var(--primary))] hover:bg-white/5 transition-all"
-                                >
-                                    <span className="flex items-center justify-center w-9 h-9 rounded-md bg-[hsl(var(--primary)/0.18)] text-[hsl(var(--primary))]">
-                                        <Mail className="w-4 h-4" />
-                                    </span>
-                                    <div className="min-w-0">
-                                        <p className="text-[10px] uppercase tracking-[0.14em] font-bold text-white/50">{t("emailTitle")}</p>
-                                        <p className="text-sm text-white truncate">{displayEmail}</p>
-                                    </div>
-                                </a>
-                                <a
-                                    href={`tel:${displayPhone}`}
-                                    className="flex items-center gap-3 p-3 rounded-md border border-white/10 hover:border-[hsl(var(--primary))] hover:bg-white/5 transition-all"
-                                >
-                                    <span className="flex items-center justify-center w-9 h-9 rounded-md bg-[hsl(var(--primary)/0.18)] text-[hsl(var(--primary))]">
-                                        <Phone className="w-4 h-4" />
-                                    </span>
-                                    <div>
-                                        <p className="text-[10px] uppercase tracking-[0.14em] font-bold text-white/50">{t("phoneTitle")}</p>
-                                        <p className="text-sm text-white">{displayPhone}</p>
-                                    </div>
-                                </a>
-                            </div>
-
-                            {/* Benefits list */}
-                            <div className="flex flex-col gap-5">
-                                {benefits.map((benefit, i) => {
-                                    const Icon = benefit.icon
-                                    return (
-                                        <div key={benefit.title} className="flex items-start gap-3">
-                                            <span className="flex items-center justify-center w-8 h-8 rounded-md bg-[hsl(var(--primary)/0.18)] text-[hsl(var(--primary))] shrink-0">
-                                                <Icon className="w-4 h-4" />
-                                            </span>
-                                            <div>
-                                                <p className="text-sm font-bold text-white mb-0.5">{benefit.title}</p>
-                                                <p className="text-xs text-white/60 leading-relaxed">{benefit.description}</p>
-                                            </div>
-                                        </div>
-                                    )
-                                })}
-                            </div>
-
-                            <div className="mt-8 pt-6 border-t border-white/10">
-                                <p className="text-xs text-white/60">
-                                    {t("call")}{" "}
-                                    <a href={`tel:${displayPhone}`} className="text-[hsl(var(--primary))] font-bold hover:underline">
-                                        {displayPhone}
-                                    </a>
-                                </p>
-                            </div>
-                        </div>
-                    </motion.div>
-                </Card>
+                </div>
             </div>
         </section>
     )
