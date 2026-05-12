@@ -1,6 +1,6 @@
 "use client"
 
-import { createContext, ReactNode, useContext, useRef, useState } from "react"
+import { createContext, ReactNode, useContext, useEffect, useRef, useState } from "react"
 import { motion, useScroll, useTransform, useMotionValueEvent } from "motion/react"
 
 // 300vh runway. DONE at progress 0.55 → scrollY = 165vh.
@@ -34,6 +34,19 @@ export function SceneTransition({ from, to }: { from: ReactNode; to: ReactNode }
     useMotionValueEvent(scrollYProgress, "change", (v) => {
         setDone(isActive && v >= SCENE_THRESHOLD)
     })
+
+    // When this transition activates, its runway target was previously inside a
+    // fixed-positioned ancestor and useScroll's cached bounding rect is stale.
+    // Without forcing a re-measurement, scrollYProgress can read past the threshold
+    // on the next scroll event — flipping `done` instantly and causing the incoming
+    // scene to pop in fully opaque instead of fading in.
+    useEffect(() => {
+        if (!isActive) return
+        const id = requestAnimationFrame(() => {
+            window.dispatchEvent(new Event("resize"))
+        })
+        return () => cancelAnimationFrame(id)
+    }, [isActive])
 
     // Compute filter directly — avoids two intermediate blur MotionValues.
     const fromOpacity = useTransform(scrollYProgress, [...FADE_OUT], [1, 0])

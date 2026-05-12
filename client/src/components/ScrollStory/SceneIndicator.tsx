@@ -8,9 +8,12 @@ export function SceneIndicator({ scenes }: { scenes: number }) {
     const { scrollY } = useScroll()
 
     const [stepPx, setStepPx] = useState(0)
+    const [innerH, setInnerH] = useState(0)
     useEffect(() => {
-        const update = () =>
+        const update = () => {
             setStepPx(SCENE_THRESHOLD * SCENE_RUNWAY_VH * window.innerHeight / 100)
+            setInnerH(window.innerHeight)
+        }
         update()
         window.addEventListener("resize", update, { passive: true })
         return () => window.removeEventListener("resize", update)
@@ -23,18 +26,20 @@ export function SceneIndicator({ scenes }: { scenes: number }) {
         setActive(idx)
     })
 
-    // Fade out shortly after the last scene becomes active, before Contact CTA.
-    const fadeStart = stepPx * (scenes - 1) + (stepPx * 0.65)
-    const fadeEnd   = stepPx * (scenes - 1) + (stepPx * 0.95)
-    const opacity = useTransform(scrollY, [fadeStart, fadeEnd], [1, 0], { clamp: true })
+    // Pin to R4's bottom: until the last scene becomes active, the indicator sits at
+    // fixed bottom-6. Once scrollY passes the last-scene threshold, translate it up
+    // at scroll-rate so it stays anchored to R4's bottom edge and rides off-screen
+    // with R4 as the user continues into ContactCTA.
+    const lockY = stepPx * (scenes - 1)
+    const stickY = useTransform(scrollY, [lockY, lockY + innerH], [0, -innerH], { clamp: true })
 
     return (
-        <motion.div
+        <div
             aria-hidden
-            style={{ opacity }}
             className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 pointer-events-none"
         >
-            <div
+            <motion.div
+                style={{ y: stickY }}
                 className="flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-background"
             >
                 {Array.from({ length: scenes }).map((_, i) => {
@@ -66,7 +71,7 @@ export function SceneIndicator({ scenes }: { scenes: number }) {
                         />
                     )
                 })}
-            </div>
-        </motion.div>
+            </motion.div>
+        </div>
     )
 }
