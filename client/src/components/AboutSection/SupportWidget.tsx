@@ -1,6 +1,6 @@
 export default function SupportWidget() {
     return (
-        <div className="flex flex-col gap-3 select-none" style={{ width: 220 }}>
+        <div className="flex flex-col scale-150 gap-3 select-none" style={{ width: 220 }}>
             <div className="flex items-center gap-2">
                 <div className="relative w-3 h-3 flex-shrink-0">
                     <div className="absolute inset-0 rounded-full" style={{ background: "#22c55e" }} />

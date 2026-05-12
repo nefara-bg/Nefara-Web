@@ -4,7 +4,7 @@ import * as motion from "motion/react-client"
 
 export default function ChatWidget() {
     return (
-        <div className="flex flex-col gap-3 select-none" style={{ width: 260 }}>
+        <div className="flex flex-col scale-150 gap-3 select-none" style={{ width: 260 }}>
             <motion.div
                 className="flex items-end gap-1.5"
                 initial={{ opacity: 0, x: -8 }}
@@ -55,7 +55,7 @@ export default function ChatWidget() {
                 <div className="flex items-center gap-[4px]"
                     style={{
                         background: "hsl(var(--primary)/0.12)",
-                        padding: "7px 11px",
+                        padding: "10px 11px",
                         borderRadius: "1rem 1rem 1rem 0.2rem",
                     }}>
                     {[0, 0.22, 0.44].map((d, i) => (

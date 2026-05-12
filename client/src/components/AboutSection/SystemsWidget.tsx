@@ -14,7 +14,7 @@ export default function SystemsWidget() {
     ]
 
     return (
-        <svg width="240" height="160" viewBox="0 0 240 160" style={{ overflow: "visible" }}>
+        <svg width="240" height="160" className="scale-150" viewBox="0 0 240 160" style={{ overflow: "visible" }}>
             {edges.map((e, i) => (
                 <path key={i} d={e.path} fill="none"
                     stroke="hsl(var(--primary)/0.28)" strokeWidth={1.2} strokeDasharray="5 4" />

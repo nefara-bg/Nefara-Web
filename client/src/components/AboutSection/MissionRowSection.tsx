@@ -21,10 +21,9 @@ export function MissionRowSection({
     return (
         <section className="h-screen bg-background overflow-hidden">
             <div
-                className="relative flex h-full"
-                style={{ ...CONTAINER_STYLE, margin: "0 auto" }}
+                className="relative max-w-7xl px-8 flex h-full mx-auto"
             >
-                <div className="grid grid-cols-2 w-full">
+                <div className="flex w-full">
                     {widgetSide === "left" ? (
                         <>
                             <WidgetCell side="left" delay={0.1}>{widget}</WidgetCell>
