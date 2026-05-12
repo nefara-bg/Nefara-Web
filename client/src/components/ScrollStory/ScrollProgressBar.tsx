@@ -2,24 +2,27 @@
 
 import { motion, useScroll, useTransform } from "motion/react"
 import { useEffect, useState } from "react"
-import { SCENE_RUNWAY_VH, SCENE_THRESHOLD } from "./SceneTransition"
 
-// Each transition advances exactly SCENE_THRESHOLD × SCENE_RUNWAY_VH = 165vh of scroll.
-// Pass the number of transitions (scenes - 1) so the bar fills across the whole story.
-export function ScrollProgressBar({ transitions }: { transitions: number }) {
+export function ScrollProgressBar({ transitions: _ = 0 }: { transitions?: number }) {
     const { scrollY } = useScroll()
 
-    // Story height in pixels — recomputed on resize so vh→px stays accurate.
     const [storyPx, setStoryPx] = useState(0)
     useEffect(() => {
-        const update = () =>
-            setStoryPx(transitions * SCENE_THRESHOLD * SCENE_RUNWAY_VH * window.innerHeight / 100)
+        const update = () => {
+            const pts = Array.from(document.querySelectorAll("[data-scene-done-px]"))
+                .map(el => Number(el.getAttribute("data-scene-done-px")))
+            setStoryPx(pts.length ? Math.max(...pts) : 0)
+        }
         update()
+        const mo = new MutationObserver(update)
+        mo.observe(document.body, { attributes: true, subtree: true, attributeFilter: ["data-scene-done-px"] })
         window.addEventListener("resize", update, { passive: true })
-        return () => window.removeEventListener("resize", update)
-    }, [transitions])
+        return () => {
+            mo.disconnect()
+            window.removeEventListener("resize", update)
+        }
+    }, [])
 
-    // Clamp so the bar stays full after the last transition.
     const scaleX = useTransform(scrollY, [0, storyPx], [0, 1], { clamp: true })
 
     return (

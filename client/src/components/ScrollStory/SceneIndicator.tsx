@@ -1,36 +1,55 @@
 "use client"
 
 import { motion, useScroll, useTransform, useMotionValueEvent } from "motion/react"
-import { useEffect, useState } from "react"
-import { SCENE_RUNWAY_VH, SCENE_THRESHOLD } from "./SceneTransition"
+import { useEffect, useRef, useState } from "react"
+
+function readDonePts(): number[] {
+    return Array.from(document.querySelectorAll("[data-scene-done-px]"))
+        .map(el => Number(el.getAttribute("data-scene-done-px")))
+        .sort((a, b) => a - b)
+}
 
 export function SceneIndicator({ scenes }: { scenes: number }) {
     const { scrollY } = useScroll()
 
-    const [stepPx, setStepPx] = useState(0)
     const [innerH, setInnerH] = useState(0)
     useEffect(() => {
-        const update = () => {
-            setStepPx(SCENE_THRESHOLD * SCENE_RUNWAY_VH * window.innerHeight / 100)
-            setInnerH(window.innerHeight)
-        }
+        const update = () => setInnerH(window.innerHeight)
         update()
         window.addEventListener("resize", update, { passive: true })
         return () => window.removeEventListener("resize", update)
     }, [])
 
+    // Done-at pixels published by each SceneTransition via data-scene-done-px.
+    const [donePts, setDonePts] = useState<number[]>([])
+    const donePtsRef = useRef<number[]>([])
+    useEffect(() => {
+        const update = () => {
+            const pts = readDonePts()
+            donePtsRef.current = pts
+            setDonePts(pts)
+        }
+        update()
+        const mo = new MutationObserver(update)
+        mo.observe(document.body, { attributes: true, subtree: true, attributeFilter: ["data-scene-done-px"] })
+        window.addEventListener("resize", update, { passive: true })
+        return () => {
+            mo.disconnect()
+            window.removeEventListener("resize", update)
+        }
+    }, [])
+
     const [active, setActive] = useState(0)
     useMotionValueEvent(scrollY, "change", (y) => {
-        if (stepPx <= 0) return
-        const idx = Math.min(scenes - 1, Math.max(0, Math.floor(y / stepPx)))
+        const pts = donePtsRef.current
+        if (pts.length === 0) return
+        const idx = Math.min(scenes - 1, pts.filter(p => y >= p).length)
         setActive(idx)
     })
 
-    // Pin to R4's bottom: until the last scene becomes active, the indicator sits at
-    // fixed bottom-6. Once scrollY passes the last-scene threshold, translate it up
-    // at scroll-rate so it stays anchored to R4's bottom edge and rides off-screen
-    // with R4 as the user continues into ContactCTA.
-    const lockY = stepPx * (scenes - 1)
+    // Once the last scene becomes active, ride the indicator off-screen with it
+    // so it doesn't overlap the ContactCTA section.
+    const lockY = donePts.at(-1) ?? Number.MAX_SAFE_INTEGER
     const stickY = useTransform(scrollY, [lockY, lockY + innerH], [0, -innerH], { clamp: true })
 
     return (

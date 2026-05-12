@@ -19,9 +19,9 @@ export function MissionRowSection({
     const cardSide = widgetSide === "left" ? "right" : "left"
 
     return (
-        <section className="h-screen bg-background overflow-hidden">
+        <section className="min-h-screen py-32 bg-background flex flex-col justify-center">
             <div
-                className="relative max-w-7xl px-8 flex h-full mx-auto"
+                className="relative max-w-7xl px-8 flex mx-auto w-full"
             >
                 <div className="flex w-full">
                     {widgetSide === "left" ? (

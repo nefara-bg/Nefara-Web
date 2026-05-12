@@ -9,7 +9,7 @@ export async function HeroSection() {
     return (
         <section
             id="home-alt"
-            className="relative isolate overflow-hidden flex flex-col items-center justify-center min-h-screen bg-background"
+            className="relative isolate overflow-hidden flex flex-col items-center justify-center py-32 min-h-screen bg-background"
         >
             {/* Radial gradient — top right */}
             <div
