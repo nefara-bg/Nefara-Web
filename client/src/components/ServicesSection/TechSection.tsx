@@ -6,8 +6,7 @@ export default async function TechSection() {
 
     return (
         <section className="relative bg-background">
-            <div className="h-px w-full" style={{ background: "linear-gradient(to right, transparent, hsl(174, 100%, 40%), transparent)" }} />
-            <div className="mx-auto max-w-7xl px-6 lg:px-10 py-24 lg:py-32">
+<div className="mx-auto max-w-7xl px-6 lg:px-10 pt-8 pb-24 lg:pt-12 lg:pb-32">
                 <TechStickyScroll
                     s1Title={t("s1Title")}
                     s1={t("s1")}

@@ -44,19 +44,9 @@ export default async function ServicesSection() {
                         <p className="text-base text-muted-foreground leading-relaxed mb-8">
                             {t("pageSubtitle")}
                         </p>
-                        <Link href="/contact" className="inline-block">
-                            <div className="relative rounded-md p-[1.5px] overflow-hidden" style={{ display: "inline-flex" }}>
-                                <div
-                                    className="absolute inset-[-150%] pointer-events-none"
-                                    style={{
-                                        background: "conic-gradient(from 0deg, transparent 60%, hsl(var(--primary)) 80%, hsl(var(--secondary)/0.8) 85%, transparent 100%)",
-                                        animation: "borderSpin 2.8s linear infinite",
-                                    }}
-                                />
-                                <div className="relative rounded-md bg-card px-6 py-2.5 text-sm font-semibold text-foreground hover:text-[hsl(var(--primary))] transition-colors">
-                                    {t("pageCta")}
-                                </div>
-                            </div>
+                        <Link href="/contact" className="group inline-flex items-center gap-1 rounded-md border border-[hsl(var(--primary))] bg-background px-7 py-3 text-base font-semibold text-foreground transition-all duration-300 hover:gap-2.5">
+                            {t("pageCta")}
+                            <span className="translate-x-[-4px] opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100">›</span>
                         </Link>
                     </motion.div>
 
