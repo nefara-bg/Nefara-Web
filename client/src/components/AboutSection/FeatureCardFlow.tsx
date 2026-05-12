@@ -21,21 +21,14 @@ export default function FeatureCardFlow({
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.65, delay, ease: [0.22, 1, 0.36, 1] }}
         >
-            <div
+            {/* <div
                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                 style={{
                     background: isLeft
                         ? "radial-gradient(ellipse 75% 70% at 0% 50%, hsl(var(--primary)/0.09) 0%, transparent 100%)"
                         : "radial-gradient(ellipse 75% 70% at 100% 50%, hsl(var(--primary)/0.09) 0%, transparent 100%)",
                 }}
-            />
-            <div
-                className={`absolute top-[8%] bottom-[8%] w-px pointer-events-none transition-opacity duration-300 opacity-0 group-hover:opacity-100 ${isLeft ? "left-0" : "right-0"}`}
-                style={{
-                    background: "linear-gradient(to bottom, transparent, hsl(var(--primary)), transparent)",
-                    boxShadow: "0 0 8px 2px hsl(var(--primary)/0.4)",
-                }}
-            />
+            /> */}
 
             <div className="flex flex-col justify-center px-6 py-6">
                 <div className="flex items-center gap-2 mb-3">
