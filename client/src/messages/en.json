@@ -67,6 +67,36 @@
             "fylex": "Our newest startup Fylex has just launched. Check it out!",
             "merava": "Won 3rd place in the biggest international students' hackathon - LaunchHacks IV",
             "izgodno": "Izgodno was developed during the international INVESTech Skills Hackathon of 2025"
+        },
+        "pageTitle1": "What we",
+        "pageTitle2": "offer",
+        "pageSubtitle": "Nefara offers a full range of digital services — from a website for your business to building complete software systems.",
+        "pageCta": "Get in touch",
+        "items": {
+            "websites": {
+                "title": "Websites",
+                "desc": "Business sites, landing pages and online stores — fast, responsive and SEO-optimised. Personalised to your brand, goals and vision."
+            },
+            "mobile": {
+                "title": "Mobile Apps",
+                "desc": "Native and cross-platform apps for iOS and Android, integrated to your exact personal requirements."
+            },
+            "desktop": {
+                "title": "Desktop Apps",
+                "desc": "Desktop solutions for Windows and macOS, from internal tools to full product platforms."
+            },
+            "software": {
+                "title": "Software Systems",
+                "desc": "Backend systems, APIs, databases and microservices, built to the scale and needs of your business."
+            },
+            "seoItem": {
+                "title": "SEO Optimisation",
+                "desc": "Technical and content optimisation that boosts your rankings and drives more traffic — including AI-ready visibility for your business."
+            },
+            "support": {
+                "title": "Support",
+                "desc": "Our commitment doesn't end at delivery. We monitor, update and optimise your product at every stage of your business growth."
+            }
         }
     },
     "about": {
