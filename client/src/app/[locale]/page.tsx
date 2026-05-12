@@ -12,6 +12,7 @@ import SEOWidget from "@/components/AboutSection/SEOWidget"
 import SupportWidget from "@/components/AboutSection/SupportWidget"
 import { SceneTransition } from "@/components/ScrollStory/SceneTransition"
 import { ScrollProgressBar } from "@/components/ScrollStory/ScrollProgressBar"
+import { SceneIndicator } from "@/components/ScrollStory/SceneIndicator"
 import { ReactNode } from "react"
 
 function buildScrollStory(scenes: ReactNode[]): ReactNode {
@@ -70,6 +71,7 @@ const Page = async ({ params }: { params: Promise<{ locale: string }> }) => {
     return (
         <main className="min-h-screen bg-background">
             <ScrollProgressBar transitions={scenes.length - 1} />
+            <SceneIndicator scenes={scenes.length} />
             {buildScrollStory(scenes)}
             <ContactCTA key="contact" />,
         </main>
