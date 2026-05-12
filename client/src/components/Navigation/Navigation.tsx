@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useEffect, useRef } from "react"
+import React, { useState, useEffect, useRef, useCallback } from "react"
 import * as motion from "motion/react-client"
 import { Menu, X, ChevronDown, ArrowRight } from "lucide-react"
 import { EASE } from "@/lib/motion"
@@ -18,6 +18,16 @@ export function Navigation({ locale }: { locale: string }) {
   const [isCompanyOpen, setIsCompanyOpen] = useState(false)
   const [isMobileCompanyOpen, setIsMobileCompanyOpen] = useState(false)
   const companyRef = useRef<HTMLDivElement>(null)
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  const handleMouseEnter = useCallback(() => {
+    if (closeTimer.current) clearTimeout(closeTimer.current)
+    setIsCompanyOpen(true)
+  }, [])
+
+  const handleMouseLeave = useCallback(() => {
+    closeTimer.current = setTimeout(() => setIsCompanyOpen(false), 120)
+  }, [])
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20)
@@ -67,8 +77,8 @@ export function Navigation({ locale }: { locale: string }) {
             <div
               ref={companyRef}
               className="relative"
-              onMouseEnter={() => setIsCompanyOpen(true)}
-              onMouseLeave={() => setIsCompanyOpen(false)}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
             >
               <button
                 className="flex items-center gap-1 px-3 py-2 rounded-md text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-[hsl(var(--foreground)/0.04)] transition-colors"
