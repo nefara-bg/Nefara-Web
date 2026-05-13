@@ -29,10 +29,10 @@ export function ContactSection() {
     return (
         <section id="contact" className="bg-background">
             <div className="mx-auto max-w-7xl px-6 lg:px-10 pt-14 pb-28">
-                <div className="grid lg:grid-cols-[2fr_3fr] gap-14 xl:gap-24 items-start">
+                <div className="grid lg:grid-cols-[2fr_3fr] gap-8 xl:gap-14 items-start">
 
                     {/* Left — sticky info panel */}
-                    <div className="lg:sticky lg:top-24">
+                    <div className="lg:sticky lg:top-24 lg:flex lg:flex-col lg:items-start lg:text-left">
                         <h1 className="font-display text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-[1.05] tracking-tight mb-5">
                             {titleLines.map((line, i) => (
                                 <React.Fragment key={i}>
@@ -47,7 +47,7 @@ export function ContactSection() {
 
                         <div className="flex flex-col gap-5">
                             <a href={`mailto:${displayEmail}`} className="flex items-center gap-4 group">
-                                <img src="/contacIcons/mailIcon.svg" alt="Email" className="w-11 h-11 shrink-0" />
+                                <img src="/contacIcons/mailIcon.svg" alt="Email" className="w-8 h-8 shrink-0" />
                                 <div>
                                     <p className="text-[10px] uppercase tracking-[0.14em] font-bold text-muted-foreground mb-0.5">
                                         {t("emailTitle")}
@@ -59,7 +59,7 @@ export function ContactSection() {
                             </a>
 
                             <a href={`tel:${displayPhone}`} className="flex items-center gap-4 group">
-                                <img src="/contacIcons/phoneIcon.svg" alt="Phone" className="w-11 h-11 shrink-0" />
+                                <img src="/contacIcons/phoneIcon.svg" alt="Phone" className="w-8 h-8 shrink-0" />
                                 <div>
                                     <p className="text-[10px] uppercase tracking-[0.14em] font-bold text-muted-foreground mb-0.5">
                                         {t("phoneTitle")}
