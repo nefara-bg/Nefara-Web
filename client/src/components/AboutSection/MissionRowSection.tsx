@@ -20,11 +20,11 @@ export function MissionRowSection({
     const horizontalOffset = "4"
 
     return (
-        <section className="h-screen py-32 bg-background flex flex-col justify-center overflow-hidden" style={{ transform: "translateZ(0)" }}>
+        <section className="min-h-screen md:h-screen py-16 md:py-32 bg-background flex flex-col justify-center md:overflow-hidden" style={{ transform: "translateZ(0)" }}>
             <div
                 className={`relative max-w-7xl px-${horizontalOffset} flex items-center mx-auto w-full flex-1`}
             >
-                <div className="flex w-full h-full items-stretch">
+                <div className={`flex w-full h-full items-stretch ${widgetSide === "left" ? "flex-col-reverse md:flex-row" : "flex-col md:flex-row"}`}>
                     {widgetSide === "left" ? (
                         <>
                             <WidgetCell lineOffset={horizontalOffset} side="left" delay={0.1}>{widget}</WidgetCell>
