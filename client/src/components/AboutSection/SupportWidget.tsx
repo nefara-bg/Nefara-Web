@@ -1,49 +1,183 @@
 "use client"
 
+import { useContext, useEffect, useRef } from "react"
+import gsap from "gsap"
 import { useTranslations } from "next-intl"
+import { SceneScrollContext } from "@/components/ScrollStory/SceneScrollContext"
+
+const PATH_LENGTH    = 280
+const CONNECTOR_LEN  = 26   // SVG units — each connector is 26 units long (y=4→-22 or y=32→58)
+const START = 0.35
+const END   = 0.95
+
+const fade = (v: number, a: number, b: number) =>
+    Math.max(0, Math.min(1, (v - a) / (b - a)))
+
+// v = START + (cumLen / PATH_LENGTH) × (END - START)
+//   peak  (cumLen ≈  42): 0.35 + (42/280)  × 0.6 ≈ 0.440
+//   trough(cumLen ≈ 159): 0.35 + (159/280) × 0.6 ≈ 0.691
+const V_PEAK   = 0.440
+const V_TROUGH = 0.691
+
+// Sequence per landmark:  dot [v, v+0.02]  →  connector [v, v+0.08]  →  label [v+0.04, v+0.12]
+const UPTIME_DOT_IN   = [V_PEAK,   V_PEAK   + 0.02] as const
+const UPTIME_LINE_IN  = [V_PEAK,   V_PEAK   + 0.08] as const
+const UPTIME_IN       = [V_PEAK   + 0.04, V_PEAK   + 0.12] as const
+
+const MONITOR_DOT_IN  = [V_TROUGH, V_TROUGH + 0.02] as const
+const MONITOR_LINE_IN = [V_TROUGH, V_TROUGH + 0.08] as const
+const MONITOR_IN      = [V_TROUGH + 0.04, V_TROUGH + 0.12] as const
 
 export default function SupportWidget() {
     const t = useTranslations("about.widgets.support")
+    const subscribe = useContext(SceneScrollContext)
+
+    const pathRef         = useRef<SVGPathElement>(null)
+    const uptimeLineRef   = useRef<SVGLineElement>(null)
+    const monitorLineRef  = useRef<SVGLineElement>(null)
+    const uptimeDotRef    = useRef<HTMLDivElement>(null)
+    const monitorDotRef   = useRef<HTMLDivElement>(null)
+    const uptimeRef       = useRef<HTMLDivElement>(null)
+    const monitorRef      = useRef<HTMLDivElement>(null)
+
+    useEffect(() => {
+        const path        = pathRef.current
+        const uptimeLine  = uptimeLineRef.current
+        const monitorLine = monitorLineRef.current
+        const uptimeDot   = uptimeDotRef.current
+        const monitorDot  = monitorDotRef.current
+        const uptime      = uptimeRef.current
+        const monitor     = monitorRef.current
+        if (!path) return
+
+        // Initial hidden states
+        gsap.set(path,        { strokeDashoffset: PATH_LENGTH })
+        gsap.set(uptimeLine,  { strokeDashoffset: CONNECTOR_LEN })
+        gsap.set(monitorLine, { strokeDashoffset: CONNECTOR_LEN })
+        gsap.set(uptimeDot,   { scale: 0, opacity: 0 })
+        gsap.set(monitorDot,  { scale: 0, opacity: 0 })
+        gsap.set(uptime,      { opacity: 0, y: 6 })
+        gsap.set(monitor,     { opacity: 0, y: -6 })
+
+        return subscribe((v) => {
+            // ECG line
+            gsap.set(path, { strokeDashoffset: PATH_LENGTH * (1 - fade(v, START, END)) })
+
+            // Uptime: dot → connector → label
+            const kud = fade(v, UPTIME_DOT_IN[0],  UPTIME_DOT_IN[1])
+            gsap.set(uptimeDot,   { scale: kud, opacity: kud })
+
+            const kul = fade(v, UPTIME_LINE_IN[0], UPTIME_LINE_IN[1])
+            gsap.set(uptimeLine,  { strokeDashoffset: CONNECTOR_LEN * (1 - kul) })
+
+            const ku = fade(v, UPTIME_IN[0], UPTIME_IN[1])
+            gsap.set(uptime,      { opacity: ku, y: 6 * (1 - ku) })
+
+            // Monitor: dot → connector → label
+            const kmd = fade(v, MONITOR_DOT_IN[0],  MONITOR_DOT_IN[1])
+            gsap.set(monitorDot,  { scale: kmd, opacity: kmd })
+
+            const kml = fade(v, MONITOR_LINE_IN[0], MONITOR_LINE_IN[1])
+            gsap.set(monitorLine, { strokeDashoffset: CONNECTOR_LEN * (1 - kml) })
+
+            const km = fade(v, MONITOR_IN[0], MONITOR_IN[1])
+            gsap.set(monitor,     { opacity: km, y: -6 * (1 - km) })
+        })
+    }, [subscribe])
 
     return (
-        <div className="flex flex-col gap-4 select-none w-full max-w-xs">
-            <div className="flex items-center gap-2.5">
-                <div className="relative w-3.5 h-3.5 flex-shrink-0">
-                    <div className="absolute inset-0 rounded-full" style={{ background: "#22c55e" }} />
-                    <div className="absolute inset-0 rounded-full"
-                        style={{ background: "#22c55e", animation: "pulseRing 1.8s ease-out infinite" }} />
+        // No overflow-hidden — SVG connectors extend outside their element into the label areas
+        <div
+            className="select-none w-full max-w-xs flex flex-col rounded-lg"
+            style={{
+                background: "hsl(var(--card))",
+                border: "1px solid hsl(var(--border))",
+            }}
+        >
+            {/* Header */}
+            <div
+                className="flex items-center gap-3 px-6 py-4"
+                style={{ borderBottom: "1px solid hsl(var(--border))" }}
+            >
+                <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: "#22c55e" }} />
+                <div>
+                    <p className="text-sm font-semibold leading-none mb-0.5" style={{ color: "hsl(var(--foreground))" }}>
+                        System Monitor
+                    </p>
+                    <p className="text-xs" style={{ color: "#22c55e" }}>All systems operational</p>
                 </div>
-                <span style={{ fontSize: 14, color: "hsl(var(--foreground)/0.6)" }}>
-                    {t("status")}
-                </span>
             </div>
-            <svg width="100%" height="60" viewBox="0 0 150 36" preserveAspectRatio="none" style={{ overflow: "visible" }}>
-                <line x1="0" y1="18" x2="150" y2="18"
-                    stroke="hsl(var(--primary)/0.15)" strokeWidth={1} />
-                <path
-                    d="M0,18 L26,18 L34,4 L42,32 L50,18 L76,18 L84,4 L92,32 L100,18 L150,18"
-                    fill="none"
-                    stroke="hsl(var(--primary))"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeDasharray="280"
-                    style={{ animation: "ecgScan 2.2s linear infinite" }}
-                />
-            </svg>
-            <div className="flex gap-8">
-                <div>
-                    <div className="font-display font-bold" style={{ color: "hsl(var(--primary))", fontSize: 28 }}>
-                        99.9%
+
+            {/* ECG + labels */}
+            <div className="flex flex-col px-6 py-5">
+
+                {/* 99.9% uptime — anchored above first peak */}
+                <div className="relative h-14">
+                    <div
+                        ref={uptimeRef}
+                        className="absolute flex flex-col items-center"
+                        style={{ left: "22.67%", bottom: 4, transform: "translateX(-50%)", opacity: 0 }}
+                    >
+                        <span className="font-display font-bold leading-none"
+                            style={{ fontSize: 22, color: "hsl(var(--primary))" }}>
+                            99.9%
+                        </span>
+                        <span className="text-[10px] uppercase tracking-widest mt-0.5"
+                            style={{ color: "hsl(var(--foreground)/0.4)" }}>
+                            {t("uptime")}
+                        </span>
                     </div>
-                    <div style={{ fontSize: 13, color: "hsl(var(--foreground)/0.4)" }}>{t("uptime")}</div>
                 </div>
-                <div>
-                    <div className="font-display font-bold" style={{ color: "hsl(var(--primary))", fontSize: 28 }}>
-                        24/7
+
+                {/* ECG */}
+                <div className="relative w-full" style={{ height: 60 }}>
+                    <svg
+                        width="100%"
+                        height="60"
+                        viewBox="0 0 150 36"
+                        preserveAspectRatio="none"
+                        style={{ overflow: "visible", position: "absolute", inset: 0 }}
+                    >
+                        <line x1="0" y1="18" x2="150" y2="18"
+                            stroke="hsl(var(--primary)/0.12)" strokeWidth={1} />
+
+                        <path
+                            ref={pathRef}
+                            d="M0,18 L26,18 L34,4 L42,32 L50,18 L76,18 L84,4 L92,32 L100,18 L150,18"
+                            fill="none"
+                            stroke="hsl(var(--primary))"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeDasharray={PATH_LENGTH}
+                            strokeDashoffset={PATH_LENGTH}
+                        />
+                    </svg>
+
+                    <div ref={uptimeDotRef} className="absolute w-[7px] h-[7px] rounded-full"
+                        style={{ left: "22.67%", top: 6.67, transform: "translate(-50%, -50%)", background: "hsl(var(--primary))", opacity: 0 }} />
+                    <div ref={monitorDotRef} className="absolute w-[7px] h-[7px] rounded-full"
+                        style={{ left: "61.33%", top: 53.33, transform: "translate(-50%, -50%)", background: "hsl(var(--primary))", opacity: 0 }} />
+                </div>
+
+                {/* 24/7 monitoring — anchored below second trough */}
+                <div className="relative h-14">
+                    <div
+                        ref={monitorRef}
+                        className="absolute flex flex-col items-center"
+                        style={{ left: "61.33%", top: 4, transform: "translateX(-50%)", opacity: 0 }}
+                    >
+                        <span className="font-display font-bold leading-none"
+                            style={{ fontSize: 22, color: "hsl(var(--primary))" }}>
+                            24/7
+                        </span>
+                        <span className="text-[10px] uppercase tracking-widest mt-0.5"
+                            style={{ color: "hsl(var(--foreground)/0.4)" }}>
+                            {t("monitoring")}
+                        </span>
                     </div>
-                    <div style={{ fontSize: 13, color: "hsl(var(--foreground)/0.4)" }}>{t("monitoring")}</div>
                 </div>
+
             </div>
         </div>
     )

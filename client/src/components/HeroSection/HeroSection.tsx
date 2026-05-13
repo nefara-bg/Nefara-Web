@@ -1,5 +1,5 @@
-import * as motion from "motion/react-client"
 import { getTranslations } from "next-intl/server"
+import { HeroText } from "./HeroText"
 import HeroButtonsFlow from "./HeroButtonsFlow"
 import ScrollCta from "./ScrollCta"
 
@@ -37,27 +37,8 @@ export async function HeroSection() {
                 }}
             />
 
-
             <div className="max-w-3xl flex flex-col items-center gap-6 mx-auto px-6">
-
-                <motion.h1
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.5, delay: 0.05 }}
-                    className="text-center font-manrope font-bold tracking-tight text-6xl leading-none"
-                >
-                    {t("title")} {t("title2")}
-                </motion.h1>
-
-                <motion.p
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.5, delay: 0.15 }}
-                    className="text-center text-muted-foreground text-lg leading-relaxed max-w-2xl"
-                >
-                    {t("content")}
-                </motion.p>
-
+                <HeroText title={`${t("title")} ${t("title2")}`} content={t("content")} />
                 <HeroButtonsFlow />
             </div>
 
