@@ -61,13 +61,13 @@ export default function WidgetCell({ children, delay, side = "right" }: {
             {/* Left decorative line — spans full viewport height, fills downward on scroll */}
             <div
                 ref={lineL}
-                className="pointer-events-none fixed top-0 bottom-0 w-px"
+                className="pointer-events-none fixed left-0 top-0 bottom-0 w-px"
                 style={{ background: "hsl(var(--border))", transform: "scaleY(0)", transformOrigin: "top center" }}
             />
             {/* Right decorative line */}
             <div
                 ref={lineR}
-                className="pointer-events-none fixed top-0 bottom-0 w-px"
+                className="pointer-events-none fixed right-0 top-0 bottom-0 w-px"
                 style={{ background: "hsl(var(--border))", transform: "scaleY(0)", transformOrigin: "top center" }}
             />
             <div
