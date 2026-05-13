@@ -198,6 +198,8 @@
                 "trafficRising": "Organic traffic rising"
             },
             "systems": {
+                "header": "Infrastructure",
+                "status": "All systems connected",
                 "app": "App",
                 "api": "API",
                 "db": "DB",
