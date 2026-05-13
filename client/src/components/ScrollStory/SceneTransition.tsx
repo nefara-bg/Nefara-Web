@@ -1,9 +1,12 @@
 "use client"
 
-import { createContext, ReactNode, useContext, useEffect, useRef, useState } from "react"
+import { createContext, ReactNode, useContext, useEffect, useMemo, useRef, useState } from "react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { SceneScrollContext, SceneSubscribe } from "./SceneScrollContext"
+
+// Subscribe that immediately fires progress=1 — used for static (non-scrolled) to-scenes
+const completeSubscribe: SceneSubscribe = (cb) => { cb(1); return () => {} }
 
 if (typeof window !== "undefined") gsap.registerPlugin(ScrollTrigger)
 
@@ -158,7 +161,9 @@ export function SceneTransition({ from, to }: { from: ReactNode; to: ReactNode }
                         className={`z-10 ${done ? "relative" : "fixed inset-0 pointer-events-none"}`}
                         style={done ? { marginTop: MARGIN } : { opacity: 0 }}
                     >
-                        {to}
+                        <SceneScrollContext.Provider value={completeSubscribe}>
+                            {to}
+                        </SceneScrollContext.Provider>
                     </div>
                 )}
             </ActiveContext.Provider>
