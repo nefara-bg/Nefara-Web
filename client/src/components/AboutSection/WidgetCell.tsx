@@ -9,7 +9,7 @@ const fade = (v: number, a: number, b: number) =>
 
 // Lines fill down slightly earlier than the widget fades in
 const LINE_START = 0.0
-const LINE_END   = 0.25
+const LINE_END   = 0.85
 
 export default function WidgetCell({ children, delay, side = "right" }: {
     children: React.ReactNode
