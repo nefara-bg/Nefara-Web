@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useActionState, useEffect, useState } from "react"
-import { Send, Check, Loader2 } from "lucide-react"
+import { Check, Loader2 } from "lucide-react"
 import { contactAction } from "@/actions/contact"
 import { toast } from "sonner"
 import { useTranslations } from "next-intl"
@@ -28,6 +28,11 @@ export function ContactSection() {
 
     return (
         <section id="contact" className="bg-background">
+            <style dangerouslySetInnerHTML={{ __html: `
+                .cs-btn{position:relative;overflow:hidden}
+                .cs-btn::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,0.28) 50%,transparent 60%);transform:translateX(-120%);transition:transform 0s}
+                .cs-btn:hover::after{transform:translateX(220%);transition:transform 0.55s ease}
+            ` }} />
             <div className="mx-auto max-w-7xl px-6 lg:px-10 pt-14 pb-28">
                 <div className="grid lg:grid-cols-[2fr_3fr] gap-8 xl:gap-14 items-start">
 
@@ -151,14 +156,17 @@ export function ContactSection() {
                             <button
                                 type="submit"
                                 disabled={isPending || isSuccess}
-                                className="w-full flex items-center justify-center gap-2 rounded-xl bg-[hsl(var(--primary))] py-3.5 text-sm font-semibold text-white transition-colors hover:bg-[hsl(var(--primary-strong))] disabled:opacity-60 disabled:cursor-not-allowed"
+                                className="cs-btn group w-full sm:w-auto flex items-center gap-2 rounded bg-[hsl(var(--primary))] px-7 py-3 text-[15px] font-semibold tracking-[-0.01em] text-white transition-all hover:bg-[hsl(var(--primary-strong))] hover:-translate-y-px hover:shadow-[0_4px_16px_-4px_rgba(0,196,178,0.5)] disabled:opacity-60 disabled:cursor-not-allowed disabled:translate-y-0 disabled:shadow-none"
                             >
                                 {isPending ? (
                                     <><Loader2 className="w-4 h-4 animate-spin" />{t("loading")}</>
                                 ) : isSuccess ? (
                                     <><Check className="w-4 h-4" />{t("alert")}</>
                                 ) : (
-                                    <><Send className="w-4 h-4" />{t("button")}</>
+                                    <>
+                                        {t("button")}
+                                        <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
+                                    </>
                                 )}
                             </button>
                         </form>
