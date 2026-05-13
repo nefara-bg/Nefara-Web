@@ -60,20 +60,8 @@ const borderTopRef = useRef<HTMLDivElement>(null)
 
     const isDone = useContext(ActiveContext)
 
-    const tlRef       = useRef<gsap.core.Timeline | null>(null)
-    const hasPlayedRef = useRef(false)
+    const tlRef = useRef<gsap.core.Timeline | null>(null)
 
-    const setToCompleted = () => {
-        gsap.set([borderTopRef.current, borderBotRef.current], { scaleX: 1 })
-        gsap.set(groupRef.current, { rotation: ROTATE_DEG, svgOrigin: `${CX} ${CY}` })
-        labelRefs.current.forEach((el, i) => {
-            if (!el) return
-            gsap.set(el, { rotation: -ROTATE_DEG, svgOrigin: `${V[i].x} ${V[i].y}` })
-        })
-        nodeRefs.current.forEach(el => el && gsap.set(el, { opacity: 1, scale: 1 }))
-        edgeRefs.current.forEach(el => el && gsap.set(el, { strokeDashoffset: 0 }))
-        gsap.set(centerRef.current, { opacity: 1, scale: 1 })
-    }
 
     const setToReset = () => {
         gsap.set([borderTopRef.current, borderBotRef.current], {
@@ -143,21 +131,19 @@ const borderTopRef = useRef<HTMLDivElement>(null)
     }
 
     const replayAnimation = () => {
-        hasPlayedRef.current = true
         setToReset()
         playEntryTimeline()
     }
 
-    // Show completed state immediately during the overlay/transition phase
+    // Initialize to reset state on mount so no snap occurs before the entry animation
     useEffect(() => {
-        if (!isDone) setToCompleted()
+        setToReset()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     // Fire entry animation once when the scene transition completes
     useEffect(() => {
         if (!isDone) return
-        setToReset()
         playEntryTimeline()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isDone])
