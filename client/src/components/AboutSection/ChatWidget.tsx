@@ -41,16 +41,15 @@ export default function ChatWidget() {
 
     return (
         <div
-            className="select-none w-full max-w-sm flex flex-col rounded-lg overflow-hidden"
-            style={{
-                background: "hsl(var(--card))",
-                border: "1px solid hsl(var(--border))",
-            }}
+            className="select-none w-full h-full flex flex-col"
         >
             {/* Header */}
             <div
                 className="flex items-center gap-3 px-6 py-4"
-                style={{ borderBottom: "1px solid hsl(var(--border))" }}
+                style={{ 
+                    borderBottom: "1px solid hsl(var(--border))",
+                    borderTop: "1px solid hsl(var(--border))"
+                }}
             >
                 <div className="w-8 h-8 rounded-full flex-shrink-0 overflow-hidden"
                     style={{ background: "hsl(var(--primary)/0.15)" }}>
@@ -65,7 +64,7 @@ export default function ChatWidget() {
             </div>
 
             {/* Messages */}
-            <div className="flex flex-col gap-12 px-6 py-6">
+            <div className="flex flex-col flex-1 justify-between px-6 py-6">
 
                 {/* Incoming */}
                 <div ref={setRef(0)} className="flex items-end gap-2" style={{ opacity: 0 }}>
