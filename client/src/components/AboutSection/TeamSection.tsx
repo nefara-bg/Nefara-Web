@@ -1,67 +1,133 @@
+import * as motion from "motion/react-client"
+import { Linkedin } from "lucide-react"
 import { getTranslations } from "next-intl/server"
-import { Card } from "@/components/ui/card"
-import TeamHeading from "./TeamHeading"
-import TeamMemberCard from "./TeamMemberCard"
+import { DisciplinesSection } from "./DisciplinesSection"
+
+const FOUNDER_META = [
+    {
+        key: "dimitar" as const,
+        linkedin: "https://www.linkedin.com/in/dimitar-anastasov-339a94310/",
+    },
+    {
+        key: "martin" as const,
+        linkedin: "https://www.linkedin.com/in/martin-velchev-5917b836b/",
+    },
+]
+
 
 export async function TeamSection() {
-    const t = await getTranslations("about")
-
-    const stats = [
-        { value: "3+", label: t("stats.yearsExperience") },
-        { value: "24/7", label: t("stats.supportAvailable") },
-        { value: "100%", label: t("stats.clientSatisfaction") },
-    ]
-
-    const teamMembers = [
-        {
-            name: t("team.members.dimitarDimkov"),
-            role: t("team.roles.prSpecialist"),
-            linkedin: "https://www.linkedin.com/in/dimitar-dimkov-20a0233ab/",
-        },
-        {
-            name: t("team.members.dimitarAnastasov"),
-            role: t("team.roles.softwareDeveloper"),
-            linkedin: "https://www.linkedin.com/in/dimitar-anastasov-339a94310/",
-        },
-        {
-            name: t("team.members.martinVelchev"),
-            role: t("team.roles.fullStackDeveloper"),
-            linkedin: "https://www.linkedin.com/in/martin-velchev-5917b836b/",
-        },
-    ]
+    const t = await getTranslations("about.teamSection")
 
     return (
-        <section id="about" className="bg-[hsl(var(--muted))] section-shell">
-            <div className="mx-auto max-w-7xl">
-                <TeamHeading
-                    sectionLabel={t("sectionLabel")}
-                    mainTitle={t("mainTitle")}
-                    mainTitle2={t("mainTitle2")}
-                    subText={t("subText")}
-                />
+        <section id="about" className="relative bg-background">
 
-                <div className="grid md:grid-cols-3 gap-6 md:gap-8 mb-20 md:mb-28 max-w-5xl mx-auto">
-                    {teamMembers.map((member, index) => (
-                        <TeamMemberCard key={member.name} {...member} index={index} />
-                    ))}
+            {/* ── Founders ── */}
+            <div className="mx-auto max-w-7xl px-6 lg:px-10 pt-10 pb-16 lg:pt-14 lg:pb-24">
+
+                {/* Section header */}
+                <motion.div
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: false, margin: "-80px" }}
+                    transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                    className="mb-10 lg:mb-12"
+                >
+                    <h2 className="font-display text-4xl lg:text-5xl font-bold text-foreground leading-[1.1] tracking-tight mb-4">
+                        {t("heading")}
+                    </h2>
+                    <p className="text-base text-muted-foreground leading-relaxed max-w-lg">
+                        {t("subtitle")}
+                    </p>
+                </motion.div>
+
+                {/* Founder cards */}
+                <div className="flex flex-col gap-5">
+                    {FOUNDER_META.map(({ key, linkedin }, i) => {
+                        const name = t(`founders.${key}.name`)
+                        const role = t(`founders.${key}.role`)
+                        const bio  = t(`founders.${key}.bio`)
+                        const tags = t.raw(`founders.${key}.tags`) as string[]
+                        return (
+                            <motion.div
+                                key={key}
+                                initial={{ opacity: 0, y: 24 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: false, margin: "-60px" }}
+                                transition={{ duration: 0.55, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                                className="flex overflow-hidden rounded-xl border border-border bg-card"
+                            >
+                                {/* Initials area */}
+                                <div
+                                    className="hidden sm:flex sm:w-48 lg:w-60 xl:w-72 shrink-0 items-center justify-center min-h-[220px]"
+                                    style={{
+                                        background: "linear-gradient(135deg, hsl(var(--primary)/0.07) 0%, transparent 100%)",
+                                        borderRight: "1px solid hsl(var(--border))",
+                                    }}
+                                >
+                                    <span
+                                        className="font-display font-black select-none"
+                                        style={{ fontSize: 100, lineHeight: 1, color: "hsl(var(--primary))", opacity: 0.06 }}
+                                    >
+                                        {name.split(" ").map((w: string) => w[0]).join("")}
+                                    </span>
+                                </div>
+
+                                {/* Info */}
+                                <div className="flex-1 p-8 lg:p-10">
+                                    <p
+                                        className="text-[11px] font-bold uppercase tracking-[0.18em] mb-3"
+                                        style={{ color: "hsl(var(--primary))" }}
+                                    >
+                                        {role}
+                                    </p>
+
+                                    <div className="flex items-start justify-between gap-4 mb-5">
+                                        <h3 className="font-display text-2xl lg:text-3xl font-bold text-foreground leading-tight">
+                                            {name}
+                                        </h3>
+                                        <a
+                                            href={linkedin}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="shrink-0 flex items-center justify-center w-9 h-9 rounded-lg border border-border text-muted-foreground hover:text-[hsl(var(--primary))] hover:border-[hsl(var(--primary))] transition-all"
+                                            aria-label={`${name} LinkedIn`}
+                                        >
+                                            <Linkedin className="w-4 h-4" />
+                                        </a>
+                                    </div>
+
+                                    <p className="text-base text-muted-foreground leading-relaxed mb-7">
+                                        {bio}
+                                    </p>
+
+                                    <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-muted-foreground mb-3">
+                                        {t("areasOfExpertise")}
+                                    </p>
+                                    <div className="flex flex-wrap gap-2">
+                                        {tags.map(tag => (
+                                            <span
+                                                key={tag}
+                                                className="px-3 py-1 rounded text-sm font-medium border"
+                                                style={{
+                                                    borderColor: "hsl(var(--border))",
+                                                    color: "#64748B",
+                                                    background: "transparent",
+                                                }}
+                                            >
+                                                {tag}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+                            </motion.div>
+                        )
+                    })}
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 max-w-5xl mx-auto">
-                    {stats.map((stat) => (
-                        <Card
-                            key={stat.label}
-                            className="p-8 text-center hover:border-[hsl(var(--primary)/0.4)] hover:shadow-[0_20px_48px_-20px_rgba(15,23,42,0.12)] hover:-translate-y-1"
-                        >
-                            <div className="font-display text-4xl md:text-5xl font-bold text-[hsl(var(--primary-strong))] mb-2">
-                                {stat.value}
-                            </div>
-                            <p className="text-xs md:text-sm text-muted-foreground font-medium uppercase tracking-wider">
-                                {stat.label}
-                            </p>
-                        </Card>
-                    ))}
-                </div>
             </div>
+
+            <DisciplinesSection />
+
         </section>
     )
 }

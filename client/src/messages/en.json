@@ -205,6 +205,50 @@
                 "pmad": "PMAD",
                 "sandokan": "Sandokan"
             }
+        },
+        "teamSection": {
+            "heading": "The Team",
+            "subtitle": "Two co-founders. One builds at the systems level, one at the product level. Together they cover the full stack.",
+            "areasOfExpertise": "Areas of Expertise",
+            "founders": {
+                "dimitar": {
+                    "name": "Dimitar Anastasov",
+                    "role": "Co-founder & Systems Software Engineer",
+                    "bio": "Operates at the systems level — memory allocators, task queues, neural network engines. Author of Quicx, PMAD, and Sandokan. Brings low-level precision to every layer of the stack.",
+                    "tags": ["C / C++", "Systems Programming", "Optimization", "Memory Layout"]
+                },
+                "martin": {
+                    "name": "Martin Velchev",
+                    "role": "Co-founder & Full Stack Developer",
+                    "bio": "Builds the products clients see and use — from pixel-perfect UIs to robust backend APIs. Fluent across the full stack, with a focus on performance, clean architecture, and delivering polished results on time.",
+                    "tags": ["React", "Next.js", "TypeScript", "Node.js", "UI/UX"]
+                }
+            },
+            "disciplines": {
+                "eyebrow": "specialist in",
+                "heading": "What we can do",
+                "subtitle": "Five disciplines. Fully covered in-house — no outsourcing, no middlemen.",
+                "systems": {
+                    "title": "Systems Engineering",
+                    "desc": "Memory allocators, schedulers, deterministic performance. Where Quicx and PMAD were born."
+                },
+                "software": {
+                    "title": "Software Development",
+                    "desc": "Web, mobile, desktop. Modern stacks, clean APIs, polished UIs — from concept to production."
+                },
+                "devops": {
+                    "title": "DevOps & Infra",
+                    "desc": "CI/CD, observability, deployment. We monitor what we ship and keep it healthy."
+                },
+                "seo": {
+                    "title": "SEO & Performance",
+                    "desc": "Core Web Vitals, technical SEO, AI-era discoverability. Built into every site we ship."
+                },
+                "aiml": {
+                    "title": "AI & Machine Learning",
+                    "desc": "Production ML, training engines, document AI. We built Sandokan from scratch in C++."
+                }
+            }
         }
     },
     "contact": {
