@@ -36,6 +36,20 @@ export default function ChatWidget() {
         return subscribe(apply)
     }, [subscribe])
 
+    const borderTopRef = useRef<HTMLDivElement>(null)
+    const borderBotRef = useRef<HTMLDivElement>(null)
+
+    const LINE_START = 0.0
+    const LINE_END   = 0.85
+
+    useEffect(() => {
+        gsap.set([borderTopRef.current, borderBotRef.current], { scaleX: 0, transformOrigin: "left center" })
+        return subscribe((v) => {
+            const k = Math.max(0, Math.min(1, (v - LINE_START) / (LINE_END - LINE_START)))
+            gsap.set([borderTopRef.current, borderBotRef.current], { scaleX: k })
+        })
+    }, [subscribe])
+
     const setRef       = (i: number) => (el: HTMLDivElement | null) => { itemsRef.current[i] = el }
     const setAvatarRef = (i: number) => (el: HTMLDivElement | null) => { avatarsRef.current[i] = el }
 
@@ -45,12 +59,12 @@ export default function ChatWidget() {
         >
             {/* Header */}
             <div
-                className="flex items-center gap-3 px-6 py-4"
-                style={{ 
-                    borderBottom: "1px solid hsl(var(--border))",
-                    borderTop: "1px solid hsl(var(--border))"
-                }}
+                className="relative flex items-center gap-3 px-6 py-4"
             >
+                {/* Top border — fills left to right on scroll */}
+                <div ref={borderTopRef} className="absolute inset-x-0 top-0 h-px" style={{ background: "hsl(var(--border))", transform: "scaleX(0)", transformOrigin: "left center" }} />
+                {/* Bottom border — fills left to right on scroll */}
+                <div ref={borderBotRef} className="absolute inset-x-0 bottom-0 h-px" style={{ background: "hsl(var(--border))", transform: "scaleX(0)", transformOrigin: "left center" }} />
                 <div className="w-8 h-8 rounded-full flex-shrink-0 overflow-hidden"
                     style={{ background: "hsl(var(--primary)/0.15)" }}>
                     <img src="/features/nefara-pfp.svg" alt="Nefara" className="w-full h-full object-cover" />
