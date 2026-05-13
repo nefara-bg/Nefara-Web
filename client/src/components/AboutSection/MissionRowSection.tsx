@@ -19,11 +19,11 @@ export function MissionRowSection({
     const cardSide = widgetSide === "left" ? "right" : "left"
 
     return (
-        <section className="min-h-screen py-32 bg-background flex flex-col justify-center">
+        <section className="h-screen py-32 bg-background flex flex-col justify-center">
             <div
-                className="relative max-w-7xl px-8 flex mx-auto w-full"
+                className="relative max-w-7xl px-4 flex items-center mx-auto w-full flex-1"
             >
-                <div className="flex w-full">
+                <div className="flex w-full h-full items-stretch">
                     {widgetSide === "left" ? (
                         <>
                             <WidgetCell side="left" delay={0.1}>{widget}</WidgetCell>

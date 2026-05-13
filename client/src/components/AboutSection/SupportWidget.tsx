@@ -90,7 +90,6 @@ export default function SupportWidget() {
         <div
             className="select-none w-full max-w-xs flex flex-col rounded-lg"
             style={{
-                background: "hsl(var(--card))",
                 border: "1px solid hsl(var(--border))",
             }}
         >
