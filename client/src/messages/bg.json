@@ -198,12 +198,12 @@
                 "trafficRising": "Органичният трафик расте"
             },
             "systems": {
-                "header": "Инфраструктура",
-                "status": "Всички системи свързани",
-                "app": "App",
-                "api": "API",
-                "db": "DB",
-                "cdn": "CDN"
+                "header": "Нашите Продукти",
+                "status": "Зад всеки проект",
+                "products": "ПРОДУКТА",
+                "quicx": "Quicx",
+                "pmad": "PMAD",
+                "sandokan": "Sandokan"
             }
         }
     },

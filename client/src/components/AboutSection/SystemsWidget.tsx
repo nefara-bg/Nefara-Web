@@ -11,72 +11,99 @@ const fade = (v: number, a: number, b: number) =>
 const LINE_START = 0.0
 const LINE_END   = 0.85
 
-// Node animation window
-const NODES_IN  = [0.30, 0.50] as const
+// Triangle geometry (SVG units, viewBox 0 0 260 240)
+const CX = 130, CY = 122, R = 80
 
-// Edge lengths (px in viewBox units)
-const EDGE_LENGTHS = [120, 68, 68, 120] as const
-const EDGE_STARTS  = [0.40, 0.45, 0.45, 0.55] as const
-const EDGE_ENDS    = [0.60, 0.65, 0.65, 0.75] as const
+function vertex(angleDeg: number) {
+    const a = (angleDeg * Math.PI) / 180
+    return { x: CX + R * Math.cos(a), y: CY + R * Math.sin(a) }
+}
+
+const V = [vertex(-90), vertex(30), vertex(150)] // top, bottom-right, bottom-left
+
+// Equilateral triangle side length
+const EDGE_LEN = Math.round(R * Math.sqrt(3))
+
+// Node entry: one by one
+const NODE_STARTS = [0.15, 0.30, 0.45] as const
+const NODE_ENDS   = [0.30, 0.45, 0.60] as const
+
+// Edge draw-in overlapping node appearance
+const EDGE_STARTS = [0.25, 0.38, 0.50] as const
+const EDGE_ENDS   = [0.40, 0.53, 0.65] as const
+
+// Center label fade-in
+const CENTER_IN = [0.55, 0.72] as const
+
+// Rotation: 0° → 120° over full scroll
+const ROTATE_START = 0.10
+const ROTATE_END   = 0.92
+const ROTATE_DEG   = 120
+
+const EDGES = [
+    { x1: V[0].x, y1: V[0].y, x2: V[1].x, y2: V[1].y },
+    { x1: V[1].x, y1: V[1].y, x2: V[2].x, y2: V[2].y },
+    { x1: V[2].x, y1: V[2].y, x2: V[0].x, y2: V[0].y },
+]
+
+// Node visual radius
+const NODE_R = 32
 
 export default function SystemsWidget() {
     const t = useTranslations("about.widgets.systems")
+    const subscribe = useContext(SceneScrollContext)
 
-    const subscribe    = useContext(SceneScrollContext)
     const borderTopRef = useRef<HTMLDivElement>(null)
     const borderBotRef = useRef<HTMLDivElement>(null)
+    const groupRef     = useRef<SVGGElement>(null)
     const nodeRefs     = useRef<(SVGGElement | null)[]>([])
-    const edgeRefs     = useRef<(SVGPathElement | null)[]>([])
-    const dotRefs      = useRef<(SVGCircleElement | null)[]>([])
+    const labelRefs    = useRef<(SVGGElement | null)[]>([])
+    const edgeRefs     = useRef<(SVGLineElement | null)[]>([])
+    const centerRef    = useRef<SVGGElement>(null)
 
-    const nodeW = 64, nodeH = 36, rx = 6
-    const nodes = [
-        { label: t("app"), x: 12,  y: 20  },
-        { label: t("api"), x: 196, y: 20  },
-        { label: t("db"),  x: 12,  y: 124 },
-        { label: t("cdn"), x: 196, y: 124 },
-    ]
-    const edges = [
-        { d: "M76,38 L196,38",   dur: 1.6 },
-        { d: "M44,56 L44,124",   dur: 2.0 },
-        { d: "M228,56 L228,124", dur: 1.8 },
-        { d: "M76,142 L196,142", dur: 1.5 },
-    ]
+    const labels = [t("quicx"), t("pmad"), t("sandokan")]
 
     useEffect(() => {
-        // Header borders
-        gsap.set([borderTopRef.current, borderBotRef.current], { scaleX: 0, transformOrigin: "left center" })
-
-        // Nodes hidden
-        nodeRefs.current.forEach(el => el && gsap.set(el, { opacity: 0, scale: 0.85, transformOrigin: "center center" }))
-
-        // Edges hidden
-        edgeRefs.current.forEach((el, i) => el && gsap.set(el, {
-            strokeDasharray: EDGE_LENGTHS[i],
-            strokeDashoffset: EDGE_LENGTHS[i],
+        gsap.set([borderTopRef.current, borderBotRef.current], {
+            scaleX: 0, transformOrigin: "left center",
+        })
+        gsap.set(groupRef.current, { rotation: 0, svgOrigin: `${CX} ${CY}` })
+        nodeRefs.current.forEach(el => el && gsap.set(el, {
+            opacity: 0, scale: 0.5, transformOrigin: "center center",
         }))
-
-        // Dots hidden
-        dotRefs.current.forEach(el => el && gsap.set(el, { opacity: 0 }))
+        edgeRefs.current.forEach(el => el && gsap.set(el, {
+            strokeDasharray: EDGE_LEN,
+            strokeDashoffset: EDGE_LEN,
+        }))
+        gsap.set(centerRef.current, { opacity: 0, scale: 0.8, transformOrigin: "center center" })
 
         return subscribe((v) => {
-            // Header borders
-            const lineK = fade(v, LINE_START, LINE_END)
-            gsap.set([borderTopRef.current, borderBotRef.current], { scaleX: lineK })
+            gsap.set([borderTopRef.current, borderBotRef.current], { scaleX: fade(v, LINE_START, LINE_END) })
 
-            // Nodes
-            const kn = fade(v, NODES_IN[0], NODES_IN[1])
-            nodeRefs.current.forEach(el => el && gsap.set(el, { opacity: kn, scale: 0.85 + 0.15 * kn }))
+            // Rotate triangle, counter-rotate labels to keep them upright
+            const rotDeg = fade(v, ROTATE_START, ROTATE_END) * ROTATE_DEG
+            gsap.set(groupRef.current, { rotation: rotDeg, svgOrigin: `${CX} ${CY}` })
+            labelRefs.current.forEach((el, i) => {
+                if (!el) return
+                gsap.set(el, { rotation: -rotDeg, svgOrigin: `${V[i].x} ${V[i].y}` })
+            })
 
-            // Edges + dots
+            // Nodes appear one by one
+            nodeRefs.current.forEach((el, i) => {
+                if (!el) return
+                const k = fade(v, NODE_STARTS[i], NODE_ENDS[i])
+                gsap.set(el, { opacity: k, scale: 0.5 + 0.5 * k, transformOrigin: "center center" })
+            })
+
+            // Edges draw in
             edgeRefs.current.forEach((el, i) => {
                 if (!el) return
-                const ke = fade(v, EDGE_STARTS[i], EDGE_ENDS[i])
-                gsap.set(el, { strokeDashoffset: EDGE_LENGTHS[i] * (1 - ke) })
-
-                const dot = dotRefs.current[i]
-                if (dot) gsap.set(dot, { opacity: ke })
+                gsap.set(el, { strokeDashoffset: EDGE_LEN * (1 - fade(v, EDGE_STARTS[i], EDGE_ENDS[i])) })
             })
+
+            // Center label
+            const kc = fade(v, CENTER_IN[0], CENTER_IN[1])
+            gsap.set(centerRef.current, { opacity: kc, scale: 0.8 + 0.2 * kc, transformOrigin: "center center" })
         })
     }, [subscribe])
 
@@ -97,52 +124,63 @@ export default function SystemsWidget() {
                 </div>
             </div>
 
-            {/* Diagram */}
-            <div className="flex items-center justify-center px-6 py-5">
-                <svg width="272" height="180" viewBox="0 0 272 180" style={{ overflow: "visible", maxWidth: "100%" }}>
-                    {/* Edges (dashed track) */}
-                    {edges.map((e, i) => (
-                        <path key={`track-${i}`} d={e.d} fill="none"
-                            stroke="hsl(var(--primary)/0.15)" strokeWidth={1.2} strokeDasharray="5 4" />
-                    ))}
+            {/* Triangle diagram */}
+            <div className="flex items-center justify-center px-4 py-6">
+                <svg
+                    viewBox="0 0 260 240"
+                    style={{ width: "100%", maxWidth: 260, overflow: "visible" }}
+                >
 
-                    {/* Edges (animated draw-in) */}
-                    {edges.map((e, i) => (
-                        <path
-                            key={`edge-${i}`}
-                            ref={el => { edgeRefs.current[i] = el }}
-                            d={e.d}
-                            fill="none"
-                            stroke="hsl(var(--primary)/0.5)"
-                            strokeWidth={1.2}
-                            strokeDasharray={EDGE_LENGTHS[i]}
-                            strokeDashoffset={EDGE_LENGTHS[i]}
-                        />
-                    ))}
+                    {/* Rotating group: edges + nodes */}
+                    <g ref={groupRef}>
+                        {/* Dashed ghost edges */}
+                        {EDGES.map((e, i) => (
+                            <line key={`track-${i}`}
+                                x1={e.x1} y1={e.y1} x2={e.x2} y2={e.y2}
+                                stroke="hsl(var(--primary)/0.12)"
+                                strokeWidth={1.5} strokeDasharray="6 5" />
+                        ))}
 
-                    {/* Moving dots along edges */}
-                    {edges.map((e, i) => (
-                        <circle key={`dot-${i}`} ref={el => { dotRefs.current[i] = el }} r="3.5"
-                            fill="hsl(var(--primary))" opacity="0">
-                            <animateMotion dur={`${e.dur}s`} repeatCount="indefinite"
-                                begin={`${i * 0.55}s`} path={e.d} />
-                        </circle>
-                    ))}
+                        {/* Animated draw-in edges */}
+                        {EDGES.map((e, i) => (
+                            <line key={`edge-${i}`}
+                                ref={el => { edgeRefs.current[i] = el }}
+                                x1={e.x1} y1={e.y1} x2={e.x2} y2={e.y2}
+                                stroke="hsl(var(--primary)/0.35)"
+                                strokeWidth={1.5}
+                                strokeDasharray={EDGE_LEN}
+                                strokeDashoffset={EDGE_LEN} />
+                        ))}
 
-                    {/* Nodes */}
-                    {nodes.map((n, i) => (
-                        <g key={n.label} ref={el => { nodeRefs.current[i] = el }} style={{ opacity: 0 }}>
-                            <rect x={n.x} y={n.y} width={nodeW} height={nodeH} rx={rx}
-                                fill="hsl(var(--primary)/0.1)"
-                                stroke="hsl(var(--primary)/0.4)" strokeWidth={1} />
-                            <text x={n.x + nodeW / 2} y={n.y + nodeH / 2 + 5}
-                                textAnchor="middle"
-                                fill="hsl(var(--primary))"
-                                fontSize={12} fontWeight={700} fontFamily="monospace">
-                                {n.label}
-                            </text>
-                        </g>
-                    ))}
+                        {/* Product nodes */}
+                        {labels.map((label, i) => (
+                            <g key={label} ref={el => { nodeRefs.current[i] = el }} style={{ opacity: 0 }}>
+                                {/* Opaque background masks the edge lines underneath */}
+                                <circle cx={V[i].x} cy={V[i].y} r={NODE_R + 6}
+                                    fill="hsl(var(--background))" stroke="none" />
+                                {/* Outer ring (like reference image) */}
+                                <circle cx={V[i].x} cy={V[i].y} r={NODE_R + 5}
+                                    fill="none"
+                                    stroke="hsl(var(--primary)/0.2)"
+                                    strokeWidth={1} />
+                                {/* Inner filled circle */}
+                                <circle cx={V[i].x} cy={V[i].y} r={NODE_R}
+                                    fill="hsl(var(--primary)/0.12)"
+                                    stroke="hsl(var(--primary)/0.5)"
+                                    strokeWidth={1.5} />
+                                {/* Label — counter-rotated to stay upright */}
+                                <g ref={el => { labelRefs.current[i] = el }}>
+                                    <text
+                                        x={V[i].x} y={V[i].y + 5}
+                                        textAnchor="middle"
+                                        fill="hsl(var(--primary))"
+                                        fontSize={12} fontWeight={700} fontFamily="monospace">
+                                        {label}
+                                    </text>
+                                </g>
+                            </g>
+                        ))}
+                    </g>
                 </svg>
             </div>
         </div>
