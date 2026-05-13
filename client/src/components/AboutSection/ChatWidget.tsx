@@ -1,19 +1,45 @@
 "use client"
 
-import * as motion from "motion/react-client"
+import { useContext, useEffect, useRef } from "react"
+import gsap from "gsap"
 import { useTranslations } from "next-intl"
+import { SceneScrollContext } from "@/components/ScrollStory/SceneScrollContext"
+
+const stops = [
+    { start: 0.00, end: 0.35, fromX: -8 },
+    { start: 0.35, end: 0.70, fromX:  8 },
+    { start: 0.70, end: 1.00, fromX:  0 },
+] as const
+
+const fade = (v: number, a: number, b: number) =>
+    Math.max(0, Math.min(1, (v - a) / (b - a)))
 
 export default function ChatWidget() {
     const t = useTranslations("about.widgets.chat")
+    const subscribe = useContext(SceneScrollContext)
+    const itemsRef = useRef<(HTMLDivElement | null)[]>([])
+
+    useEffect(() => {
+        const apply = (v: number) => {
+            itemsRef.current.forEach((el, i) => {
+                if (!el) return
+                const s = stops[i]
+                const k = fade(v, s.start, s.end)
+                gsap.set(el, { opacity: k, x: s.fromX * (1 - k) })
+            })
+        }
+        apply(0)
+        return subscribe(apply)
+    }, [subscribe])
+
+    const setRef = (i: number) => (el: HTMLDivElement | null) => { itemsRef.current[i] = el }
 
     return (
-        <div className="flex flex-col gap-4 select-none w-full max-w-xs">
-            <motion.div
+        <div className="flex flex-col gap-12 select-none w-full max-w-lg">
+            <div
+                ref={setRef(0)}
                 className="flex items-end gap-2"
-                initial={{ opacity: 0, x: -8 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1, duration: 0.4 }}
+                style={{ opacity: 0 }}
             >
                 <div className="w-10 h-10 rounded-full flex-shrink-0 grid place-items-center font-bold text-sm"
                     style={{ background: "hsl(var(--primary)/0.18)", color: "hsl(var(--primary))" }}>D</div>
@@ -25,14 +51,12 @@ export default function ChatWidget() {
                 }}>
                     {t("message1")}
                 </div>
-            </motion.div>
+            </div>
 
-            <motion.div
+            <div
+                ref={setRef(1)}
                 className="flex items-end gap-2 justify-end"
-                initial={{ opacity: 0, x: 8 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.55, duration: 0.4 }}
+                style={{ opacity: 0 }}
             >
                 <div style={{
                     background: "hsl(var(--foreground)/0.06)",
@@ -44,14 +68,12 @@ export default function ChatWidget() {
                 </div>
                 <div className="w-10 h-10 rounded-full flex-shrink-0 grid place-items-center font-bold text-sm"
                     style={{ background: "hsl(var(--foreground)/0.08)", color: "hsl(var(--foreground)/0.45)" }}>C</div>
-            </motion.div>
+            </div>
 
-            <motion.div
+            <div
+                ref={setRef(2)}
                 className="flex items-center gap-2"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 1.0, duration: 0.35 }}
+                style={{ opacity: 0 }}
             >
                 <div className="w-8 h-8 rounded-full flex-shrink-0"
                     style={{ background: "hsl(var(--primary)/0.18)" }} />
@@ -69,7 +91,7 @@ export default function ChatWidget() {
                         }} />
                     ))}
                 </div>
-            </motion.div>
+            </div>
         </div>
     )
 }
