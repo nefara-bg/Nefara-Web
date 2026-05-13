@@ -15,7 +15,7 @@ export const SCENE_THRESHOLD = 0.55
 
 const MARGIN = "-135vh"
 
-const ActiveContext = createContext(true)
+export const ActiveContext = createContext(true)
 
 export function SceneTransition({ from, to }: { from: ReactNode; to: ReactNode }) {
     const isActive = useContext(ActiveContext)
