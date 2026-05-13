@@ -6,9 +6,9 @@ import { useTranslations } from "next-intl"
 import { SceneScrollContext } from "@/components/ScrollStory/SceneScrollContext"
 
 const stops = [
-    { start: 0.00, end: 0.35, fromX: -8 },
-    { start: 0.35, end: 0.70, fromX:  8 },
-    { start: 0.70, end: 1.00, fromX:  0 },
+    { start: 0.35, end: 0.57, fromX: -8 },
+    { start: 0.57, end: 0.79, fromX:  8 },
+    { start: 0.79, end: 1.00, fromX:  0 },
 ] as const
 
 const fade = (v: number, a: number, b: number) =>
