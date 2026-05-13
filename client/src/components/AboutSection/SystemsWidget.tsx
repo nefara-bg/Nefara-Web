@@ -3,10 +3,7 @@
 import { useContext, useEffect, useRef } from "react"
 import gsap from "gsap"
 import { useTranslations } from "next-intl"
-import { SceneScrollContext } from "@/components/ScrollStory/SceneScrollContext"
-
-const fade = (v: number, a: number, b: number) =>
-    Math.max(0, Math.min(1, (v - a) / (b - a)))
+import { ActiveContext } from "@/components/ScrollStory/SceneTransition"
 
 const LINE_START = 0.0
 const LINE_END   = 0.85
@@ -51,9 +48,7 @@ const NODE_R = 32
 
 export default function SystemsWidget() {
     const t = useTranslations("about.widgets.systems")
-    const subscribe = useContext(SceneScrollContext)
-
-    const borderTopRef = useRef<HTMLDivElement>(null)
+const borderTopRef = useRef<HTMLDivElement>(null)
     const borderBotRef = useRef<HTMLDivElement>(null)
     const groupRef     = useRef<SVGGElement>(null)
     const nodeRefs     = useRef<(SVGGElement | null)[]>([])
@@ -63,7 +58,24 @@ export default function SystemsWidget() {
 
     const labels = [t("quicx"), t("pmad"), t("sandokan")]
 
-    useEffect(() => {
+    const isDone = useContext(ActiveContext)
+
+    const tlRef       = useRef<gsap.core.Timeline | null>(null)
+    const hasPlayedRef = useRef(false)
+
+    const setToCompleted = () => {
+        gsap.set([borderTopRef.current, borderBotRef.current], { scaleX: 1 })
+        gsap.set(groupRef.current, { rotation: ROTATE_DEG, svgOrigin: `${CX} ${CY}` })
+        labelRefs.current.forEach((el, i) => {
+            if (!el) return
+            gsap.set(el, { rotation: -ROTATE_DEG, svgOrigin: `${V[i].x} ${V[i].y}` })
+        })
+        nodeRefs.current.forEach(el => el && gsap.set(el, { opacity: 1, scale: 1 }))
+        edgeRefs.current.forEach(el => el && gsap.set(el, { strokeDashoffset: 0 }))
+        gsap.set(centerRef.current, { opacity: 1, scale: 1 })
+    }
+
+    const setToReset = () => {
         gsap.set([borderTopRef.current, borderBotRef.current], {
             scaleX: 0, transformOrigin: "left center",
         })
@@ -76,39 +88,91 @@ export default function SystemsWidget() {
             strokeDashoffset: EDGE_LEN,
         }))
         gsap.set(centerRef.current, { opacity: 0, scale: 0.8, transformOrigin: "center center" })
+    }
 
-        return subscribe((v) => {
-            gsap.set([borderTopRef.current, borderBotRef.current], { scaleX: fade(v, LINE_START, LINE_END) })
+    const playEntryTimeline = () => {
+        tlRef.current?.kill()
+        const TOTAL = 2.4
+        const t = (frac: number) => frac * TOTAL
 
-            // Rotate triangle, counter-rotate labels to keep them upright
-            const rotDeg = fade(v, ROTATE_START, ROTATE_END) * ROTATE_DEG
-            gsap.set(groupRef.current, { rotation: rotDeg, svgOrigin: `${CX} ${CY}` })
-            labelRefs.current.forEach((el, i) => {
-                if (!el) return
-                gsap.set(el, { rotation: -rotDeg, svgOrigin: `${V[i].x} ${V[i].y}` })
-            })
+        const tl = gsap.timeline()
+        tlRef.current = tl
 
-            // Nodes appear one by one
-            nodeRefs.current.forEach((el, i) => {
-                if (!el) return
-                const k = fade(v, NODE_STARTS[i], NODE_ENDS[i])
-                gsap.set(el, { opacity: k, scale: 0.5 + 0.5 * k, transformOrigin: "center center" })
-            })
+        // Borders
+        tl.to([borderTopRef.current, borderBotRef.current],
+            { scaleX: 1, duration: t(LINE_END - LINE_START), ease: "power2.out" },
+            t(LINE_START))
 
-            // Edges draw in
-            edgeRefs.current.forEach((el, i) => {
-                if (!el) return
-                gsap.set(el, { strokeDashoffset: EDGE_LEN * (1 - fade(v, EDGE_STARTS[i], EDGE_ENDS[i])) })
-            })
+        // Triangle rotation + counter-rotation
+        tl.to(groupRef.current,
+            {
+                rotation: ROTATE_DEG,
+                svgOrigin: `${CX} ${CY}`,
+                duration: t(ROTATE_END - ROTATE_START),
+                ease: "power1.inOut",
+                onUpdate() {
+                    const rot = gsap.getProperty(groupRef.current, "rotation") as number
+                    labelRefs.current.forEach((el, i) => {
+                        if (!el) return
+                        gsap.set(el, { rotation: -rot, svgOrigin: `${V[i].x} ${V[i].y}` })
+                    })
+                },
+            },
+            t(ROTATE_START))
 
-            // Center label
-            const kc = fade(v, CENTER_IN[0], CENTER_IN[1])
-            gsap.set(centerRef.current, { opacity: kc, scale: 0.8 + 0.2 * kc, transformOrigin: "center center" })
+        // Nodes one by one
+        nodeRefs.current.forEach((el, i) => {
+            if (!el) return
+            tl.to(el,
+                { opacity: 1, scale: 1, transformOrigin: "center center", duration: t(NODE_ENDS[i] - NODE_STARTS[i]), ease: "back.out(1.4)" },
+                t(NODE_STARTS[i]))
         })
-    }, [subscribe])
+
+        // Edges draw in
+        edgeRefs.current.forEach((el, i) => {
+            if (!el) return
+            tl.to(el,
+                { strokeDashoffset: 0, duration: t(EDGE_ENDS[i] - EDGE_STARTS[i]), ease: "power2.out" },
+                t(EDGE_STARTS[i]))
+        })
+
+        // Center label
+        tl.to(centerRef.current,
+            { opacity: 1, scale: 1, transformOrigin: "center center", duration: t(CENTER_IN[1] - CENTER_IN[0]), ease: "power2.out" },
+            t(CENTER_IN[0]))
+    }
+
+    const replayAnimation = () => {
+        hasPlayedRef.current = true
+        setToReset()
+        playEntryTimeline()
+    }
+
+    // Show completed state immediately during the overlay/transition phase
+    useEffect(() => {
+        if (!isDone) setToCompleted()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+    // Fire entry animation once when the scene transition completes
+    useEffect(() => {
+        if (!isDone) return
+        setToReset()
+        playEntryTimeline()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isDone])
 
     return (
         <div className="select-none w-full flex flex-col">
+            {process.env.NODE_ENV === "development" && (
+                <button
+                    onClick={replayAnimation}
+                    className="absolute top-1 right-1 z-50 text-[10px] px-2 py-0.5 rounded"
+                    style={{ background: "hsl(var(--primary)/0.15)", color: "hsl(var(--primary))", border: "1px solid hsl(var(--primary)/0.3)" }}
+                >
+                    replay
+                </button>
+            )}
             {/* Header */}
             <div className="relative flex items-center gap-3 px-6 py-4">
                 <div ref={borderTopRef} className="absolute inset-x-0 top-0 h-px"
