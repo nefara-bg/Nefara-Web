@@ -17,22 +17,23 @@ export function MissionRowSection({
     widgetSide: "left" | "right"
 }) {
     const cardSide = widgetSide === "left" ? "right" : "left"
+    const horizontalOffset = "4"
 
     return (
         <section className="h-screen py-32 bg-background flex flex-col justify-center overflow-hidden" style={{ transform: "translateZ(0)" }}>
             <div
-                className="relative max-w-7xl px-4 flex items-center mx-auto w-full flex-1"
+                className={`relative max-w-7xl px-${horizontalOffset} flex items-center mx-auto w-full flex-1`}
             >
                 <div className="flex w-full h-full items-stretch">
                     {widgetSide === "left" ? (
                         <>
-                            <WidgetCell side="left" delay={0.1}>{widget}</WidgetCell>
+                            <WidgetCell lineOffset={horizontalOffset} side="left" delay={0.1}>{widget}</WidgetCell>
                             <FeatureCardFlow num={num} title={title} desc={desc} side="right" delay={0.1} />
                         </>
                     ) : (
                         <>
                             <FeatureCardFlow num={num} title={title} desc={desc} side="left" delay={0.1} />
-                            <WidgetCell side="right" delay={0.1}>{widget}</WidgetCell>
+                            <WidgetCell lineOffset={horizontalOffset} side="right" delay={0.1}>{widget}</WidgetCell>
                         </>
                     )}
                 </div>

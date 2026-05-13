@@ -11,10 +11,11 @@ const fade = (v: number, a: number, b: number) =>
 const LINE_START = 0.0
 const LINE_END   = 0.85
 
-export default function WidgetCell({ children, delay, side = "right" }: {
+export default function WidgetCell({ children, delay, side = "right", lineOffset = "0" }: {
     children: React.ReactNode
     delay: number
-    side?: "left" | "right"
+    side?: "left" | "right",
+    lineOffset: string
 }) {
     const ref      = useRef<HTMLDivElement>(null)
     const lineL    = useRef<HTMLDivElement>(null)
@@ -61,13 +62,13 @@ export default function WidgetCell({ children, delay, side = "right" }: {
             {/* Left decorative line — spans full viewport height, fills downward on scroll */}
             <div
                 ref={lineL}
-                className="pointer-events-none fixed left-0 top-0 bottom-0 w-px"
+                className={`pointer-events-none fixed left-${lineOffset} top-0 bottom-0 w-px`}
                 style={{ background: "hsl(var(--border))", transform: "scaleY(0)", transformOrigin: "top center" }}
             />
             {/* Right decorative line */}
             <div
                 ref={lineR}
-                className="pointer-events-none fixed right-0 top-0 bottom-0 w-px"
+                className={`pointer-events-none fixed right-${lineOffset} top-0 bottom-0 w-px`}
                 style={{ background: "hsl(var(--border))", transform: "scaleY(0)", transformOrigin: "top center" }}
             />
             <div

@@ -59,7 +59,7 @@ export default function ChatWidget() {
         >
             {/* Header */}
             <div
-                className="relative flex items-center gap-3 px-6 py-4"
+                className="relative flex items-center gap-3 py-4"
             >
                 {/* Top border — fills left to right on scroll */}
                 <div ref={borderTopRef} className="absolute inset-x-0 top-0 h-px" style={{ background: "hsl(var(--border))", transform: "scaleX(0)", transformOrigin: "left center" }} />
@@ -78,7 +78,7 @@ export default function ChatWidget() {
             </div>
 
             {/* Messages */}
-            <div className="flex flex-col flex-1 justify-between px-6 py-6">
+            <div className="flex flex-col flex-1 justify-between py-6">
 
                 {/* Incoming */}
                 <div ref={setRef(0)} className="flex items-end gap-2" style={{ opacity: 0 }}>
