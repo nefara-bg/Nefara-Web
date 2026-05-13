@@ -17,7 +17,8 @@ const fade = (v: number, a: number, b: number) =>
 export default function ChatWidget() {
     const t = useTranslations("about.widgets.chat")
     const subscribe = useContext(SceneScrollContext)
-    const itemsRef = useRef<(HTMLDivElement | null)[]>([])
+    const itemsRef   = useRef<(HTMLDivElement | null)[]>([])
+    const avatarsRef = useRef<(HTMLDivElement | null)[]>([])
 
     useEffect(() => {
         const apply = (v: number) => {
@@ -26,70 +27,102 @@ export default function ChatWidget() {
                 const s = stops[i]
                 const k = fade(v, s.start, s.end)
                 gsap.set(el, { opacity: k, x: s.fromX * (1 - k) })
+
+                const av = avatarsRef.current[i]
+                if (av) gsap.set(av, { scale: k, rotate: (1 - k) * -45 })
             })
         }
         apply(0)
         return subscribe(apply)
     }, [subscribe])
 
-    const setRef = (i: number) => (el: HTMLDivElement | null) => { itemsRef.current[i] = el }
+    const setRef       = (i: number) => (el: HTMLDivElement | null) => { itemsRef.current[i] = el }
+    const setAvatarRef = (i: number) => (el: HTMLDivElement | null) => { avatarsRef.current[i] = el }
 
     return (
-        <div className="flex flex-col gap-12 select-none w-full max-w-lg">
+        <div
+            className="select-none w-full max-w-sm flex flex-col rounded-lg overflow-hidden"
+            style={{
+                background: "hsl(var(--card))",
+                border: "1px solid hsl(var(--border))",
+            }}
+        >
+            {/* Header */}
             <div
-                ref={setRef(0)}
-                className="flex items-end gap-2"
-                style={{ opacity: 0 }}
+                className="flex items-center gap-3 px-6 py-4"
+                style={{ borderBottom: "1px solid hsl(var(--border))" }}
             >
-                <div className="w-10 h-10 rounded-full flex-shrink-0 grid place-items-center font-bold text-sm"
-                    style={{ background: "hsl(var(--primary)/0.18)", color: "hsl(var(--primary))" }}>D</div>
-                <div style={{
-                    background: "hsl(var(--primary)/0.12)",
-                    color: "hsl(var(--foreground)/0.85)",
-                    borderRadius: "1rem 1rem 1rem 0.2rem",
-                    padding: "10px 16px", fontSize: 14, lineHeight: 1.5,
-                }}>
-                    {t("message1")}
+                <div className="w-8 h-8 rounded-full flex-shrink-0 overflow-hidden"
+                    style={{ background: "hsl(var(--primary)/0.15)" }}>
+                    <img src="/features/nefara-pfp.svg" alt="Nefara" className="w-full h-full object-cover" />
+                </div>
+                <div>
+                    <p className="text-sm font-semibold leading-none mb-0.5" style={{ color: "hsl(var(--foreground))" }}>
+                        Nefara
+                    </p>
+                    <p className="text-xs" style={{ color: "#22c55e" }}>Active now</p>
                 </div>
             </div>
 
-            <div
-                ref={setRef(1)}
-                className="flex items-end gap-2 justify-end"
-                style={{ opacity: 0 }}
-            >
-                <div style={{
-                    background: "hsl(var(--foreground)/0.06)",
-                    color: "hsl(var(--foreground)/0.8)",
-                    borderRadius: "1rem 1rem 0.2rem 1rem",
-                    padding: "10px 16px", fontSize: 14, lineHeight: 1.5,
-                }}>
-                    {t("message2")}
-                </div>
-                <div className="w-10 h-10 rounded-full flex-shrink-0 grid place-items-center font-bold text-sm"
-                    style={{ background: "hsl(var(--foreground)/0.08)", color: "hsl(var(--foreground)/0.45)" }}>C</div>
-            </div>
+            {/* Messages */}
+            <div className="flex flex-col gap-12 px-6 py-6">
 
-            <div
-                ref={setRef(2)}
-                className="flex items-center gap-2"
-                style={{ opacity: 0 }}
-            >
-                <div className="w-8 h-8 rounded-full flex-shrink-0"
-                    style={{ background: "hsl(var(--primary)/0.18)" }} />
-                <div className="flex items-center gap-[5px]"
-                    style={{
-                        background: "hsl(var(--primary)/0.12)",
-                        padding: "12px 14px",
-                        borderRadius: "1rem 1rem 1rem 0.2rem",
-                    }}>
-                    {[0, 0.22, 0.44].map((d, i) => (
-                        <span key={i} style={{
-                            display: "block", width: 8, height: 8, borderRadius: "50%",
+                {/* Incoming */}
+                <div ref={setRef(0)} className="flex items-end gap-2" style={{ opacity: 0 }}>
+                    <div ref={setAvatarRef(0)} className="w-6 h-6 rounded-full flex-shrink-0 overflow-hidden"
+                        style={{ background: "hsl(var(--primary)/0.15)" }}>
+                        <img src="/features/nefara-pfp.svg" alt="Nefara" className="w-full h-full object-cover" />
+                    </div>
+                    <p
+                        className="text-sm leading-relaxed px-4 py-2.5 max-w-[80%]"
+                        style={{
+                            background: "hsl(var(--primary)/0.1)",
+                            color: "hsl(var(--foreground)/0.85)",
+                            borderRadius: "0 var(--radius-lg) var(--radius-lg) var(--radius-lg)",
+                        }}
+                    >
+                        {t("message1")}
+                    </p>
+                </div>
+
+                {/* Outgoing */}
+                <div ref={setRef(1)} className="flex items-end gap-2 justify-end" style={{ opacity: 0 }}>
+                    <p
+                        className="text-sm leading-relaxed px-4 py-2.5 max-w-[80%]"
+                        style={{
                             background: "hsl(var(--primary))",
-                            animation: `typingBounce 1.4s ease-in-out ${d}s infinite`,
-                        }} />
-                    ))}
+                            color: "hsl(var(--background))",
+                            borderRadius: "var(--radius-lg) var(--radius-lg) 0 var(--radius-lg)",
+                        }}
+                    >
+                        {t("message2")}
+                    </p>
+                    <div
+                        className="w-6 h-6 rounded-full flex-shrink-0 grid place-items-center text-[10px] font-bold"
+                        style={{ background: "hsl(var(--foreground)/0.08)", color: "hsl(var(--foreground)/0.4)" }}
+                    >
+                        C
+                    </div>
+                </div>
+
+                {/* Typing */}
+                <div ref={setRef(2)} className="flex items-end gap-2" style={{ opacity: 0 }}>
+                    <div ref={setAvatarRef(2)} className="w-6 h-6 rounded-full flex-shrink-0 overflow-hidden"
+                        style={{ background: "hsl(var(--primary)/0.15)" }}>
+                        <img src="/features/nefara-pfp.svg" alt="Nefara" className="w-full h-full object-cover" />
+                    </div>
+                    <div
+                        className="flex items-center gap-1 px-4 py-3"
+                        style={{ borderRadius: "0 var(--radius-lg) var(--radius-lg) var(--radius-lg)", background: "hsl(var(--primary)/0.1)" }}
+                    >
+                        {[0, 0.22, 0.44].map((d, i) => (
+                            <span key={i} style={{
+                                display: "block", width: 6, height: 6, borderRadius: "50%",
+                                background: "hsl(var(--primary))",
+                                animation: `typingBounce 1.4s ease-in-out ${d}s infinite`,
+                            }} />
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>
