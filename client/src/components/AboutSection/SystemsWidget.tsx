@@ -8,8 +8,8 @@ import { ActiveContext } from "@/components/ScrollStory/SceneTransition"
 const LINE_START = 0.0
 const LINE_END   = 0.85
 
-// Triangle geometry (SVG units, viewBox 0 0 260 240)
-const CX = 130, CY = 122, R = 80
+// Triangle geometry (SVG units, viewBox 0 0 260 255)
+const CX = 130, CY = 140, R = 100
 
 function vertex(angleDeg: number) {
     const a = (angleDeg * Math.PI) / 180
@@ -130,11 +130,6 @@ const borderTopRef = useRef<HTMLDivElement>(null)
             t(CENTER_IN[0]))
     }
 
-    const replayAnimation = () => {
-        setToReset()
-        playEntryTimeline()
-    }
-
     // Initialize to reset state on mount so no snap occurs before the entry animation
     useEffect(() => {
         setToReset()
@@ -150,15 +145,6 @@ const borderTopRef = useRef<HTMLDivElement>(null)
 
     return (
         <div className="select-none w-full flex flex-col">
-            {process.env.NODE_ENV === "development" && (
-                <button
-                    onClick={replayAnimation}
-                    className="absolute top-1 right-1 z-50 text-[10px] px-2 py-0.5 rounded"
-                    style={{ background: "hsl(var(--primary)/0.15)", color: "hsl(var(--primary))", border: "1px solid hsl(var(--primary)/0.3)" }}
-                >
-                    replay
-                </button>
-            )}
             {/* Header */}
             <div className="relative flex items-center gap-3 px-6 py-4">
                 <div ref={borderTopRef} className="absolute inset-x-0 top-0 h-px"
@@ -177,7 +163,7 @@ const borderTopRef = useRef<HTMLDivElement>(null)
             {/* Triangle diagram */}
             <div className="flex items-center justify-center px-4 py-6">
                 <svg
-                    viewBox="0 0 260 240"
+                    viewBox="0 0 260 255"
                     style={{ width: "100%", maxWidth: 260, overflow: "visible" }}
                 >
 
@@ -230,6 +216,25 @@ const borderTopRef = useRef<HTMLDivElement>(null)
                                 </g>
                             </g>
                         ))}
+                    </g>
+
+                    {/* Center label — outside rotating group so it stays upright */}
+                    <g ref={centerRef} style={{ opacity: 0 }}>
+                        <text
+                            x={CX} y={CY - 6}
+                            textAnchor="middle"
+                            fill="hsl(var(--primary))"
+                            fontSize={22} fontWeight={700} fontFamily="monospace">
+                            3
+                        </text>
+                        <text
+                            x={CX} y={CY + 12}
+                            textAnchor="middle"
+                            fill="hsl(var(--primary)/0.6)"
+                            fontSize={9} fontWeight={500} fontFamily="monospace"
+                            letterSpacing="0.08em">
+                            {t("products")}
+                        </text>
                     </g>
                 </svg>
             </div>
