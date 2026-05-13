@@ -19,7 +19,7 @@ export function MissionRowSection({
     const cardSide = widgetSide === "left" ? "right" : "left"
 
     return (
-        <section className="h-screen py-32 bg-background flex flex-col justify-center">
+        <section className="h-screen py-32 bg-background flex flex-col justify-center overflow-hidden" style={{ transform: "translateZ(0)" }}>
             <div
                 className="relative max-w-7xl px-4 flex items-center mx-auto w-full flex-1"
             >
