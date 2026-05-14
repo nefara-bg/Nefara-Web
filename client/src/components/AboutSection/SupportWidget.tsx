@@ -42,59 +42,35 @@ export default function SupportWidget() {
     const uptimeRef       = useRef<HTMLDivElement>(null)
     const monitorRef      = useRef<HTMLDivElement>(null)
 
-    const LINE_START = 0.0
-    const LINE_END   = 0.85
-
     useEffect(() => {
-        gsap.set([borderTopRef.current, borderBotRef.current], { scaleX: 0, transformOrigin: "left center" })
-        return subscribe((v) => {
-            const k = Math.max(0, Math.min(1, (v - LINE_START) / (LINE_END - LINE_START)))
-            gsap.set([borderTopRef.current, borderBotRef.current], { scaleX: k })
-        })
-    }, [subscribe])
-
-    useEffect(() => {
-        const path        = pathRef.current
-        const uptimeLine  = uptimeLineRef.current
-        const monitorLine = monitorLineRef.current
-        const uptimeDot   = uptimeDotRef.current
-        const monitorDot  = monitorDotRef.current
-        const uptime      = uptimeRef.current
-        const monitor     = monitorRef.current
+        const path = pathRef.current
         if (!path) return
 
-        // Initial hidden states
-        gsap.set(path,        { strokeDashoffset: PATH_LENGTH })
-        gsap.set(uptimeLine,  { strokeDashoffset: CONNECTOR_LEN })
-        gsap.set(monitorLine, { strokeDashoffset: CONNECTOR_LEN })
-        gsap.set(uptimeDot,   { scale: 0, opacity: 0 })
-        gsap.set(monitorDot,  { scale: 0, opacity: 0 })
-        gsap.set(uptime,      { opacity: 0, y: 6 })
-        gsap.set(monitor,     { opacity: 0, y: -6 })
+        gsap.set([borderTopRef.current, borderBotRef.current], { scaleX: 0, transformOrigin: "left center" })
+        gsap.set(path,               { strokeDashoffset: PATH_LENGTH })
+        gsap.set(uptimeLineRef.current,  { strokeDashoffset: CONNECTOR_LEN })
+        gsap.set(monitorLineRef.current, { strokeDashoffset: CONNECTOR_LEN })
+        gsap.set(uptimeDotRef.current,   { scale: 0, opacity: 0 })
+        gsap.set(monitorDotRef.current,  { scale: 0, opacity: 0 })
+        gsap.set(uptimeRef.current,      { opacity: 0, y: 6 })
+        gsap.set(monitorRef.current,     { opacity: 0, y: -6 })
 
         return subscribe((v) => {
-            // ECG line
+            gsap.set([borderTopRef.current, borderBotRef.current], { scaleX: Math.min(1, v / 0.85) })
+
             gsap.set(path, { strokeDashoffset: PATH_LENGTH * (1 - fade(v, START, END)) })
 
-            // Uptime: dot → connector → label
             const kud = fade(v, UPTIME_DOT_IN[0],  UPTIME_DOT_IN[1])
-            gsap.set(uptimeDot,   { scale: kud, opacity: kud })
-
-            const kul = fade(v, UPTIME_LINE_IN[0], UPTIME_LINE_IN[1])
-            gsap.set(uptimeLine,  { strokeDashoffset: CONNECTOR_LEN * (1 - kul) })
-
+            gsap.set(uptimeDotRef.current,   { scale: kud, opacity: kud })
+            gsap.set(uptimeLineRef.current,  { strokeDashoffset: CONNECTOR_LEN * (1 - fade(v, UPTIME_LINE_IN[0], UPTIME_LINE_IN[1])) })
             const ku = fade(v, UPTIME_IN[0], UPTIME_IN[1])
-            gsap.set(uptime,      { opacity: ku, y: 6 * (1 - ku) })
+            gsap.set(uptimeRef.current,      { opacity: ku, y: 6 * (1 - ku) })
 
-            // Monitor: dot → connector → label
-            const kmd = fade(v, MONITOR_DOT_IN[0],  MONITOR_DOT_IN[1])
-            gsap.set(monitorDot,  { scale: kmd, opacity: kmd })
-
-            const kml = fade(v, MONITOR_LINE_IN[0], MONITOR_LINE_IN[1])
-            gsap.set(monitorLine, { strokeDashoffset: CONNECTOR_LEN * (1 - kml) })
-
+            const kmd = fade(v, MONITOR_DOT_IN[0], MONITOR_DOT_IN[1])
+            gsap.set(monitorDotRef.current,  { scale: kmd, opacity: kmd })
+            gsap.set(monitorLineRef.current, { strokeDashoffset: CONNECTOR_LEN * (1 - fade(v, MONITOR_LINE_IN[0], MONITOR_LINE_IN[1])) })
             const km = fade(v, MONITOR_IN[0], MONITOR_IN[1])
-            gsap.set(monitor,     { opacity: km, y: -6 * (1 - km) })
+            gsap.set(monitorRef.current,     { opacity: km, y: -6 * (1 - km) })
         })
     }, [subscribe])
 

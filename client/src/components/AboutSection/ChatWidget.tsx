@@ -20,33 +20,27 @@ export default function ChatWidget() {
     const itemsRef   = useRef<(HTMLDivElement | null)[]>([])
     const avatarsRef = useRef<(HTMLDivElement | null)[]>([])
 
+    const borderTopRef = useRef<HTMLDivElement>(null)
+    const borderBotRef = useRef<HTMLDivElement>(null)
+
     useEffect(() => {
-        const apply = (v: number) => {
+        gsap.set([borderTopRef.current, borderBotRef.current], { scaleX: 0, transformOrigin: "left center" })
+        itemsRef.current.forEach((el, i) => {
+            if (!el) return
+            gsap.set(el, { opacity: 0, x: stops[i].fromX })
+        })
+
+        return subscribe((v) => {
+            gsap.set([borderTopRef.current, borderBotRef.current], { scaleX: Math.min(1, v / 0.85) })
+
             itemsRef.current.forEach((el, i) => {
                 if (!el) return
                 const s = stops[i]
                 const k = fade(v, s.start, s.end)
                 gsap.set(el, { opacity: k, x: s.fromX * (1 - k) })
-
                 const av = avatarsRef.current[i]
                 if (av) gsap.set(av, { scale: k, rotate: (1 - k) * -45 })
             })
-        }
-        apply(0)
-        return subscribe(apply)
-    }, [subscribe])
-
-    const borderTopRef = useRef<HTMLDivElement>(null)
-    const borderBotRef = useRef<HTMLDivElement>(null)
-
-    const LINE_START = 0.0
-    const LINE_END   = 0.85
-
-    useEffect(() => {
-        gsap.set([borderTopRef.current, borderBotRef.current], { scaleX: 0, transformOrigin: "left center" })
-        return subscribe((v) => {
-            const k = Math.max(0, Math.min(1, (v - LINE_START) / (LINE_END - LINE_START)))
-            gsap.set([borderTopRef.current, borderBotRef.current], { scaleX: k })
         })
     }, [subscribe])
 
