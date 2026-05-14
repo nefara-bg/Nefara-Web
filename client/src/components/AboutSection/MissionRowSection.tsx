@@ -20,7 +20,7 @@ export function MissionRowSection({
     const horizontalOffset = "4"
 
     return (
-        <section className="min-h-screen md:h-screen py-16 md:py-32 bg-background flex flex-col justify-center md:overflow-hidden" style={{ transform: "translateZ(0)" }}>
+        <section className="min-h-screen py-16 md:py-32 bg-background flex flex-col justify-center" style={{ transform: "translateZ(0)" }}>
             <div
                 className={`relative max-w-7xl px-${horizontalOffset} flex items-center mx-auto w-full flex-1`}
             >

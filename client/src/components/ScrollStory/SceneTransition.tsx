@@ -20,7 +20,7 @@ const MARGIN = "-135vh"
 
 export const ActiveContext = createContext(true)
 
-export function SceneTransition({ from, to }: { from: ReactNode; to: ReactNode }) {
+export function SceneTransition({ from, to, preVh = 0 }: { from: ReactNode; to: ReactNode; preVh?: number }) {
     const isActive = useContext(ActiveContext)
 
     const runwayRef  = useRef<HTMLDivElement>(null)
@@ -46,13 +46,14 @@ export function SceneTransition({ from, to }: { from: ReactNode; to: ReactNode }
         if (!runway || !outer || !content || !toEl) return
 
         let transitionH = window.innerHeight * SCENE_RUNWAY_VH / 100
+        let preH = window.innerHeight * preVh / 100
         let extraH = Math.max(0, content.getBoundingClientRect().height - window.innerHeight)
-        let runwayH = extraH + transitionH
+        let runwayH = preH + extraH + transitionH
 
         const apply = () => {
             runway.style.height = `${runwayH}px`
             const runwayTop = runway.getBoundingClientRect().top + window.scrollY
-            const doneAt = Math.round(runwayTop + extraH + SCENE_THRESHOLD * transitionH)
+            const doneAt = Math.round(runwayTop + preH + extraH + SCENE_THRESHOLD * transitionH)
             runway.setAttribute("data-scene-done-px", String(doneAt))
         }
         apply()
@@ -67,18 +68,28 @@ export function SceneTransition({ from, to }: { from: ReactNode; to: ReactNode }
             invalidateOnRefresh: true,
             onUpdate: (self) => {
                 const v = self.progress
-                const p0 = runwayH > 0 ? extraH / runwayH : 0
-                const safeP0 = Math.max(p0, 0.0001)
-                const contentPhase = Math.min(1, v / safeP0)
+
+                // pre-phase: [0, preH]; content scroll phase: [preH, preH+extraH]
+                const preEnd = runwayH > 0 ? (preH + extraH) / runwayH : 0
+
+                // scroll content into view during the extraH portion (after preH)
+                const extraStart = runwayH > 0 ? preH / runwayH : 0
+                const extraRange = runwayH > 0 ? extraH / runwayH : 0
+                const contentPhase = extraRange > 0
+                    ? Math.max(0, Math.min(1, (v - extraStart) / extraRange))
+                    : 0
                 gsap.set(content, { y: -extraH * contentPhase })
 
-                const fo0 = p0 + FADE_OUT[0] * (1 - p0)
-                const fo1 = p0 + FADE_OUT[1] * (1 - p0)
-                const fi0 = p0 + FADE_IN[0]  * (1 - p0)
-                const fi1 = p0 + FADE_IN[1]  * (1 - p0)
-                const doneP = p0 + SCENE_THRESHOLD * (1 - p0)
+                // transition animation runs over [preEnd, 1]
+                const transV = preEnd < 1 ? Math.max(0, (v - preEnd) / (1 - preEnd)) : 0
 
-                const fout = fade(v, [fo0, fo1])
+                const fo0 = FADE_OUT[0]
+                const fo1 = FADE_OUT[1]
+                const fi0 = FADE_IN[0]
+                const fi1 = FADE_IN[1]
+                const doneP = SCENE_THRESHOLD
+
+                const fout = fade(transV, [fo0, fo1])
                 gsap.set(outer, {
                     opacity: 1 - fout,
                     y: -16 * fout,
@@ -86,14 +97,14 @@ export function SceneTransition({ from, to }: { from: ReactNode; to: ReactNode }
                     filter: `blur(${4 * fout}px)`,
                 })
 
-                const isDone = v >= doneP
+                const isDone = transV >= doneP
                 if (isDone !== doneRef.current) {
                     doneRef.current = isDone
                     setDone(isDone)
                 }
 
                 if (!isDone) {
-                    const fin = fade(v, [fi0, fi1])
+                    const fin = fade(transV, [fi0, fi1])
                     gsap.set(toEl, {
                         opacity: fin,
                         y: 16 * (1 - fin),
@@ -104,15 +115,18 @@ export function SceneTransition({ from, to }: { from: ReactNode; to: ReactNode }
                     gsap.set(toEl, { clearProps: "opacity,y,scale,filter,transform" })
                 }
 
-                // Normalize 0→1 over [0, fo0*0.75] so subscribers complete well before the from-scene fades out
-                const normalized = fo0 > 0 ? Math.min(1, v / (fo0 * 0.75)) : 1
+                // Normalize 0→1 over the pre+extra phase so subscribers complete before the transition begins.
+                // Fall back to the original fo0-based calculation when there is no pre/extra phase.
+                const normalized = preEnd > 0
+                    ? Math.min(1, v / preEnd)
+                    : Math.min(1, v / (FADE_OUT[0] * 0.75))
                 listenersRef.current.forEach((cb) => cb(normalized))
             },
         })
 
         const ro = new ResizeObserver(() => {
             extraH = Math.max(0, content.getBoundingClientRect().height - window.innerHeight)
-            runwayH = extraH + transitionH
+            runwayH = preH + extraH + transitionH
             apply()
             ScrollTrigger.refresh()
         })
@@ -120,8 +134,9 @@ export function SceneTransition({ from, to }: { from: ReactNode; to: ReactNode }
 
         const onResize = () => {
             transitionH = window.innerHeight * SCENE_RUNWAY_VH / 100
+            preH = window.innerHeight * preVh / 100
             extraH = Math.max(0, content.getBoundingClientRect().height - window.innerHeight)
-            runwayH = extraH + transitionH
+            runwayH = preH + extraH + transitionH
             apply()
             ScrollTrigger.refresh()
         }
@@ -140,7 +155,7 @@ export function SceneTransition({ from, to }: { from: ReactNode; to: ReactNode }
 
     return (
         <>
-            <div ref={runwayRef} className="relative" style={{ height: `${SCENE_RUNWAY_VH}vh` }}>
+            <div ref={runwayRef} className="relative" style={{ height: `${SCENE_RUNWAY_VH + preVh}vh` }}>
                 <div
                     ref={outerRef}
                     className="sticky top-0 h-screen w-full overflow-hidden"

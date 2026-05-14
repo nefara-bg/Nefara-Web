@@ -15,10 +15,18 @@ import { ScrollProgressBar } from "@/components/ScrollStory/ScrollProgressBar"
 import { SceneIndicator } from "@/components/ScrollStory/SceneIndicator"
 import { ReactNode } from "react"
 
-function buildScrollStory(scenes: ReactNode[]): ReactNode {
+const MID_SCENE_PRE_VH = 100
+
+function buildScrollStory(scenes: ReactNode[], isFirst = true): ReactNode {
     if (scenes.length === 1) return scenes[0]
     const [first, ...rest] = scenes
-    return <SceneTransition from={first} to={buildScrollStory(rest)} />
+    return (
+        <SceneTransition
+            from={first}
+            to={buildScrollStory(rest, false)}
+            preVh={isFirst ? 0 : MID_SCENE_PRE_VH}
+        />
+    )
 }
 
 const Page = async ({ params }: { params: Promise<{ locale: string }> }) => {
@@ -72,7 +80,7 @@ const Page = async ({ params }: { params: Promise<{ locale: string }> }) => {
         <main className="min-h-screen bg-background">
             <ScrollProgressBar transitions={scenes.length - 1} />
             <SceneIndicator scenes={scenes.length} />
-            {buildScrollStory(scenes)}
+            {buildScrollStory(scenes, true)}
             <ContactCTA key="contact" />
         </main>
     )
