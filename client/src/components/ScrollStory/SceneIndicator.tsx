@@ -64,9 +64,9 @@ export function SceneIndicator({ scenes }: { scenes: number }) {
             if (shouldHide === hidden) return
             hidden = shouldHide
             if (shouldHide) {
-                gsap.to(inner, { y: -window.innerHeight, duration: 0.4, ease: "power2.in", overwrite: true })
+                gsap.to(inner, { opacity: 0, duration: 0.4, ease: "power2.in", overwrite: true })
             } else {
-                gsap.to(inner, { y: 0, duration: 0.35, ease: "power2.out", overwrite: true })
+                gsap.to(inner, { opacity: 1, duration: 0.35, ease: "power2.out", overwrite: true })
             }
         }
 
