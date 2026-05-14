@@ -5,6 +5,7 @@ import { setRequestLocale } from "next-intl/server"
 import { getTranslations } from "next-intl/server"
 import { HeroSection } from "@/components/HeroSection/HeroSection"
 import { ContactCTA } from "@/components/ContactSection/ContactCTA"
+import { ProductsPreview } from "@/components/HomeSection/ProductsPreview"
 import { MissionRowSection } from "@/components/AboutSection/MissionRowSection"
 import ChatWidget from "@/components/AboutSection/ChatWidget"
 import SystemsWidget from "@/components/AboutSection/SystemsWidget"
@@ -82,6 +83,7 @@ const Page = async ({ params }: { params: Promise<{ locale: string }> }) => {
             <SceneIndicator scenes={scenes.length} />
             {buildScrollStory(scenes, true)}
             <div data-scene-indicator-hide />
+            <ProductsPreview />
             <ContactCTA key="contact" />
         </main>
     )
