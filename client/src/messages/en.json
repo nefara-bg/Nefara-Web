@@ -330,7 +330,15 @@
             "subtitle": "Four products engineered by Nefara — from AI document analysis to deterministic systems software. Each one ships in production and powers the solutions we build for clients."
         },
         "indexLabel": "Product",
+        "tocLabel": "Contents",
         "visit": "Visit",
+        "sections": {
+            "products": "Products",
+            "platforms": "Platforms"
+        },
+        "platforms": {
+            "subtitle": "Infrastructure and platforms that power every product we ship."
+        },
         "products": {
             "fylex": {
                 "name": "Fylex",

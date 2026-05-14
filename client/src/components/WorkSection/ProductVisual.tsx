@@ -77,15 +77,6 @@ export function ProductVisual({ index, name, slug, accent }: Props) {
                     priority={index === 0}
                 />
             </div>
-            <div className="pointer-events-none absolute inset-0 z-20 bg-gradient-to-t from-background/70 via-transparent to-transparent" />
-            <div className="absolute inset-0 z-30 flex flex-col justify-between p-6">
-                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-foreground/70">
-                    0{index + 1} / 04
-                </span>
-                <span className="font-display text-3xl font-bold text-foreground tracking-tight drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)]">
-                    {name}
-                </span>
-            </div>
         </div>
     )
 }
