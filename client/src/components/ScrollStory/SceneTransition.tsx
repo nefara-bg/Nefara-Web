@@ -55,6 +55,7 @@ export function SceneTransition({ from, to, preVh = 0 }: { from: ReactNode; to: 
             const runwayTop = runway.getBoundingClientRect().top + window.scrollY
             const doneAt = Math.round(runwayTop + preH + extraH + SCENE_THRESHOLD * transitionH)
             runway.setAttribute("data-scene-done-px", String(doneAt))
+            runway.setAttribute("data-scene-runway-end-px", String(Math.round(runwayTop + runwayH)))
         }
         apply()
 

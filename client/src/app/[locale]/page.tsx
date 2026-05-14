@@ -81,6 +81,7 @@ const Page = async ({ params }: { params: Promise<{ locale: string }> }) => {
             <ScrollProgressBar transitions={scenes.length - 1} />
             <SceneIndicator scenes={scenes.length} />
             {buildScrollStory(scenes, true)}
+            <div data-scene-indicator-hide />
             <ContactCTA key="contact" />
         </main>
     )

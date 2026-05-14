@@ -27,6 +27,7 @@ export function SceneIndicator({ scenes }: { scenes: number }) {
 
         let donePts: number[] = []
         let lastIdx = -1
+        let hidden = false
 
         const readPts = () => {
             donePts = Array.from(document.querySelectorAll("[data-scene-done-px]"))
@@ -56,13 +57,31 @@ export function SceneIndicator({ scenes }: { scenes: number }) {
             const y   = window.scrollY
             const idx = Math.min(scenes - 1, donePts.filter((p) => y >= p).length)
             setActive(idx)
-
-            const lockY = donePts.at(-1) ?? Number.MAX_SAFE_INTEGER
-            const vh    = window.innerHeight
-            const t     = Math.max(0, Math.min(1, (y - lockY) / vh))
-            gsap.set(inner, { y: -vh * t })
         }
         update()
+
+        const setHidden = (shouldHide: boolean) => {
+            if (shouldHide === hidden) return
+            hidden = shouldHide
+            if (shouldHide) {
+                gsap.to(inner, { y: -window.innerHeight, duration: 0.4, ease: "power2.in", overwrite: true })
+            } else {
+                gsap.to(inner, { y: 0, duration: 0.35, ease: "power2.out", overwrite: true })
+            }
+        }
+
+        const sentinel = document.querySelector("[data-scene-indicator-hide]")
+        const io = sentinel ? new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setHidden(true)
+                } else {
+                    setHidden(entry.boundingClientRect.top < 0)
+                }
+            },
+            { threshold: 0 }
+        ) : null
+        if (sentinel && io) io.observe(sentinel)
 
         const st = ScrollTrigger.create({
             start: 0,
@@ -95,6 +114,7 @@ export function SceneIndicator({ scenes }: { scenes: number }) {
         return () => {
             st.kill()
             mo.disconnect()
+            io?.disconnect()
         }
     }, [scenes])
 
