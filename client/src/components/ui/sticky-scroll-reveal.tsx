@@ -2,6 +2,9 @@
 import React, { createContext, useContext, useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 // Observable value that replaces Framer Motion's MotionValue for scroll progress
 export class ScrollValue {
@@ -52,31 +55,33 @@ export const StickyScroll = ({
         "linear-gradient(to bottom right, hsl(174, 100%, 38%), hsl(174, 70%, 22%))",
     ];
 
-    // Track scroll within container and update ScrollValue
+    // Track window scroll progress through the section
     useEffect(() => {
         const container = ref.current;
         if (!container) return;
 
         const sv = scrollValueRef.current;
+        const cardsBreakpoints = content.map((_, i) => i / cardLength);
 
-        const onScroll = () => {
-            const scrollTop = container.scrollTop;
-            const scrollHeight = container.scrollHeight - container.clientHeight;
-            const progress = scrollHeight > 0 ? scrollTop / scrollHeight : 0;
-            sv.set(progress);
+        const trigger = ScrollTrigger.create({
+            trigger: container,
+            start: "top top",
+            end: "bottom top",
+            onUpdate: (self) => {
+                const progress = self.progress;
+                sv.set(progress);
 
-            const cardsBreakpoints = content.map((_, i) => i / cardLength);
-            const closest = cardsBreakpoints.reduce((acc, bp, i) =>
-                Math.abs(progress - bp) < Math.abs(progress - cardsBreakpoints[acc]) ? i : acc
-            , 0);
-            setActiveCard(closest);
-        };
+                const closest = cardsBreakpoints.reduce((acc, bp, i) =>
+                    Math.abs(progress - bp) < Math.abs(progress - cardsBreakpoints[acc]) ? i : acc
+                , 0);
+                setActiveCard(closest);
+            },
+        });
 
-        container.addEventListener("scroll", onScroll, { passive: true });
-        return () => container.removeEventListener("scroll", onScroll);
+        return () => trigger.kill();
     }, [cardLength, content]);
 
-    // Initial opacity animation (mirrors Framer's initial:0 → animate to 1 or 0.3)
+    // Initial opacity animation (mirrors original initial:0 → 1 or 0.3)
     useEffect(() => {
         textRefs.current.forEach((el, i) => {
             if (!el) return;
@@ -108,16 +113,17 @@ export const StickyScroll = ({
     return (
         <div
             ref={ref}
-            className="h-[36rem] overflow-y-auto flex justify-center relative space-x-30 p-10 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+            className="flex justify-center relative space-x-30 px-10"
             style={{ backgroundColor: backgroundColors[0] }}
         >
             <div className="relative flex items-start px-4">
                 <div className="max-w-2xl">
                     {content.map((item, index) => (
-                        <div key={item.title + index} className="my-48">
+                        <div key={item.title + index} className="relative min-h-screen py-32">
                             <div
                                 ref={el => { textRefs.current[index] = el; }}
                                 style={{ opacity: 0 }}
+                                className="sticky top-32"
                             >
                                 <h2 className="text-2xl font-bold text-white">
                                     {item.title}
@@ -135,7 +141,7 @@ export const StickyScroll = ({
                 ref={gradientRef}
                 style={{ background: linearGradients[0] }}
                 className={cn(
-                    "hidden lg:block h-60 w-80 rounded-xl sticky top-[5rem]",
+                    "hidden lg:block h-60 w-80 rounded-xl sticky top-32 self-start my-32",
                     contentClassName
                 )}
             >
