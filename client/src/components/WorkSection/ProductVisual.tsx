@@ -67,13 +67,13 @@ export function ProductVisual({ index, name, slug, accent }: Props) {
                 style={{ background: accent, opacity: 0 }}
                 aria-hidden="true"
             />
-            <div ref={imageRef} className="absolute inset-0 z-10">
+            <div ref={imageRef} className="absolute overflow-hidden inset-0 z-10">
                 <Image
                     src={`/work/${slug}.png`}
                     alt={name}
                     fill
                     sizes="(min-width: 1024px) 640px, 100vw"
-                    className="object-cover"
+                    className="object-cover transition-transform duration-700 ease-out hover:scale-105"
                     priority={index === 0}
                 />
             </div>
