@@ -1,10 +1,9 @@
 "use client"
 
-import { useMotionValueEvent, motionValue } from "motion/react"
-import { useStickyScrollProgress } from "@/components/ui/sticky-scroll-reveal"
-import { useState, useEffect } from "react"
+import { useStickyScrollProgress, ScrollValue } from "@/components/ui/sticky-scroll-reveal"
+import { useState, useEffect, useRef } from "react"
 
-const fallback = motionValue(0)
+const fallback = new ScrollValue()
 
 const T_START = 0.01
 const T_END   = 0.145
@@ -30,22 +29,19 @@ const DISPLAY = "PRINTING..."
 export function PrinterWidget({ keywords }: { keywords: string[] }) {
     const scrollProgress = useStickyScrollProgress() ?? fallback
     const [t, setT] = useState(0)
+    const svRef = useRef(scrollProgress)
+    svRef.current = scrollProgress
 
     useEffect(() => {
-        setT(inv(T_START, T_END, scrollProgress.get()))
+        setT(inv(T_START, T_END, svRef.current.get()))
+        return svRef.current.on((v) => setT(inv(T_START, T_END, v)))
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-
-    useMotionValueEvent(scrollProgress, "change", (v) => {
-        setT(inv(T_START, T_END, v))
-    })
 
     // Display letters
     const letterOn = DISPLAY.split("").map((_, i) => t > i * 0.043)
 
     // Paper slides out: t 0 → 0.75
-    // translateY: -100% → 0%   (slides down from inside slot)
-    // clipPath inset: 100% → 0%  (reveals top-to-bottom as paper emerges)
     const paperT    = inv(0, 0.75, t)
     const slideY    = ((1 - paperT) * -100).toFixed(1)
     const clipInset = ((1 - paperT) * 100).toFixed(1)

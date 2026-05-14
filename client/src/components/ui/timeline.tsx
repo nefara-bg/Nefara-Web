@@ -1,7 +1,12 @@
 "use client"
 
-import React, { useRef } from "react"
-import { motion, useScroll, useTransform } from "motion/react"
+import React, { useRef, useEffect } from "react"
+import gsap from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { CustomEase } from "gsap/CustomEase"
+
+gsap.registerPlugin(ScrollTrigger, CustomEase)
+CustomEase.create("nefEase", "0.22, 1, 0.36, 1")
 
 export interface TimelineEntry {
     title: string
@@ -10,13 +15,52 @@ export interface TimelineEntry {
 
 export function Timeline({ data }: { data: TimelineEntry[] }) {
     const containerRef = useRef<HTMLDivElement>(null)
+    const fillRef = useRef<HTMLDivElement>(null)
+    const itemRefs = useRef<(HTMLDivElement | null)[]>([])
 
-    const { scrollYProgress } = useScroll({
-        target: containerRef,
-        offset: ["start 30%", "end 70%"],
-    })
+    useEffect(() => {
+        const container = containerRef.current
+        const fill = fillRef.current
+        if (!container || !fill) return
 
-    const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"])
+        // Scroll-linked fill line
+        const fillTrigger = ScrollTrigger.create({
+            trigger: container,
+            start: "top 30%",
+            end: "bottom 70%",
+            scrub: true,
+            onUpdate: (self) => {
+                fill.style.height = `${self.progress * 100}%`
+            },
+        })
+
+        // Per-item entrance animations
+        const triggers: ScrollTrigger[] = []
+        itemRefs.current.forEach((item, index) => {
+            if (!item) return
+            gsap.set(item, { opacity: 0, x: 16 })
+            const t = ScrollTrigger.create({
+                trigger: item,
+                start: "top bottom-=60px",
+                once: true,
+                onEnter: () => {
+                    gsap.to(item, {
+                        opacity: 1,
+                        x: 0,
+                        duration: 0.55,
+                        delay: index * 0.08,
+                        ease: "nefEase",
+                    })
+                },
+            })
+            triggers.push(t)
+        })
+
+        return () => {
+            fillTrigger.kill()
+            triggers.forEach(t => t.kill())
+        }
+    }, [])
 
     return (
         <div ref={containerRef} className="relative">
@@ -27,25 +71,20 @@ export function Timeline({ data }: { data: TimelineEntry[] }) {
             />
             {/* Animated fill */}
             <div className="absolute left-5 top-6 bottom-6 w-px overflow-hidden">
-                <motion.div
-                    style={{ height: lineHeight, background: "hsl(var(--primary))" }}
+                <div
+                    ref={fillRef}
                     className="w-full origin-top"
+                    style={{ height: "0%", background: "hsl(var(--primary))" }}
                 />
             </div>
 
             <div className="flex flex-col gap-10">
                 {data.map((item, index) => (
-                    <motion.div
+                    <div
                         key={index}
-                        initial={{ opacity: 0, x: 16 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true, margin: "-60px" }}
-                        transition={{
-                            duration: 0.55,
-                            delay: index * 0.08,
-                            ease: [0.22, 1, 0.36, 1],
-                        }}
+                        ref={el => { itemRefs.current[index] = el }}
                         className="flex gap-7 items-start"
+                        style={{ opacity: 0 }}
                     >
                         {/* Step badge */}
                         <div
@@ -77,7 +116,7 @@ export function Timeline({ data }: { data: TimelineEntry[] }) {
                             </h3>
                             {item.content}
                         </div>
-                    </motion.div>
+                    </div>
                 ))}
             </div>
         </div>

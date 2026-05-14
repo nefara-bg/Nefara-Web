@@ -1,6 +1,11 @@
 "use client"
 
-import { motion } from "motion/react"
+import { useRef, useEffect } from "react"
+import gsap from "gsap"
+import { CustomEase } from "gsap/CustomEase"
+
+gsap.registerPlugin(CustomEase)
+CustomEase.create("nefEase", "0.22, 1, 0.36, 1")
 
 const ROWS = [
     ["esc", "F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12"],
@@ -14,7 +19,27 @@ const ROWS = [
 const WIDE_KEYS = new Set(["esc", "tab", "caps", "shift", "fn", "ctrl", "opt", "cmd", "—"])
 
 export function KeyboardWidget() {
+    const containerRef = useRef<HTMLDivElement>(null)
     let idx = 0
+
+    useEffect(() => {
+        const container = containerRef.current
+        if (!container) return
+
+        const keys = container.querySelectorAll<HTMLElement>(".keyboard-key")
+
+        gsap.fromTo(
+            keys,
+            { opacity: 0, y: 5 },
+            {
+                opacity: 1,
+                y: 0,
+                duration: 0.28,
+                ease: "nefEase",
+                stagger: 0.013,
+            }
+        )
+    }, [])
 
     return (
         <div
@@ -22,6 +47,7 @@ export function KeyboardWidget() {
             style={{ border: "1px solid rgba(0,0,0,0.07)" }}
         >
             <div
+                ref={containerRef}
                 className="flex-shrink-0 pl-3"
                 style={{
                     maskImage: "linear-gradient(to right, black 30%, transparent 88%)",
@@ -36,24 +62,14 @@ export function KeyboardWidget() {
                         <div key={ri} className="flex gap-[3px] items-center">
                             {row.map((key, ki) => {
                                 const delay = idx++ * 0.013
+                                void delay // delay is baked into the stagger order via DOM order
                                 return (
-                                    <motion.div
+                                    <div
                                         key={ki}
-                                        initial={{ opacity: 0, y: 5 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        transition={{
-                                            delay,
-                                            duration: 0.28,
-                                            ease: [0.22, 1, 0.36, 1],
-                                        }}
-                                        whileHover={{
-                                            y: -3,
-                                            transition: { duration: 0.1, ease: "easeOut" },
-                                        }}
                                         className={[
-                                            "flex items-center justify-center rounded-[4px] flex-shrink-0",
+                                            "keyboard-key flex items-center justify-center rounded-[4px] flex-shrink-0",
                                             "text-[7px] font-medium text-gray-600 select-none bg-white",
-                                            "cursor-default transition-shadow duration-150",
+                                            "cursor-default",
                                             key === ""
                                                 ? "h-6 w-14"
                                                 : WIDE_KEYS.has(key)
@@ -62,18 +78,21 @@ export function KeyboardWidget() {
                                         ].join(" ")}
                                         style={{
                                             boxShadow: "0 2px 0 #b0b4bc, 0 3px 5px rgba(0,0,0,0.14)",
+                                            opacity: 0,
                                         }}
                                         onMouseEnter={(e) => {
-                                            (e.currentTarget as HTMLElement).style.boxShadow =
-                                                "0 4px 0 #9097a3, 0 6px 12px rgba(0,0,0,0.22), inset 0 1px 0 rgba(255,255,255,0.9)"
+                                            const el = e.currentTarget as HTMLElement
+                                            gsap.to(el, { y: -3, duration: 0.1, ease: "power2.out" })
+                                            el.style.boxShadow = "0 4px 0 #9097a3, 0 6px 12px rgba(0,0,0,0.22), inset 0 1px 0 rgba(255,255,255,0.9)"
                                         }}
                                         onMouseLeave={(e) => {
-                                            (e.currentTarget as HTMLElement).style.boxShadow =
-                                                "0 2px 0 #b0b4bc, 0 3px 5px rgba(0,0,0,0.14)"
+                                            const el = e.currentTarget as HTMLElement
+                                            gsap.to(el, { y: 0, duration: 0.1, ease: "power2.out" })
+                                            el.style.boxShadow = "0 2px 0 #b0b4bc, 0 3px 5px rgba(0,0,0,0.14)"
                                         }}
                                     >
                                         {key}
-                                    </motion.div>
+                                    </div>
                                 )
                             })}
                         </div>
