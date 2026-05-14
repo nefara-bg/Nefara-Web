@@ -64,22 +64,14 @@ const WorkPage = async ({ params }: { params: Promise<{ locale: string }> }) => 
     const t = await getTranslations("work")
 
     return (
-        <main className="min-h-screen bg-background pt-16">
+        <main className="min-h-screen bg-background pb-16">
             {/* Hero */}
             <section className="relative overflow-hidden border-b border-white/5">
-                <div
-                    className="pointer-events-none absolute inset-0 opacity-60"
-                    style={{
-                        background:
-                            "radial-gradient(60% 50% at 50% 0%, hsl(var(--primary) / 0.18), transparent 60%)",
-                    }}
-                    aria-hidden="true"
-                />
-                <div className="relative mx-auto max-w-7xl px-6 lg:px-10 pt-20 pb-24 lg:pt-28 lg:pb-32">
+                <div className="relative mx-auto max-w-7xl px-6 lg:px-10 pt-28 pb-16 lg:pt-32 lg:pb-24">
                     <HeroTitleReveal>
                         <h1
                             data-reveal
-                            className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-[1.05] tracking-tight max-w-4xl"
+                            className="font-display text-4xl lg:text-5xl font-bold text-foreground leading-[1.1] tracking-tight mb-6 max-w-4xl"
                         >
                             {t("hero.title1")}{" "}
                             <span className="text-foreground">
@@ -88,7 +80,7 @@ const WorkPage = async ({ params }: { params: Promise<{ locale: string }> }) => 
                         </h1>
                         <p
                             data-reveal
-                            className="mt-6 max-w-2xl text-base md:text-lg text-muted-foreground leading-relaxed"
+                            className="text-base text-muted-foreground leading-relaxed max-w-2xl"
                         >
                             {t("hero.subtitle")}
                         </p>
@@ -190,18 +182,11 @@ const WorkPage = async ({ params }: { params: Promise<{ locale: string }> }) => 
                         {/* Platforms section */}
                         <section
                             id="platforms"
-                            className="relative scroll-mt-28 border-b border-white/5 py-20 lg:py-32"
+                            className="relative scroll-mt-28 border-b border-white/5 pt-20 lg:pt-32"
                             aria-labelledby="platforms-heading"
                         >
                             <div className="mx-auto max-w-3xl">
                                 <RevealOnScroll y={24}>
-                                    <div className="flex items-center gap-3 mb-6">
-                                        <span className="font-mono text-xs uppercase tracking-[0.22em] text-muted-foreground">
-                                            {t("sections.platforms")}
-                                        </span>
-                                        <span className="h-px flex-1 bg-white/10" />
-                                    </div>
-
                                     <h2
                                         id="platforms-heading"
                                         className="font-display text-5xl md:text-6xl font-bold text-foreground leading-[1.02] tracking-tight"

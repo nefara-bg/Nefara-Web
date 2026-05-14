@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Bash(grep -iE \"WorkSection|work\\\\\\\\\\\\\\\\page|app.*work\")"
+      "Bash(grep -iE \"WorkSection|work\\\\\\\\\\\\\\\\page|app.*work\")",
+      "WebFetch(domain:skiper-ui.com)"
     ]
   }
 }
