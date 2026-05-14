@@ -318,6 +318,46 @@
             "other": "Other"
         }
     },
+    "work": {
+        "seo": {
+            "title": "Work – Nefara | Products We Build In-House",
+            "description": "Discover Nefara's in-house products — Fylex, Quicx, PMAD and Sandokan — built from the ground up with our own engineering and integrated into every client solution."
+        },
+        "hero": {
+            "eyebrow": "Our Work",
+            "title1": "Products built",
+            "title2": "in-house",
+            "subtitle": "Four products engineered by Nefara — from AI document analysis to deterministic systems software. Each one ships in production and powers the solutions we build for clients."
+        },
+        "indexLabel": "Product",
+        "visit": "Visit",
+        "products": {
+            "fylex": {
+                "name": "Fylex",
+                "tagline": "AI platform for document analysis",
+                "description": "Fylex is an AI platform for document analysis, built to help startup founders, sole traders and small businesses without a legal background understand, evaluate and manage the risks in their contracts and documents. Combining Optical Character Recognition, Retrieval-Augmented Generation and artificial intelligence, the platform delivers fast, accessible and reliable analysis of any kind of document — when a file is uploaded, Fylex automatically recognises the text, identifies risky clauses, obligations and potential issues, and then provides a clear explanation in plain, non-legal language. Where hidden text, misleading information, suspicious clauses or links carrying potential financial obligations are present, the platform automatically detects, formats and classifies them as risk elements, providing a concrete identification of the issue, the reasoning behind it and a recommended action. All of this happens under strict data protection — information remains accessible only to the user, with no possibility of external access.",
+                "url": "https://fylex.org"
+            },
+            "quicx": {
+                "name": "Quicx",
+                "tagline": "Systems-level task processing engine",
+                "description": "Quicx is a systems-level task processing engine, developed in C — a language known for its exceptional speed and efficiency. Built on top of our own memory allocator PMAD and a custom binary data transport protocol, Quicx is the fastest and lightest processor of its kind, with no compromise between the two. The platform delivers full flexibility and configurability to match the needs of every user, adapting to any system and scenario without limits. Quicx is deterministic — every task is processed predictably, by the same rules, with no surprises and no unexpected behaviour. The platform offers complete observability across every aspect of the system, from memory and requests to the state of every task in real time, making it the first processor of its kind with such deep transparency into its internal state. Developers get full control and visibility over everything happening under the hood. Quicx is designed to grow alongside your system: regardless of load, it scales without losing performance and without risk of failure. Built on principles of stability and predictability, Quicx is engineered to run continuously and reliably, accelerating, optimising and stabilising every system it is deployed into — without adding unnecessary complexity.",
+                "url": "https://quicx.dev"
+            },
+            "pmad": {
+                "name": "PMAD",
+                "tagline": "Predictive Memory Allocator by Dimitar Anastasov",
+                "description": "PMAD (Predictive Memory Allocator by Dimitar Anastasov) is a specialised slab memory allocator, written in C, designed to deliver constant O(1) allocation and deallocation of memory without a single system call at runtime. At startup, all required memory is reserved through one single mmap call, forming a single contiguous arena, which is then divided into user-defined slab size classes — completely eliminating the fragmentation and unpredictability of standard allocators such as malloc. Unlike jemalloc, tcmalloc and ptmalloc, which optimise for average throughput, PMAD optimises for worst-case determinism: zero jitter, zero fragmentation and guaranteed predictable behaviour on every single request. The platform offers full configurability — slab size classes, the distribution of memory between them within the arena and its total size are entirely defined by the user before execution, rather than fixed in advance. The result: measured latency of 19.1 ns, throughput of over 462 million operations per second and strictly zero jitter — numbers verified mathematically, not statistically. PMAD is built for environments where predictability is not optional but a requirement — real-time systems, embedded platforms, game engines and high-frequency trading.",
+                "url": ""
+            },
+            "sandokan": {
+                "name": "Sandokan",
+                "tagline": "Neural network training engine",
+                "description": "Sandokan is a neural network training engine, developed in C++, with no dependency on Python, CUDA or PyTorch. Built on top of our own slab allocator PMAD and accelerated by Apple AMX through Eigen, the engine applies deep system-level memory optimisations at every layer — a single contiguous arena for all gradient buffers, mmap-backed data loading, and strictly zero dynamic allocations on the hot path. Sandokan can train on virtually any kind of data: image datasets in IDX format, tabular and numerical data from CSV files, Eigen matrices or fully custom structures — without changes to the engine. Add a single header to any C++ project and you get a full training pipeline with a measured throughput of over 1.6 million examples per second, outperforming plain Eigen by up to 50%. Sandokan is available in the Homebrew package manager as a library for the C++ language.",
+                "url": "https://sandokan.biz"
+            }
+        }
+    },
     "footer": {
         "text": "Transforming ideas into exceptional software solutions. Building the future, one application at a time. Your success is our mission.",
         "services": {
