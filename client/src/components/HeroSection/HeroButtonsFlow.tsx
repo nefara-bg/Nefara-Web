@@ -4,8 +4,6 @@ import { useEffect, useRef } from "react"
 import gsap from "gsap"
 import { useTranslations } from "next-intl"
 
-const DARK = "#0F172A"
-
 export default function HeroButtonsFlow() {
     const ref = useRef<HTMLDivElement>(null)
     const t = useTranslations("hero")
@@ -22,14 +20,14 @@ export default function HeroButtonsFlow() {
         <div ref={ref} style={{ opacity: 0 }} className="flex flex-col sm:flex-row gap-3 mt-2 items-center">
             <button
                 onClick={scrollTo("#contact")}
-                style={{ background: DARK, color: "#ffffff" }}
-                className="rounded-xl font-semibold text-sm px-8 h-11 hover:opacity-85 transition-opacity"
+                style={{ background: "#ffffff", color: "#00CBBB" }}
+                className="rounded-xl font-semibold text-sm px-8 h-11 hover:opacity-90 transition-opacity shadow-md"
             >
                 {t("button")}
             </button>
             <button
                 onClick={scrollTo("#services")}
-                style={{ border: `1.5px solid ${DARK}`, color: DARK, background: "rgba(255,255,255,0.15)" }}
+                style={{ border: "1.5px solid rgba(255,255,255,0.6)", color: "#ffffff", background: "rgba(255,255,255,0.12)" }}
                 className="rounded-xl font-semibold text-sm px-8 h-11 hover:opacity-75 transition-opacity backdrop-blur-sm"
             >
                 {t("secondaryButton")}

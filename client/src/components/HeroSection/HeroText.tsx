@@ -3,8 +3,8 @@
 import { useEffect, useRef } from "react"
 import gsap from "gsap"
 
-const HEADING = "#0F172A"
-const BODY    = "#1E4D47"
+const HEADING = "#ffffff"
+const BODY    = "rgba(255,255,255,0.80)"
 
 export function HeroText({ title, content }: { title: string; content: string }) {
     const h1Ref = useRef<HTMLHeadingElement>(null)
