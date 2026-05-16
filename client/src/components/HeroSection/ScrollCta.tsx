@@ -32,11 +32,11 @@ export default function ScrollCta({ label }: { label: string }) {
             ref={buttonRef}
             onClick={scrollDown}
             style={{ opacity: 0, fontSize: "clamp(0.65rem, 0.8vw, 0.8rem)", letterSpacing: "0.08em" }}
-            className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-muted-foreground hover:text-foreground transition-colors cursor-pointer group"
+            className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-white/50 hover:text-white transition-colors cursor-pointer group"
         >
             <span className="uppercase tracking-widest">{label}</span>
             <div ref={chevronRef}>
-                <ChevronDown className="w-4 h-4 group-hover:text-primary transition-colors" strokeWidth={1.5} />
+                <ChevronDown className="w-4 h-4 group-hover:text-white transition-colors" strokeWidth={1.5} />
             </div>
         </button>
     )

@@ -3,7 +3,6 @@
 import { useEffect, useRef } from "react"
 import gsap from "gsap"
 import { useTranslations } from "next-intl"
-import { Button } from "@/components/ui/button"
 
 export default function HeroButtonsFlow() {
     const ref = useRef<HTMLDivElement>(null)
@@ -14,17 +13,23 @@ export default function HeroButtonsFlow() {
     }
 
     useEffect(() => {
-        gsap.fromTo(ref.current, { opacity: 0 }, { opacity: 1, duration: 0.5, delay: 0.25 })
+        gsap.fromTo(ref.current, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.6, delay: 0.35 })
     }, [])
 
     return (
-        <div ref={ref} style={{ opacity: 0 }} className="flex gap-3 mt-2">
-            <Button variant="secondary" onClick={scrollTo("#contact")} className="border-0 px-6 h-10 text-sm">
+        <div ref={ref} style={{ opacity: 0 }} className="flex flex-col sm:flex-row gap-3 mt-2 items-center">
+            <button
+                onClick={scrollTo("#contact")}
+                className="rounded-xl bg-white text-[hsl(var(--primary))] font-semibold text-sm px-8 h-11 hover:bg-white/90 transition-colors"
+            >
                 {t("button")}
-            </Button>
-            <Button onClick={scrollTo("#services")} className="border-0 px-6 h-10 text-sm">
+            </button>
+            <button
+                onClick={scrollTo("#services")}
+                className="rounded-xl border border-white/40 text-white font-semibold text-sm px-8 h-11 hover:bg-white/10 transition-colors"
+            >
                 {t("secondaryButton")}
-            </Button>
+            </button>
         </div>
     )
 }

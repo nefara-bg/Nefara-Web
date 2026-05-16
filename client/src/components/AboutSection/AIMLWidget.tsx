@@ -159,7 +159,7 @@ export function AIMLWidget() {
                     <text x="180" y="115" textAnchor="middle" fill="#334155" fontSize="6" fontFamily="monospace">OUTPUT</text>
                 </svg>
 
-                {/* Sandokan stats */}
+                {/* Sand stats */}
                 <div className="flex gap-4 font-mono" style={{ fontSize: 9 }}>
                     <span style={{ color: "#64748b" }}>
                         epoch&nbsp;<span style={{ color: "#2dd4bf", fontWeight: 700 }}>38/50</span>

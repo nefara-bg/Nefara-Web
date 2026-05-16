@@ -27,9 +27,6 @@ export async function DisciplinesSection() {
     return (
         <div className="mx-auto max-w-7xl px-6 lg:px-10 pb-16 lg:pb-24">
 
-            {/* Divider */}
-            <div className="mb-10 lg:mb-12 border-t border-border" />
-
             {/* Heading */}
             <motion.div
                 initial={{ opacity: 0, y: 16 }}

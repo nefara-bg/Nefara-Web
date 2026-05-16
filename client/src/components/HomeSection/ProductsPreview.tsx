@@ -6,9 +6,9 @@ import { Link } from "@/i18n/navigation"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 
-type ProductKey = "quicx" | "pmad" | "sandokan"
+type ProductKey = "quicx" | "pmad" | "sand"
 
-const PRODUCTS: ProductKey[] = ["quicx", "pmad", "sandokan"]
+const PRODUCTS: ProductKey[] = ["quicx", "pmad", "sand"]
 
 const STACK_OFFSET = 16
 const TOP_BASE = 128
