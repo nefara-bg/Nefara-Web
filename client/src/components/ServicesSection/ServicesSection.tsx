@@ -1,6 +1,7 @@
 import Image from "next/image"
 import { getTranslations } from "next-intl/server"
 import { Link } from "@/i18n/navigation"
+import { ArrowRight } from "lucide-react"
 import { AnimatedLeftPanel } from "./AnimatedLeftPanel"
 import { ServiceCardHover } from "./ServiceCardHover"
 
@@ -39,11 +40,18 @@ export default async function ServicesSection() {
                         <p className="text-base text-muted-foreground leading-relaxed mb-8">
                             {t("pageSubtitle")}
                         </p>
-                        <Link href="/contact" className="group inline-flex items-center gap-1.5 rounded-md border border-[hsl(var(--primary))] bg-background px-5 py-2 text-sm font-semibold text-foreground transition-all duration-300 hover:bg-[hsl(var(--primary)/0.08)]">
-                            {t("pageCta")}
-                            <span className="relative inline-flex items-center w-4 h-4 overflow-hidden">
-                                <span className="absolute transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-2">{">"}</span>
-                                <span className="absolute opacity-0 translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">{"->"}</span>
+                        <Link
+                            href="/contact"
+                            className="relative inline-flex items-center rounded-xl h-11 w-44 bg-background border border-border overflow-hidden group"
+                        >
+                            <div
+                                className="absolute left-1 top-1 h-9 w-9 rounded-lg flex items-center justify-center z-10 group-hover:w-[168px] transition-all duration-500"
+                                style={{ background: "#00CBBB" }}
+                            >
+                                <ArrowRight className="w-4 h-4 text-white shrink-0" />
+                            </div>
+                            <span className="relative z-0 w-full text-center text-sm font-semibold text-foreground group-hover:text-white transition-colors duration-300 pl-4">
+                                {t("pageCta")}
                             </span>
                         </Link>
                     </AnimatedLeftPanel>

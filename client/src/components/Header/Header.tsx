@@ -6,6 +6,7 @@ import { useTranslations } from 'next-intl'
 import LngSwitcher from '@/components/Header/components/LngSwitcher/LngSwitcher'
 import MobileNav from '@/components/Header/components/MobileNav/MobileNav'
 import Image from 'next/image'
+import { ArrowRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 interface HeaderProps {
@@ -70,7 +71,21 @@ const Header: React.FC<HeaderProps> = ({ locale = "en" }) => {
                         </Link>
                     </div>
 
-                    <div className="flex flex-row gap-2 md:gap-4">
+                    <div className="flex flex-row gap-3 md:gap-4 items-center">
+                        <Link
+                            href="/#contact"
+                            className="relative inline-flex items-center rounded-xl h-10 w-40 bg-background border border-border overflow-hidden group"
+                        >
+                            <div
+                                className="absolute left-1 top-1 h-8 w-8 rounded-lg flex items-center justify-center z-10 group-hover:w-[152px] transition-all duration-500"
+                                style={{ background: "#00CBBB" }}
+                            >
+                                <ArrowRight className="w-4 h-4 text-white shrink-0" />
+                            </div>
+                            <span className="relative z-0 w-full text-center text-sm font-semibold text-foreground group-hover:text-white transition-colors duration-300 pl-3">
+                                {t("header.contact")}
+                            </span>
+                        </Link>
                         <LngSwitcher locale={locale} />
                     </div>
                 </div>

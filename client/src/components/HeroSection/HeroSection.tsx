@@ -11,30 +11,26 @@ export async function HeroSection() {
             <div
                 className="relative isolate overflow-hidden flex flex-col items-center justify-center rounded-2xl"
                 style={{
-                    background: "#00CBBB",
                     minHeight: "calc(100vh - 72px)",
+                    background: [
+                        "radial-gradient(ellipse 80% 60% at 10% 0%,   rgba(255,255,255,0.22) 0%, transparent 70%)",
+                        "radial-gradient(ellipse 50% 50% at 90% 100%, rgba(0,140,130,0.55)   0%, transparent 65%)",
+                        "radial-gradient(ellipse 60% 40% at 50% 110%, rgba(255,255,255,0.18) 0%, transparent 60%)",
+                        "#00CBBB",
+                    ].join(", "),
                 }}
             >
-                {/* Dot grid texture */}
-                <div
-                    aria-hidden
-                    className="pointer-events-none absolute inset-0 -z-10"
-                    style={{
-                        backgroundImage: "radial-gradient(rgba(255,255,255,0.13) 1px, transparent 1px)",
-                        backgroundSize: "22px 22px",
-                    }}
-                />
+                {/* Noise grain overlay — adds tactility without a grid */}
+                <svg aria-hidden className="pointer-events-none absolute inset-0 w-full h-full opacity-[0.035]">
+                    <filter id="noise">
+                        <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" />
+                        <feColorMatrix type="saturate" values="0" />
+                    </filter>
+                    <rect width="100%" height="100%" filter="url(#noise)" />
+                </svg>
 
-                {/* Bottom-center radial glow */}
-                <div
-                    aria-hidden
-                    className="pointer-events-none absolute -z-10 bottom-0 left-1/2 -translate-x-1/2 w-[900px] h-[380px]"
-                    style={{
-                        background: "radial-gradient(ellipse at bottom, rgba(255,255,255,0.18) 0%, transparent 68%)",
-                    }}
-                />
-
-                <div className="max-w-4xl flex flex-col items-center gap-7 mx-auto px-6 text-center py-32">
+                {/* Content */}
+                <div className="relative z-10 max-w-4xl flex flex-col items-center gap-7 mx-auto px-6 text-center py-32">
                     <HeroText title={`${t("title")} ${t("title2")}`} content={t("content")} />
                     <HeroButtonsFlow />
                 </div>
