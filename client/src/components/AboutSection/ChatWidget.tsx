@@ -1,64 +1,16 @@
 "use client"
 
-import { useContext, useEffect, useRef } from "react"
-import gsap from "gsap"
 import { useTranslations } from "next-intl"
-import { SceneScrollContext } from "@/components/ScrollStory/SceneScrollContext"
-
-const stops = [
-    { start: 0.35, end: 0.57, fromX: -8 },
-    { start: 0.57, end: 0.79, fromX:  8 },
-    { start: 0.79, end: 1.00, fromX:  0 },
-] as const
-
-const fade = (v: number, a: number, b: number) =>
-    Math.max(0, Math.min(1, (v - a) / (b - a)))
 
 export default function ChatWidget() {
     const t = useTranslations("about.widgets.chat")
-    const subscribe = useContext(SceneScrollContext)
-    const itemsRef   = useRef<(HTMLDivElement | null)[]>([])
-    const avatarsRef = useRef<(HTMLDivElement | null)[]>([])
-
-    const borderTopRef = useRef<HTMLDivElement>(null)
-    const borderBotRef = useRef<HTMLDivElement>(null)
-
-    useEffect(() => {
-        gsap.set([borderTopRef.current, borderBotRef.current], { scaleX: 0, transformOrigin: "left center" })
-        itemsRef.current.forEach((el, i) => {
-            if (!el) return
-            gsap.set(el, { opacity: 0, x: stops[i].fromX })
-        })
-
-        return subscribe((v) => {
-            gsap.set([borderTopRef.current, borderBotRef.current], { scaleX: Math.min(1, v / 0.85) })
-
-            itemsRef.current.forEach((el, i) => {
-                if (!el) return
-                const s = stops[i]
-                const k = fade(v, s.start, s.end)
-                gsap.set(el, { opacity: k, x: s.fromX * (1 - k) })
-                const av = avatarsRef.current[i]
-                if (av) gsap.set(av, { scale: k, rotate: (1 - k) * -45 })
-            })
-        })
-    }, [subscribe])
-
-    const setRef       = (i: number) => (el: HTMLDivElement | null) => { itemsRef.current[i] = el }
-    const setAvatarRef = (i: number) => (el: HTMLDivElement | null) => { avatarsRef.current[i] = el }
 
     return (
-        <div
-            className="select-none w-full h-full flex flex-col"
-        >
+        <div className="select-none w-full h-full flex flex-col">
             {/* Header */}
-            <div
-                className="relative flex items-center gap-3 py-4 px-3"
-            >
-                {/* Top border — fills left to right on scroll */}
-                <div ref={borderTopRef} className="absolute inset-x-0 top-0 h-px" style={{ background: "hsl(var(--border))", transform: "scaleX(0)", transformOrigin: "left center" }} />
-                {/* Bottom border — fills left to right on scroll */}
-                <div ref={borderBotRef} className="absolute inset-x-0 bottom-0 h-px" style={{ background: "hsl(var(--border))", transform: "scaleX(0)", transformOrigin: "left center" }} />
+            <div className="relative flex items-center gap-3 py-4 px-3">
+                <div className="absolute inset-x-0 top-0 h-px" style={{ background: "hsl(var(--border))" }} />
+                <div className="absolute inset-x-0 bottom-0 h-px" style={{ background: "hsl(var(--border))" }} />
                 <div className="w-8 h-8 rounded-full flex-shrink-0 overflow-hidden"
                     style={{ background: "hsl(var(--primary)/0.15)" }}>
                     <img src="/features/nefara-pfp.svg" alt="Nefara" className="w-full h-full object-cover" />
@@ -75,8 +27,8 @@ export default function ChatWidget() {
             <div className="flex flex-col flex-1 justify-between py-6 px-3">
 
                 {/* Incoming */}
-                <div ref={setRef(0)} className="flex items-end gap-2" style={{ opacity: 0 }}>
-                    <div ref={setAvatarRef(0)} className="w-6 h-6 rounded-full flex-shrink-0 overflow-hidden"
+                <div className="flex items-end gap-2">
+                    <div className="w-6 h-6 rounded-full flex-shrink-0 overflow-hidden"
                         style={{ background: "hsl(var(--primary)/0.15)" }}>
                         <img src="/features/nefara-pfp.svg" alt="Nefara" className="w-full h-full object-cover" />
                     </div>
@@ -93,7 +45,7 @@ export default function ChatWidget() {
                 </div>
 
                 {/* Outgoing */}
-                <div ref={setRef(1)} className="flex items-end gap-2 justify-end" style={{ opacity: 0 }}>
+                <div className="flex items-end gap-2 justify-end">
                     <p
                         className="text-sm leading-relaxed px-4 py-2.5 max-w-[80%]"
                         style={{
@@ -113,8 +65,8 @@ export default function ChatWidget() {
                 </div>
 
                 {/* Typing */}
-                <div ref={setRef(2)} className="flex items-end gap-2" style={{ opacity: 0 }}>
-                    <div ref={setAvatarRef(2)} className="w-6 h-6 rounded-full flex-shrink-0 overflow-hidden"
+                <div className="flex items-end gap-2">
+                    <div className="w-6 h-6 rounded-full flex-shrink-0 overflow-hidden"
                         style={{ background: "hsl(var(--primary)/0.15)" }}>
                         <img src="/features/nefara-pfp.svg" alt="Nefara" className="w-full h-full object-cover" />
                     </div>
