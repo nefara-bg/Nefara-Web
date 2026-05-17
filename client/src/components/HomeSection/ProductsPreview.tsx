@@ -15,7 +15,7 @@ if (!CustomEase.get("nefEase")) {
     CustomEase.create("nefEase", "0.22, 1, 0.36, 1")
 }
 
-type ProductKey = "quicx" | "pmad" | "sandokan"
+type ProductKey = "quicx" | "pmad" | "sand"
 
 export function ProductsPreview() {
     const t = useTranslations("home.productsPreview")
@@ -119,7 +119,7 @@ export function ProductsPreview() {
 
             <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-1 md:gap-2">
                 {renderCard("quicx")}
-                {renderCard("sandokan")}
+                {renderCard("sand")}
                 <div className="md:col-span-2">
                     {renderCard("pmad")}
                 </div>
