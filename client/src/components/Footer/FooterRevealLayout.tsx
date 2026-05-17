@@ -110,7 +110,7 @@ const FooterRevealLayout = ({ children }: { children: React.ReactNode }) => {
 
     return (
         <>
-            <div ref={contentRef} className="relative z-10 min-h-screen bg-background">
+            <div ref={contentRef} className="relative z-10 min-h-screen bg-background" style={{ boxShadow: "0 8px 40px 8px rgba(0,0,0,0.28)" }}>
                 {children}
             </div>
             <div ref={footerRef} className="inset-x-0 bottom-0 z-0">

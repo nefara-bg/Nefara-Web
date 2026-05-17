@@ -52,7 +52,7 @@ const TeamPage = async ({ params }: { params: Promise<{ locale: string }> }) => 
     setRequestLocale(locale)
 
     return (
-        <main className="min-h-screen bg-background pt-16">
+        <main className="min-h-screen bg-background pt-16 pb-24">
             <TeamSection />
         </main>
     )
