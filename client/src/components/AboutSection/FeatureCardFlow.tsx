@@ -7,7 +7,7 @@ export default function FeatureCardFlow({
 }) {
     return (
         <div className="relative w-full h-full overflow-hidden group cursor-default flex">
-            <div className="flex flex-col justify-center px-10 py-6">
+            <div className="flex flex-col justify-center px-10 py-6 items-center text-center md:items-start md:text-left">
                 <div className="flex items-center gap-2 mb-3">
                     <span className="font-manrope font-bold tracking-[0.18em] transition-[letter-spacing] duration-300 group-hover:tracking-[0.28em] text-primary text-md">
                         {num}
