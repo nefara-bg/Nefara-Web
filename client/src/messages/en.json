@@ -284,6 +284,113 @@
                 "tagline": "Never Far Away",
                 "buttonServices": "Our Services"
             }
+        },
+        "page": {
+            "hero": {
+                "tag": "About",
+                "heading": "We're Nefara.",
+                "subtitle": "A young software engineering studio built around one principle: never be far from the client."
+            },
+            "whoWeAre": {
+                "tag": "Who we are",
+                "heading": "Young, ambitious, technical.",
+                "body1": "Nefara is a young and ambitious team with deep experience in both systems-level and application programming. We help businesses build and strengthen their digital presence — through websites, mobile and desktop apps, custom software systems, and SEO.",
+                "body2": "We started by building our own tools — Quicx, PMAD, Fylex, and Sand — because we needed better infrastructure than what existed. Today we integrate those same tools into the products we build for clients, giving them the performance advantages of battle-tested infrastructure.",
+                "body3": "We work with ambitious companies — from startups shipping their first product to enterprises rethinking core systems. If you want software built with care, precision, and real accountability, that’s us.",
+                "missionTag": "Our Mission",
+                "mission": "To help businesses build and strengthen their digital presence — combining the technical rigour of our own products with the personal dedication of a co-founder, not a contractor."
+            },
+            "background": {
+                "tag": "Background",
+                "heading": "Schooled by builders. Sharpened by competition.",
+                "subtitle": "Elite technical education and a relentless habit of testing our skills against the best in Europe.",
+                "education": {
+                    "tag": "Education",
+                    "years": "38",
+                    "yearsLabel": "yrs",
+                    "school": "TUES — Technology School of Electronic Systems",
+                    "location": "Sofia · Bulgaria",
+                    "body": "Both founders graduated from TUES — Sofia’s most rigorous technology high school, and a 38-year-old institution that has shaped much of Bulgaria’s IT leadership. We studied Systems Programming, the curriculum that goes deepest on how software actually works underneath."
+                },
+                "hackathons": {
+                    "tag": "Hackathon Record",
+                    "wins": "3 wins",
+                    "events": "6 events",
+                    "peers": "1,500+ peers",
+                    "list": [
+                        {
+                            "place": "1st",
+                            "name": "Hack TUES 12",
+                            "desc": "Balkans' largest student hackathon · organized by students, for students",
+                            "badge": "WINNER"
+                        },
+                        {
+                            "place": "1st",
+                            "name": "ImpactX 2024",
+                            "desc": "High-Impact innovation hackathon",
+                            "badge": "WINNER"
+                        },
+                        {
+                            "place": "3rd",
+                            "name": "LaunchHacks IV",
+                            "desc": "One of the largest online student hackathons · 1,500+ participants",
+                            "badge": "TOP 3"
+                        },
+                        {
+                            "place": "—",
+                            "name": "HackUPC 2026",
+                            "desc": "One of Europe's most significant hackathons · 700+ participants · Barcelona",
+                            "badge": "COMPETITOR"
+                        },
+                        {
+                            "place": "—",
+                            "name": "INVESTech Skills 2025",
+                            "desc": "First hackathon under the INVESTech EU professional skills program",
+                            "badge": "COMPETITOR"
+                        },
+                        {
+                            "place": "—",
+                            "name": "Rose Valley Hackathon",
+                            "desc": "First-ever student hackathon in Kazanlak",
+                            "badge": "COMPETITOR"
+                        }
+                    ],
+                    "footnote": "What's a hackathon? A competition where small teams build a complete tech product from scratch in a few days, around a fixed theme. It's how we sharpen teamwork, pitching, and shipping under pressure — and where Nefara was forged."
+                }
+            },
+            "story": {
+                "tag": "Story",
+                "heading": "How we got here.",
+                "subtitle": "From a TUES classroom to a working studio with shipping products.",
+                "events": [
+                    {
+                        "year": "2023",
+                        "title": "Founded",
+                        "desc": "Dimitar and Martin started Nefara with a simple conviction: clients deserve direct access to the engineers building their software."
+                    },
+                    {
+                        "year": "2024",
+                        "title": "PMAD & Quicx",
+                        "desc": "Built our own deterministic memory allocator and task queue engine — internal tools that set the performance baseline for every product since."
+                    },
+                    {
+                        "year": "2024",
+                        "title": "First wins",
+                        "desc": "1st place at Hack TUES 12 — the Balkans’ largest student hackathon — and 1st at ImpactX 2024. Years of training, proven on stage."
+                    },
+                    {
+                        "year": "2025",
+                        "title": "Fylex & Sand",
+                        "desc": "Launched our AI document analysis platform and our neural network training engine. Built for the businesses we work with — and ours."
+                    }
+                ]
+            },
+            "cta": {
+                "heading": "Let's build something together.",
+                "subtitle": "Direct contact with the people writing your code. No middlemen. Pay only when you’re happy.",
+                "contact": "Contact Us",
+                "services": "See Our Services"
+            }
         }
     },
     "contact": {

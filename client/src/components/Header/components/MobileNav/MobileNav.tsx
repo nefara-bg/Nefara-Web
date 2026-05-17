@@ -58,7 +58,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ locale = "en" }) => {
                                     {t("header.services")}
                                 </p>
                             </Link>
-                            <Link href="/#about" onClick={() => setMobileMenu(false)}>
+                            <Link href="/about" onClick={() => setMobileMenu(false)}>
                                 <p className={cn(
                                     "text-sm transition-colors duration-200",
                                     "hover:text-primary"

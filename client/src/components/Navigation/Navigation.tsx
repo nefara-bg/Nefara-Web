@@ -106,7 +106,7 @@ export function Navigation({ locale }: { locale: string }) {
 
                   <div className="p-5 flex flex-col gap-1">
                     <Link
-                      href="/#about"
+                      href="/about"
                       onClick={() => setIsCompanyOpen(false)}
                       className="group flex items-center gap-4 rounded-xl px-3 py-4 transition-all duration-200 hover:bg-[hsl(var(--foreground)/0.04)]"
                     >
@@ -218,7 +218,7 @@ export function Navigation({ locale }: { locale: string }) {
               {isMobileCompanyOpen && (
                 <div className="flex flex-col pl-4">
                   <Link
-                    href="/#about"
+                    href="/about"
                     className="py-3 px-2 border-b border-border/50 text-base text-muted-foreground hover:text-foreground transition-colors"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >

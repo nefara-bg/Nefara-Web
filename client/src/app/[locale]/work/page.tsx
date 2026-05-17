@@ -4,7 +4,6 @@ import { getTranslations, setRequestLocale } from "next-intl/server"
 import { notFound } from "next/navigation"
 import { validateClientUrl } from "@/utils/env/env"
 import { RevealOnScroll } from "@/components/WorkSection/RevealOnScroll"
-import { HeroTitleReveal } from "@/components/WorkSection/HeroTitleReveal"
 import { ProductVisual } from "@/components/WorkSection/ProductVisual"
 import { WorkTOC } from "@/components/WorkSection/WorkTOC"
 import { Button } from "@/components/ui/button"
@@ -65,30 +64,7 @@ const WorkPage = async ({ params }: { params: Promise<{ locale: string }> }) => 
     const t = await getTranslations("work")
 
     return (
-        <main className="min-h-screen bg-background pb-16">
-            {/* Hero */}
-            <section className="relative overflow-hidden border-b border-white/5">
-                <div className="relative mx-auto max-w-7xl px-6 lg:px-10 pt-28 pb-16 lg:pt-32 lg:pb-24">
-                    <HeroTitleReveal>
-                        <h1
-                            data-reveal
-                            className="font-display text-4xl lg:text-5xl font-bold text-foreground leading-[1.1] tracking-tight mb-6 max-w-4xl"
-                        >
-                            {t("hero.title1")}{" "}
-                            <span className="text-foreground">
-                                {t("hero.title2")}
-                            </span>
-                        </h1>
-                        <p
-                            data-reveal
-                            className="text-base text-muted-foreground leading-relaxed max-w-2xl"
-                        >
-                            {t("hero.subtitle")}
-                        </p>
-                    </HeroTitleReveal>
-                </div>
-            </section>
-
+        <main className="min-h-screen bg-background pt-28 pb-16">
             {/* Product showcase with sticky TOC sidebar */}
             <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
                 <div className="lg:grid lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-16">

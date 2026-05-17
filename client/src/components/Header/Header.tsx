@@ -53,7 +53,7 @@ const Header: React.FC<HeaderProps> = ({ locale = "en" }) => {
                                 {t("header.services")}
                             </p>
                         </Link>
-                        <Link href="/#about">
+                        <Link href="/about">
                             <p className={cn(
                                 "text-sm transition-colors duration-200",
                                 "hover:text-primary"
