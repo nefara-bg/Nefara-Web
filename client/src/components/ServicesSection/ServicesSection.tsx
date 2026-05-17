@@ -1,7 +1,7 @@
 import Image from "next/image"
 import { getTranslations } from "next-intl/server"
 import { Link } from "@/i18n/navigation"
-import { ArrowRight } from "lucide-react"
+import { Button } from "@/components/ui/button"
 import { AnimatedLeftPanel } from "./AnimatedLeftPanel"
 import { ServiceCardHover } from "./ServiceCardHover"
 
@@ -40,20 +40,9 @@ export default async function ServicesSection() {
                         <p className="text-base text-muted-foreground leading-relaxed mb-8">
                             {t("pageSubtitle")}
                         </p>
-                        <Link
-                            href="/contact"
-                            className="relative inline-flex items-center rounded-xl h-11 w-44 bg-background border border-border overflow-hidden group"
-                        >
-                            <div
-                                className="absolute left-1 top-1 h-9 w-9 rounded-lg flex items-center justify-center z-10 group-hover:w-[168px] transition-all duration-500"
-                                style={{ background: "#00CBBB" }}
-                            >
-                                <ArrowRight className="w-4 h-4 text-white shrink-0" />
-                            </div>
-                            <span className="relative z-0 w-full text-center text-sm font-semibold text-foreground group-hover:text-white transition-colors duration-300 pl-4">
-                                {t("pageCta")}
-                            </span>
-                        </Link>
+                        <Button asChild variant="slide" className="h-11 w-44">
+                            <Link href="/contact">{t("pageCta")}</Link>
+                        </Button>
                     </AnimatedLeftPanel>
 
                     {/* Right — 2-col grid */}

@@ -1,6 +1,7 @@
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
+import { ArrowRight } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
@@ -32,6 +33,11 @@ const buttonVariants = cva(
         // Hero blueprint buttons — transparent with teal border, no radius
         hero:
           "rounded-none border border-[hsl(var(--primary)/0.65)] bg-transparent text-foreground hover:bg-[hsl(var(--primary)/0.06)]",
+        // Slide — bordered pill with a teal icon square that slides to the
+        // right edge on hover. Renders its own inner markup; size is ignored,
+        // set width via className.
+        slide:
+          "group relative inline-flex items-center overflow-hidden rounded-xl h-10 w-40 border border-border bg-background p-0",
       },
       size: {
         default: "h-10 px-5 text-sm",
@@ -47,6 +53,21 @@ const buttonVariants = cva(
   }
 )
 
+// Inner markup for the `slide` variant: an absolutely-positioned teal square
+// that slides from the left to the right edge on hover, plus the label.
+function SlideContent({ children }: { children: React.ReactNode }) {
+  return (
+    <>
+      <span className="absolute left-1 top-1/2 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-lg bg-primary transition-all duration-500 group-hover:left-[calc(100%-0.25rem)] group-hover:-translate-x-full group-hover:rotate-[360deg]">
+        <ArrowRight className="h-4 w-4 shrink-0 text-white" />
+      </span>
+      <span className="relative z-0 w-full pl-10 text-center text-sm font-semibold text-foreground transition-all duration-500 group-hover:pl-0 group-hover:pr-10">
+        {children}
+      </span>
+    </>
+  )
+}
+
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
@@ -54,14 +75,41 @@ export interface ButtonProps
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, ...props }, ref) => {
+  ({ className, variant, size, asChild = false, children, ...props }, ref) => {
     const Comp = asChild ? Slot : "button"
+    // The slide variant defines its own height/width, so opt out of `size`.
+    const classes = cn(
+      buttonVariants({ variant, size: variant === "slide" ? null : size, className })
+    )
+
+    if (variant === "slide") {
+      // With asChild the single child (e.g. a Link) must wrap the slide markup
+      // so the hover `group` styles and the href live on the same element.
+      if (asChild) {
+        const child = React.Children.only(children) as React.ReactElement<{
+          children?: React.ReactNode
+        }>
+        return (
+          <Comp className={classes} ref={ref} {...props}>
+            {React.cloneElement(
+              child,
+              undefined,
+              <SlideContent>{child.props.children}</SlideContent>
+            )}
+          </Comp>
+        )
+      }
+      return (
+        <Comp className={classes} ref={ref} {...props}>
+          <SlideContent>{children}</SlideContent>
+        </Comp>
+      )
+    }
+
     return (
-      <Comp
-        className={cn(buttonVariants({ variant, size, className }))}
-        ref={ref}
-        {...props}
-      />
+      <Comp className={classes} ref={ref} {...props}>
+        {children}
+      </Comp>
     )
   }
 )

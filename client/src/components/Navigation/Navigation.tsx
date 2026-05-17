@@ -164,20 +164,9 @@ export function Navigation({ locale }: { locale: string }) {
           {/* Actions – right */}
           <div className="hidden md:flex items-center gap-3 justify-self-end">
             <LngSwitcher locale={locale} />
-            <Link
-              href="/contact"
-              className="relative inline-flex items-center rounded-xl h-10 w-36 bg-background border border-border overflow-hidden group"
-            >
-              <div
-                className="absolute left-1 top-1 h-8 w-8 rounded-lg flex items-center justify-center z-10 group-hover:w-[136px] transition-all duration-500"
-                style={{ background: "#00CBBB" }}
-              >
-                <ArrowRight className="w-4 h-4 text-white shrink-0" />
-              </div>
-              <span className="relative z-0 w-full text-center text-sm font-semibold text-foreground group-hover:text-white transition-colors duration-300 pl-3">
-                {t("button")}
-              </span>
-            </Link>
+            <Button asChild variant="slide" className="w-36">
+              <Link href="/contact">{t("button")}</Link>
+            </Button>
           </div>
 
           {/* Mobile toggle */}
