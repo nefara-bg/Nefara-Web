@@ -1,10 +1,8 @@
 "use client"
 
-import { ReactNode, useContext, useEffect, useRef } from "react"
-import gsap from "gsap"
+import { ReactNode, useEffect, useRef } from "react"
 import FeatureCardFlow from "./FeatureCardFlow"
 import WidgetCell from "./WidgetCell"
-import { SceneScrollContext } from "@/components/ScrollStory/SceneScrollContext"
 
 export function MissionRowSection({
     num,
@@ -22,7 +20,6 @@ export function MissionRowSection({
     const widgetWrapRef = useRef<HTMLDivElement>(null)
     const lineL         = useRef<HTMLDivElement>(null)
     const lineR         = useRef<HTMLDivElement>(null)
-    const subscribe     = useContext(SceneScrollContext)
 
     // offsetLeft/offsetWidth are layout-space measurements unaffected by CSS transforms.
     // widgetWrapRef.offsetParent === section (nearest position:relative ancestor),
@@ -46,35 +43,28 @@ export function MissionRowSection({
         }
     }, [])
 
-    useEffect(() => {
-        gsap.set([lineL.current, lineR.current], { scaleY: 0, transformOrigin: "top center" })
-        return subscribe((v) => {
-            gsap.set([lineL.current, lineR.current], { scaleY: Math.min(1, v / 0.85) })
-        })
-    }, [subscribe])
-
     return (
         <section
             className="relative min-h-screen py-16 md:py-32 bg-background flex flex-col justify-center"
             style={{ transform: "translateZ(0)" }}
         >
-            <div ref={lineL} className="pointer-events-none absolute top-0 bottom-0 w-px" style={{ background: "hsl(var(--border))", transform: "scaleY(0)", transformOrigin: "top center" }} />
-            <div ref={lineR} className="pointer-events-none absolute top-0 bottom-0 w-px" style={{ background: "hsl(var(--border))", transform: "scaleY(0)", transformOrigin: "top center" }} />
+            <div ref={lineL} className="pointer-events-none absolute top-0 bottom-0 w-px" style={{ background: "hsl(var(--border))" }} />
+            <div ref={lineR} className="pointer-events-none absolute top-0 bottom-0 w-px" style={{ background: "hsl(var(--border))" }} />
 
             <div className="relative max-w-7xl px-4 flex items-center mx-auto w-full flex-1">
                 <div className={`flex w-full h-full items-stretch ${widgetSide === "left" ? "flex-col-reverse md:flex-row" : "flex-col md:flex-row"}`}>
                     {widgetSide === "left" ? (
                         <>
                             <div ref={widgetWrapRef} className="w-full h-full">
-                                <WidgetCell side="left" delay={0.1}>{widget}</WidgetCell>
+                                <WidgetCell>{widget}</WidgetCell>
                             </div>
-                            <FeatureCardFlow num={num} title={title} desc={desc} side="right" delay={0.1} />
+                            <FeatureCardFlow num={num} title={title} desc={desc} />
                         </>
                     ) : (
                         <>
-                            <FeatureCardFlow num={num} title={title} desc={desc} side="left" delay={0.1} />
+                            <FeatureCardFlow num={num} title={title} desc={desc} />
                             <div ref={widgetWrapRef} className="w-full h-full">
-                                <WidgetCell side="right" delay={0.1}>{widget}</WidgetCell>
+                                <WidgetCell>{widget}</WidgetCell>
                             </div>
                         </>
                     )}

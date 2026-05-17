@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(grep -iE \"WorkSection|work\\\\\\\\\\\\\\\\page|app.*work\")",
-      "WebFetch(domain:skiper-ui.com)"
+      "WebFetch(domain:skiper-ui.com)",
+      "Read(//c/c/Users/velch/Documents/Programming/Nefara-Web/client/src/components/**)",
+      "Read(//c/c/Users/velch/Documents/Programming/Nefara-Web/client/src/components/ScrollStory/**)"
     ]
   }
 }
