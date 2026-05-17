@@ -127,8 +127,8 @@ export function ProductsPreview() {
 
             <div data-anim="cta" className="mt-20 md:mt-28 flex justify-center">
                 <Link href="/work">
-                    <Button size="lg" variant="outline">
-                        {t("cta")} <ArrowRight />
+                    <Button size="lg" variant="slide" className="w-full px-2 bg-card">
+                        {t("cta")}
                     </Button>
                 </Link>
             </div>

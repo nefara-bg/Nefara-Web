@@ -37,7 +37,7 @@ const buttonVariants = cva(
         // right edge on hover. Renders its own inner markup; size is ignored,
         // set width via className.
         slide:
-          "group relative inline-flex items-center overflow-hidden rounded-xl h-10 w-40 border border-border bg-background p-0",
+          "group relative inline-flex items-center overflow-hidden rounded-xl h-10 border border-border bg-background px-3",
       },
       size: {
         default: "h-10 px-5 text-sm",

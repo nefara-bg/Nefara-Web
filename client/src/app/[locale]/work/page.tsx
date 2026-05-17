@@ -7,6 +7,7 @@ import { RevealOnScroll } from "@/components/WorkSection/RevealOnScroll"
 import { HeroTitleReveal } from "@/components/WorkSection/HeroTitleReveal"
 import { ProductVisual } from "@/components/WorkSection/ProductVisual"
 import { WorkTOC } from "@/components/WorkSection/WorkTOC"
+import { Button } from "@/components/ui/button"
 
 export async function generateStaticParams() {
     return routing.locales.map((locale) => ({ locale }))
@@ -150,27 +151,22 @@ const WorkPage = async ({ params }: { params: Promise<{ locale: string }> }) => 
                                             </p>
 
                                             {url && (
-                                                <a
-                                                    href={url}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    className="group mt-8 inline-flex items-center gap-2 rounded-md border border-[hsl(var(--primary))] bg-background px-5 py-2.5 text-sm font-semibold text-foreground transition-all duration-300 hover:bg-[hsl(var(--primary)/0.08)]"
+                                                <Button
+                                                    asChild
+                                                    variant="slide"
+                                                    className="mt-8 w-auto"
                                                 >
-                                                    <span>
+                                                    <a
+                                                        href={url}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                    >
                                                         {t("visit")}{" "}
                                                         <span className="text-muted-foreground font-normal">
                                                             {url.replace(/^https?:\/\//, "")}
                                                         </span>
-                                                    </span>
-                                                    <span className="relative inline-flex h-4 w-4 items-center overflow-hidden">
-                                                        <span className="absolute transition-all duration-300 group-hover:opacity-0 group-hover:-translate-x-2">
-                                                            {">"}
-                                                        </span>
-                                                        <span className="absolute opacity-0 translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">
-                                                            {"->"}
-                                                        </span>
-                                                    </span>
-                                                </a>
+                                                    </a>
+                                                </Button>
                                             )}
                                         </RevealOnScroll>
                                     </div>
