@@ -54,6 +54,26 @@ export function MissionRows({ rows }: { rows: MissionRow[] }) {
                         .fromTo(card, { autoAlpha: 0 }, { autoAlpha: 1, ease: "none", duration: 1 })
                         .to(card, { autoAlpha: 1, duration: 0.4 }) // brief hold at centre
                         .to(card, { autoAlpha: 0, ease: "none", duration: 1 })
+
+                    // Widget fades out as its row leaves towards the top.
+                    const row = trigger.closest<HTMLElement>("[data-mission-row]")
+                    const widget = row?.querySelector<HTMLElement>("[data-parallax-widget]")
+                    if (row && widget) {
+                        gsap.fromTo(
+                            widget,
+                            { autoAlpha: 1 },
+                            {
+                                autoAlpha: 0,
+                                ease: "none",
+                                scrollTrigger: {
+                                    trigger: row,
+                                    start: "center center",
+                                    end: "bottom top",
+                                    scrub: true,
+                                },
+                            }
+                        )
+                    }
                 })
         }, section)
 
@@ -95,7 +115,7 @@ export function MissionRows({ rows }: { rows: MissionRow[] }) {
 
     return (
         <section ref={sectionRef} className="relative bg-background py-24 md:py-32">
-            <div className="mx-auto max-w-7xl px-4">
+            <div className="mx-auto max-w-6xl px-4">
                 {rows.map((row) => (
                     <div
                         key={row.num}
