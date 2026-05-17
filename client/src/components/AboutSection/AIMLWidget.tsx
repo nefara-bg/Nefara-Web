@@ -101,7 +101,7 @@ export function AIMLWidget() {
             <div className="flex-1 h-full flex flex-col items-center justify-center" style={{ gap: 8 }}>
                 <svg viewBox="0 0 200 120" className="w-full" style={{ maxHeight: 130 }}>
 
-                    {/* All connections — faint */}
+                    {/* All connections - faint */}
                     {INPUT_Y.flatMap((iy, ii) =>
                         HIDDEN_Y.map((hy, hi) => (
                             <line key={`ih${ii}${hi}`} x1="20" y1={iy} x2="100" y2={hy}
@@ -127,7 +127,7 @@ export function AIMLWidget() {
                             fill="#2dd4bf30" stroke="#2dd4bf" strokeWidth="1.4" />
                     ))}
 
-                    {/* Output nodes — glowing */}
+                    {/* Output nodes - glowing */}
                     {OUTPUT_Y.map((y, i) => (
                         <g key={`on${i}`}>
                             <circle cx="180" cy={y} r="9"

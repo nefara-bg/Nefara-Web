@@ -98,7 +98,7 @@ export function QuicxTerminalWidget() {
                     className="flex-1 text-center"
                     style={{ fontSize: 10, color: "#475569", letterSpacing: "0.02em" }}
                 >
-                    quicx — zsh — 80×24
+                    quicx - zsh - 80×24
                 </span>
             </div>
 

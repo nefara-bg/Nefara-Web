@@ -1,16 +1,47 @@
 "use client"
 
+import { useEffect, useRef } from "react"
+import gsap from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { useTranslations } from "next-intl"
+
+gsap.registerPlugin(ScrollTrigger)
 
 export default function ChatWidget() {
     const t = useTranslations("about.widgets.chat")
+    const rootRef = useRef<HTMLDivElement>(null)
+
+    useEffect(() => {
+        const root = rootRef.current
+        if (!root) return
+
+        const ctx = gsap.context(() => {
+            const borders = gsap.utils.toArray<HTMLElement>("[data-border]", root)
+            const items = gsap.utils.toArray<HTMLElement>("[data-msg]", root)
+            const avatars = gsap.utils.toArray<HTMLElement>("[data-avatar]", root)
+
+            gsap.set(borders, { scaleX: 0, transformOrigin: "left center" })
+            items.forEach((el, i) => gsap.set(el, { opacity: 0, x: [-10, 10, 0][i] ?? 0 }))
+            gsap.set(avatars, { scale: 0, rotate: -45 })
+
+            gsap.timeline({
+                defaults: { ease: "power2.out" },
+                scrollTrigger: { trigger: root, start: "top 80%", once: true },
+            })
+                .to(borders, { scaleX: 1, duration: 0.5 })
+                .to(items, { opacity: 1, x: 0, duration: 0.45, stagger: 0.16 }, "-=0.2")
+                .to(avatars, { scale: 1, rotate: 0, duration: 0.4, stagger: 0.16, ease: "back.out(1.7)" }, "<")
+        }, root)
+
+        return () => ctx.revert()
+    }, [])
 
     return (
-        <div className="select-none w-full h-full flex flex-col">
+        <div ref={rootRef} className="select-none w-full h-full flex flex-col">
             {/* Header */}
             <div className="relative flex items-center gap-3 py-4 px-3">
-                <div className="absolute inset-x-0 top-0 h-px" style={{ background: "hsl(var(--border))" }} />
-                <div className="absolute inset-x-0 bottom-0 h-px" style={{ background: "hsl(var(--border))" }} />
+                <div data-border className="absolute inset-x-0 top-0 h-px" style={{ background: "hsl(var(--border))" }} />
+                <div data-border className="absolute inset-x-0 bottom-0 h-px" style={{ background: "hsl(var(--border))" }} />
                 <div className="w-8 h-8 rounded-full flex-shrink-0 overflow-hidden"
                     style={{ background: "hsl(var(--primary)/0.15)" }}>
                     <img src="/features/nefara-pfp.svg" alt="Nefara" className="w-full h-full object-cover" />
@@ -27,8 +58,8 @@ export default function ChatWidget() {
             <div className="flex flex-col flex-1 justify-between py-6 px-3">
 
                 {/* Incoming */}
-                <div className="flex items-end gap-2">
-                    <div className="w-6 h-6 rounded-full flex-shrink-0 overflow-hidden"
+                <div data-msg className="flex items-end gap-2">
+                    <div data-avatar className="w-6 h-6 rounded-full flex-shrink-0 overflow-hidden"
                         style={{ background: "hsl(var(--primary)/0.15)" }}>
                         <img src="/features/nefara-pfp.svg" alt="Nefara" className="w-full h-full object-cover" />
                     </div>
@@ -45,7 +76,7 @@ export default function ChatWidget() {
                 </div>
 
                 {/* Outgoing */}
-                <div className="flex items-end gap-2 justify-end">
+                <div data-msg className="flex items-end gap-2 justify-end">
                     <p
                         className="text-sm leading-relaxed px-4 py-2.5 max-w-[80%]"
                         style={{
@@ -65,8 +96,8 @@ export default function ChatWidget() {
                 </div>
 
                 {/* Typing */}
-                <div className="flex items-end gap-2">
-                    <div className="w-6 h-6 rounded-full flex-shrink-0 overflow-hidden"
+                <div data-msg className="flex items-end gap-2">
+                    <div data-avatar className="w-6 h-6 rounded-full flex-shrink-0 overflow-hidden"
                         style={{ background: "hsl(var(--primary)/0.15)" }}>
                         <img src="/features/nefara-pfp.svg" alt="Nefara" className="w-full h-full object-cover" />
                     </div>

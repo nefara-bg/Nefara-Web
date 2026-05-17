@@ -11,7 +11,7 @@ const FOREGROUND = "hsl(var(--foreground))"
 const GLOW       = "0 0 10px 1px hsl(var(--primary) / 0.55)"
 const NO_GLOW    = "none"
 
-// GSAP cannot interpolate hsl(var(--x)) — set color/shadow directly on .style
+// GSAP cannot interpolate hsl(var(--x)) - set color/shadow directly on .style
 function applyColor(dot: HTMLSpanElement, active: boolean) {
     dot.style.backgroundColor = active ? PRIMARY : FOREGROUND
     dot.style.boxShadow       = active ? GLOW    : NO_GLOW

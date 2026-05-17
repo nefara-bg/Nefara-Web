@@ -37,7 +37,7 @@ const Footer = () => {
 
     return (
         <footer className="border-t-2 border-primary dark-section relative overflow-hidden">
-            {/* Teal hairline + soft glow — blueprint accent */}
+            {/* Teal hairline + soft glow - blueprint accent */}
             {/* <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[hsl(var(--primary)/0.55)] to-transparent" /> */}
             {/* <div className="pointer-events-none absolute -top-28 left-1/2 h-56 w-[44rem] -translate-x-1/2 rounded-full bg-[hsl(var(--primary)/0.12)] blur-3xl" /> */}
 

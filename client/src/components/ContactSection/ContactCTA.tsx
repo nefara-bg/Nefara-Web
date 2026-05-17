@@ -104,7 +104,7 @@ export function ContactCTA() {
                     className="relative flex flex-col overflow-hidden rounded-2xl lg:min-h-[300px] lg:flex-row"
                     style={{ border: "1px solid hsl(202 60% 10%)" }}
                 >
-                    {/* Dark panel — heading + subtitle */}
+                    {/* Dark panel - heading + subtitle */}
                     <div
                         ref={darkRef}
                         className="relative z-10 flex w-full flex-col justify-center gap-4 p-10 pb-16 lg:w-[62%] lg:p-14 lg:pr-20"
@@ -118,7 +118,7 @@ export function ContactCTA() {
                         </p>
                     </div>
 
-                    {/* Teal diagonal stripe — sits on the seam in both orientations */}
+                    {/* Teal diagonal stripe - sits on the seam in both orientations */}
                     <div
                         ref={stripeRef}
                         className="pointer-events-none relative z-20 -my-4 h-16 w-full self-stretch lg:my-0 lg:-ml-7 lg:-mr-1 lg:h-auto lg:w-20"
@@ -126,7 +126,7 @@ export function ContactCTA() {
                         <div className="h-full w-full -skew-y-[4deg] lg:skew-y-0 lg:-skew-x-[8deg]" style={{ background: "hsl(var(--primary))" }} />
                     </div>
 
-                    {/* Light panel — skewed buttons */}
+                    {/* Light panel - skewed buttons */}
                     <div
                         ref={lightRef}
                         className="relative z-10 flex flex-1 flex-col justify-center gap-3 bg-background p-10 pt-16 lg:p-14 lg:pl-12"

@@ -27,7 +27,7 @@ export function HeroMissionTransition({
     const ref = useRef<HTMLDivElement>(null)
     const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] })
 
-    // Flip once transition is done — mission switches from fixed overlay to natural scroll
+    // Flip once transition is done - mission switches from fixed overlay to natural scroll
     const [done, setDone] = useState(false)
     useMotionValueEvent(scrollYProgress, "change", (v) => {
         setDone(v >= DONE_THRESHOLD)
@@ -54,7 +54,7 @@ export function HeroMissionTransition({
                 />
             </div>
 
-            {/* 300vh runway — hero sticks for the first 200vh */}
+            {/* 300vh runway - hero sticks for the first 200vh */}
             <div ref={ref} className="relative" style={{ height: "300vh" }}>
                 <motion.div
                     className="sticky top-0 h-screen w-full overflow-hidden z-0"
@@ -64,7 +64,7 @@ export function HeroMissionTransition({
                 </motion.div>
             </div>
 
-            {/* Single DOM node — never unmounts, so whileInView once:true state is preserved.
+            {/* Single DOM node - never unmounts, so whileInView once:true state is preserved.
                 Fixed overlay during crossfade → switches to natural scroll when done. */}
             <motion.div
                 className={`z-10 ${done ? "relative" : "fixed inset-0 pointer-events-none"}`}

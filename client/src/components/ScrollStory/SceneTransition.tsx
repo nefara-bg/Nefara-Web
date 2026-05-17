@@ -5,7 +5,7 @@ import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { SceneScrollContext, SceneSubscribe } from "./SceneScrollContext"
 
-// Subscribe that immediately fires progress=1 — used for static (non-scrolled) to-scenes
+// Subscribe that immediately fires progress=1 - used for static (non-scrolled) to-scenes
 const completeSubscribe: SceneSubscribe = (cb) => { cb(1); return () => {} }
 
 if (typeof window !== "undefined") gsap.registerPlugin(ScrollTrigger)

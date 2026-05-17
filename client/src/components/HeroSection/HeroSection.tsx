@@ -20,7 +20,7 @@ export async function HeroSection() {
                     ].join(", "),
                 }}
             >
-                {/* Noise grain overlay — adds tactility without a grid */}
+                {/* Noise grain overlay - adds tactility without a grid */}
                 <svg aria-hidden className="pointer-events-none absolute inset-0 w-full h-full opacity-[0.035]">
                     <filter id="noise">
                         <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" />

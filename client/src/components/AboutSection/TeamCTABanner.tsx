@@ -91,14 +91,14 @@ export function TeamCTABanner() {
                 {/* ── Content ── */}
                 <div className="relative flex min-h-[260px] lg:min-h-[300px]">
 
-                    {/* Left: heading — width matches the dark panel end */}
+                    {/* Left: heading - width matches the dark panel end */}
                     <div className="flex flex-col justify-between p-10 pr-16 lg:p-14 lg:pr-20" style={{ width: "65%" }}>
                         <h2 className="font-display text-4xl lg:text-5xl xl:text-6xl font-bold leading-[1.05] tracking-tight text-white max-w-xs lg:max-w-sm">
                             {t("heading")}
                         </h2>
                     </div>
 
-                    {/* Right: skewed buttons — starts inside the white panel */}
+                    {/* Right: skewed buttons - starts inside the white panel */}
                     <div className="flex-1 flex flex-col justify-center gap-3 px-6 lg:px-8">
                         <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-muted-foreground mb-1 hidden lg:block">
                             {t("subtitle")}

@@ -44,7 +44,7 @@ export function ScrollProgressBar({ transitions = 0 }: { transitions?: number })
             if (nextPt != null) {
                 intra = Math.max(0, Math.min(1, (y - lastPt) / (nextPt - lastPt)))
             } else {
-                // Next segment not yet written — interpolate over an estimated 300vh segment
+                // Next segment not yet written - interpolate over an estimated 300vh segment
                 const estimated = window.innerHeight * 3
                 intra = Math.max(0, Math.min(0.99, (y - lastPt) / estimated))
             }

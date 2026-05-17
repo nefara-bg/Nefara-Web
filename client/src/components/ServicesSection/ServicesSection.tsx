@@ -32,7 +32,7 @@ export default async function ServicesSection() {
             <div className="mx-auto max-w-7xl px-6 lg:px-10 pt-10 pb-16 lg:pt-14 lg:pb-24">
                 <div className="grid lg:grid-cols-[340px_1fr] gap-12 lg:gap-16 items-start">
 
-                    {/* Left — heading + CTA */}
+                    {/* Left - heading + CTA */}
                     <AnimatedLeftPanel className="lg:sticky lg:top-28">
                         <h2 className="font-display text-4xl lg:text-5xl font-bold text-foreground leading-[1.1] tracking-tight mb-6">
                             {t("pageTitle1")}{" "}{t("pageTitle2")}
@@ -45,7 +45,7 @@ export default async function ServicesSection() {
                         </Button>
                     </AnimatedLeftPanel>
 
-                    {/* Right — 2-col grid */}
+                    {/* Right - 2-col grid */}
                     <div className="grid sm:grid-cols-2 gap-x-6 gap-y-6">
                         {items.map(({ key }) => (
                             <ServiceCardHover

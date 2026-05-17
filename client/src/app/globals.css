@@ -16,13 +16,13 @@
   --popover: 0 0% 100%;
   --popover-foreground: 222 47% 11%;
 
-  /* Primary = teal accent — CTAs, icons, highlights */
+  /* Primary = teal accent - CTAs, icons, highlights */
   --primary: 174 100% 40%;
   --primary-foreground: 0 0% 100%;
   --primary-soft: 174 80% 95%;
   --primary-strong: 175 100% 33%;
 
-  /* Secondary = deep navy — dark contrast sections */
+  /* Secondary = deep navy - dark contrast sections */
   --secondary: 202 60% 10%;
   --secondary-foreground: 0 0% 100%;
 
@@ -119,7 +119,7 @@
   }
 }
 
-/* ────────── Component classes (plain CSS — guaranteed emission) ────────── */
+/* ────────── Component classes (plain CSS - guaranteed emission) ────────── */
 
 /* Eyebrow label: tiny uppercase teal tag with leading dash */
 .eyebrow {
@@ -179,7 +179,7 @@
   }
 }
 
-/* Accent surface — used for icon chips */
+/* Accent surface - used for icon chips */
 .accent-chip {
   display: inline-flex;
   align-items: center;
@@ -190,7 +190,7 @@
   color: hsl(var(--primary-strong));
 }
 
-/* Dark contrast section — deep navy background */
+/* Dark contrast section - deep navy background */
 .dark-section {
   background-color: hsl(var(--secondary));
   color: hsl(var(--secondary-foreground));

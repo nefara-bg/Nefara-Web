@@ -31,7 +31,7 @@ export function FinalScrollScene({ children }: { children: ReactNode }) {
     const isDoneRef   = useRef(isDone)
     isDoneRef.current = isDone
 
-    // Stable identity — never changes, so widget useEffects[subscribe] never re-run
+    // Stable identity - never changes, so widget useEffects[subscribe] never re-run
     const stableSubscribe = useRef<SceneSubscribe>((cb) => {
         // Fire 1 immediately while widgets are rendered during the overlay phase
         if (!isDoneRef.current) cb(1)

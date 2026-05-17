@@ -59,7 +59,7 @@ export default function DesignSystemPage() {
 
                 <div className="space-y-8">
                     <div className="p-6 border border-border rounded-lg">
-                        <GroupLabel>Manrope — Display / Headings</GroupLabel>
+                        <GroupLabel>Manrope - Display / Headings</GroupLabel>
                         <div className="space-y-3 mt-4" style={{ fontFamily: "var(--font-manrope), sans-serif" }}>
                             <p className="text-5xl font-extrabold tracking-tight leading-[1.1]">H1 · Extra Bold 800</p>
                             <p className="text-4xl font-bold tracking-tight leading-[1.1]">H2 · Bold 700</p>
@@ -73,11 +73,11 @@ export default function DesignSystemPage() {
                     </div>
 
                     <div className="p-6 border border-border rounded-lg">
-                        <GroupLabel>Nunito Sans — Body / UI</GroupLabel>
+                        <GroupLabel>Nunito Sans - Body / UI</GroupLabel>
                         <div className="space-y-3 mt-4" style={{ fontFamily: "var(--font-nunito-sans), sans-serif" }}>
                             <p className="text-lg font-semibold">Body Large · Semi Bold 600</p>
-                            <p className="text-base font-medium">Body · Medium 500 — default body weight</p>
-                            <p className="text-sm font-normal">Small · Regular 400 — captions, labels, metadata</p>
+                            <p className="text-base font-medium">Body · Medium 500 - default body weight</p>
+                            <p className="text-sm font-normal">Small · Regular 400 - captions, labels, metadata</p>
                             <p className="text-xs font-normal text-muted-foreground">Extra Small · Regular 400 · Muted</p>
                         </div>
                         <p className="text-xs text-muted-foreground mt-4">
@@ -87,7 +87,7 @@ export default function DesignSystemPage() {
                     </div>
 
                     <div className="p-6 border border-border rounded-lg">
-                        <GroupLabel>Poppins — Available (loaded, spare)</GroupLabel>
+                        <GroupLabel>Poppins - Available (loaded, spare)</GroupLabel>
                         <div className="space-y-3 mt-4" style={{ fontFamily: "var(--font-poppins), sans-serif" }}>
                             <p className="text-lg font-semibold">Semi Bold 600</p>
                             <p className="text-base font-medium">Medium 500</p>

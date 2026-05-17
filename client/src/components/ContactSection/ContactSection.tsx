@@ -36,7 +36,7 @@ export function ContactSection() {
             <div className="mx-auto max-w-7xl px-6 lg:px-10 pt-14 pb-28">
                 <div className="grid lg:grid-cols-[2fr_3fr] gap-8 xl:gap-14 items-start">
 
-                    {/* Left — sticky info panel */}
+                    {/* Left - sticky info panel */}
                     <div className="lg:sticky lg:top-24 lg:flex lg:flex-col lg:items-start lg:text-left">
                         <h1 className="font-display text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-[1.05] tracking-tight mb-5">
                             {titleLines.map((line, i) => (
@@ -77,7 +77,7 @@ export function ContactSection() {
                         </div>
                     </div>
 
-                    {/* Right — form card */}
+                    {/* Right - form card */}
                     <div className="bg-card rounded-2xl border border-border shadow-[0_8px_48px_-16px_rgba(15,23,42,0.12)] p-8 md:p-10">
                         {state?.error && (
                             <p className="text-sm text-destructive italic mb-5">{state.error}</p>

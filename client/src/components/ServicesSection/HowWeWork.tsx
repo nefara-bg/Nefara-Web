@@ -36,7 +36,7 @@ export default async function HowWeWork() {
             <div className="mx-auto max-w-7xl px-6 lg:px-10 py-24 lg:py-32">
                 <div className="grid lg:grid-cols-[5fr_7fr] gap-16 xl:gap-28 items-start">
 
-                    {/* Left — sticky panel */}
+                    {/* Left - sticky panel */}
                     <div className="lg:sticky lg:top-28">
                         <h2 className="font-display text-4xl lg:text-5xl font-bold text-foreground leading-[1.05] tracking-tight mb-5">
                             {t("heading")}
@@ -46,7 +46,7 @@ export default async function HowWeWork() {
                         </p>
                     </div>
 
-                    {/* Right — timeline */}
+                    {/* Right - timeline */}
                     <Timeline data={data} />
                 </div>
             </div>

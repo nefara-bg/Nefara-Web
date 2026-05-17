@@ -21,13 +21,13 @@ export function ScrollStory({ scenes }: Props) {
         setActiveScene((prev) => (prev === next ? prev : next))
     })
 
-    // Scene 0 — fades OUT only
+    // Scene 0 - fades OUT only
     const s0Opacity = useTransform(scrollYProgress, [...FADE_STOPS], [1, 0])
     const s0Y = useTransform(scrollYProgress, [...FADE_STOPS], [0, -16])
     const s0Blur = useTransform(scrollYProgress, [...FADE_STOPS], [0, 4])
     const s0Filter = useTransform(s0Blur, (v) => `blur(${v}px)`)
 
-    // Scene 1 — fades IN only
+    // Scene 1 - fades IN only
     const s1Opacity = useTransform(scrollYProgress, [...FADE_STOPS], [0, 1])
     const s1Y = useTransform(scrollYProgress, [...FADE_STOPS], [16, 0])
     const s1Blur = useTransform(scrollYProgress, [...FADE_STOPS], [4, 0])

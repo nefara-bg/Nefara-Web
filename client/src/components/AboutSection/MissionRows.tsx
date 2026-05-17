@@ -20,7 +20,7 @@ export type MissionRow = {
  *
  * - Each feature card fades in as it rises through the lower half of the
  *   viewport, is fully sharp only briefly at centre, then fades back out
- *   through the upper half — scrubbed to scroll.
+ *   through the upper half - scrubbed to scroll.
  * - On `md`+ the widgets get an extra scroll-linked upward drift so they
  *   travel faster than the text (decoupled "sticky scroll" parallax).
  */
@@ -31,7 +31,7 @@ export function MissionRows({ rows }: { rows: MissionRow[] }) {
         const section = sectionRef.current
         if (!section) return
 
-        // Feature card fade in / fade out — every screen size.
+        // Feature card fade in / fade out - every screen size.
         const ctx = gsap.context(() => {
             section
                 .querySelectorAll<HTMLElement>("[data-card-trigger]")
@@ -57,7 +57,7 @@ export function MissionRows({ rows }: { rows: MissionRow[] }) {
                 })
         }, section)
 
-        // Widget parallax — desktop only.
+        // Widget parallax - desktop only.
         const mm = gsap.matchMedia()
 
         mm.add("(min-width: 768px)", () => {
@@ -107,7 +107,7 @@ export function MissionRows({ rows }: { rows: MissionRow[] }) {
                                 <FeatureCardFlow num={row.num} title={row.title} desc={row.desc} />
                             </div>
                         </div>
-                        <div data-parallax-widget className="w-full">
+                        <div data-parallax-widget className="w-full max-w-md mx-auto">
                             <WidgetCell>{row.widget}</WidgetCell>
                         </div>
                     </div>

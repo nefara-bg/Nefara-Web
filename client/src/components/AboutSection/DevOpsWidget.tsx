@@ -1,6 +1,6 @@
 "use client"
 
-/* Barcode bars: [x, width] — rendered inside x=201..269, y=43..65 */
+/* Barcode bars: [x, width] - rendered inside x=201..269, y=43..65 */
 const BC: [number, number][] = [
     [201,2],[204,1],[206,3],[210,1],[212,2],[215,1],[217,3],[221,1],
     [223,2],[226,1],[228,2],[231,1],[233,3],[237,1],[239,2],[242,2],

@@ -13,10 +13,10 @@ const ROWS = [
     ["tab", "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "[", "]"],
     ["caps", "A", "S", "D", "F", "G", "H", "J", "K", "L", ";", "'"],
     ["shift", "Z", "X", "C", "V", "B", "N", "M", ",", ".", "/"],
-    ["fn", "ctrl", "opt", "cmd", "", "cmd", "opt", "—"],
+    ["fn", "ctrl", "opt", "cmd", "", "cmd", "opt", "-"],
 ]
 
-const WIDE_KEYS = new Set(["esc", "tab", "caps", "shift", "fn", "ctrl", "opt", "cmd", "—"])
+const WIDE_KEYS = new Set(["esc", "tab", "caps", "shift", "fn", "ctrl", "opt", "cmd", "-"])
 
 export function KeyboardWidget() {
     const containerRef = useRef<HTMLDivElement>(null)

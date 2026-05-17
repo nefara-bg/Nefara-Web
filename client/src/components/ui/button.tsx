@@ -10,16 +10,16 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        // Primary CTA — teal accent
+        // Primary CTA - teal accent
         default:
           "bg-primary text-primary-foreground shadow-sm hover:bg-[hsl(var(--primary-strong))] hover:-translate-y-0.5 hover:shadow-[0_10px_28px_-8px_hsl(var(--primary)/0.5)]",
-        // Dark navy CTA — for hero secondary / dark sections
+        // Dark navy CTA - for hero secondary / dark sections
         secondary:
           "bg-secondary text-secondary-foreground hover:bg-[hsl(var(--secondary)/0.88)] hover:-translate-y-0.5 shadow-sm",
-        // Outline — bordered, light bg, hover -> teal border
+        // Outline - bordered, light bg, hover -> teal border
         outline:
           "border border-border bg-transparent text-foreground hover:border-[hsl(var(--primary))] hover:text-[hsl(var(--primary-strong))] hover:bg-[hsl(var(--primary)/0.05)]",
-        // Ghost — quiet, hover bg only
+        // Ghost - quiet, hover bg only
         ghost:
           "text-muted-foreground hover:text-foreground hover:bg-[hsl(var(--foreground)/0.04)]",
         // Light ghost for use on dark sections
@@ -30,10 +30,10 @@ const buttonVariants = cva(
           "text-[hsl(var(--primary-strong))] underline-offset-4 hover:underline",
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-        // Hero blueprint buttons — transparent with teal border, no radius
+        // Hero blueprint buttons - transparent with teal border, no radius
         hero:
           "rounded-none border border-[hsl(var(--primary)/0.65)] bg-transparent text-foreground hover:bg-[hsl(var(--primary)/0.06)]",
-        // Slide — bordered pill with a teal icon square that slides to the
+        // Slide - bordered pill with a teal icon square that slides to the
         // right edge on hover. Renders its own inner markup; size is ignored,
         // set width via className.
         slide:

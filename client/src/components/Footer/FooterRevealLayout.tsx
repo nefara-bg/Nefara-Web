@@ -12,7 +12,7 @@ gsap.registerPlugin(ScrollTrigger)
  *
  * When the footer fits within the viewport it is pinned (`fixed`) behind the
  * content, which carries an opaque background and bottom spacing equal to the
- * footer height — scrolling to the end slides the content up and uncovers the
+ * footer height - scrolling to the end slides the content up and uncovers the
  * footer ("footer comes up" illusion). GSAP fades the footer's content in as
  * it is revealed.
  *
@@ -50,7 +50,7 @@ const FooterRevealLayout = ({ children }: { children: React.ReactNode }) => {
             content.style.marginBottom = ""
             footerWrap.style.position = ""
 
-            // A pinned footer taller than the viewport would clip — only do the
+            // A pinned footer taller than the viewport would clip - only do the
             // reveal when the whole footer fits on screen.
             const fits = footerHeight < viewportHeight
 

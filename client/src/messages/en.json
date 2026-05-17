@@ -29,7 +29,7 @@
     "services": {
         "seo": {
             "title": "Services – Nefara | Web, Mobile & Desktop Development",
-            "description": "Explore Nefara's software services: responsive web apps, cross-platform mobile apps, and powerful desktop software — all built with modern tech and AI integration."
+            "description": "Explore Nefara's software services: responsive web apps, cross-platform mobile apps, and powerful desktop software - all built with modern tech and AI integration."
         },
         "tag": "What We Build",
         "title": "Our Services",
@@ -72,12 +72,12 @@
         },
         "pageTitle1": "What we",
         "pageTitle2": "offer",
-        "pageSubtitle": "Nefara offers a full range of digital services — from a website for your business to building complete software systems.",
+        "pageSubtitle": "Nefara offers a full range of digital services - from a website for your business to building complete software systems.",
         "pageCta": "Get in touch",
         "items": {
             "websites": {
                 "title": "Websites",
-                "desc": "Business sites, landing pages and online stores — fast, responsive and SEO-optimised. Personalised to your brand, goals and vision."
+                "desc": "Business sites, landing pages and online stores - fast, responsive and SEO-optimised. Personalised to your brand, goals and vision."
             },
             "mobile": {
                 "title": "Mobile Apps",
@@ -93,7 +93,7 @@
             },
             "seoItem": {
                 "title": "SEO Optimisation",
-                "desc": "Technical and content optimisation that boosts your rankings and drives more traffic — including AI-ready visibility for your business."
+                "desc": "Technical and content optimisation that boosts your rankings and drives more traffic - including AI-ready visibility for your business."
             },
             "support": {
                 "title": "Support",
@@ -110,21 +110,21 @@
                 "Direct integration"
             ],
             "s2Title": "What is it? Quicx",
-            "s2": "One of them is Quicx — the fastest and lightest task queue engine of its kind, built entirely by us in C. While other solutions compromise between speed and efficiency, Quicx makes none. Integrating it into the systems we build means faster processing, fewer resources, and a more stable product — without affecting the cost to the client.",
+            "s2": "One of them is Quicx - the fastest and lightest task queue engine of its kind, built entirely by us in C. While other solutions compromise between speed and efficiency, Quicx makes none. Integrating it into the systems we build means faster processing, fewer resources, and a more stable product - without affecting the cost to the client.",
             "s3Title": "The inside advantage",
             "s3": "A deep understanding of the technology behind our own software gives us an advantage that is hard to achieve from the outside: we know every detail of how the system works, which lets us optimise, scale and maintain it at a level that standard tools simply cannot match."
         },
         "howWeWork": {
             "eyebrow": "Process",
             "heading": "How we work",
-            "subtitle": "A transparent, three-step process — from first conversation to final delivery.",
+            "subtitle": "A transparent, three-step process - from first conversation to final delivery.",
             "step1": {
                 "title": "First meeting",
-                "content": "We start with a personal meeting where we get to know you, understand the project, and align on the terms. Throughout development we maintain constant communication — at every enquiry we keep you informed about what is happening and what stage we are at. We are available to you 24/7."
+                "content": "We start with a personal meeting where we get to know you, understand the project, and align on the terms. Throughout development we maintain constant communication - at every enquiry we keep you informed about what is happening and what stage we are at. We are available to you 24/7."
             },
             "step2": {
                 "title": "Review & delivery",
-                "content": "When the product is ready, we present it for review. If anything does not meet your expectations, we fix the issues — at no extra charge. You pay only when you are completely satisfied with the final result."
+                "content": "When the product is ready, we present it for review. If anything does not meet your expectations, we fix the issues - at no extra charge. You pay only when you are completely satisfied with the final result."
             },
             "step3": {
                 "title": "No obligation",
@@ -143,10 +143,10 @@
     "about": {
         "seo": {
             "title": "Team – Nefara | Meet the People Behind the Software",
-            "description": "Meet the Nefara team — a group of passionate developers, designers, and project managers dedicated to building exceptional software solutions for your business."
+            "description": "Meet the Nefara team - a group of passionate developers, designers, and project managers dedicated to building exceptional software solutions for your business."
         },
         "title": "About",
-        "content": "We're not just developers — we're your digital transformation partners, committed to turning your vision into reality with precision and creativity.",
+        "content": "We're not just developers - we're your digital transformation partners, committed to turning your vision into reality with precision and creativity.",
         "experience": "Years Experience",
         "support": "Support Available",
         "client": "Client Satisfaction",
@@ -184,7 +184,7 @@
         "ownToolsStatement": "We use our software systems to improve our products.",
         "directContact": {
             "title": "Direct communication with developers",
-            "content": "When working with Nefara, you communicate directly with the developers building your product — no middlemen and no wasted time."
+            "content": "When working with Nefara, you communicate directly with the developers building your product - no middlemen and no wasted time."
         },
         "ownTools": {
             "title": "Our own software systems",
@@ -230,7 +230,7 @@
                 "dimitar": {
                     "name": "Dimitar Anastasov",
                     "role": "Co-founder & Systems Software Engineer",
-                    "bio": "Operates at the systems level — memory allocators, task queues, neural network engines. Author of Quicx, PMAD, and Sand. Brings low-level precision to every layer of the stack.",
+                    "bio": "Operates at the systems level - memory allocators, task queues, neural network engines. Author of Quicx, PMAD, and Sand. Brings low-level precision to every layer of the stack.",
                     "tags": [
                         "C / C++",
                         "Systems Programming",
@@ -241,7 +241,7 @@
                 "martin": {
                     "name": "Martin Velchev",
                     "role": "Co-founder & Full Stack Developer",
-                    "bio": "Builds the products clients see and use — from pixel-perfect UIs to robust backend APIs. Fluent across the full stack, with a focus on performance, clean architecture, and delivering polished results on time.",
+                    "bio": "Builds the products clients see and use - from pixel-perfect UIs to robust backend APIs. Fluent across the full stack, with a focus on performance, clean architecture, and delivering polished results on time.",
                     "tags": [
                         "React",
                         "Next.js",
@@ -254,14 +254,14 @@
             "disciplines": {
                 "eyebrow": "specialist in",
                 "heading": "Specialists across disciplines",
-                "subtitle": "Five disciplines. Fully covered in-house — no outsourcing, no middlemen.",
+                "subtitle": "Five disciplines. Fully covered in-house - no outsourcing, no middlemen.",
                 "systems": {
                     "title": "Systems Engineering",
                     "desc": "Memory allocators, schedulers, deterministic performance. Where Quicx and PMAD were born."
                 },
                 "software": {
                     "title": "Software Development",
-                    "desc": "Web, mobile, desktop. Modern stacks, clean APIs, polished UIs — from concept to production."
+                    "desc": "Web, mobile, desktop. Modern stacks, clean APIs, polished UIs - from concept to production."
                 },
                 "devops": {
                     "title": "DevOps & Infra",
@@ -279,7 +279,7 @@
             "cta": {
                 "eyebrow": "BUILT BY NEFARA",
                 "heading": "See what we've built.",
-                "subtitle": "Every project — designed, engineered, and shipped by us.",
+                "subtitle": "Every project - designed, engineered, and shipped by us.",
                 "button": "See our work",
                 "tagline": "Never Far Away",
                 "buttonServices": "Our Services"
@@ -293,7 +293,7 @@
         },
         "cta": {
             "title": "Never Far Away",
-            "subtitle": "We build software that scales — personalized, direct, and always by your side.",
+            "subtitle": "We build software that scales - personalized, direct, and always by your side.",
             "button": "Contact Us",
             "secondaryButton": "About Nefara"
         },
@@ -356,13 +356,13 @@
     "work": {
         "seo": {
             "title": "Work – Nefara | Products We Build In-House",
-            "description": "Discover Nefara's in-house products — Fylex, Quicx, PMAD and Sand — built from the ground up with our own engineering and integrated into every client solution."
+            "description": "Discover Nefara's in-house products - Fylex, Quicx, PMAD and Sand - built from the ground up with our own engineering and integrated into every client solution."
         },
         "hero": {
             "eyebrow": "Our Work",
             "title1": "Products built",
             "title2": "in-house",
-            "subtitle": "Four products engineered by Nefara — from AI document analysis to deterministic systems software. Each one ships in production and powers the solutions we build for clients."
+            "subtitle": "Four products engineered by Nefara - from AI document analysis to deterministic systems software. Each one ships in production and powers the solutions we build for clients."
         },
         "indexLabel": "Product",
         "tocLabel": "Contents",
@@ -378,28 +378,28 @@
             "fylex": {
                 "name": "Fylex",
                 "tagline": "AI platform for document analysis",
-                "description": "Fylex is an AI platform for document analysis, built to help startup founders, sole traders and small businesses without a legal background understand, evaluate and manage the risks in their contracts and documents. Combining Optical Character Recognition, Retrieval-Augmented Generation and artificial intelligence, the platform delivers fast, accessible and reliable analysis of any kind of document — when a file is uploaded, Fylex automatically recognises the text, identifies risky clauses, obligations and potential issues, and then provides a clear explanation in plain, non-legal language. Where hidden text, misleading information, suspicious clauses or links carrying potential financial obligations are present, the platform automatically detects, formats and classifies them as risk elements, providing a concrete identification of the issue, the reasoning behind it and a recommended action. All of this happens under strict data protection — information remains accessible only to the user, with no possibility of external access.",
+                "description": "Fylex is an AI platform for document analysis, built to help startup founders, sole traders and small businesses without a legal background understand, evaluate and manage the risks in their contracts and documents. Combining Optical Character Recognition, Retrieval-Augmented Generation and artificial intelligence, the platform delivers fast, accessible and reliable analysis of any kind of document - when a file is uploaded, Fylex automatically recognises the text, identifies risky clauses, obligations and potential issues, and then provides a clear explanation in plain, non-legal language. Where hidden text, misleading information, suspicious clauses or links carrying potential financial obligations are present, the platform automatically detects, formats and classifies them as risk elements, providing a concrete identification of the issue, the reasoning behind it and a recommended action. All of this happens under strict data protection - information remains accessible only to the user, with no possibility of external access.",
                 "url": "https://fylex.org"
             },
             "quicx": {
                 "name": "Quicx",
                 "tagline": "Systems-level task processing engine",
-                "summary": "The fastest and lightest task processing engine of its kind — written in C, deterministic, fully observable, and built to scale without compromise.",
-                "description": "Quicx is a systems-level task processing engine, developed in C — a language known for its exceptional speed and efficiency. Built on top of our own memory allocator PMAD and a custom binary data transport protocol, Quicx is the fastest and lightest processor of its kind, with no compromise between the two. The platform delivers full flexibility and configurability to match the needs of every user, adapting to any system and scenario without limits. Quicx is deterministic — every task is processed predictably, by the same rules, with no surprises and no unexpected behaviour. The platform offers complete observability across every aspect of the system, from memory and requests to the state of every task in real time, making it the first processor of its kind with such deep transparency into its internal state. Developers get full control and visibility over everything happening under the hood. Quicx is designed to grow alongside your system: regardless of load, it scales without losing performance and without risk of failure. Built on principles of stability and predictability, Quicx is engineered to run continuously and reliably, accelerating, optimising and stabilising every system it is deployed into — without adding unnecessary complexity.",
+                "summary": "The fastest and lightest task processing engine of its kind - written in C, deterministic, fully observable, and built to scale without compromise.",
+                "description": "Quicx is a systems-level task processing engine, developed in C - a language known for its exceptional speed and efficiency. Built on top of our own memory allocator PMAD and a custom binary data transport protocol, Quicx is the fastest and lightest processor of its kind, with no compromise between the two. The platform delivers full flexibility and configurability to match the needs of every user, adapting to any system and scenario without limits. Quicx is deterministic - every task is processed predictably, by the same rules, with no surprises and no unexpected behaviour. The platform offers complete observability across every aspect of the system, from memory and requests to the state of every task in real time, making it the first processor of its kind with such deep transparency into its internal state. Developers get full control and visibility over everything happening under the hood. Quicx is designed to grow alongside your system: regardless of load, it scales without losing performance and without risk of failure. Built on principles of stability and predictability, Quicx is engineered to run continuously and reliably, accelerating, optimising and stabilising every system it is deployed into - without adding unnecessary complexity.",
                 "url": "https://quicx.dev"
             },
             "pmad": {
                 "name": "PMAD",
                 "tagline": "Predictive Memory Allocator by Dimitar Anastasov",
-                "summary": "A slab memory allocator written in C — O(1) allocations, zero jitter, zero fragmentation. Built for environments where predictability is a requirement.",
-                "description": "PMAD (Predictive Memory Allocator by Dimitar Anastasov) is a specialised slab memory allocator, written in C, designed to deliver constant O(1) allocation and deallocation of memory without a single system call at runtime. At startup, all required memory is reserved through one single mmap call, forming a single contiguous arena, which is then divided into user-defined slab size classes — completely eliminating the fragmentation and unpredictability of standard allocators such as malloc. Unlike jemalloc, tcmalloc and ptmalloc, which optimise for average throughput, PMAD optimises for worst-case determinism: zero jitter, zero fragmentation and guaranteed predictable behaviour on every single request. The platform offers full configurability — slab size classes, the distribution of memory between them within the arena and its total size are entirely defined by the user before execution, rather than fixed in advance. The result: measured latency of 19.1 ns, throughput of over 462 million operations per second and strictly zero jitter — numbers verified mathematically, not statistically. PMAD is built for environments where predictability is not optional but a requirement — real-time systems, embedded platforms, game engines and high-frequency trading.",
+                "summary": "A slab memory allocator written in C - O(1) allocations, zero jitter, zero fragmentation. Built for environments where predictability is a requirement.",
+                "description": "PMAD (Predictive Memory Allocator by Dimitar Anastasov) is a specialised slab memory allocator, written in C, designed to deliver constant O(1) allocation and deallocation of memory without a single system call at runtime. At startup, all required memory is reserved through one single mmap call, forming a single contiguous arena, which is then divided into user-defined slab size classes - completely eliminating the fragmentation and unpredictability of standard allocators such as malloc. Unlike jemalloc, tcmalloc and ptmalloc, which optimise for average throughput, PMAD optimises for worst-case determinism: zero jitter, zero fragmentation and guaranteed predictable behaviour on every single request. The platform offers full configurability - slab size classes, the distribution of memory between them within the arena and its total size are entirely defined by the user before execution, rather than fixed in advance. The result: measured latency of 19.1 ns, throughput of over 462 million operations per second and strictly zero jitter - numbers verified mathematically, not statistically. PMAD is built for environments where predictability is not optional but a requirement - real-time systems, embedded platforms, game engines and high-frequency trading.",
                 "url": ""
             },
             "sand": {
                 "name": "Sand",
                 "tagline": "Neural network training engine",
-                "summary": "A neural network training engine in C++ — no Python, no CUDA, no PyTorch. Over 1.6 million examples per second, with deep system-level memory optimisation.",
-                "description": "Sand is a neural network training engine, developed in C++, with no dependency on Python, CUDA or PyTorch. Built on top of our own slab allocator PMAD and accelerated by Apple AMX through Eigen, the engine applies deep system-level memory optimisations at every layer — a single contiguous arena for all gradient buffers, mmap-backed data loading, and strictly zero dynamic allocations on the hot path. Sand can train on virtually any kind of data: image datasets in IDX format, tabular and numerical data from CSV files, Eigen matrices or fully custom structures — without changes to the engine. Add a single header to any C++ project and you get a full training pipeline with a measured throughput of over 1.6 million examples per second, outperforming plain Eigen by up to 50%. Sand is available in the Homebrew package manager as a library for the C++ language.",
+                "summary": "A neural network training engine in C++ - no Python, no CUDA, no PyTorch. Over 1.6 million examples per second, with deep system-level memory optimisation.",
+                "description": "Sand is a neural network training engine, developed in C++, with no dependency on Python, CUDA or PyTorch. Built on top of our own slab allocator PMAD and accelerated by Apple AMX through Eigen, the engine applies deep system-level memory optimisations at every layer - a single contiguous arena for all gradient buffers, mmap-backed data loading, and strictly zero dynamic allocations on the hot path. Sand can train on virtually any kind of data: image datasets in IDX format, tabular and numerical data from CSV files, Eigen matrices or fully custom structures - without changes to the engine. Add a single header to any C++ project and you get a full training pipeline with a measured throughput of over 1.6 million examples per second, outperforming plain Eigen by up to 50%. Sand is available in the Homebrew package manager as a library for the C++ language.",
                 "url": "https://sandokan.biz"
             }
         }
