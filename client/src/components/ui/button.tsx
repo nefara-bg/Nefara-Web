@@ -54,14 +54,38 @@ const buttonVariants = cva(
 )
 
 // Inner markup for the `slide` variant: an absolutely-positioned teal square
-// that slides from the left to the right edge on hover, plus the label.
-function SlideContent({ children }: { children: React.ReactNode }) {
+// plus the label. The square slides between the two edges on hover. When
+// `slid` is `true` the resting/hover positions are reversed, so the button
+// works as a toggle whose two states are mirror images of each other.
+function SlideContent({
+  children,
+  icon: Icon = ArrowRight,
+  slid,
+}: {
+  children: React.ReactNode
+  icon?: React.ElementType
+  slid?: boolean
+}) {
   return (
     <>
-      <span className="absolute left-1 top-1/2 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-lg bg-primary transition-all duration-500 group-hover:left-[calc(100%-0.25rem)] group-hover:-translate-x-full group-hover:rotate-[360deg]">
-        <ArrowRight className="h-4 w-4 shrink-0 text-white" />
+      <span
+        className={cn(
+          "absolute left-1 top-1/2 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-lg bg-primary transition-all duration-500 group-hover:rotate-[360deg]",
+          slid
+            ? "left-[calc(100%-0.25rem)] -translate-x-full group-hover:left-1 group-hover:translate-x-0"
+            : "group-hover:left-[calc(100%-0.25rem)] group-hover:-translate-x-full"
+        )}
+      >
+        <Icon className="h-4 w-4 shrink-0 text-white" />
       </span>
-      <span className="relative z-0 w-full pl-10 text-center text-sm font-semibold text-foreground transition-all duration-500 group-hover:pl-0 group-hover:pr-10">
+      <span
+        className={cn(
+          "relative z-0 w-full pl-10 text-center text-sm font-semibold text-foreground transition-all duration-500",
+          slid
+            ? "pl-0 pr-10 group-hover:pl-10 group-hover:pr-0"
+            : "group-hover:pl-0 group-hover:pr-10"
+        )}
+      >
         {children}
       </span>
     </>
@@ -72,10 +96,18 @@ export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean
+  /** Icon for the `slide` variant's square. Defaults to ArrowRight. */
+  icon?: React.ElementType
+  /**
+   * Reverses the `slide` variant's resting/hover positions, so the square
+   * starts on the right and slides left. Use to give a toggle two mirrored
+   * states. The hover animation is kept in both states.
+   */
+  slid?: boolean
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, children, ...props }, ref) => {
+  ({ className, variant, size, asChild = false, children, icon, slid, ...props }, ref) => {
     const Comp = asChild ? Slot : "button"
     // The slide variant defines its own height/width, so opt out of `size`.
     const classes = cn(
@@ -94,14 +126,18 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             {React.cloneElement(
               child,
               undefined,
-              <SlideContent>{child.props.children}</SlideContent>
+              <SlideContent icon={icon} slid={slid}>
+                {child.props.children}
+              </SlideContent>
             )}
           </Comp>
         )
       }
       return (
         <Comp className={classes} ref={ref} {...props}>
-          <SlideContent>{children}</SlideContent>
+          <SlideContent icon={icon} slid={slid}>
+            {children}
+          </SlideContent>
         </Comp>
       )
     }

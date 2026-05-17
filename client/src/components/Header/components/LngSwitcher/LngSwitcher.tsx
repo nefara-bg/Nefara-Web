@@ -31,13 +31,12 @@ const LngSwitcher: React.FC<LngSwitcherProps> = ({ locale = "en" }) => {
     return (
         <Button
             onClick={handleToggleLng}
-            variant="outline"
-            size="sm"
+            variant="slide"
+            icon={Globe}
+            slid={locale === "bg"}
+            className="w-auto"
         >
-            <div className="flex flex-row gap-2 items-center">
-                <Globe className="w-5 h-5" />
-                <span className="text-sm font-medium">{displayLng}</span>
-            </div>
+            {displayLng}
         </Button>
     )
 }
