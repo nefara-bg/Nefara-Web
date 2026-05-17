@@ -103,7 +103,12 @@
         "tech": {
             "s1Title": "What sets us apart",
             "s1": "What distinguishes us from most agencies is that we don't rely solely on ready-made solutions. At Nefara, we develop our own software and integrate it directly into the products we build for our clients.",
-            "s1Keywords": ["Own software", "No shortcuts", "Built in-house", "Direct integration"],
+            "s1Keywords": [
+                "Own software",
+                "No shortcuts",
+                "Built in-house",
+                "Direct integration"
+            ],
             "s2Title": "What is it? Quicx",
             "s2": "One of them is Quicx — the fastest and lightest task queue engine of its kind, built entirely by us in C. While other solutions compromise between speed and efficiency, Quicx makes none. Integrating it into the systems we build means faster processing, fewer resources, and a more stable product — without affecting the cost to the client.",
             "s3Title": "The inside advantage",
@@ -224,13 +229,24 @@
                     "name": "Dimitar Anastasov",
                     "role": "Co-founder & Systems Software Engineer",
                     "bio": "Operates at the systems level — memory allocators, task queues, neural network engines. Author of Quicx, PMAD, and Sand. Brings low-level precision to every layer of the stack.",
-                    "tags": ["C / C++", "Systems Programming", "Optimization", "Memory Layout"]
+                    "tags": [
+                        "C / C++",
+                        "Systems Programming",
+                        "Optimization",
+                        "Memory Layout"
+                    ]
                 },
                 "martin": {
                     "name": "Martin Velchev",
                     "role": "Co-founder & Full Stack Developer",
                     "bio": "Builds the products clients see and use — from pixel-perfect UIs to robust backend APIs. Fluent across the full stack, with a focus on performance, clean architecture, and delivering polished results on time.",
-                    "tags": ["React", "Next.js", "TypeScript", "Node.js", "UI/UX"]
+                    "tags": [
+                        "React",
+                        "Next.js",
+                        "TypeScript",
+                        "Node.js",
+                        "UI/UX"
+                    ]
                 }
             },
             "disciplines": {
@@ -262,7 +278,9 @@
                 "eyebrow": "BUILT BY NEFARA",
                 "heading": "See what we've built.",
                 "subtitle": "Every project — designed, engineered, and shipped by us.",
-                "button": "See our work"
+                "button": "See our work",
+                "tagline": "Never Far Away",
+                "buttonServices": "Our Services"
             }
         }
     },
