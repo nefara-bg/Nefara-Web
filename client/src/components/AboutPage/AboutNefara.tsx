@@ -44,42 +44,9 @@ export async function AboutNefara() {
     return (
         <>
             {/* ══════════════════════════════════════════
-                §1  HERO
+                §1  WHO WE ARE
             ══════════════════════════════════════════ */}
-            <section className="relative overflow-hidden bg-[#0D1115]">
-                {/* Subtle background depth mimicking the image's dark texture */}
-                <div 
-                    className="pointer-events-none absolute inset-0 opacity-40" 
-                    style={{
-                        background: "radial-gradient(circle at 75% 40%, rgba(0, 230, 204, 0.06), transparent 50%), radial-gradient(circle at 25% 60%, rgba(0, 230, 204, 0.03), transparent 50%)"
-                    }}
-                />
-                
-                <div className="relative mx-auto max-w-7xl px-6 lg:px-10 pt-40 pb-28 lg:pt-48 lg:pb-36 text-left">
-                    <Reveal delay={0}>
-                        <p className="text-[12px] font-bold uppercase tracking-[0.15em] text-[#00E6CC] mb-5">
-                            {t("hero.tag")}
-                        </p>
-                    </Reveal>
-
-                    <Reveal delay={0.08}>
-                        <h1 className="font-display text-4xl sm:text-5xl lg:text-[56px] font-bold tracking-tight text-white mb-6 leading-[1.1]">
-                            {t("hero.heading")}
-                        </h1>
-                    </Reveal>
-
-                    <Reveal delay={0.18}>
-                        <p className="text-base sm:text-lg lg:text-[19px] text-[#A1B0B8] leading-[1.8] font-medium max-w-2xl">
-                            {t("hero.subtitle")}
-                        </p>
-                    </Reveal>
-                </div>
-            </section>
-
-            {/* ══════════════════════════════════════════
-                §2  WHO WE ARE
-            ══════════════════════════════════════════ */}
-            <section className="bg-white dark:bg-background">
+            <section className="bg-white dark:bg-background pt-28">
                 <div className="mx-auto max-w-7xl px-6 lg:px-10 py-24 lg:py-32">
                     <div className="lg:grid lg:grid-cols-[1fr_420px] lg:gap-20 xl:gap-28">
 
