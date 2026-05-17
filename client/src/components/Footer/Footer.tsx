@@ -140,15 +140,16 @@ const Footer = () => {
                     <p className="text-xs text-white/35">
                         © {currentYear} {t("copyright")}
                     </p>
-                    <a
-                        href="#home"
+                    <button
+                        type="button"
+                        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                         className="group inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-white/45 transition-colors hover:text-[hsl(var(--primary))]"
                     >
                         {t("back")}
                         <span className="flex h-7 w-7 items-center justify-center rounded-md border border-white/15 transition-all group-hover:-translate-y-0.5 group-hover:border-[hsl(var(--primary))]">
                             <ArrowUp className="h-3.5 w-3.5" />
                         </span>
-                    </a>
+                    </button>
                 </div>
             </div>
         </footer>
