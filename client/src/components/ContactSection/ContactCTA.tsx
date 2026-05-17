@@ -101,55 +101,42 @@ export function ContactCTA() {
             <div className="mx-auto max-w-7xl px-6 lg:px-10">
                 <div
                     ref={bannerRef}
-                    className="relative overflow-hidden rounded-2xl"
+                    className="relative flex flex-col overflow-hidden rounded-2xl lg:min-h-[300px] lg:flex-row"
                     style={{ border: "1px solid hsl(202 60% 10%)" }}
                 >
-                    {/* ── Background panels ── */}
+                    {/* Dark panel — heading + subtitle */}
                     <div
                         ref={darkRef}
-                        className="absolute inset-y-0 left-0"
-                        style={{ right: "38%", background: "hsl(var(--secondary))" }}
-                    />
-                    <div
-                        ref={lightRef}
-                        className="absolute inset-y-0 right-0"
-                        style={{ left: "62%", background: "hsl(var(--background))" }}
-                    />
-                    {/* Teal diagonal stripe */}
+                        className="relative z-10 flex w-full flex-col justify-center gap-4 p-10 pb-16 lg:w-[62%] lg:p-14 lg:pr-20"
+                        style={{ background: "hsl(var(--secondary))" }}
+                    >
+                        <h2 data-cta-item className="font-display text-4xl lg:text-5xl xl:text-6xl font-bold leading-[1.05] tracking-tight text-white max-w-xs lg:max-w-md">
+                            {t("cta.title")}
+                        </h2>
+                        <p data-cta-item className="text-sm lg:text-base text-white/50 leading-relaxed max-w-xs lg:max-w-sm">
+                            {t("cta.subtitle")}
+                        </p>
+                    </div>
+
+                    {/* Teal diagonal stripe — sits on the seam in both orientations */}
                     <div
                         ref={stripeRef}
-                        className="absolute inset-y-0"
-                        style={{
-                            left: "calc(62% - 40px)",
-                            width: "80px",
-                            background: "hsl(var(--primary))",
-                            transform: "skewX(-8deg)",
-                        }}
-                    />
+                        className="pointer-events-none relative z-20 -my-4 h-16 w-full self-stretch lg:my-0 lg:-ml-7 lg:-mr-1 lg:h-auto lg:w-20"
+                    >
+                        <div className="h-full w-full -skew-y-[4deg] lg:skew-y-0 lg:-skew-x-[8deg]" style={{ background: "hsl(var(--primary))" }} />
+                    </div>
 
-                    {/* ── Content ── */}
-                    <div className="relative flex min-h-[260px] lg:min-h-[300px]">
-
-                        {/* Left: heading + subtitle — width matches the dark panel end */}
-                        <div className="flex flex-col justify-center gap-4 p-10 pr-16 lg:p-14 lg:pr-20" style={{ width: "65%" }}>
-                            <h2 data-cta-item className="font-display text-4xl lg:text-5xl xl:text-6xl font-bold leading-[1.05] tracking-tight text-white max-w-xs lg:max-w-md">
-                                {t("cta.title")}
-                            </h2>
-                            <p data-cta-item className="text-sm lg:text-base text-white/50 leading-relaxed max-w-xs lg:max-w-sm">
-                                {t("cta.subtitle")}
-                            </p>
-                        </div>
-
-                        {/* Right: skewed buttons — starts inside the light panel */}
-                        <div className="flex-1 flex flex-col justify-center gap-3 px-6 lg:px-8">
-                            <SkewButton href="/contact" filled>
-                                {t("cta.button")}
-                            </SkewButton>
-                            <SkewButton href="/team">
-                                {t("cta.secondaryButton")}
-                            </SkewButton>
-                        </div>
-
+                    {/* Light panel — skewed buttons */}
+                    <div
+                        ref={lightRef}
+                        className="relative z-10 flex flex-1 flex-col justify-center gap-3 bg-background p-10 pt-16 lg:p-14 lg:pl-12"
+                    >
+                        <SkewButton href="/contact" filled>
+                            {t("cta.button")}
+                        </SkewButton>
+                        <SkewButton href="/team">
+                            {t("cta.secondaryButton")}
+                        </SkewButton>
                     </div>
                 </div>
             </div>
