@@ -3,7 +3,6 @@
 import { useEffect, useRef } from "react"
 import gsap from "gsap"
 import { useTranslations } from "next-intl"
-import { Button } from "@/components/ui/button"
 
 export default function HeroButtonsFlow() {
     const ref = useRef<HTMLDivElement>(null)
@@ -14,17 +13,25 @@ export default function HeroButtonsFlow() {
     }
 
     useEffect(() => {
-        gsap.fromTo(ref.current, { opacity: 0 }, { opacity: 1, duration: 0.5, delay: 0.25 })
+        gsap.fromTo(ref.current, { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.7, delay: 0.4, ease: "power3.out" })
     }, [])
 
     return (
-        <div ref={ref} style={{ opacity: 0 }} className="flex gap-3 mt-2">
-            <Button variant="secondary" onClick={scrollTo("#contact")} className="border-0 px-6 h-10 text-sm">
+        <div ref={ref} style={{ opacity: 0 }} className="flex flex-col sm:flex-row gap-3 mt-2 items-center">
+            <button
+                onClick={scrollTo("#contact")}
+                style={{ background: "#ffffff", color: "#00CBBB" }}
+                className="rounded-xl font-semibold text-sm px-8 h-11 hover:opacity-90 transition-opacity shadow-md"
+            >
                 {t("button")}
-            </Button>
-            <Button onClick={scrollTo("#services")} className="border-0 px-6 h-10 text-sm">
+            </button>
+            <button
+                onClick={scrollTo("#services")}
+                style={{ border: "1.5px solid rgba(255,255,255,0.6)", color: "#ffffff", background: "rgba(255,255,255,0.12)" }}
+                className="rounded-xl font-semibold text-sm px-8 h-11 hover:opacity-75 transition-opacity backdrop-blur-sm"
+            >
                 {t("secondaryButton")}
-            </Button>
+            </button>
         </div>
     )
 }

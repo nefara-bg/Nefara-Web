@@ -56,7 +56,7 @@ const borderTopRef = useRef<HTMLDivElement>(null)
     const edgeRefs     = useRef<(SVGLineElement | null)[]>([])
     const centerRef    = useRef<SVGGElement>(null)
 
-    const labels = [t("quicx"), t("pmad"), t("sandokan")]
+    const labels = [t("quicx"), t("pmad"), t("sand")]
 
     const isDone = useContext(ActiveContext)
 

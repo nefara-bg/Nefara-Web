@@ -2,6 +2,7 @@ import * as motion from "motion/react-client"
 import { Linkedin } from "lucide-react"
 import { getTranslations } from "next-intl/server"
 import { DisciplinesSection } from "./DisciplinesSection"
+import { TeamCTABanner } from "./TeamCTABanner"
 
 const FOUNDER_META = [
     {
@@ -19,7 +20,7 @@ export async function TeamSection() {
     const t = await getTranslations("about.teamSection")
 
     return (
-        <section id="about" className="relative bg-background">
+        <section id="about" className="relative" style={{ background: "hsl(var(--muted))" }}>
 
             {/* ── Founders ── */}
             <div className="mx-auto max-w-7xl px-6 lg:px-10 pt-10 pb-16 lg:pt-14 lg:pb-24">
@@ -127,6 +128,7 @@ export async function TeamSection() {
             </div>
 
             <DisciplinesSection />
+            <TeamCTABanner />
 
         </section>
     )

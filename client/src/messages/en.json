@@ -211,18 +211,18 @@
                 "products": "PRODUCTS",
                 "quicx": "Quicx",
                 "pmad": "PMAD",
-                "sandokan": "Sandokan"
+                "sand": "Sand"
             }
         },
         "teamSection": {
-            "heading": "The Team",
+            "heading": "Meet the Founders",
             "subtitle": "Two co-founders. One builds at the systems level, one at the product level. Together they cover the full stack.",
             "areasOfExpertise": "Areas of Expertise",
             "founders": {
                 "dimitar": {
                     "name": "Dimitar Anastasov",
                     "role": "Co-founder & Systems Software Engineer",
-                    "bio": "Operates at the systems level — memory allocators, task queues, neural network engines. Author of Quicx, PMAD, and Sandokan. Brings low-level precision to every layer of the stack.",
+                    "bio": "Operates at the systems level — memory allocators, task queues, neural network engines. Author of Quicx, PMAD, and Sand. Brings low-level precision to every layer of the stack.",
                     "tags": ["C / C++", "Systems Programming", "Optimization", "Memory Layout"]
                 },
                 "martin": {
@@ -234,7 +234,7 @@
             },
             "disciplines": {
                 "eyebrow": "specialist in",
-                "heading": "What we can do",
+                "heading": "Specialists across disciplines",
                 "subtitle": "Five disciplines. Fully covered in-house — no outsourcing, no middlemen.",
                 "systems": {
                     "title": "Systems Engineering",
@@ -254,8 +254,14 @@
                 },
                 "aiml": {
                     "title": "AI & Machine Learning",
-                    "desc": "Production ML, training engines, document AI. We built Sandokan from scratch in C++."
+                    "desc": "Production ML, training engines, document AI. We built Sand from scratch in C++."
                 }
+            },
+            "cta": {
+                "eyebrow": "BUILT BY NEFARA",
+                "heading": "See what we've built.",
+                "subtitle": "Every project — designed, engineered, and shipped by us.",
+                "button": "See our work"
             }
         }
     },
@@ -329,7 +335,7 @@
     "work": {
         "seo": {
             "title": "Work – Nefara | Products We Build In-House",
-            "description": "Discover Nefara's in-house products — Fylex, Quicx, PMAD and Sandokan — built from the ground up with our own engineering and integrated into every client solution."
+            "description": "Discover Nefara's in-house products — Fylex, Quicx, PMAD and Sand — built from the ground up with our own engineering and integrated into every client solution."
         },
         "hero": {
             "eyebrow": "Our Work",
@@ -368,11 +374,11 @@
                 "description": "PMAD (Predictive Memory Allocator by Dimitar Anastasov) is a specialised slab memory allocator, written in C, designed to deliver constant O(1) allocation and deallocation of memory without a single system call at runtime. At startup, all required memory is reserved through one single mmap call, forming a single contiguous arena, which is then divided into user-defined slab size classes — completely eliminating the fragmentation and unpredictability of standard allocators such as malloc. Unlike jemalloc, tcmalloc and ptmalloc, which optimise for average throughput, PMAD optimises for worst-case determinism: zero jitter, zero fragmentation and guaranteed predictable behaviour on every single request. The platform offers full configurability — slab size classes, the distribution of memory between them within the arena and its total size are entirely defined by the user before execution, rather than fixed in advance. The result: measured latency of 19.1 ns, throughput of over 462 million operations per second and strictly zero jitter — numbers verified mathematically, not statistically. PMAD is built for environments where predictability is not optional but a requirement — real-time systems, embedded platforms, game engines and high-frequency trading.",
                 "url": ""
             },
-            "sandokan": {
-                "name": "Sandokan",
+            "sand": {
+                "name": "Sand",
                 "tagline": "Neural network training engine",
                 "summary": "A neural network training engine in C++ — no Python, no CUDA, no PyTorch. Over 1.6 million examples per second, with deep system-level memory optimisation.",
-                "description": "Sandokan is a neural network training engine, developed in C++, with no dependency on Python, CUDA or PyTorch. Built on top of our own slab allocator PMAD and accelerated by Apple AMX through Eigen, the engine applies deep system-level memory optimisations at every layer — a single contiguous arena for all gradient buffers, mmap-backed data loading, and strictly zero dynamic allocations on the hot path. Sandokan can train on virtually any kind of data: image datasets in IDX format, tabular and numerical data from CSV files, Eigen matrices or fully custom structures — without changes to the engine. Add a single header to any C++ project and you get a full training pipeline with a measured throughput of over 1.6 million examples per second, outperforming plain Eigen by up to 50%. Sandokan is available in the Homebrew package manager as a library for the C++ language.",
+                "description": "Sand is a neural network training engine, developed in C++, with no dependency on Python, CUDA or PyTorch. Built on top of our own slab allocator PMAD and accelerated by Apple AMX through Eigen, the engine applies deep system-level memory optimisations at every layer — a single contiguous arena for all gradient buffers, mmap-backed data loading, and strictly zero dynamic allocations on the hot path. Sand can train on virtually any kind of data: image datasets in IDX format, tabular and numerical data from CSV files, Eigen matrices or fully custom structures — without changes to the engine. Add a single header to any C++ project and you get a full training pipeline with a measured throughput of over 1.6 million examples per second, outperforming plain Eigen by up to 50%. Sand is available in the Homebrew package manager as a library for the C++ language.",
                 "url": "https://sandokan.biz"
             }
         }
