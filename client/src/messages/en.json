@@ -4,6 +4,7 @@
         "description": "At Nefara we build web, mobile, and desktop applications, as well as AI solutions tailored to your business. From modern apps to custom AI development, Nefara helps companies grow, innovate, and stay competitive."
     },
     "header": {
+        "home": "Home",
         "services": "Services",
         "company": "Company",
         "about": "About",
@@ -385,6 +386,13 @@
     },
     "footer": {
         "text": "Transforming ideas into exceptional software solutions. Building the future, one application at a time. Your success is our mission.",
+        "cta": {
+            "eyebrow": "NEFARA · SOFTWARE SOLUTIONS",
+            "heading": "Never Far Away."
+        },
+        "nav": {
+            "title": "Navigation"
+        },
         "services": {
             "title": "Our Services",
             "web": "Web Development",
@@ -395,10 +403,12 @@
         "contact": {
             "title": "Get in Touch",
             "email": "Email",
-            "phone": "Phone"
+            "phone": "Phone",
+            "location": "Location"
         },
+        "getInTouch": "Get in touch",
         "copyright": "Nefara - All rights reserved.",
-        "back": "Back to Top"
+        "back": "Back to top"
     },
     "notFound": {
         "title": "Not found!",
