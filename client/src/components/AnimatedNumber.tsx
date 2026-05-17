@@ -15,7 +15,7 @@ export function AnimatedNumber({ value, decimals = 0, prefix = "", suffix = "", 
     const ref = useRef<HTMLSpanElement>(null)
     const inView = useInView(ref, { once: true, margin: "-50px" })
     const motionVal = useMotionValue(0)
-    const spring = useSpring(motionVal, { damping: 80, stiffness: 50, mass: 1 })
+    const spring = useSpring(motionVal, { damping: 40, stiffness: 150, mass: 1 })
     const [display, setDisplay] = useState(decimals > 0 ? (0).toFixed(decimals) : "0")
 
     useEffect(() => {
