@@ -113,13 +113,15 @@ export async function AboutNefara() {
 
                         {/* TUES card */}
                         <Reveal delay={0.05}>
-                            <div className="relative h-full rounded-[10px] border border-border min-h-[320px] overflow-hidden">
+                            <div className="relative h-full rounded-[10px] border border-border min-h-[320px]">
                                 <GlowingEffect spread={40} glow={true} disabled={false} proximity={64} inactiveZone={0.01} />
-                                <img
-                                    src="/aboutNefaraImages/tues.svg"
-                                    alt="TUES"
-                                    className="w-full h-full object-cover"
-                                />
+                                <div className="overflow-hidden rounded-[9px] h-full">
+                                    <img
+                                        src="/aboutNefaraImages/tues.svg"
+                                        alt="TUES"
+                                        className="w-full h-full object-cover"
+                                    />
+                                </div>
                             </div>
                         </Reveal>
 
