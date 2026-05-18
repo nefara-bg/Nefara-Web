@@ -1,6 +1,7 @@
 import * as motion from "motion/react-client"
 import { Linkedin } from "lucide-react"
 import { getTranslations } from "next-intl/server"
+import Image from "next/image"
 import { DisciplinesSection } from "./DisciplinesSection"
 import { TeamCTABanner } from "./TeamCTABanner"
 
@@ -8,10 +9,12 @@ const FOUNDER_META = [
     {
         key: "dimitar" as const,
         linkedin: "https://www.linkedin.com/in/dimitar-anastasov-339a94310/",
+        image: "/co-founders/Dimitar.JPG",
     },
     {
         key: "martin" as const,
         linkedin: "https://www.linkedin.com/in/martin-velchev-5917b836b/",
+        image: "/co-founders/Martin.JPG",
     },
 ]
 
@@ -43,7 +46,7 @@ export async function TeamSection() {
 
                 {/* Founder cards */}
                 <div className="flex flex-col gap-5">
-                    {FOUNDER_META.map(({ key, linkedin }, i) => {
+                    {FOUNDER_META.map(({ key, linkedin, image }, i) => {
                         const name = t(`founders.${key}.name`)
                         const role = t(`founders.${key}.role`)
                         const bio  = t(`founders.${key}.bio`)
@@ -57,20 +60,18 @@ export async function TeamSection() {
                                 transition={{ duration: 0.55, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
                                 className="flex overflow-hidden rounded-xl border border-border bg-card"
                             >
-                                {/* Initials area */}
+                                {/* Photo area */}
                                 <div
-                                    className="hidden sm:flex sm:w-48 lg:w-60 xl:w-72 shrink-0 items-center justify-center min-h-[220px]"
-                                    style={{
-                                        background: "linear-gradient(135deg, hsl(var(--primary)/0.07) 0%, transparent 100%)",
-                                        borderRight: "1px solid hsl(var(--border))",
-                                    }}
+                                    className="hidden sm:block sm:w-48 lg:w-60 xl:w-72 shrink-0 relative min-h-[220px]"
+                                    style={{ borderRight: "1px solid hsl(var(--border))" }}
                                 >
-                                    <span
-                                        className="font-display font-black select-none"
-                                        style={{ fontSize: 100, lineHeight: 1, color: "hsl(var(--primary))", opacity: 0.06 }}
-                                    >
-                                        {name.split(" ").map((w: string) => w[0]).join("")}
-                                    </span>
+                                    <Image
+                                        src={image}
+                                        alt={name}
+                                        fill
+                                        className="object-cover object-top"
+                                        sizes="(max-width: 1024px) 192px, (max-width: 1280px) 240px, 288px"
+                                    />
                                 </div>
 
                                 {/* Info */}
