@@ -46,10 +46,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 }
 
 const PRODUCTS = [
-    { key: "fylex",    accent: "radial-gradient(circle at 30% 30%, hsl(190 90% 55% / 0.55), transparent 60%)" },
-    { key: "quicx",    accent: "radial-gradient(circle at 70% 30%, hsl(160 80% 50% / 0.55), transparent 60%)" },
-    { key: "pmad",     accent: "radial-gradient(circle at 30% 70%, hsl(265 80% 65% / 0.55), transparent 60%)" },
-    { key: "sand", accent: "radial-gradient(circle at 70% 70%, hsl(30 90% 60% / 0.55), transparent 60%)" },
+    { key: "fylex",    accent: "radial-gradient(circle at 30% 30%, hsl(190 90% 55% / 0.55), transparent 60%)", image: undefined },
+    { key: "quicx",    accent: "radial-gradient(circle at 70% 30%, hsl(160 80% 50% / 0.55), transparent 60%)", image: undefined },
+    { key: "pmad",     accent: "radial-gradient(circle at 30% 70%, hsl(265 80% 65% / 0.55), transparent 60%)", image: "/work/pmad_arhitecture.webp" },
+    { key: "sand",     accent: "radial-gradient(circle at 70% 70%, hsl(30 90% 60% / 0.55), transparent 60%)", image: "/work/sandokan.png" },
 ] as const
 
 const WorkPage = async ({ params }: { params: Promise<{ locale: string }> }) => {
@@ -88,7 +88,7 @@ const WorkPage = async ({ params }: { params: Promise<{ locale: string }> }) => 
                             className="scroll-mt-28 flex flex-col gap-24"
                             aria-label={t("sections.products")}
                         >
-                        {PRODUCTS.map(({ key, accent }, idx) => {
+                        {PRODUCTS.map(({ key, accent, image }, idx) => {
                             const url = t(`products.${key}.url`)
                             return (
                                 <section
@@ -118,6 +118,7 @@ const WorkPage = async ({ params }: { params: Promise<{ locale: string }> }) => 
                                                 name={t(`products.${key}.name`)}
                                                 slug={key}
                                                 accent={accent}
+                                                imageSrc={image}
                                             />
                                         </div>
 

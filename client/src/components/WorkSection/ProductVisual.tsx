@@ -12,9 +12,10 @@ type Props = {
     name: string
     slug: string
     accent: string
+    imageSrc?: string
 }
 
-export function ProductVisual({ index, name, slug, accent }: Props) {
+export function ProductVisual({ index, name, slug, accent, imageSrc }: Props) {
     const ref = useRef<HTMLDivElement>(null)
     const glowRef = useRef<HTMLDivElement>(null)
     const imageRef = useRef<HTMLDivElement>(null)
@@ -69,7 +70,7 @@ export function ProductVisual({ index, name, slug, accent }: Props) {
             />
             <div ref={imageRef} className="absolute overflow-hidden inset-0 z-10">
                 <Image
-                    src={`/work/${slug}.png`}
+                    src={imageSrc ?? `/work/${slug}.png`}
                     alt={name}
                     fill
                     sizes="(min-width: 1024px) 640px, 100vw"

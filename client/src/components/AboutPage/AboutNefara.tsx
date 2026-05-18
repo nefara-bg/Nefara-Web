@@ -47,7 +47,7 @@ export async function AboutNefara() {
             ══════════════════════════════════════════ */}
             <section className="bg-white dark:bg-background pt-10">
                 <div className="mx-auto max-w-7xl px-6 lg:px-10 py-24 lg:py-32">
-                    <div className="lg:grid lg:grid-cols-[1fr_420px] lg:gap-20 xl:gap-28">
+                    <div className="lg:grid lg:grid-cols-[1fr_480px] lg:gap-12 xl:gap-16 lg:items-center">
 
                         {/* Left — body copy */}
                         <div>
@@ -70,22 +70,21 @@ export async function AboutNefara() {
                             </div>
                         </div>
 
-                        {/* Right — mission card */}
-                        <Reveal delay={0.2} className="mt-12 lg:mt-[5.5rem]">
-                            <div
-                                className="relative rounded-[6px] p-8 lg:p-10 bg-[#061219]"
-                            >
-                                <div className="flex items-center gap-4 mb-8">
-                                    <div className="w-6 h-[2px] bg-[#00E6CC]"></div>
-                                    <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#00E6CC]">
-                                        {t("whoWeAre.missionTag")}
-                                    </span>
-                                </div>
-                                
-                                <div className="relative border-l-[3px] border-[#00E6CC] pl-6 py-1">
-                                    <p className="text-white/90 text-[17px] leading-[1.75] font-medium">
-                                        {t("whoWeAre.mission")}
-                                    </p>
+                        {/* Right — founders image */}
+                        <Reveal delay={0.2} className="mt-12 lg:mt-0">
+                            <div className="rounded-3xl overflow-hidden relative">
+                                <img
+                                    src="/aboutNefaraImages/bothCo-FoundersImage.webp"
+                                    alt="Co-founders"
+                                    className="w-full h-auto block"
+                                />
+                                {/* Mission text at bottom */}
+                                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#061219]/90 via-[#061219]/60 to-transparent px-7 pt-16 pb-7">
+                                    <div className="border-l-[3px] border-[#00E6CC] pl-5 py-1">
+                                        <p className="text-white/90 text-[15px] leading-[1.75] font-medium">
+                                            {t("whoWeAre.mission")}
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </Reveal>
