@@ -1,8 +1,7 @@
 import * as motion from "motion/react-client"
 import { getTranslations } from "next-intl/server"
 import { Link } from "@/i18n/navigation"
-import { ArrowRight } from "lucide-react"
-import { AnimatedNumber } from "@/components/AnimatedNumber"
+import { GlowingEffect } from "@/components/ui/glowing-effect"
 
 /* ─── tiny reveal helper ─── */
 function Reveal({
@@ -114,36 +113,13 @@ export async function AboutNefara() {
 
                         {/* TUES card */}
                         <Reveal delay={0.05}>
-                            <div className="relative rounded-[8px] p-8 lg:p-10 h-full bg-white dark:bg-transparent border border-[#00E6CC]/40 dark:border-[#00E6CC]/30">
-                                <div className="inline-block px-3 py-1.5 rounded-sm bg-[#00E6CC]/10 text-[#00B8A6] dark:text-[#00E6CC] text-[10px] font-bold uppercase tracking-[0.2em] mb-8">
-                                    {t("background.education.tag")}
-                                </div>
-
-                                {/* Years badge */}
-                                <div className="flex items-baseline gap-2 mb-8">
-                                    <AnimatedNumber
-                                        value={parseInt(t("background.education.years"), 10) || 38}
-                                        className="font-display text-[64px] font-bold text-[#00B8A6] dark:text-[#00E6CC] leading-none tracking-tighter"
-                                    />
-                                    <span className="text-3xl font-bold text-[#0F172A] dark:text-white leading-none">
-                                        {t("background.education.yearsLabel")}
-                                    </span>
-                                </div>
-
-                                <a
-                                    href="https://elsys-bg.org/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="text-[#0F172A] dark:text-white hover:text-[#00B8A6] dark:hover:text-[#00E6CC] transition-colors font-bold text-[17px] mb-2 leading-snug block w-fit"
-                                >
-                                    {t("background.education.school")}
-                                </a>
-                                <p className="text-[#64748B] dark:text-[#8492A6] text-sm mb-8">
-                                    {t("background.education.location")}
-                                </p>
-                                <p className="text-[#64748B] dark:text-[#8492A6] text-sm leading-[1.8]">
-                                    {t("background.education.body")}
-                                </p>
+                            <div className="relative h-full rounded-[10px] border border-border min-h-[320px] overflow-hidden">
+                                <GlowingEffect spread={40} glow={true} disabled={false} proximity={64} inactiveZone={0.01} />
+                                <img
+                                    src="/aboutNefaraImages/tues.svg"
+                                    alt="TUES"
+                                    className="w-full h-full object-cover"
+                                />
                             </div>
                         </Reveal>
 
@@ -206,9 +182,7 @@ export async function AboutNefara() {
                     {/* What is a hackathon banner */}
                     <Reveal delay={0.2}>
                         <div className="mt-6 rounded-[8px] p-5 lg:p-6 bg-white dark:bg-transparent border border-[#00E6CC]/40 dark:border-[#00E6CC]/30 flex items-start sm:items-center gap-5">
-                            <div className="w-10 h-10 shrink-0 bg-[#00E6CC]/10 rounded flex items-center justify-center text-[#00B8A6] dark:text-[#00E6CC] font-bold text-[15px]">
-                                ?
-                            </div>
+                            <img src="/aboutNefaraIcons/questingMarkIcon.svg" alt="" className="w-17 h-17 shrink-0" />
                             <p className="text-[15px] text-[#475569] dark:text-[#8492A6] leading-[1.7]">
                                 {t("background.hackathons.footnote")}
                             </p>
